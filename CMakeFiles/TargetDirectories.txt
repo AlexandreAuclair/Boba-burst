@@ -1,0 +1,16 @@
+E:/Buba-burst/CMakeFiles/INSTALL.dir
+E:/Buba-burst/CMakeFiles/ALL_BUILD.dir
+E:/Buba-burst/CMakeFiles/ZERO_CHECK.dir
+E:/Buba-burst/Boba burst/CMakeFiles/Boba_burst.dir
+E:/Buba-burst/Boba burst/CMakeFiles/INSTALL.dir
+E:/Buba-burst/Boba burst/deps/glfw/CMakeFiles/uninstall.dir
+E:/Buba-burst/Boba burst/deps/glfw/CMakeFiles/INSTALL.dir
+E:/Buba-burst/Boba burst/deps/glfw/CMakeFiles/ALL_BUILD.dir
+E:/Buba-burst/Boba burst/deps/glfw/src/CMakeFiles/glfw.dir
+E:/Buba-burst/Boba burst/deps/glfw/src/CMakeFiles/update_mappings.dir
+E:/Buba-burst/Boba burst/deps/glfw/src/CMakeFiles/INSTALL.dir
+E:/Buba-burst/Boba burst/deps/glfw/docs/CMakeFiles/INSTALL.dir
+E:/Buba-burst/Boba burst/deps/glm/CMakeFiles/INSTALL.dir
+E:/Buba-burst/Boba burst/deps/glm/CMakeFiles/ALL_BUILD.dir
+E:/Buba-burst/Boba burst/deps/glm/glm/CMakeFiles/glm.dir
+E:/Buba-burst/Boba burst/deps/glm/glm/CMakeFiles/INSTALL.dir

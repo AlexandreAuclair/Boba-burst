@@ -1,0 +1,13 @@
+{
+	"InstallScripts" : 
+	[
+		"E:/Buba-burst/cmake_install.cmake",
+		"E:/Buba-burst/Boba burst/cmake_install.cmake",
+		"E:/Buba-burst/Boba burst/deps/glfw/cmake_install.cmake",
+		"E:/Buba-burst/Boba burst/deps/glfw/src/cmake_install.cmake",
+		"E:/Buba-burst/Boba burst/deps/glfw/docs/cmake_install.cmake",
+		"E:/Buba-burst/Boba burst/deps/glm/cmake_install.cmake",
+		"E:/Buba-burst/Boba burst/deps/glm/glm/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
