@@ -54,10 +54,11 @@ void Game::Run() {
     double lastTime = glfwGetTime();
     while (!glfwWindowShouldClose(window)) {
         double currentTime = glfwGetTime();
-
+        double elapsed = currentTime - lastTime;
         ProcessInput();
         Update();
         Render();
+        lastTime = currentTime;
     }
 }
 

@@ -12,6 +12,7 @@ add_executable (Boba_burst
 "./src/Game/bb_camera.h"
 "./src/Logger/Logger.cpp"
 "./src/Logger/Logger.h"
+"./src/Actor/Actor.h"
 )
 
 set_property(TARGET Boba_burst PROPERTY CXX_STANDARD 20)
