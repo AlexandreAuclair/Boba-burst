@@ -1,9 +1,9 @@
-﻿# CMakeList.txt : projet CMake pour Buba burst, incluez la source et définissez
+﻿# CMakeList.txt : projet CMake pour Boba burst, incluez la source et définissez
 # la logique spécifique au projet ici.
 #
 
 # Ajoutez une source à l'exécutable de ce projet.
-add_executable (CMakeTarget "Buba burst.cpp" "Buba burst.h")
+add_executable (CMakeTarget "Boba burst.cpp" "Boba burst.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CMakeTarget PROPERTY CXX_STANDARD 20)
