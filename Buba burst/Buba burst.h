@@ -1,4 +1,4 @@
-﻿// Bubble burst.h : fichier Include pour les fichiers Include système standard,
+﻿// Buba burst.h : fichier Include pour les fichiers Include système standard,
 // ou les fichiers Include spécifiques aux projets.
 
 #pragma once
