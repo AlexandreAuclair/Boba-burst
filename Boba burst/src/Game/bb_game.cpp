@@ -13,7 +13,6 @@
 //==========================================================================
 
 Game::Game(){
-    isRunning = false;
     isDebug = false;
 
     Logger::Log("Game constructor called!");
