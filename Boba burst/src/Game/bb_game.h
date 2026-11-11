@@ -9,6 +9,7 @@
     //      include interne
     //==========================================================================
 #include "bb_camera.h"
+#include "bb_gameState.h"
 
     //==========================================================================
     //      Constante
@@ -30,10 +31,11 @@ private:
     void Render();
 
 private:
+    bool isRunning;
     bool isDebug;
     GLFWwindow* window;
     int millisecsPreviousFrame = 0;
-
+    GameStateMachine stateMachine;
     //Profiler profiler; // pour plus tard
 };
 

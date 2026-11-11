@@ -12,9 +12,13 @@ add_executable (Boba_burst
 "./src/Game/bb_game.cpp"
 "./src/Game/bb_game.h"
 "./src/Game/bb_camera.h"
+"./src/Game/bb_gameState.h"
 "./src/Logger/Logger.cpp"
 "./src/Logger/Logger.h"
-"./src/Actor/Actor.h"
+"./src/Actor/bb_actor.h"
+"./src/Events/bb_keyPressedEvent.h"
+"./src/EventBus/bb_event.h"
+"./src/EventBus/bb_eventBus.h"
 )
 
 set_property(TARGET Boba_burst PROPERTY CXX_STANDARD 20)

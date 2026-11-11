@@ -12,10 +12,10 @@ public:
 	Actor() = default;
 	~Actor() = default;
 
-	// Méthode pour créer et enregistrer le corps physique dans Jolt
+	// Methode pour creer et enregistrer le corps physique dans Jolt
 	virtual void InitPhysics(JPH::BodyInterface& bodyInterface) = 0;
 
-	// Méthode appelée à chaque frame pour synchroniser la position de l'acteur avec Jolt
+	// Methode appelee a chaque frame pour synchroniser la position de l'acteur avec Jolt
 	virtual void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) = 0;
 protected:
 	int id;
