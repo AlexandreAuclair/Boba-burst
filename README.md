@@ -1,4 +1,4 @@
-# Buba-burst
+# Boba-burst
 
 > **Un projet captivant développé avec passion et un travail d'équipe hors pair !**
 
