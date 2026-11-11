@@ -112,8 +112,6 @@ StyleCopReport.xml
 *.pgd
 *.rsp
 *.sln
-*.cmake
-*.cmake.in
 *.vcxproj
 *.vcxproj.filters
 *.stamp
