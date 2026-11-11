@@ -22,73 +22,31 @@ private:
     }
 
 public:
-    GameStateMachine() : currentState(GameState::Menu) {}
+    GameStateMachine();
 
     // Obtenir l'état actuel
-    GameState GetCurrentState() const { return currentState; }
+    GameState GetCurrentState() const;
 
     // --- Événements et Transitions selon vos règles ---
 
     // Depuis Menu
-    void TriggerPlay() {
-        if (currentState == GameState::Menu) {
-            ChangeState(GameState::Playing);
-            Logger::Log("Game state is now playing");
-        }
-    }
+    void TriggerPlay();
 
-    void TriggerOption() {
-        if (currentState == GameState::Menu) {
-            ChangeState(GameState::Option);
-            Logger::Log("Game state is now Option");
-        }
-    }
+    void TriggerOption();
 
-    void TriggerQuit() {
-        if (currentState == GameState::Menu || currentState == GameState::Pause) {
-            ChangeState(GameState::Quitting);
-            Logger::Log("Game state is now Qutting");
-        }
-    }
+    void TriggerQuit();
 
     // Depuis Playing
-    void TriggerPause() {
-        if (currentState == GameState::Playing) {
-            ChangeState(GameState::Pause);
-            Logger::Log("Game state is now Pause");
-        }
-    }
+    void TriggerPause();
 
-    void TriggerGameOver() {
-        if (currentState == GameState::Playing) {
-            ChangeState(GameState::GameOver);
-            Logger::Log("Game state is now Game Over");
-        }
-    }
+    void TriggerGameOver();
 
     // Depuis Pause
-    void TriggerResume() {
-        if (currentState == GameState::Pause) {
-            ChangeState(GameState::Playing);
-            Logger::Log("Game state is now playing");
-        }
-    }
+    void TriggerResume();
 
     // Depuis Game Over
-    void TriggerRestart() {
-        if (currentState == GameState::GameOver) {
-            ChangeState(GameState::Playing);
-            Logger::Log("Game state is now playing");
-        }
-    }
+    void TriggerRestart();
 
     // Retours communs vers le Menu (Option, Pause, Game Over -> Menu)
-    void TriggerBackToMenu() {
-        if (currentState == GameState::Option || 
-            currentState == GameState::Pause || 
-            currentState == GameState::GameOver) {
-            ChangeState(GameState::Menu);
-            Logger::Log("Game state is now Menu");
-        }
-    }
+    void TriggerBackToMenu();
 };
