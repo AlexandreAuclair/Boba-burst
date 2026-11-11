@@ -18,9 +18,15 @@ const int FPS = 60;
 const int MILLISECS_PER_FRAME = 1000 / FPS;
 
 class Game {
-public:
     Game();
     ~Game();
+
+public:
+    static Game& get() {
+        static Game singleton;
+        return singleton;
+    }
+
     void Initialize();
     void Run();
     void Destroy();

@@ -7,11 +7,9 @@ using namespace std;
 
 void main()
 {
-	Game game;
-
-	game.Initialize();
+	Game::get().Initialize();
 	
-	game.Run();
+	Game::get().Run();
 
-	game.Destroy();
+	Game::get().Destroy();
 }
