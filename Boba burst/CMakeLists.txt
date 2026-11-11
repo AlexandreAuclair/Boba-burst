@@ -16,9 +16,19 @@ add_executable (Boba_burst
 "./src/Logger/Logger.cpp"
 "./src/Logger/Logger.h"
 "./src/Actor/bb_actor.h"
+"./src/Character/bb_character.h"
+"./src/Character/bb_bot.h"
+"./src/Character/bb_player.h"
+"./src/Object/bb_track.h"
+"./src/Object/bb_track.cpp"
+"./src/Object/bb_trackObject.h"
+"./src/Object/bb_bonusObject.h"
 "./src/Events/bb_keyPressedEvent.h"
 "./src/EventBus/bb_event.h"
 "./src/EventBus/bb_eventBus.h"
+"./src/DataStruct/bb_mesh.h"
+"./src/DataStruct/bb_section.h"
+"./src/DataStruct/bb_sommet.h"
 )
 
 set_property(TARGET Boba_burst PROPERTY CXX_STANDARD 20)
