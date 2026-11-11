@@ -1,6 +1,8 @@
 ﻿
 add_subdirectory(./deps/glfw)
 add_subdirectory(./deps/glm)
+add_subdirectory(./deps/assimp)
+add_subdirectory(./deps/JoltPhysics/Build)
 
 find_package(Vulkan REQUIRED)
 
@@ -17,7 +19,7 @@ add_executable (Boba_burst
 
 set_property(TARGET Boba_burst PROPERTY CXX_STANDARD 20)
 
-set(LINK_LIBRARIES ${Vulkan_LIBRARIES} glfw glm)
+set(LINK_LIBRARIES ${Vulkan_LIBRARIES} glfw glm assimp::assimp Jolt)
 
 target_link_libraries(Boba_burst PRIVATE ${LINK_LIBRARIES})
 
