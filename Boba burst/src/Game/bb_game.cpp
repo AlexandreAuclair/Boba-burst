@@ -78,7 +78,8 @@ void Game::Destroy() {
 //==========================================================================
 
 void Game::Setup() {
-
+    // Appeler le level Loader
+    levelLoader.LoadLevel(1,"level.json");
 }
 
 void Game::ProcessInput() {

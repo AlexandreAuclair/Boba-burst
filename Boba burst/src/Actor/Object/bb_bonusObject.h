@@ -1,17 +1,17 @@
 #pragma once
 
 #include "../bb_actor.h"
-#include "../../DataStruct/bb_section.h"
 
 class BonusObject : public Actor{
 public:
     BonusObject();
     ~BonusObject();
-
-    void InitPhysics(JPH::BodyInterface& bodyInterface) override;
-    void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override;
-
 private:
-    int nbSections;
-    std::unique_ptr<Section> sections;
+    JPH::BodyID InitPhysics(JPH::BodyInterface& bodyInterface) override final;
+    void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override final;
+public:
+    void Update(int dt) override final;
+    void Render(int dt) override final;
+private:
+
 };

@@ -6,10 +6,15 @@
 class Track : public Actor{
 public:
     Track();
+    Track(int id, int nbSections);
     ~Track();
+private:
+    JPH::BodyID InitPhysics(JPH::BodyInterface& bodyInterface) override final;
+    void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override final;
+public:
+    void Update(int dt) override final;
+    void Render(int dt) override final;
 
-    void InitPhysics(JPH::BodyInterface& bodyInterface) override;
-    void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override;
 
 private:
     int nbSections;

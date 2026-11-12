@@ -10,6 +10,7 @@
     //==========================================================================
 #include "bb_camera.h"
 #include "bb_gameState.h"
+#include "../LevelLoader/bb_levelLoader.h"
 
     //==========================================================================
     //      Constante
@@ -42,6 +43,7 @@ private:
     GLFWwindow* window;
     int millisecsPreviousFrame = 0;
     GameStateMachine stateMachine;
+    LevelLoader levelLoader;
     //Profiler profiler; // pour plus tard
 };
 

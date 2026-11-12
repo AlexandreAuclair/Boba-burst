@@ -38,6 +38,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("E:/Boba-burst/Boba burst/deps/glm/cmake_install.cmake")
   include("E:/Boba-burst/Boba burst/deps/assimp/cmake_install.cmake")
   include("E:/Boba-burst/Boba burst/deps/JoltPhysics/Build/cmake_install.cmake")
+  include("E:/Boba-burst/Boba burst/deps/json-develop/cmake_install.cmake")
 
 endif()
 
