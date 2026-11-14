@@ -1,20 +1,22 @@
 #ifndef BB_GAME_H
 #define BB_GAME_H
 
-    //==========================================================================
-    //      include externe
-    //==========================================================================
+//==========================================================================
+//      include externe
+//==========================================================================
+#define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
-    //==========================================================================
-    //      include interne
-    //==========================================================================
+//==========================================================================
+//      include interne
+//==========================================================================
 #include "bb_camera.h"
 #include "bb_gameState.h"
 #include "../LevelLoader/bb_levelLoader.h"
+#include "../VulkanContext/bb_vulkanContext.h"
 
-    //==========================================================================
-    //      Constante
-    //==========================================================================
+//==========================================================================
+//      Constante
+//==========================================================================
 const int FPS = 60;
 const int MILLISECS_PER_FRAME = 1000 / FPS;
 
@@ -28,7 +30,11 @@ public:
         return singleton;
     }
 
-    void Initialize();
+    /* 
+    init l'application et retourne vrai si elle a marcher parfaitement, 
+    retourne faux si il y a une erreur
+    */
+    bool Initialize();
     void Run();
     void Destroy();
 private:
@@ -44,6 +50,7 @@ private:
     int millisecsPreviousFrame = 0;
     GameStateMachine stateMachine;
     LevelLoader levelLoader;
+    VulkanContext context;
     //Profiler profiler; // pour plus tard
 };
 

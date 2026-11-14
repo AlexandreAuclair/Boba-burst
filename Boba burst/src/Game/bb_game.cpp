@@ -7,6 +7,7 @@
     //      include interne
     //==========================================================================
 #include "../Logger/Logger.h"
+#include <iostream>
 
 //==========================================================================
 //      fonction publique
@@ -21,17 +22,17 @@ Game::~Game() {
     Logger::Log("Game destructor called!");
 }
 
-void Game::Initialize() {
+bool Game::Initialize() {
     if (!glfwInit())
     {
         Logger::Err("Failed to initialize glfw.\r\n");
-        return;
+        return false;
     }
 
     if (!glfwVulkanSupported())
     {
         Logger::Err("Vulkan not supported.\r\n");
-        return;
+        return false;
     }
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -39,12 +40,27 @@ void Game::Initialize() {
     if (!window)
     {
         Logger::Err("Failed to create window.\r\n");
-        return;
+        return false;
     }
+
+    context.CreateInstance();
+	context.CreateDevice();
+
+	VkSurfaceKHR surface = VK_NULL_HANDLE;
+	VkResult result = glfwCreateWindowSurface(context.GetInstance(), window, NULL, &surface);
+    if(result != VK_SUCCESS){
+        Logger::Err("Failed to create window surface.\r\n");
+        return false;
+    }
+
+	context.SetSurface(surface);
+	context.CreateSwapChain();
 
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);		// Cache le curseur et le verrouille au mileu de la fen�tre
     if (glfwRawMouseMotionSupported())
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+
+    return true;
 }
 
 void Game::Run() {

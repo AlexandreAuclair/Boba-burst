@@ -1,8 +1,8 @@
-# Install script for directory: E:/Boba-burst/Boba burst/deps/assimp/code
+# Install script for directory: /home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Boba burst")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -27,137 +27,121 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
+# Install shared libraries without execute permission?
+if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  set(CMAKE_INSTALL_SO_NO_EXE "1")
+endif()
+
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set path to fallback-tool for dependency-resolution.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
 if(CMAKE_INSTALL_COMPONENT STREQUAL "libassimp6.0.6-dev" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "E:/Boba-burst/Boba burst/deps/assimp/lib/Debug/assimp-vc143-mtd.lib")
-  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "E:/Boba-burst/Boba burst/deps/assimp/lib/Release/assimp-vc143-mt.lib")
-  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "E:/Boba-burst/Boba burst/deps/assimp/lib/MinSizeRel/assimp-vc143-mt.lib")
-  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "E:/Boba-burst/Boba burst/deps/assimp/lib/RelWithDebInfo/assimp-vc143-mt.lib")
-  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/lib/libassimp.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "assimp-dev" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/assimp" TYPE FILE FILES
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/anim.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/aabb.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ai_assert.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/camera.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/color4.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/color4.inl"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/config.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ColladaMetaData.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/commonMetaData.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/defs.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/cfileio.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/light.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/material.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/material.inl"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/matrix3x3.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/matrix3x3.inl"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/matrix4x4.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/matrix4x4.inl"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/mesh.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ObjMaterial.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/pbrmaterial.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/GltfMaterial.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/postprocess.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/quaternion.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/quaternion.inl"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/scene.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/metadata.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/texture.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/types.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/vector2.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/vector2.inl"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/vector3.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/vector3.inl"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/version.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/cimport.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/AssertHandler.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/importerdesc.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Importer.hpp"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/DefaultLogger.hpp"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ProgressHandler.hpp"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/IOStream.hpp"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/IOSystem.hpp"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Logger.hpp"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/LogStream.hpp"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/NullLogger.hpp"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/cexport.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Exporter.hpp"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/DefaultIOStream.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/DefaultIOSystem.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ZipArchiveIOSystem.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SceneCombiner.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/fast_atof.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/qnan.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/BaseImporter.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Hash.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/MemoryIOWrapper.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ParsingUtils.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StreamReader.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StreamWriter.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StringComparison.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StringUtils.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SGSpatialSort.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/GenericProperty.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SpatialSort.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SkeletonMeshBuilder.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SmallVector.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SmoothingGroups.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SmoothingGroups.inl"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StandardShapes.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/RemoveComments.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Subdivision.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Vertex.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/LineSplitter.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/TinyFormatter.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Profiler.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/LogAux.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Bitmap.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/XMLTools.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/IOStreamBuffer.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/CreateAnimMesh.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/XmlParser.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/BlobIOSystem.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/MathFunctions.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Exceptional.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ByteSwapper.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Base64.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/anim.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/aabb.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ai_assert.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/camera.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/color4.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/color4.inl"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/config.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ColladaMetaData.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/commonMetaData.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/defs.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/cfileio.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/light.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/material.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/material.inl"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/matrix3x3.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/matrix3x3.inl"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/matrix4x4.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/matrix4x4.inl"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/mesh.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ObjMaterial.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/pbrmaterial.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/GltfMaterial.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/postprocess.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/quaternion.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/quaternion.inl"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/scene.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/metadata.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/texture.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/types.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/vector2.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/vector2.inl"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/vector3.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/vector3.inl"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/version.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/cimport.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/AssertHandler.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/importerdesc.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Importer.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/DefaultLogger.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ProgressHandler.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/IOStream.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/IOSystem.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Logger.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/LogStream.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/NullLogger.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/cexport.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Exporter.hpp"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/DefaultIOStream.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/DefaultIOSystem.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ZipArchiveIOSystem.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SceneCombiner.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/fast_atof.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/qnan.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/BaseImporter.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Hash.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/MemoryIOWrapper.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ParsingUtils.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StreamReader.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StreamWriter.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StringComparison.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StringUtils.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SGSpatialSort.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/GenericProperty.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SpatialSort.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SkeletonMeshBuilder.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SmallVector.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SmoothingGroups.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/SmoothingGroups.inl"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/StandardShapes.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/RemoveComments.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Subdivision.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Vertex.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/LineSplitter.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/TinyFormatter.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Profiler.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/LogAux.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Bitmap.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/XMLTools.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/IOStreamBuffer.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/CreateAnimMesh.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/XmlParser.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/BlobIOSystem.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/MathFunctions.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Exceptional.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/ByteSwapper.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Base64.hpp"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "assimp-dev" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/assimp/Compiler" TYPE FILE FILES
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Compiler/pushpack1.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Compiler/poppack1.h"
-    "E:/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Compiler/pstdint.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Compiler/pushpack1.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Compiler/poppack1.h"
+    "/home/deom/Documents/Boba-burst/Boba burst/deps/assimp/code/../include/assimp/Compiler/pstdint.h"
     )
 endif()
 
-if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE FILE FILES "E:/Boba-burst/Boba burst/deps/assimp/code/Debug/assimp-vc143-mtd.pdb")
-  endif()
-endif()
-
-if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE FILE FILES "E:/Boba-burst/Boba burst/deps/assimp/code/RelWithDebInfo/assimp-vc143-mt.pdb")
-  endif()
-endif()
-
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
-       "${CMAKE_INSTALL_MANIFEST_FILES}")
-if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "E:/Boba-burst/Boba burst/deps/assimp/code/install_local_manifest.txt"
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
-endif()

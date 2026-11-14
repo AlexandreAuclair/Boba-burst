@@ -7,7 +7,9 @@ using namespace std;
 
 int main()
 {
-	Game::get().Initialize();
+	if(!Game::get().Initialize()){
+		return -1;
+	}
 	
 	Game::get().Run();
 
