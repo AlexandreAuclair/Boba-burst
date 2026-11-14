@@ -32,3 +32,11 @@ Ce projet est le résultat d'une collaboration serrée où chacun a apporté son
 > *"Seul on va plus vite, ensemble on va plus loin !"* 🚀
 
 ---
+
+## Compiling
+1. cmake . in cmd at root
+2. open Boba burst.sln
+3. right click Jolt project -> propreties
+4. c/c++ -> Code Generation
+5. change Runtime Library to /MDd
+6. compile whole project
