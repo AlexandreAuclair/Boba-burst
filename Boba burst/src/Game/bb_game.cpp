@@ -15,7 +15,7 @@
 
 Game::Game() : isDebug(false), isRunning(true){
     Logger::Log("Game constructor called!");
-
+    Logger::Log("J'ai fuck up");
 }
 
 Game::~Game() {
