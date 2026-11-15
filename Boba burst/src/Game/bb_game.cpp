@@ -88,7 +88,9 @@ void Game::Setup()
 {
     // Appeler le level Loader
     levelLoader.LoadLevel(1, "level.json");
+    /// Nous assure que le bus est vide au setup
     gameEventBus->Reset();
+    // Temporaire pour test
     players.emplace(1, std::make_unique<Player>(1, gameEventBus, window));
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
 }
@@ -190,6 +192,8 @@ void Game::Render()
     }
 }
 
+/// @brief Quand un événement de touche est lancé, s'il sagit de la touche ESC, trigger les changements états et les événements approprié selon l'états actuel (vers la pause ou vers la reprise)
+/// @param event La touche présentement active
 void Game::HandlePauseEvent(KeyPressedEvent &event)
 {
     if (event.keyId != GLFW_KEY_ESCAPE)

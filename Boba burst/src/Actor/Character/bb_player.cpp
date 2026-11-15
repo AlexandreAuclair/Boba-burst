@@ -4,6 +4,8 @@
 Player::Player() {}
 Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window)
 {
+    // Valeur pour Speed et Position sont temporaire à des fin de test.
+    // TODO: RETIRER LORSQUE PLAYER INSTANCIER CORRECTEMENT
     speed = 10;
     Actor::position = glm::vec3(0, 0, 0);
     Logger::Log("PLAYER CONSTRUCTOR #2 CALLED!");
@@ -23,14 +25,17 @@ JPH::BodyID Player::InitPhysics(JPH::BodyInterface &bodyInterface)
 void Player::UpdateFromPhysics(const JPH::BodyInterface &bodyInterface)
 {
 }
-
+/// @brief Réception de l'événement de pause. Détermine si le joueur doit ignorer les entrées ou non.
+/// @param event PauseEvent avec True ou False
 void Player::HandlePauseEvent(PauseEvent &event)
 {
     isIgnoringInputs = event.isPaused;
 }
-
+/// @brief Réception des événements d'entrée. S'il s'agit d'un entrée pour déplacer le joueur, on garde la commande en mémoire pour l'Update
+/// @param event KeyPressedEvent avec la touche a traité
 void Player::Input(KeyPressedEvent &event)
 {
+    // Ignore toute les entrées quand nous ne voulons pas que le joueur réagisse
     if (isIgnoringInputs)
     {
         return;
@@ -56,6 +61,8 @@ void Player::Input(KeyPressedEvent &event)
 
     Logger::Log("-------- ");
 }
+/// @brief Mise à jours de la position du joueur avec deltaTime selon la touche enregistrer dans Input
+/// @param dt deltaTime
 void Player::Update(float dt)
 {
     if (leftKeyPressThisFrame)
