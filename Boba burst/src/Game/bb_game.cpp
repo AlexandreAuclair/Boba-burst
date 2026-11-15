@@ -88,7 +88,7 @@ void Game::Setup()
     // Appeler le level Loader
     levelLoader.LoadLevel(1, "level.json");
     gameEventBus->Reset();
-    Player p(1, gameEventBus);
+    Player p(1, gameEventBus, window);
     players.insert({p.getId(), p});
 }
 
@@ -106,6 +106,11 @@ void Game::ProcessInput()
     case GameState::Playing:
         // Gérer les inputs du joueur
         // Ask all players to check input
+        for (auto &p : players)
+        {
+            p.second.controlManager.CheckInput();
+        }
+
         break;
     case GameState::Pause:
         // Gérer les inputs du menu pause (Reprendre, Menu, Quitter)

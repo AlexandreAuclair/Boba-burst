@@ -8,7 +8,7 @@ class Player : public Character
 {
 public:
     Player();
-    Player(int id, std::unique_ptr<EventBus> &inputBus);
+    Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window);
     ~Player();
 
 private:

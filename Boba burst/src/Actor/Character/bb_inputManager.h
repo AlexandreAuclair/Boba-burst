@@ -2,17 +2,36 @@
 
 #include "../../EventBus/bb_eventBus.h"
 #include "../../Events/bb_keyPressedEvent.h"
+#include <GLFW/glfw3.h>
 
 class InputManager
 {
 public:
-	InputManager(std::unique_ptr<EventBus> &inputBus)
+	InputManager(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window)
 	{
 		busPtr = &inputBus;
+		m_window = window;
 	}
-	InputManager();
+	InputManager() {};
+
+	void CheckInput();
 
 private:
+	GLFWwindow *m_window;
 	std::unique_ptr<EventBus> *busPtr;
-	void OnKeyPress(KeyPressedEvent &event);
+
+	double m_lastMouseX = 0.0;
+	double m_lastMouseY = 0.0;
+
+	double m_mouseDeltaX = 0.0;
+	double m_mouseDeltaY = 0.0;
+
+	bool m_firstMouse = true;
+
+protected:
+	bool IsKeyPressed(int key) const;
+	void UpdateMouse();
+
+	inline double GetMouseDeltaX() const { return m_mouseDeltaX; }
+	inline double GetMouseDeltaY() const { return m_mouseDeltaY; }
 };
