@@ -7,8 +7,7 @@
     //      include interne
     //==========================================================================
 #include "../Logger/Logger.h"
-#include <iostream>
-
+#include "../Scenes/CubeScene.h"
 //==========================================================================
 //      fonction publique
 //==========================================================================
@@ -56,6 +55,8 @@ bool Game::Initialize() {
 	context.SetSurface(surface);
 	context.CreateSwapChain();
 
+    renderer = std::make_unique<VulkanRenderer>(context);
+
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);		// Cache le curseur et le verrouille au mileu de la fen�tre
     if (glfwRawMouseMotionSupported())
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
@@ -85,6 +86,7 @@ void Game::Destroy() {
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
     */
+    context.GetQueue().waitIdle();
     glfwDestroyWindow(window);
     glfwTerminate();
 }
@@ -96,6 +98,10 @@ void Game::Destroy() {
 void Game::Setup() {
     // Appeler le level Loader
     levelLoader.LoadLevel(1,"level.json");
+
+    auto scene = std::make_shared<CubeScene>(context);
+
+	renderer->SetScene(scene);
 }
 
 void Game::ProcessInput() {
@@ -152,6 +158,7 @@ void Game::Update() {
 }
 
 void Game::Render() {
+    renderer->Draw();
     switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
             // Afficher l'écran de début et les options

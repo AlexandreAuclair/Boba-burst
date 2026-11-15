@@ -52,7 +52,7 @@ add_library(Jolt::Jolt STATIC IMPORTED)
 set_target_properties(Jolt::Jolt PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "\$<\$<CONFIG:Release,Distribution,ReleaseASAN,ReleaseUBSAN,ReleaseTSAN,ReleaseCoverage>:NDEBUG>;\$<\$<CONFIG:ReleaseASAN,ReleaseTSAN>:JPH_DISABLE_TEMP_ALLOCATOR;JPH_DISABLE_CUSTOM_ALLOCATOR>;JPH_USE_VK;JPH_USE_CPU_COMPUTE;\$<\$<CONFIG:Debug,Release,ReleaseASAN,ReleaseUBSAN,ReleaseTSAN>:JPH_DEBUG_RENDERER>;\$<\$<CONFIG:Debug,Release,ReleaseASAN,ReleaseUBSAN,ReleaseTSAN>:JPH_PROFILE_ENABLED>;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD"
   INTERFACE_COMPILE_OPTIONS "-mavx2;-mbmi;-mpopcnt;-mlzcnt;-mf16c;-mlzcnt;-mbmi;-mf16c;-mfma;-mfpmath=sse;-pthread"
-  INTERFACE_INCLUDE_DIRECTORIES "/home/deom/Documents/Boba-burst/Boba burst/deps/JoltPhysics/Build/../;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "/home/deom/Documents/Boba-burst/Boba burst/deps/JoltPhysics/Build/../;/home/deom/1.4.309.0/x86_64/include"
   INTERFACE_LINK_OPTIONS "-pthread"
 )
 

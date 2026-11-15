@@ -1,8 +1,8 @@
 #ifndef ASSIMP_REVISION_H_INC
 #define ASSIMP_REVISION_H_INC
 
-#define GitVersion 0xec2157fb
-#define GitBranch "main"
+#define GitVersion 0x1b0e4952
+#define GitBranch "Vulkan_integration"
 
 #define VER_MAJOR 6
 #define VER_MINOR 0
@@ -16,7 +16,7 @@
 #if (GitVersion == 0)
 #define VER_FILEVERSION_STR         STR(VER_MAJOR) "." STR(VER_MINOR) "." STR(VER_PATCH) "." STR(VER_BUILD)
 #else
-#define VER_FILEVERSION_STR         STR(VER_MAJOR) "." STR(VER_MINOR) "." STR(VER_PATCH) "." STR(VER_BUILD) " (Commit ec2157fb)"
+#define VER_FILEVERSION_STR         STR(VER_MAJOR) "." STR(VER_MINOR) "." STR(VER_PATCH) "." STR(VER_BUILD) " (Commit 1b0e4952)"
 #endif
 #define VER_COPYRIGHT_STR           "\xA9 2006-2023"
 

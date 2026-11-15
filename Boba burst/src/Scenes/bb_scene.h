@@ -2,15 +2,12 @@
 
 #include "../DataStruct/VulkanDef.h"
 
-class Controller{};
-class Camera{};
 
 class Scene
 {
 public:
 	virtual ~Scene() = default;
-	virtual void Input(const Controller&, Camera& cam) = 0;
-	virtual void Update(double dt, const Camera& cam)
+	virtual void Update(double dt)
 	{
 		m_currentTime += dt;
 	}

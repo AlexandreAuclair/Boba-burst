@@ -13,6 +13,7 @@
 #include "bb_gameState.h"
 #include "../LevelLoader/bb_levelLoader.h"
 #include "../VulkanContext/bb_vulkanContext.h"
+#include "../VulkanRenderer/bb_vulkanRenderer.h"
 
 //==========================================================================
 //      Constante
@@ -51,6 +52,7 @@ private:
     GameStateMachine stateMachine;
     LevelLoader levelLoader;
     VulkanContext context;
+    std::unique_ptr<VulkanRenderer> renderer;
     //Profiler profiler; // pour plus tard
 };
 

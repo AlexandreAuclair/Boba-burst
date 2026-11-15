@@ -175,6 +175,20 @@ Boba_burst/fast:
 	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/build"
 .PHONY : Boba_burst/fast
 
+# Convenience name for target.
+Boba\ burst/CMakeFiles/shaders.dir/rule:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 "Boba burst/CMakeFiles/shaders.dir/rule"
+.PHONY : Boba\ burst/CMakeFiles/shaders.dir/rule
+
+# Convenience name for target.
+shaders: Boba\ burst/CMakeFiles/shaders.dir/rule
+.PHONY : shaders
+
+# fast build rule for target.
+shaders/fast:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/shaders.dir/build.make" "Boba burst/CMakeFiles/shaders.dir/build"
+.PHONY : shaders/fast
+
 src/Actor/Character/bb_bot.o: src/Actor/Character/bb_bot.cpp.o
 .PHONY : src/Actor/Character/bb_bot.o
 
@@ -439,6 +453,78 @@ src/Logger/Logger.cpp.s:
 	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Logger/Logger.cpp.s"
 .PHONY : src/Logger/Logger.cpp.s
 
+src/Scenes/CubeScene.o: src/Scenes/CubeScene.cpp.o
+.PHONY : src/Scenes/CubeScene.o
+
+# target to build an object file
+src/Scenes/CubeScene.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/CubeScene.cpp.o"
+.PHONY : src/Scenes/CubeScene.cpp.o
+
+src/Scenes/CubeScene.i: src/Scenes/CubeScene.cpp.i
+.PHONY : src/Scenes/CubeScene.i
+
+# target to preprocess a source file
+src/Scenes/CubeScene.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/CubeScene.cpp.i"
+.PHONY : src/Scenes/CubeScene.cpp.i
+
+src/Scenes/CubeScene.s: src/Scenes/CubeScene.cpp.s
+.PHONY : src/Scenes/CubeScene.s
+
+# target to generate assembly for a file
+src/Scenes/CubeScene.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/CubeScene.cpp.s"
+.PHONY : src/Scenes/CubeScene.cpp.s
+
+src/VulkanContext/bb_vulkanContext.o: src/VulkanContext/bb_vulkanContext.cpp.o
+.PHONY : src/VulkanContext/bb_vulkanContext.o
+
+# target to build an object file
+src/VulkanContext/bb_vulkanContext.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanContext/bb_vulkanContext.cpp.o"
+.PHONY : src/VulkanContext/bb_vulkanContext.cpp.o
+
+src/VulkanContext/bb_vulkanContext.i: src/VulkanContext/bb_vulkanContext.cpp.i
+.PHONY : src/VulkanContext/bb_vulkanContext.i
+
+# target to preprocess a source file
+src/VulkanContext/bb_vulkanContext.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanContext/bb_vulkanContext.cpp.i"
+.PHONY : src/VulkanContext/bb_vulkanContext.cpp.i
+
+src/VulkanContext/bb_vulkanContext.s: src/VulkanContext/bb_vulkanContext.cpp.s
+.PHONY : src/VulkanContext/bb_vulkanContext.s
+
+# target to generate assembly for a file
+src/VulkanContext/bb_vulkanContext.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanContext/bb_vulkanContext.cpp.s"
+.PHONY : src/VulkanContext/bb_vulkanContext.cpp.s
+
+src/VulkanRenderer/bb_vulkanRenderer.o: src/VulkanRenderer/bb_vulkanRenderer.cpp.o
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.o
+
+# target to build an object file
+src/VulkanRenderer/bb_vulkanRenderer.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanRenderer/bb_vulkanRenderer.cpp.o"
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.cpp.o
+
+src/VulkanRenderer/bb_vulkanRenderer.i: src/VulkanRenderer/bb_vulkanRenderer.cpp.i
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.i
+
+# target to preprocess a source file
+src/VulkanRenderer/bb_vulkanRenderer.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanRenderer/bb_vulkanRenderer.cpp.i"
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.cpp.i
+
+src/VulkanRenderer/bb_vulkanRenderer.s: src/VulkanRenderer/bb_vulkanRenderer.cpp.s
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.s
+
+# target to generate assembly for a file
+src/VulkanRenderer/bb_vulkanRenderer.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanRenderer/bb_vulkanRenderer.cpp.s"
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.cpp.s
+
 src/bb_main.o: src/bb_main.cpp.o
 .PHONY : src/bb_main.o
 
@@ -475,6 +561,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... shaders"
 	@echo "... Boba_burst"
 	@echo "... src/Actor/Character/bb_bot.o"
 	@echo "... src/Actor/Character/bb_bot.i"
@@ -509,6 +596,15 @@ help:
 	@echo "... src/Logger/Logger.o"
 	@echo "... src/Logger/Logger.i"
 	@echo "... src/Logger/Logger.s"
+	@echo "... src/Scenes/CubeScene.o"
+	@echo "... src/Scenes/CubeScene.i"
+	@echo "... src/Scenes/CubeScene.s"
+	@echo "... src/VulkanContext/bb_vulkanContext.o"
+	@echo "... src/VulkanContext/bb_vulkanContext.i"
+	@echo "... src/VulkanContext/bb_vulkanContext.s"
+	@echo "... src/VulkanRenderer/bb_vulkanRenderer.o"
+	@echo "... src/VulkanRenderer/bb_vulkanRenderer.i"
+	@echo "... src/VulkanRenderer/bb_vulkanRenderer.s"
 	@echo "... src/bb_main.o"
 	@echo "... src/bb_main.i"
 	@echo "... src/bb_main.s"
