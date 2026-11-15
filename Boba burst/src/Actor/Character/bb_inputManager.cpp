@@ -2,13 +2,13 @@
 
 void InputManager::CheckInput()
 {
-    if (IsKeyPressed(GLFW_KEY_A))
+    if (IsKeyPressed(GLFW_KEY_RIGHT))
     {
-        busPtr->get()->EmitEvent<KeyPressedEvent>(GLFW_KEY_A);
+        busPtr->get()->EmitEvent<KeyPressedEvent>(GLFW_KEY_RIGHT);
     }
-    if (IsKeyPressed(GLFW_KEY_D))
+    if (IsKeyPressed(GLFW_KEY_LEFT))
     {
-        busPtr->get()->EmitEvent<KeyPressedEvent>(GLFW_KEY_D);
+        busPtr->get()->EmitEvent<KeyPressedEvent>(GLFW_KEY_LEFT);
     }
 }
 

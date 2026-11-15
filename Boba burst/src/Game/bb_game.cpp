@@ -88,8 +88,7 @@ void Game::Setup()
     // Appeler le level Loader
     levelLoader.LoadLevel(1, "level.json");
     gameEventBus->Reset();
-    Player p(1, gameEventBus, window);
-    players.insert({p.getId(), p});
+    players.emplace(1,std::make_unique<Player>(1, gameEventBus, window));
 }
 
 void Game::ProcessInput()
@@ -108,7 +107,7 @@ void Game::ProcessInput()
         // Ask all players to check input
         for (auto &p : players)
         {
-            p.second.controlManager.CheckInput();
+            p.second.get()->controlManager.CheckInput();
         }
 
         break;

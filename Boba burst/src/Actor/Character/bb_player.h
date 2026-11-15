@@ -10,11 +10,9 @@ public:
     Player();
     Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window);
     ~Player();
-
 private:
     JPH::BodyID InitPhysics(JPH::BodyInterface &bodyInterface) override final;
     void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) override final;
-
 public:
     InputManager controlManager;
     void Input(KeyPressedEvent &event);

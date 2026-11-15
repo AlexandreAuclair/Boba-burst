@@ -51,7 +51,7 @@ private:
     GameStateMachine stateMachine;
     LevelLoader levelLoader;
     std::unique_ptr<EventBus> gameEventBus;
-    std::unordered_map<int, Player> players;
+    std::unordered_map<int, std::unique_ptr<Player>> players;
     // Profiler profiler; // pour plus tard
 };
 
