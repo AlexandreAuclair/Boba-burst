@@ -3,8 +3,7 @@
 void InputManager::CheckInput()
 {
     int keys[] = {
-        GLFW_KEY_ESCAPE
-    };
+        GLFW_KEY_ESCAPE};
 
     for (auto key : keys)
     {
@@ -29,7 +28,8 @@ void InputManager::CheckInput()
 
         if (isKeyPressed && !lastInputs[mouseClick])
         {
-            busPtr->get()->EmitEvent<KeyPressedEvent>(mouseClick);
+            UpdateMouse();
+            busPtr->get()->EmitEvent<KeyPressedEvent>(mouseClick, m_lastMouseX, m_lastMouseY);
         }
 
         lastInputs[mouseClick] = isKeyPressed;
@@ -44,7 +44,6 @@ void InputManager::CheckInput()
     {
         busPtr->get()->EmitEvent<KeyPressedEvent>(GLFW_KEY_RIGHT);
     }
-
 }
 
 bool InputManager::IsKeyPressed(int key) const

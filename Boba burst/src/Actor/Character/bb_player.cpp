@@ -48,6 +48,11 @@ void Player::Input(KeyPressedEvent &event)
     {
         RightKeyPressThisFrame = true;
     }
+    if (event.keyId == GLFW_MOUSE_BUTTON_LEFT)
+    {
+        Logger::Log("MOUSE X POS: " + std::to_string(event.mouseXPos));
+        Logger::Log("MOUSE Y POS: " + std::to_string(event.mouseYPos));
+    }
 
     Logger::Log("-------- ");
 }

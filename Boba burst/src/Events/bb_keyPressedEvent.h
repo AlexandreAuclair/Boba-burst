@@ -9,5 +9,13 @@ public:
 	{
 		keyId = id;
 	}
+	KeyPressedEvent(int id, int mouseX, int mouseY)
+	{
+		keyId = id;
+		mouseXPos = mouseX;
+		mouseYPos = mouseY;
+	}
 	int keyId;
+	int mouseXPos;
+	int mouseYPos;
 };
