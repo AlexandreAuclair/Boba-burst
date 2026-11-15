@@ -17,7 +17,7 @@ private:
     bool leftKeyPressThisFrame = false;
     bool RightKeyPressThisFrame = false;
     void HandlePauseEvent(PauseEvent &event);
-    bool isIgnoringInputs;
+    bool isIgnoringInputs = false;
 
 public:
     InputManager controlManager;

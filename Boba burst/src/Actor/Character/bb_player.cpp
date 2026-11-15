@@ -10,6 +10,7 @@ Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window)
     controlManager = InputManager(inputBus, window);
     Actor::id = id;
     inputBus->SubscribeToEvent<KeyPressedEvent>(this, &Player::Input);
+    inputBus->SubscribeToEvent<PauseEvent>(this, &Player::HandlePauseEvent);
     Logger::Log("PLAYER CONSTRUCTOR #2 DONE!");
 }
 Player::~Player() {}

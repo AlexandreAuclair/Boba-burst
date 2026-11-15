@@ -5,11 +5,6 @@
 #include "../../Events/bb_pauseEvent.h"
 #include <GLFW/glfw3.h>
 
-enum class AvailableKeys
-{
-	none, left, right, esc
-};
-
 class InputManager
 {
 public:
@@ -34,10 +29,11 @@ private:
 
 	bool m_firstMouse = true;
 
-	AvailableKeys lastInput = AvailableKeys::none;
+	std::unordered_map<int, bool> lastInputs;
 
 protected:
 	bool IsKeyPressed(int key) const;
+	bool IsMouseClick(int key) const;
 	void UpdateMouse();
 
 	inline double GetMouseDeltaX() const { return m_mouseDeltaX; }
