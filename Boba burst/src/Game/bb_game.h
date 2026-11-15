@@ -41,8 +41,8 @@ public:
 private:
     void Setup();
     void ProcessInput();
-    void Update();
-    void Render();
+    void Update(double dt);
+    void Render(double dt);
 
 private:
     bool isRunning;
@@ -53,6 +53,7 @@ private:
     LevelLoader levelLoader;
     VulkanContext context;
     std::unique_ptr<VulkanRenderer> renderer;
+    std::shared_ptr<Scene> scene;
     //Profiler profiler; // pour plus tard
 };
 

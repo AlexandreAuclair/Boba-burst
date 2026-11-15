@@ -71,8 +71,8 @@ void Game::Run() {
         double currentTime = glfwGetTime();
         double elapsed = currentTime - lastTime;
         ProcessInput();
-        Update();
-        Render();
+        Update(elapsed);
+        Render(elapsed);
         lastTime = currentTime;
     }
 }
@@ -99,12 +99,13 @@ void Game::Setup() {
     // Appeler le level Loader
     levelLoader.LoadLevel(1,"level.json");
 
-    auto scene = std::make_shared<CubeScene>(context);
+    scene = std::make_shared<CubeScene>(context);
 
 	renderer->SetScene(scene);
 }
 
 void Game::ProcessInput() {
+
     switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
             // Gérer les clics sur les boutons du menu principal
@@ -132,7 +133,8 @@ void Game::ProcessInput() {
     }
 }
 
-void Game::Update() {
+void Game::Update(double dt) {
+    scene->Update(dt);
     glfwPollEvents();
     switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
@@ -157,8 +159,7 @@ void Game::Update() {
     }
 }
 
-void Game::Render() {
-    renderer->Draw();
+void Game::Render(double dt) {
     switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
             // Afficher l'écran de début et les options
@@ -181,4 +182,5 @@ void Game::Render() {
             // honnêtement je sais pas si on a le temps d'afficher de quoi ici...
         break;
     }
+    renderer->Draw();
 }
