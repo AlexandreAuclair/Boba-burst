@@ -26,6 +26,10 @@ void GameManager::registerTrackObject(std::unique_ptr<TrackObject> p){
     trackObjects.push_back(move(p));
 }
 
+void GameManager::registerBonusObject(std::unique_ptr<BonusObject> p) {
+    bonusObjects.push_back(move(p));
+}
+
 void GameManager::update(){
     
 }

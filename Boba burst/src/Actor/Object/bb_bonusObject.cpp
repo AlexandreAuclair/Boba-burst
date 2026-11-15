@@ -4,7 +4,7 @@ BonusObject::BonusObject(){}
 BonusObject::~BonusObject(){}
 
 JPH::BodyID BonusObject::InitPhysics(JPH::BodyInterface& bodyInterface){
-    return JPH::BodyID(0);
+    return JPH::BodyID();//JPH::BodyID(0);
 }
 
 void BonusObject::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){

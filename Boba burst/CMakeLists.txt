@@ -23,6 +23,10 @@ add_executable (Boba_burst
 "./src/Game/bb_gameState.cpp"
 "./src/Game/bb_gameManager.h"
 "./src/Game/bb_gameManager.cpp"
+
+"./src/Game/PhysicsWorld.h"
+"./src/Game/PhysicsWorld.cpp"
+
 "./src/Logger/Logger.cpp"
 "./src/Logger/Logger.h"
 "./src/LevelLoader/bb_levelLoader.h"
@@ -40,12 +44,17 @@ add_executable (Boba_burst
 "./src/Actor/Object/bb_trackObject.cpp"
 "./src/Actor/Object/bb_bonusObject.h"
 "./src/Actor/Object/bb_bonusObject.cpp"
+
+"./src/Actor/Object/ObjectTypes.h"
+
 "./src/Events/bb_keyPressedEvent.h"
 "./src/EventBus/bb_event.h"
 "./src/EventBus/bb_eventBus.h"
 "./src/DataStruct/bb_mesh.h"
 "./src/DataStruct/bb_section.h"
 "./src/DataStruct/bb_sommet.h"
+
+"./src/Utilities/utilities.h"
 )
 
 
