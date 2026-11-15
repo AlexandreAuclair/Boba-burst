@@ -12,5 +12,5 @@ void Character::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }
 
-void Character::Update(int dt) {}
-void Character::Render(int dt) {}
+void Character::Update(float dt) {}
+void Character::Render(float dt) {}

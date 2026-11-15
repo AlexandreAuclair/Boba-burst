@@ -11,5 +11,5 @@ void BonusObject::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }
 
-void BonusObject::Update(int dt){}
-void BonusObject::Render(int dt){}
+void BonusObject::Update(float dt){}
+void BonusObject::Render(float dt){}

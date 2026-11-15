@@ -11,5 +11,5 @@ void TrackObject::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }
 
-void TrackObject::Update(int dt){}
-void TrackObject::Render(int dt){}
+void TrackObject::Update(float dt){}
+void TrackObject::Render(float dt){}

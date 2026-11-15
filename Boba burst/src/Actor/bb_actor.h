@@ -22,8 +22,8 @@ protected:
 	virtual void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) = 0;
 
 public:
-	virtual void Update(int dt) = 0;
-	virtual void Render(int dt) = 0;
+	virtual void Update(float dt) = 0;
+	virtual void Render(float dt) = 0;
 	int getId()
 	{
 		return id;

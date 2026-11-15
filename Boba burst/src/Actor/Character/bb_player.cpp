@@ -4,7 +4,8 @@
 Player::Player() {}
 Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window)
 {
-    Actor::position = glm::vec3(0,0,0);
+    speed = 10;
+    Actor::position = glm::vec3(0, 0, 0);
     Logger::Log("PLAYER CONSTRUCTOR #2 CALLED!");
     controlManager = InputManager(inputBus, window);
     Actor::id = id;
@@ -30,20 +31,48 @@ void Player::Input(KeyPressedEvent &event)
 
     if (event.keyId == GLFW_KEY_LEFT)
     {
+        leftKeyPressThisFrame = true;
+    }
+    if (event.keyId == GLFW_KEY_RIGHT)
+    {
+        RightKeyPressThisFrame = true;
+    }
+
+    Logger::Log("-------- ");
+}
+void Player::Update(float dt)
+{
+    if (leftKeyPressThisFrame)
+    {
         Logger::Log("--PREV POS-- ");
         Logger::Log("X: " + std::to_string(Actor::position.x));
         Logger::Log("Y: " + std::to_string(Actor::position.y));
         Logger::Log("Z: " + std::to_string(Actor::position.z));
 
-        Actor::position = glm::vec3(Actor::position.x + 0.1f, Actor::position.y, Actor::position.z);
+        Actor::position = glm::vec3((Actor::position.x += dt * speed), Actor::position.y, Actor::position.z);
 
         Logger::Log("--NEW POS-- ");
         Logger::Log("X: " + std::to_string(Actor::position.x));
         Logger::Log("Y: " + std::to_string(Actor::position.y));
         Logger::Log("Z: " + std::to_string(Actor::position.z));
+
+        leftKeyPressThisFrame = false;
     }
-    //compteur++;
-    Logger::Log("-------- ");
+    if (RightKeyPressThisFrame)
+    {
+        Logger::Log("--PREV POS-- ");
+        Logger::Log("X: " + std::to_string(Actor::position.x));
+        Logger::Log("Y: " + std::to_string(Actor::position.y));
+        Logger::Log("Z: " + std::to_string(Actor::position.z));
+
+        Actor::position = glm::vec3((Actor::position.x -= dt * speed), Actor::position.y, Actor::position.z);
+
+        Logger::Log("--NEW POS-- ");
+        Logger::Log("X: " + std::to_string(Actor::position.x));
+        Logger::Log("Y: " + std::to_string(Actor::position.y));
+        Logger::Log("Z: " + std::to_string(Actor::position.z));
+
+        RightKeyPressThisFrame = false;
+    }
 }
-void Player::Update(int dt) {}
-void Player::Render(int dt) {}
+void Player::Render(float dt) {}

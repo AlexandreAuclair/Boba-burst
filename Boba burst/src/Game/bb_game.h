@@ -47,7 +47,7 @@ private:
     bool isRunning;
     bool isDebug;
     GLFWwindow *window;
-    int millisecsPreviousFrame = 0;
+    float millisecsPreviousFrame = 0;
     GameStateMachine stateMachine;
     LevelLoader levelLoader;
     std::unique_ptr<EventBus> gameEventBus;

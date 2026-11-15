@@ -20,11 +20,11 @@ void Track::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }
 
-void Track::Update(int dt) {
+void Track::Update(float dt) {
     //check for collision
     UpdateFromPhysics(*sections->bodyInterface);
 }
 
-void Track::Render(int dt) {
+void Track::Render(float dt) {
     // call vulkain to transfer vertex and color data
 }

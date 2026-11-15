@@ -58,6 +58,7 @@ void Game::Run()
     {
         double currentTime = glfwGetTime();
         double elapsed = currentTime - lastTime;
+        millisecsPreviousFrame = elapsed;
         ProcessInput();
         Update();
         Render();
@@ -88,7 +89,7 @@ void Game::Setup()
     // Appeler le level Loader
     levelLoader.LoadLevel(1, "level.json");
     gameEventBus->Reset();
-    players.emplace(1,std::make_unique<Player>(1, gameEventBus, window));
+    players.emplace(1, std::make_unique<Player>(1, gameEventBus, window));
 }
 
 void Game::ProcessInput()
@@ -136,6 +137,10 @@ void Game::Update()
         break;
     case GameState::Playing:
         // Mettre à jour la physique Jolt, les acteurs, la caméra
+        for (auto &p : players)
+        {
+            p.second.get()->Update(millisecsPreviousFrame);
+        }
         break;
     case GameState::Pause:
         // Le jeu est en pause (on ne met pas à jour la physique/le gameplay)
