@@ -13,7 +13,7 @@ public:
 		m_window = window;
 	}
 	InputManager() {};
-
+	~InputManager() {};
 	void CheckInput();
 
 private:
