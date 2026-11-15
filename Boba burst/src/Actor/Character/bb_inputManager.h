@@ -2,7 +2,13 @@
 
 #include "../../EventBus/bb_eventBus.h"
 #include "../../Events/bb_keyPressedEvent.h"
+#include "../../Events/bb_pauseEvent.h"
 #include <GLFW/glfw3.h>
+
+enum class AvailableKeys
+{
+	none, left, right, esc
+};
 
 class InputManager
 {
@@ -27,6 +33,8 @@ private:
 	double m_mouseDeltaY = 0.0;
 
 	bool m_firstMouse = true;
+
+	AvailableKeys lastInput = AvailableKeys::none;
 
 protected:
 	bool IsKeyPressed(int key) const;

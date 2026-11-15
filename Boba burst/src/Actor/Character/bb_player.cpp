@@ -23,8 +23,18 @@ void Player::UpdateFromPhysics(const JPH::BodyInterface &bodyInterface)
 {
 }
 
+void Player::HandlePauseEvent(PauseEvent &event)
+{
+    isIgnoringInputs = event.isPaused;
+}
+
 void Player::Input(KeyPressedEvent &event)
 {
+    if (isIgnoringInputs)
+    {
+        return;
+    }
+
     Logger::Log("RECIVED KEYPRESS EVENT!");
     Logger::Log("-------- ");
     Logger::Log("REGISTERED KEY: " + std::to_string(event.keyId));
@@ -74,5 +84,6 @@ void Player::Update(float dt)
 
         RightKeyPressThisFrame = false;
     }
+    // UpdateFromPhysics();
 }
 void Player::Render(float dt) {}

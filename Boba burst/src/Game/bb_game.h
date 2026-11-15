@@ -42,6 +42,7 @@ private:
     void ProcessInput();
     void Update();
     void Render();
+    void HandlePauseEvent(KeyPressedEvent &event);
 
 private:
     bool isRunning;

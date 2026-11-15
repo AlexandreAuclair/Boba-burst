@@ -16,6 +16,8 @@ private:
     void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) override final;
     bool leftKeyPressThisFrame = false;
     bool RightKeyPressThisFrame = false;
+    void HandlePauseEvent(PauseEvent &event);
+    bool isIgnoringInputs;
 
 public:
     InputManager controlManager;
