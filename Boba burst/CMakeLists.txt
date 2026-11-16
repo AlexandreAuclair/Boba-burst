@@ -46,6 +46,8 @@ add_executable (Boba_burst
 "./src/Actor/Object/bb_bonusObject.cpp"
 
 "./src/Actor/Object/ObjectTypes.h"
+"./src/Actor/Object/obstacle.h"
+"./src/Actor/Object/obstacle.cpp"
 
 "./src/Events/bb_keyPressedEvent.h"
 "./src/EventBus/bb_event.h"

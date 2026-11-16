@@ -21,6 +21,7 @@ protected:
 public:
 	virtual void Update(int dt) = 0;
 	virtual void Render(int dt) = 0;
+	int getId() { return id;  }
 protected:
 	int id;
 	glm::vec3 position;
