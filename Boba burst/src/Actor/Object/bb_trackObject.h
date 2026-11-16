@@ -6,6 +6,7 @@
 class TrackObject : public Actor{
 public:
     TrackObject();
+    TrackObject(int id_, Transform t_);
     ~TrackObject();
 
 private:

@@ -5,6 +5,7 @@
 class Bot : public Character {
 public:
     Bot();
+    Bot(int id_, Transform t_);
     ~Bot();
 
 private:

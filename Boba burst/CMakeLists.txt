@@ -55,6 +55,7 @@ add_executable (Boba_burst
 "./src/DataStruct/bb_mesh.h"
 "./src/DataStruct/bb_section.h"
 "./src/DataStruct/bb_sommet.h"
+"./src/DataStruct/bb_transform.h"
 "./src/Scenes/bb_scene.h"
 "./src/Scenes/CubeScene.h"
 "./src/Scenes/CubeScene.cpp"
@@ -62,6 +63,8 @@ add_executable (Boba_burst
 "./src/VulkanContext/bb_vulkanContext.cpp"
 "./src/VulkanRenderer/bb_vulkanRenderer.h"
 "./src/VulkanRenderer/bb_vulkanRenderer.cpp"
+"./src/ModelImporter/bb_modelImporter.h"
+"./src/ModelImporter/bb_modelImporter.cpp"
 )
 
 foreach(SHADER IN LISTS SHADERS)

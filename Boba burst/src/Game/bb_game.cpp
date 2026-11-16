@@ -14,7 +14,6 @@
 
 Game::Game() : isDebug(false), isRunning(true){
     Logger::Log("Game constructor called!");
-    Logger::Log("J'ai fuck up");
 }
 
 Game::~Game() {
@@ -97,10 +96,15 @@ void Game::Destroy() {
 
 void Game::Setup() {
     // Appeler le level Loader
-    levelLoader.LoadLevel(1,"level.json");
+    if(!levelLoader.LoadLevel("level1.json")){
+        Logger::Err("Could not load level1.json");
+    }
+    else{
+        Logger::Log("level1.json successfully loaded");
+    }
 
+    // setter la 1er scene
     scene = std::make_shared<CubeScene>(context);
-
 	renderer->SetScene(scene);
 }
 

@@ -6,7 +6,7 @@
 class Track : public Actor{
 public:
     Track();
-    Track(int id, int nbSections);
+    Track(int id_, Transform t_, int nbSections);
     ~Track();
 private:
     JPH::BodyID InitPhysics(JPH::BodyInterface& bodyInterface) override final;
