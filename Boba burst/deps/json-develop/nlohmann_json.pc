@@ -1,4 +1,4 @@
-prefix=C:/Program Files (x86)/Boba burst
+prefix=/usr/local
 includedir=${prefix}/include
 
 Name: nlohmann_json

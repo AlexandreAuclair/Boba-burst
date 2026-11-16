@@ -7,31 +7,31 @@
     //      include interne
     //==========================================================================
 #include "../Logger/Logger.h"
-
+#include "../Scenes/CubeScene.h"
 //==========================================================================
 //      fonction publique
 //==========================================================================
 
 Game::Game() : isDebug(false), isRunning(true){
     Logger::Log("Game constructor called!");
-
+    Logger::Log("J'ai fuck up");
 }
 
 Game::~Game() {
     Logger::Log("Game destructor called!");
 }
 
-void Game::Initialize() {
+bool Game::Initialize() {
     if (!glfwInit())
     {
         Logger::Err("Failed to initialize glfw.\r\n");
-        return;
+        return false;
     }
 
     if (!glfwVulkanSupported())
     {
         Logger::Err("Vulkan not supported.\r\n");
-        return;
+        return false;
     }
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -39,12 +39,29 @@ void Game::Initialize() {
     if (!window)
     {
         Logger::Err("Failed to create window.\r\n");
-        return;
+        return false;
     }
+
+    context.CreateInstance();
+	context.CreateDevice();
+
+	VkSurfaceKHR surface = VK_NULL_HANDLE;
+	VkResult result = glfwCreateWindowSurface(context.GetInstance(), window, NULL, &surface);
+    if(result != VK_SUCCESS){
+        Logger::Err("Failed to create window surface.\r\n");
+        return false;
+    }
+
+	context.SetSurface(surface);
+	context.CreateSwapChain();
+
+    renderer = std::make_unique<VulkanRenderer>(context);
 
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);		// Cache le curseur et le verrouille au mileu de la fen�tre
     if (glfwRawMouseMotionSupported())
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+
+    return true;
 }
 
 void Game::Run() {
@@ -54,8 +71,8 @@ void Game::Run() {
         double currentTime = glfwGetTime();
         double elapsed = currentTime - lastTime;
         ProcessInput();
-        Update();
-        Render();
+        Update(elapsed);
+        Render(elapsed);
         lastTime = currentTime;
     }
 }
@@ -69,6 +86,7 @@ void Game::Destroy() {
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
     */
+    context.GetQueue().waitIdle();
     glfwDestroyWindow(window);
     glfwTerminate();
 }
@@ -80,9 +98,14 @@ void Game::Destroy() {
 void Game::Setup() {
     // Appeler le level Loader
     levelLoader.LoadLevel(1,"level.json");
+
+    scene = std::make_shared<CubeScene>(context);
+
+	renderer->SetScene(scene);
 }
 
 void Game::ProcessInput() {
+
     switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
             // Gérer les clics sur les boutons du menu principal
@@ -110,7 +133,8 @@ void Game::ProcessInput() {
     }
 }
 
-void Game::Update() {
+void Game::Update(double dt) {
+    scene->Update(dt);
     glfwPollEvents();
     switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
@@ -135,7 +159,7 @@ void Game::Update() {
     }
 }
 
-void Game::Render() {
+void Game::Render(double dt) {
     switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
             // Afficher l'écran de début et les options
@@ -158,4 +182,5 @@ void Game::Render() {
             // honnêtement je sais pas si on a le temps d'afficher de quoi ici...
         break;
     }
+    renderer->Draw();
 }

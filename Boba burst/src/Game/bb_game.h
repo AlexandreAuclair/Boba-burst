@@ -1,20 +1,23 @@
 #ifndef BB_GAME_H
 #define BB_GAME_H
 
-    //==========================================================================
-    //      include externe
-    //==========================================================================
+//==========================================================================
+//      include externe
+//==========================================================================
+#define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
-    //==========================================================================
-    //      include interne
-    //==========================================================================
+//==========================================================================
+//      include interne
+//==========================================================================
 #include "bb_camera.h"
 #include "bb_gameState.h"
 #include "../LevelLoader/bb_levelLoader.h"
+#include "../VulkanContext/bb_vulkanContext.h"
+#include "../VulkanRenderer/bb_vulkanRenderer.h"
 
-    //==========================================================================
-    //      Constante
-    //==========================================================================
+//==========================================================================
+//      Constante
+//==========================================================================
 const int FPS = 60;
 const int MILLISECS_PER_FRAME = 1000 / FPS;
 
@@ -28,14 +31,18 @@ public:
         return singleton;
     }
 
-    void Initialize();
+    /* 
+    init l'application et retourne vrai si elle a marcher parfaitement, 
+    retourne faux si il y a une erreur
+    */
+    bool Initialize();
     void Run();
     void Destroy();
 private:
     void Setup();
     void ProcessInput();
-    void Update();
-    void Render();
+    void Update(double dt);
+    void Render(double dt);
 
 private:
     bool isRunning;
@@ -44,6 +51,9 @@ private:
     int millisecsPreviousFrame = 0;
     GameStateMachine stateMachine;
     LevelLoader levelLoader;
+    VulkanContext context;
+    std::unique_ptr<VulkanRenderer> renderer;
+    std::shared_ptr<Scene> scene;
     //Profiler profiler; // pour plus tard
 };
 
