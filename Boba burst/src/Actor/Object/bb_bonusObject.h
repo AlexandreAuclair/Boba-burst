@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../bb_actor.h"
+#include "ObjectTypes.h"
+
 
 class BonusObject : public Actor{
 public:
@@ -9,6 +11,7 @@ public:
 private:
     JPH::BodyID InitPhysics(JPH::BodyInterface& bodyInterface) override final;
     void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override final;
+    BonusObjectsType type;
 public:
     void Update(int dt) override final;
     void Render(int dt) override final;
