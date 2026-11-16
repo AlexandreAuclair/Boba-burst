@@ -14,6 +14,8 @@
 #include <src/EventBus/bb_eventBus.h>
 #include <unordered_map>
 #include "../Actor/Character/bb_player.h"
+#include "bb_gameManager.h"
+#include <algorithm>
 
 //==========================================================================
 //      Constante
@@ -52,9 +54,7 @@ private:
     GameStateMachine stateMachine;
     LevelLoader levelLoader;
     std::unique_ptr<EventBus> gameEventBus;
-    /// @brief Temporaire players pour test
-    std::unordered_map<int, std::unique_ptr<Player>> players;
-    // Profiler profiler; // pour plus tard
+    //  Profiler profiler; // pour plus tard
 };
 
 #endif

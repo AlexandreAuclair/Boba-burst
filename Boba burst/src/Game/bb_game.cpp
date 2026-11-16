@@ -91,7 +91,7 @@ void Game::Setup()
     /// Nous assure que le bus est vide au setup
     gameEventBus->Reset();
     // Temporaire pour test
-    players.emplace(1, std::make_unique<Player>(1, gameEventBus, window));
+    GameManager::get().registerPlayer(std::make_unique<Player>(1, gameEventBus, window));
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
 }
 
@@ -107,20 +107,22 @@ void Game::ProcessInput()
         // Si clic sur "Quit" -> stateMachine.TriggerQuit();
         break;
     case GameState::Playing:
+    {
         // Gérer les inputs du joueur
         // Ask all players to check input
-        for (auto &p : players)
-        {
-            p.second.get()->controlManager.CheckInput();
-        }
-        break;
+        auto players = GameManager::get().GetAllPlayers();
+        std::for_each(players->begin(), players->end(), [](auto &player)
+                      { player.get()->controlManager.CheckInput(); });
+    }
+    break;
     case GameState::Pause:
+    {
         // Gérer les inputs du menu pause (Reprendre, Menu, Quitter)
-        for (auto &p : players)
-        {
-            p.second.get()->controlManager.CheckInput();
-        }
-        break;
+        auto players = GameManager::get().GetAllPlayers();
+        std::for_each(players->begin(), players->end(), [](auto &player)
+                      { player.get()->controlManager.CheckInput(); });
+    }
+    break;
     case GameState::GameOver:
         // Si le joueur clique sur "Rejouer" -> stateMachine.TriggerRestart();
         // Si le joueur clique sur "Menu" -> stateMachine.TriggerBackToMenu();
@@ -142,12 +144,13 @@ void Game::Update()
     case GameState::Menu:
         break;
     case GameState::Playing:
+    {
         // Mettre à jour la physique Jolt, les acteurs, la caméra
-        for (auto &p : players)
-        {
-            p.second.get()->Update(millisecsPreviousFrame);
-        }
-        break;
+        auto players = GameManager::get().GetAllPlayers();
+        std::for_each(players->begin(), players->end(), [&](auto &player)
+                      { player.get()->Update(millisecsPreviousFrame); });
+    }
+    break;
     case GameState::Pause:
         // Le jeu est en pause (on ne met pas à jour la physique/le gameplay)
         break;

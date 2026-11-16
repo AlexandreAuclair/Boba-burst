@@ -8,11 +8,14 @@
 #include "../Actor/Object/bb_trackObject.h"
 #include "../Actor/Object/bb_track.h"
 
-class GameManager {
+class GameManager
+{
     GameManager();
     ~GameManager();
+
 public:
-    static GameManager& get(){
+    static GameManager &get()
+    {
         static GameManager singleton;
         return singleton;
     }
@@ -23,6 +26,9 @@ public:
     void registerTrackObject(std::unique_ptr<TrackObject> p);
 
     void update();
+
+    std::vector<std::unique_ptr<Player>> *GetAllPlayers();
+    Player *GetPlayerFromId(int id);
 
 private:
     std::vector<std::unique_ptr<Player>> players;
