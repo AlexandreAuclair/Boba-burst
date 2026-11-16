@@ -10,6 +10,7 @@ public:
     ~LevelLoader();
 
     bool LoadLevel(std::string path);
+    void FreeModelAndTextures();
 
 private:
 

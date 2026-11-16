@@ -2,6 +2,10 @@
 
 #include <fstream>
 
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "../stb_image.h"
+
 #include "../Logger/Logger.h"
 #include "../ModelImporter/bb_modelImporter.h"
 #include "../Game/bb_gameManager.h"
@@ -47,15 +51,34 @@ bool LevelLoader::LoadLevel(std::string path)
         for (const auto& modelJson : j.at("models"))
         {
             std::string nom = modelJson.at("modelName").get<std::string>();
-            std::string src = modelJson.at("path").get<std::string>();
+            std::string src = modelJson.at("modelPath").get<std::string>();
 
             // On ne le charge que s'il n'est pas déjà dans le GameManager
             if (gm.models.find(nom) == gm.models.end())
             {
                 Logger::Log("Loading model into cache : " + nom + " (" + src + ")");
                 auto mesh = std::make_shared<Mesh>();
-                ModelImporter::LoadModel(src, *mesh); // Adapte '*' selon la signature de LoadModel
+                if(!ModelImporter::LoadModel(src, *mesh)){
+                    Logger::Err("Impossible de charger le model: " + src);
+                }
                 gm.models[nom] = mesh;
+            }
+        }
+
+        for(const auto& textureJson : j.at("textures")){
+            std::string nom = textureJson.at("textureName").get<std::string>();
+            std::string src = textureJson.at("texturePath").get<std::string>();
+
+            // On ne le charge que s'il n'est pas déjà dans le GameManager
+            if (gm.textures.find(nom) == gm.textures.end())
+            {
+                Logger::Log("Loading texture into cache : " + nom + " (" + src + ")");
+                auto tex = std::make_shared<Texture>();
+                tex->pixels = stbi_load(src.c_str(), &tex->width, &tex->height, &tex->channels, STBI_rgb_alpha);
+                if (!tex->pixels){
+                    Logger::Err("Impossible de charger la texture : " + src);
+                }
+                gm.textures[nom] = tex;
             }
         }
 
@@ -64,11 +87,13 @@ bool LevelLoader::LoadLevel(std::string path)
         {
             std::string type = actorJson.at("type").get<std::string>();
             std::string modelName = actorJson.at("modelName").get<std::string>();
+            std::string textureName = actorJson.at("textureName").get<std::string>();
             int id = actorJson.at("id").get<int>();
             Transform transform = actorJson.contains("transform") ? Transform(actorJson["transform"]) : Transform();
             
 
             auto mesh = gm.GetModel(modelName);
+            auto texture = gm.GetTexture(textureName);
             if (!mesh)
             {
                 Logger::Err("Modèle introuvable dans le cache : " + modelName);
@@ -80,6 +105,7 @@ bool LevelLoader::LoadLevel(std::string path)
 
                 auto player = std::make_unique<Player>(id,transform);
                 player->mesh = mesh; // Ou passage via constructeur : std::make_shared<Player>(mesh)
+                player->mesh->texture = texture;
                 gm.players.push_back(std::move(player));
             }
             else if (type == "Track")
@@ -103,4 +129,11 @@ bool LevelLoader::LoadLevel(std::string path)
     }
 
     return true;
+}
+
+void LevelLoader::FreeModelAndTextures(){
+    auto& gm = GameManager::get();
+    for(auto& [name, tex] : gm.textures){
+        stbi_image_free(tex->pixels);
+    }
 }

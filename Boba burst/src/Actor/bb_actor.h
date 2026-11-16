@@ -24,6 +24,8 @@ public:
 	virtual void Update(int dt) = 0;
 	virtual void Render(int dt) = 0;
 
+	Transform GetTransform() const { return transform; }
+
 public:
 	std::shared_ptr<Mesh> mesh;
 

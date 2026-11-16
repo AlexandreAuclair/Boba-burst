@@ -9,6 +9,7 @@
 #include "../Actor/Object/bb_trackObject.h"
 #include "../Actor/Object/bb_bonusObject.h"
 #include "../Actor/Object/bb_track.h"
+#include "../DataStruct/bb_texture.h"
 
 class GameManager {
     GameManager();
@@ -26,6 +27,13 @@ public:
         }
         return nullptr;
     }
+    std::shared_ptr<Texture> GetTexture(const std::string& textureName) {
+        auto it = textures.find(textureName);
+        if (it != textures.end()) {
+            return it->second;
+        }
+        return nullptr;
+    }
 
     void update();
 
@@ -36,6 +44,7 @@ public:
     std::vector<std::unique_ptr<TrackObject>> trackObjects;
     std::vector<std::unique_ptr<BonusObject>> bonusObjects;
     std::vector<std::unique_ptr<Character>> characters;
-    
+
     std::unordered_map<std::string, std::shared_ptr<Mesh>> models;
+    std::unordered_map<std::string, std::shared_ptr<Texture>> textures;
 };

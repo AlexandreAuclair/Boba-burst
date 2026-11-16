@@ -3,8 +3,14 @@
     "models": [
       {
         "modelName": "gouttiere",
-        "path": "assets/gouttiere.fbx"
+        "modelPath": "assets/gouttiere.fbx"
       }
+    ],
+    "textures": [
+        {
+            "textureName": "bugsBunny",
+            "texturePath" : "assets/bugs_bunny.jpg"
+        }
     ],
     "actors": [
       {
@@ -16,7 +22,8 @@
             "scale": [1.0, 1.0, 1.0]
         },
         "nbSections": 2,
-        "modelName": "gouttiere"
+        "modelName": "gouttiere",
+        "textureName": "bugsBunny"
       },
       {
         "id": 1,
@@ -27,7 +34,8 @@
             "scale": [1.0, 1.0, 1.0]
         },
         "nbSections": 2,
-        "modelName": "gouttiere"
+        "modelName": "gouttiere",
+        "textureName": "bugsBunny"
       },
       {
         "id": 2,
@@ -37,7 +45,8 @@
             "rotation": [0.0, 0.0, 0.0],
             "scale": [1.0, 1.0, 1.0]
         },
-        "modelName": "gouttiere"
+        "modelName": "gouttiere",
+        "textureName": "bugsBunny"
       }
     ]
   }

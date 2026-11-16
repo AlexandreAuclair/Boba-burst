@@ -7,7 +7,7 @@
     //      include interne
     //==========================================================================
 #include "../Logger/Logger.h"
-#include "../Scenes/CubeScene.h"
+#include "../Scenes/bb_gameScene.h"
 //==========================================================================
 //      fonction publique
 //==========================================================================
@@ -79,7 +79,7 @@ void Game::Run() {
 void Game::Destroy() {
     Logger::Shutdown();
     //GameManager::Shutdown();
-
+    levelLoader.FreeModelAndTextures();
     /*// Pour plus tard pour le profiler
     ImGui_ImplSDLRenderer2_Shutdown();
     ImGui_ImplSDL2_Shutdown();
@@ -104,7 +104,7 @@ void Game::Setup() {
     }
 
     // setter la 1er scene
-    scene = std::make_shared<CubeScene>(context);
+    scene = std::make_shared<GameScene>(context);
 	renderer->SetScene(scene);
 }
 

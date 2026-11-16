@@ -18,6 +18,8 @@ list(APPEND SHADERS
     ./shaders/proj.vert
     ./shaders/triangle.frag
     ./shaders/triangle.vert
+    ./shaders/global.vert
+    ./shaders/global.frag
 )
 set(SHADER_OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders_out)
 
@@ -59,6 +61,8 @@ add_executable (Boba_burst
 "./src/Scenes/bb_scene.h"
 "./src/Scenes/CubeScene.h"
 "./src/Scenes/CubeScene.cpp"
+"./src/Scenes/bb_gameScene.h"
+"./src/Scenes/bb_gameScene.cpp"
 "./src/VulkanContext/bb_vulkanContext.h"
 "./src/VulkanContext/bb_vulkanContext.cpp"
 "./src/VulkanRenderer/bb_vulkanRenderer.h"
