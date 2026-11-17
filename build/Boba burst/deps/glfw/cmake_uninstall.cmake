@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/build/Boba burst/deps/glfw/install_manifest.txt")
-    message(FATAL_ERROR "Cannot find install manifest: \"C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/build/Boba burst/deps/glfw/install_manifest.txt\"")
+if (NOT EXISTS "C:/Users/lamc5718/Documents/Cours/Boba-burst/build/Boba burst/deps/glfw/install_manifest.txt")
+    message(FATAL_ERROR "Cannot find install manifest: \"C:/Users/lamc5718/Documents/Cours/Boba-burst/build/Boba burst/deps/glfw/install_manifest.txt\"")
 endif()
 
-file(READ "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/build/Boba burst/deps/glfw/install_manifest.txt" files)
+file(READ "C:/Users/lamc5718/Documents/Cours/Boba-burst/build/Boba burst/deps/glfw/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

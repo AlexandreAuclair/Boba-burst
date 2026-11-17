@@ -1,7 +1,7 @@
 #ifndef ASSIMP_REVISION_H_INC
 #define ASSIMP_REVISION_H_INC
 
-#define GitVersion 0x3482fc63
+#define GitVersion 0x83cd605c
 #define GitBranch "collisions"
 
 #define VER_MAJOR 6
@@ -16,14 +16,14 @@
 #if (GitVersion == 0)
 #define VER_FILEVERSION_STR         STR(VER_MAJOR) "." STR(VER_MINOR) "." STR(VER_PATCH) "." STR(VER_BUILD)
 #else
-#define VER_FILEVERSION_STR         STR(VER_MAJOR) "." STR(VER_MINOR) "." STR(VER_PATCH) "." STR(VER_BUILD) " (Commit 3482fc63)"
+#define VER_FILEVERSION_STR         STR(VER_MAJOR) "." STR(VER_MINOR) "." STR(VER_PATCH) "." STR(VER_BUILD) " (Commit 83cd605c)"
 #endif
 #define VER_COPYRIGHT_STR           "\xA9 2006-2023"
 
 #ifdef  NDEBUG
-#define VER_ORIGINAL_FILENAME_STR   "assimp-vc145-mt.dll"
+#define VER_ORIGINAL_FILENAME_STR   "assimp-vc143-mt.dll"
 #else
-#define VER_ORIGINAL_FILENAME_STR   "assimp-vc145-mtd.dll"
+#define VER_ORIGINAL_FILENAME_STR   "assimp-vc143-mtd.dll"
 #endif //  NDEBUG
 
 #endif // ASSIMP_REVISION_H_INC
