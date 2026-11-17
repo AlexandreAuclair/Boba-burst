@@ -4,6 +4,9 @@
 #include <Jolt/Jolt.h>
 #include <Jolt/Physics/Body/BodyID.h>
 #include <Jolt/Physics/Body/BodyInterface.h>
+#include "../EventBus/bb_eventBus.h"
+#include "../Events/bb_onCollisionEvent.h"
+#include "../Game/bb_gameManager.h"
 
 #include "../DataStruct/bb_mesh.h"
 
@@ -22,6 +25,9 @@ public:
 	virtual void Update(int dt) = 0;
 	virtual void Render(int dt) = 0;
 	int getId() { return id;  }
+
+	virtual void onCollision(CollisionEvent &event) = 0;
+
 protected:
 	int id;
 	glm::vec3 position;

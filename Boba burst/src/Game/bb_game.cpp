@@ -14,6 +14,7 @@
 
 Game::Game() : isDebug(false), isRunning(true){
     Logger::Log("Game constructor called!");
+    gameEventBus = std::make_unique<EventBus>();
 
 }
 
@@ -53,6 +54,7 @@ void Game::Run() {
     while (!glfwWindowShouldClose(window)) {
         double currentTime = glfwGetTime();
         double elapsed = currentTime - lastTime;
+        millisecsPreviousFrame = elapsed;
         ProcessInput();
         Update();
         Render();
@@ -80,6 +82,8 @@ void Game::Destroy() {
 void Game::Setup() {
     // Appeler le level Loader
     levelLoader.LoadLevel(1,"level.json");
+    /// Nous assure que le bus est vide au setup
+    gameEventBus->Reset();
 }
 
 void Game::ProcessInput() {
@@ -117,6 +121,29 @@ void Game::Update() {
         break;
         case GameState::Playing:
             // Mettre à jour la physique Jolt, les acteurs, la caméra
+
+
+        // Update des différents acteurs 
+        for(auto pair : GameManager::get().actorsById) {
+
+            pair.second->Update(millisecsPreviousFrame);
+
+        }
+    
+        // Traitement des collisions 
+
+        for( auto collision : GameManager::get().m_physicsWorld.GetContactsQueue()) {
+
+            gameEventBus.get()->EmitEvent<CollisionEvent>(collision.acteur1, collision.acteur2); 
+            //GameManager::get().actorsById[collision.acteur1], 
+            //GameManager::get().actorsById[collision.acteur2]
+
+        }
+
+        // On vide la liste des collisions 
+        GameManager::get().m_physicsWorld.GetContactsQueue().clear();
+
+
         break;
         case GameState::Pause:
             // Le jeu est en pause (on ne met pas à jour la physique/le gameplay)
@@ -133,6 +160,7 @@ void Game::Update() {
             isRunning = false;
         break;
     }
+
 }
 
 void Game::Render() {

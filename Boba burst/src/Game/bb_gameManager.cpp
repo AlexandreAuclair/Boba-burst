@@ -41,5 +41,5 @@ void GameManager::registerObstacle(std::unique_ptr<Obstacle> p) {
 }
 
 void GameManager::update(){
-    
+
 }

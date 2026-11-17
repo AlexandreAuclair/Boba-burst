@@ -11,6 +11,9 @@
 #include "bb_camera.h"
 #include "bb_gameState.h"
 #include "../LevelLoader/bb_levelLoader.h"
+#include "bb_gameManager.h"
+#include "../EventBus/bb_eventBus.h"
+#include "../Events/bb_onCollisionEvent.h"
 
     //==========================================================================
     //      Constante
@@ -45,6 +48,7 @@ private:
     GameStateMachine stateMachine;
     LevelLoader levelLoader;
     //Profiler profiler; // pour plus tard
+    std::unique_ptr<EventBus> gameEventBus;
 };
 
 #endif

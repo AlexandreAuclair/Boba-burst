@@ -32,7 +32,7 @@ public:
 
     void update();
 
-private:
+//private:
     PhysicsWorld m_physicsWorld;
 
     std::unordered_map<int, Actor*> actorsById;

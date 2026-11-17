@@ -15,6 +15,7 @@ private:
 public:
     void Update(int dt) override final;
     void Render(int dt) override final;
+    void onCollision(CollisionEvent &event) override;
 private:
 
 };

@@ -21,3 +21,11 @@ void BonusObject::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
 
 void BonusObject::Update(int dt){}
 void BonusObject::Render(int dt){}
+
+void BonusObject::onCollision(CollisionEvent &event) {
+
+    if ( event.acteur1 != this->id && event.acteur2 != this->id ) return ;
+
+    // traitement des différents effets (par ex boost etc avec un switch case)
+
+}

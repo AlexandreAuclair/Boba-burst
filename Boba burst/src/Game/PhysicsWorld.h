@@ -61,6 +61,10 @@
 #include <thread>
 
 
+#include <mutex>
+
+std::mutex mutexContacts;
+
 // Disable common warnings triggered by Jolt, you can use JPH_SUPPRESS_WARNING_PUSH / JPH_SUPPRESS_WARNING_POP to store and restore the warning state
 JPH_SUPPRESS_WARNINGS
 
@@ -269,12 +273,12 @@ private :
 	// _____________________________________________________
 	public : 
 	struct ContactEvent { 
-		JPH::BodyID body1, body2;
+		int acteur1, acteur2;
 	
-		friend std::ostream& operator<<(std::ostream& os, const ContactEvent& c) {
+		/*friend std::ostream& operator<<(std::ostream& os, const ContactEvent& c) {
 			os << "Contact : body 1" << c.body1.GetIndex() << ", body 2: " << c.body2.GetIndex() << ")";
 			return os;
-		}
+		}*/
 	};
 
 
@@ -305,10 +309,12 @@ private :
 		// See: ContactListener
 		virtual ValidateResult	OnContactValidate(const Body& b1, const Body& b2, RVec3Arg inBaseOffset, const CollideShapeResult& inCollisionResult) override
 		{
-			ContactEvent c{ b1.GetID(), b2.GetID() };
+			ContactEvent c{ static_cast<const int>(b1.GetUserData()), static_cast<const int>(b2.GetUserData()) };
+
+			std::lock_guard(mutexContacts);
 			currentWorld.contactsQueue.push_back(c);
 
-			cout << "Contact added to the queue :"<< c << endl;
+			cout << "Contact added to the queue " << endl;
 
 			// Allows you to ignore a contact before it is created (using layers to not make objects collide is cheaper!)
 			return ValidateResult::AcceptAllContactsForThisBodyPair;

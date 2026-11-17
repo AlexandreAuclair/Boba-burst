@@ -22,3 +22,11 @@ void TrackObject::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
 
 void TrackObject::Update(int dt){}
 void TrackObject::Render(int dt){}
+
+void TrackObject::onCollision(CollisionEvent &event) {
+
+    if ( event.acteur1 != this->id && event.acteur2 != this->id ) return ;
+
+    // traitement des différents effets (par ex boost etc avec un switch case)
+
+}

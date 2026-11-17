@@ -22,3 +22,11 @@ void Obstacle::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
 
 void Obstacle::Update(int dt){}
 void Obstacle::Render(int dt){}
+
+void Obstacle::onCollision(CollisionEvent &event) {
+
+    if ( event.acteur1 != this->id && event.acteur2 != this->id ) return ;
+
+    // traitement des différents effets (par ex boost etc avec un switch case)
+
+}
