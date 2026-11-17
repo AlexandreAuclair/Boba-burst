@@ -14,10 +14,6 @@ add_subdirectory(./deps/json-develop)
 find_package(Vulkan REQUIRED)
 
 list(APPEND SHADERS
-    ./shaders/proj.frag
-    ./shaders/proj.vert
-    ./shaders/triangle.frag
-    ./shaders/triangle.vert
     ./shaders/global.vert
     ./shaders/global.frag
 )

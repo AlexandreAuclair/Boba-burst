@@ -20,7 +20,7 @@ layout (location = 2) out vec2 UVInterpolated;
 void main()
 {
 
-// Sortie obligatoire pr�vue par GLSL => position dans le clip-space
+// Sortie obligatoire prevue par GLSL => position dans le clip-space
     gl_Position =
         matrices.worldViewProjMatrix * vec4(inPosition, 1.0);
 
