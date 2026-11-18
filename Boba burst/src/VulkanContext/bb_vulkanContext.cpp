@@ -2,7 +2,6 @@
 #include <cstdio>
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
-//j'ai fuck up T_T
 
 void VulkanContext::CreateInstance()
 {

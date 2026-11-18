@@ -5,6 +5,7 @@
 class Player : public Character {
 public:
     Player();
+    Player(int id_, Transform t_);
     ~Player();
 private:
 	JPH::BodyID InitPhysics(JPH::BodyInterface& bodyInterface) override final;

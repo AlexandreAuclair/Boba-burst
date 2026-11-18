@@ -1,6 +1,7 @@
 #include "bb_player.h"
 
 Player::Player(){}
+Player::Player(int id_, Transform t_) : Character(id_, t_){}
 Player::~Player(){}
 
 JPH::BodyID Player::InitPhysics(JPH::BodyInterface& bodyInterface){

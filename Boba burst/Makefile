@@ -453,6 +453,30 @@ src/Logger/Logger.cpp.s:
 	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Logger/Logger.cpp.s"
 .PHONY : src/Logger/Logger.cpp.s
 
+src/ModelImporter/bb_modelImporter.o: src/ModelImporter/bb_modelImporter.cpp.o
+.PHONY : src/ModelImporter/bb_modelImporter.o
+
+# target to build an object file
+src/ModelImporter/bb_modelImporter.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/ModelImporter/bb_modelImporter.cpp.o"
+.PHONY : src/ModelImporter/bb_modelImporter.cpp.o
+
+src/ModelImporter/bb_modelImporter.i: src/ModelImporter/bb_modelImporter.cpp.i
+.PHONY : src/ModelImporter/bb_modelImporter.i
+
+# target to preprocess a source file
+src/ModelImporter/bb_modelImporter.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/ModelImporter/bb_modelImporter.cpp.i"
+.PHONY : src/ModelImporter/bb_modelImporter.cpp.i
+
+src/ModelImporter/bb_modelImporter.s: src/ModelImporter/bb_modelImporter.cpp.s
+.PHONY : src/ModelImporter/bb_modelImporter.s
+
+# target to generate assembly for a file
+src/ModelImporter/bb_modelImporter.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/ModelImporter/bb_modelImporter.cpp.s"
+.PHONY : src/ModelImporter/bb_modelImporter.cpp.s
+
 src/Scenes/CubeScene.o: src/Scenes/CubeScene.cpp.o
 .PHONY : src/Scenes/CubeScene.o
 
@@ -476,6 +500,30 @@ src/Scenes/CubeScene.s: src/Scenes/CubeScene.cpp.s
 src/Scenes/CubeScene.cpp.s:
 	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/CubeScene.cpp.s"
 .PHONY : src/Scenes/CubeScene.cpp.s
+
+src/Scenes/bb_gameScene.o: src/Scenes/bb_gameScene.cpp.o
+.PHONY : src/Scenes/bb_gameScene.o
+
+# target to build an object file
+src/Scenes/bb_gameScene.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/bb_gameScene.cpp.o"
+.PHONY : src/Scenes/bb_gameScene.cpp.o
+
+src/Scenes/bb_gameScene.i: src/Scenes/bb_gameScene.cpp.i
+.PHONY : src/Scenes/bb_gameScene.i
+
+# target to preprocess a source file
+src/Scenes/bb_gameScene.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/bb_gameScene.cpp.i"
+.PHONY : src/Scenes/bb_gameScene.cpp.i
+
+src/Scenes/bb_gameScene.s: src/Scenes/bb_gameScene.cpp.s
+.PHONY : src/Scenes/bb_gameScene.s
+
+# target to generate assembly for a file
+src/Scenes/bb_gameScene.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/bb_gameScene.cpp.s"
+.PHONY : src/Scenes/bb_gameScene.cpp.s
 
 src/VulkanContext/bb_vulkanContext.o: src/VulkanContext/bb_vulkanContext.cpp.o
 .PHONY : src/VulkanContext/bb_vulkanContext.o
@@ -596,9 +644,15 @@ help:
 	@echo "... src/Logger/Logger.o"
 	@echo "... src/Logger/Logger.i"
 	@echo "... src/Logger/Logger.s"
+	@echo "... src/ModelImporter/bb_modelImporter.o"
+	@echo "... src/ModelImporter/bb_modelImporter.i"
+	@echo "... src/ModelImporter/bb_modelImporter.s"
 	@echo "... src/Scenes/CubeScene.o"
 	@echo "... src/Scenes/CubeScene.i"
 	@echo "... src/Scenes/CubeScene.s"
+	@echo "... src/Scenes/bb_gameScene.o"
+	@echo "... src/Scenes/bb_gameScene.i"
+	@echo "... src/Scenes/bb_gameScene.s"
 	@echo "... src/VulkanContext/bb_vulkanContext.o"
 	@echo "... src/VulkanContext/bb_vulkanContext.i"
 	@echo "... src/VulkanContext/bb_vulkanContext.s"

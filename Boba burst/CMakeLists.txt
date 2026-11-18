@@ -14,10 +14,8 @@ add_subdirectory(./deps/json-develop)
 find_package(Vulkan REQUIRED)
 
 list(APPEND SHADERS
-    ./shaders/proj.frag
-    ./shaders/proj.vert
-    ./shaders/triangle.frag
-    ./shaders/triangle.vert
+    ./shaders/global.vert
+    ./shaders/global.frag
 )
 set(SHADER_OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders_out)
 
@@ -55,13 +53,18 @@ add_executable (Boba_burst
 "./src/DataStruct/bb_mesh.h"
 "./src/DataStruct/bb_section.h"
 "./src/DataStruct/bb_sommet.h"
+"./src/DataStruct/bb_transform.h"
 "./src/Scenes/bb_scene.h"
 "./src/Scenes/CubeScene.h"
 "./src/Scenes/CubeScene.cpp"
+"./src/Scenes/bb_gameScene.h"
+"./src/Scenes/bb_gameScene.cpp"
 "./src/VulkanContext/bb_vulkanContext.h"
 "./src/VulkanContext/bb_vulkanContext.cpp"
 "./src/VulkanRenderer/bb_vulkanRenderer.h"
 "./src/VulkanRenderer/bb_vulkanRenderer.cpp"
+"./src/ModelImporter/bb_modelImporter.h"
+"./src/ModelImporter/bb_modelImporter.cpp"
 )
 
 foreach(SHADER IN LISTS SHADERS)

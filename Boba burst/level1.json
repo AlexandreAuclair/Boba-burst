@@ -1,0 +1,52 @@
+{
+    "levelName": "Test_Gouttiere",
+    "models": [
+      {
+        "modelName": "gouttiere",
+        "modelPath": "assets/gouttiere.fbx"
+      }
+    ],
+    "textures": [
+        {
+            "textureName": "bugsBunny",
+            "texturePath" : "assets/bugs_bunny.jpg"
+        }
+    ],
+    "actors": [
+      {
+        "id": 0,
+        "type": "Track",
+        "transform": {
+            "position": [1.0, 1.0, 1.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "nbSections": 2,
+        "modelName": "gouttiere",
+        "textureName": "bugsBunny"
+      },
+      {
+        "id": 1,
+        "type": "Track",
+        "transform": {
+            "position": [-1.0, -1.0, -1.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "nbSections": 2,
+        "modelName": "gouttiere",
+        "textureName": "bugsBunny"
+      },
+      {
+        "id": 2,
+        "type": "Player",
+        "transform": {
+            "position": [1.0, -1.0, 1.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "modelName": "gouttiere",
+        "textureName": "bugsBunny"
+      }
+    ]
+  }

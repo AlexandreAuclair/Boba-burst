@@ -7,14 +7,13 @@
     //      include interne
     //==========================================================================
 #include "../Logger/Logger.h"
-#include "../Scenes/CubeScene.h"
+#include "../Scenes/bb_gameScene.h"
 //==========================================================================
 //      fonction publique
 //==========================================================================
 
 Game::Game() : isDebug(false), isRunning(true){
     Logger::Log("Game constructor called!");
-    Logger::Log("J'ai fuck up");
 }
 
 Game::~Game() {
@@ -80,7 +79,7 @@ void Game::Run() {
 void Game::Destroy() {
     Logger::Shutdown();
     //GameManager::Shutdown();
-
+    levelLoader.FreeModelAndTextures();
     /*// Pour plus tard pour le profiler
     ImGui_ImplSDLRenderer2_Shutdown();
     ImGui_ImplSDL2_Shutdown();
@@ -97,10 +96,15 @@ void Game::Destroy() {
 
 void Game::Setup() {
     // Appeler le level Loader
-    levelLoader.LoadLevel(1,"level.json");
+    if(!levelLoader.LoadLevel("level1.json")){
+        Logger::Err("Could not load level1.json");
+    }
+    else{
+        Logger::Log("level1.json successfully loaded");
+    }
 
-    scene = std::make_shared<CubeScene>(context);
-
+    // setter la 1er scene
+    scene = std::make_shared<GameScene>(context);
 	renderer->SetScene(scene);
 }
 

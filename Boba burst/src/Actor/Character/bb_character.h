@@ -5,6 +5,7 @@
 class Character : public Actor {
 public:
     Character();
+    Character(int id_, Transform t_) : Actor(id_,t_) {}
     ~Character();
 
 protected:
