@@ -138,8 +138,8 @@ void Game::Update()
         auto &players = GameManager::get().players;
         std::for_each(players.begin(), players.end(), [&](auto &player)
                       {
-                          player.get()->Update(millisecsPreviousFrame);
-                          player.get()->UpdateFromPhysics(GameManager::get().m_physicsWorld.get()->GetBodyInterface()); });
+                        player.get()->UpdateFromPhysics(GameManager::get().m_physicsWorld.get()->GetBodyInterface());
+                        player.get()->Update(millisecsPreviousFrame); });
 
         /*
                 // Update des différents acteurs
