@@ -57,6 +57,7 @@ add_executable (Boba_burst
 "./src/DataStruct/bb_sommet.h"
 
 "./src/Events/bb_onCollisionEvent.h"
+"./src/Events/bb_gameMovementEvent.h"
 
 "./src/Utilities/utilities.h"
 )

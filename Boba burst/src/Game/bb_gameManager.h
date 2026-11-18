@@ -14,11 +14,14 @@
 #include "../Actor/Object/bb_track.h"
 #include "../Actor/Object/obstacle.h"
 
-class GameManager {
+class GameManager
+{
     GameManager();
     ~GameManager();
+
 public:
-    static GameManager& get(){
+    static GameManager &get()
+    {
         static GameManager singleton;
         return singleton;
     }
@@ -32,10 +35,10 @@ public:
 
     void update();
 
-//private:
-    PhysicsWorld m_physicsWorld;
+    // private:
+    std::unique_ptr<PhysicsWorld> m_physicsWorld;
 
-    std::unordered_map<int, Actor*> actorsById;
+    std::unordered_map<int, Actor *> actorsById;
 
     std::vector<std::unique_ptr<Player>> players;
     std::vector<std::unique_ptr<Bot>> bots;
@@ -44,6 +47,4 @@ public:
     std::vector<std::unique_ptr<BonusObject>> bonusObjects;
     std::vector<std::unique_ptr<Obstacle>> obstacles;
     std::vector<std::unique_ptr<Character>> characters;
-
-
 };
