@@ -49,11 +49,15 @@ void Game::Initialize()
     if (glfwRawMouseMotionSupported())
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
 
+    /// Nous assure que le bus est vide au setup
+    gameEventBus->Reset();
+
     m_physicsWorld = make_unique<PhysicsWorld>(gameEventBus);
 }
 
 void Game::Run()
 {
+    gameEventBus;
     Setup();
     double lastTime = glfwGetTime();
     while (!glfwWindowShouldClose(window))
@@ -90,10 +94,8 @@ void Game::Setup()
 {
     // Appeler le level Loader
     levelLoader.LoadLevel(1, "level.json");
-    /// Nous assure que le bus est vide au setup
-    gameEventBus->Reset();
     // Temporaire pour test
-    GameManager::get().players.push_back(std::make_unique<Player>(1, gameEventBus, window));
+    GameManager::get().players.push_back(std::make_unique<Player>(1, gameEventBus, window, m_physicsWorld->GetBodyInterface()));
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
 }
 

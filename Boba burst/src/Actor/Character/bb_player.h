@@ -9,7 +9,7 @@ class Player : public Character
 {
 public:
     Player();
-    Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window);
+    Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface);
     ~Player();
 
 void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) override final;

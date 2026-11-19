@@ -1,9 +1,12 @@
 #include "bb_player.h"
 #include "string"
 #include "src/Events/bb_gameMovementEvent.h"
+#include <Jolt/Physics/Collision/Shape/BoxShape.h>
+#include <Jolt/Physics/Body/BodyCreationSettings.h>
+#include "../../Game/PhysicsWorld.h"
 
 Player::Player() {}
-Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window)
+Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface)
 {
     // Valeur pour Speed et Position sont temporaire à des fin de test.
     // TODO: RETIRER LORSQUE PLAYER INSTANCIER CORRECTEMENT
@@ -16,13 +19,19 @@ Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window)
     inputBus->SubscribeToEvent<PauseEvent>(this, &Player::HandlePauseEvent);
     Logger::Log("PLAYER CONSTRUCTOR #2 DONE!");
 
+    InitPhysics(bodyInterface);
+
     busPtr = &inputBus;
 }
 Player::~Player() {}
 
 JPH::BodyID Player::InitPhysics(JPH::BodyInterface &bodyInterface)
 {
-    return JPH::BodyID(0);
+    JPH::BodyCreationSettings sphere_settings = BodyCreationSettings(new JPH::BoxShape(JPH::RVec3(0.5f, 0.5f, 0.5f)), JPH::RVec3(0.0_r, 0.0_r, 0.0_r), JPH::Quat::sIdentity(), JPH::EMotionType::Dynamic, Layers::BONUS_OBJECTS);
+
+    sphere_settings.mUserData = static_cast<JPH::uint64>(id);
+    this->bodyID = bodyInterface.CreateAndAddBody(sphere_settings, JPH::EActivation::DontActivate);
+    return this->bodyID;
 }
 
 void Player::UpdateFromPhysics(const JPH::BodyInterface &bodyInterface)
