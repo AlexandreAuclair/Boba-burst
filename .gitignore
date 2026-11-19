@@ -16,7 +16,7 @@ revision.h
 
 #Shaders intermédiaires de la compilation
 shaders_out/
-*.snlx
+*.slnx
 
 # User-specific files
 *.rsuser
