@@ -13,8 +13,8 @@ private:
     void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override final;
     BonusObjectsType type;
 public:
-    void Update(int dt) override final;
-    void Render(int dt) override final;
+    void Update(float dt) override final;
+    void Render(float dt) override final;
     void onCollision(CollisionEvent &event) override;
 private:
 

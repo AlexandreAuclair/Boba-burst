@@ -1,6 +1,6 @@
 #include "bb_gameState.h"
 
-GameStateMachine::GameStateMachine() : currentState(GameState::Menu) {}
+GameStateMachine::GameStateMachine() : /*currentState(GameState::Menu)*/ currentState(GameState::Playing) {}
 
 GameState GameStateMachine::GetCurrentState() const {
     return currentState; 

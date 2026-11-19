@@ -90,6 +90,9 @@ void Game::Setup()
     levelLoader.LoadLevel(1, "level.json");
     /// Nous assure que le bus est vide au setup
     gameEventBus->Reset();
+    // Temporaire pour test
+    GameManager::get().registerPlayer(std::make_unique<Player>(1, gameEventBus, window));
+    gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
 }
 
 void Game::ProcessInput()
@@ -104,11 +107,22 @@ void Game::ProcessInput()
         // Si clic sur "Quit" -> stateMachine.TriggerQuit();
         break;
     case GameState::Playing:
+    {
         // Gérer les inputs du joueur
-        break;
+        // Ask all players to check input
+        auto players = GameManager::get().GetAllPlayers();
+        std::for_each(players->begin(), players->end(), [](auto &player)
+                      { player.get()->controlManager.CheckInput(); });
+    }
+    break;
     case GameState::Pause:
+    {
         // Gérer les inputs du menu pause (Reprendre, Menu, Quitter)
-        break;
+        auto players = GameManager::get().GetAllPlayers();
+        std::for_each(players->begin(), players->end(), [](auto &player)
+                      { player.get()->controlManager.CheckInput(); });
+    }
+    break;
     case GameState::GameOver:
         // Si le joueur clique sur "Rejouer" -> stateMachine.TriggerRestart();
         // Si le joueur clique sur "Menu" -> stateMachine.TriggerBackToMenu();
@@ -204,5 +218,26 @@ void Game::Render()
     case GameState::Quitting:
         // honnêtement je sais pas si on a le temps d'afficher de quoi ici...
         break;
+    }
+}
+
+/// @brief Quand un événement de touche est lancé, s'il sagit de la touche ESC, trigger les changements états et les événements approprié selon l'états actuel (vers la pause ou vers la reprise)
+/// @param event La touche présentement active
+void Game::HandlePauseEvent(KeyPressedEvent &event)
+{
+    if (event.keyId != GLFW_KEY_ESCAPE)
+    {
+        return;
+    }
+
+    if (stateMachine.GetCurrentState() == GameState::Pause)
+    {
+        stateMachine.TriggerResume();
+        gameEventBus.get()->EmitEvent<PauseEvent>(false);
+    }
+    else
+    {
+        stateMachine.TriggerPause();
+        gameEventBus.get()->EmitEvent<PauseEvent>(true);
     }
 }

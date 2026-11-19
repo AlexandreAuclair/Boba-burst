@@ -11,5 +11,5 @@ void Bot::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }
 
-void Bot::Update(int dt) {}
-void Bot::Render(int dt) {}
+void Bot::Update(float dt) {}
+void Bot::Render(float dt) {}

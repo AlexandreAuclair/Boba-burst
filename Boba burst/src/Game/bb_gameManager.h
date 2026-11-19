@@ -35,6 +35,10 @@ public:
 
     void update();
 
+    std::vector<std::unique_ptr<Player>> *GetAllPlayers();
+    Player *GetPlayerFromId(int id);
+
+private:
     // private:
     std::unique_ptr<PhysicsWorld> m_physicsWorld;
 

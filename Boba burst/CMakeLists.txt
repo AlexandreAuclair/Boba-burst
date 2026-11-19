@@ -34,6 +34,8 @@ add_executable (Boba_burst
 "./src/Actor/bb_actor.h"
 "./src/Actor/Character/bb_character.h"
 "./src/Actor/Character/bb_character.cpp"
+"./src/Actor/Character/bb_inputManager.h"
+"./src/Actor/Character/bb_inputManager.cpp"
 "./src/Actor/Character/bb_bot.h"
 "./src/Actor/Character/bb_bot.cpp"
 "./src/Actor/Character/bb_player.h"
