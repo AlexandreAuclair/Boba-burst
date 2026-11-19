@@ -14,7 +14,6 @@ struct Mesh{
     glm::vec2 dimension; // pour boite englobantes
     std::vector<Sommet> sommets;
     std::vector<uint32_t> indexes;
-    std::shared_ptr<Texture> texture;
 
     // Vulkan Vertex Buffer
     vk::UniqueBuffer vertexBuffer;

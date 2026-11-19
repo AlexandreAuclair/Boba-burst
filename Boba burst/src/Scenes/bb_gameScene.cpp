@@ -87,7 +87,7 @@ void GameScene::Draw(const DrawInfo& drawInfo)
         if (!actor.mesh || actor.mesh->indexes.empty()) return;
 
         // Vérifier que la texture ET son descriptorSet existent avant de dessiner !
-        if (!actor.mesh->texture || !actor.mesh->texture->descriptorSet)
+        if (!actor.texture || !actor.texture->descriptorSet)
         {
             // Option A : Ne pas dessiner l'objet et afficher un log pour identifier lequel pose problème
             Logger::Warn("Actor ignore au rendu : texture ou descriptorSet manquant.");
@@ -101,7 +101,7 @@ void GameScene::Draw(const DrawInfo& drawInfo)
                 vk::PipelineBindPoint::eGraphics,
                 *m_pipelineLayout,
                 0,
-                { actor.mesh->texture->descriptorSet },
+                { actor.texture->descriptorSet },
                 {}
             );
         }

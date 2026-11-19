@@ -33,6 +33,7 @@ public:
 
 public:
 	std::shared_ptr<Mesh> mesh;
+	std::shared_ptr<Texture> texture;
 
 protected:
 	int id;

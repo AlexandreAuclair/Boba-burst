@@ -103,20 +103,20 @@ bool LevelLoader::LoadLevel(std::string path)
             if (type == "Player") {
                 auto player = std::make_unique<Player>(id,transform);
                 player->mesh = mesh;
-                player->mesh->texture = texture;
+                player->texture = texture;
                 gm.players.push_back(std::move(player));
             }
             else if (type == "Track") {
                 int nbSections = actorJson.at("nbSections").get<int>();
                 auto track = std::make_unique<Track>(id,transform,nbSections);
                 track->mesh = mesh;
-                track->mesh->texture = texture;
+                track->texture = texture;
                 gm.tracks.push_back(std::move(track));
             }
             else if (type == "Character") {
                 auto character = std::make_unique<Character>(id, transform);
                 character->mesh = mesh;
-                character->mesh->texture = texture;
+                character->texture = texture;
                 gm.characters.push_back(std::move(character));
             }
             else
