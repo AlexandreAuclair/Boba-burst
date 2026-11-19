@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../DataStruct/VulkanDef.h"
+#include "../Logger/Logger.h"
 
 
 // Classe virtuelle utilisée par gameScene

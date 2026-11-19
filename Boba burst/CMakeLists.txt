@@ -20,6 +20,7 @@ list(APPEND SHADERS
     # Shaders pour l'UI de test
     ./shaders/ui.vert
     ./shaders/ui.frag
+    ./shaders/skybox.frag
 )
 set(SHADER_OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders_out)
 

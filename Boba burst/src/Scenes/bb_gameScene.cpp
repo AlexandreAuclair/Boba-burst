@@ -33,7 +33,7 @@ GameScene::GameScene(
 	m_lightData.color = glm::vec4(1.0f, 1.0f, 1.0f, 0.0f);
 
 	// Init avec vecteur bidon car elle sera �cras�e � chaque frame dans Draw().
-	m_lightData.cameraPosition = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+	m_lightData.cameraPosition = glm::vec4(20.0f, 20.0f, 20.0f, 1.0f);
 	// =======================================
 
 	CreateLightResources();
@@ -59,15 +59,18 @@ void GameScene::Update(double dt)
 
 void GameScene::Draw(const DrawInfo& drawInfo)
 {
+    if (!m_skyboxPipeline)
+    {
+        CreatePipeline(drawInfo.renderPass, m_skyboxPipeline, "./shaders_out/global.vert.spv", "./shaders_out/skybox.frag.spv", VK_FALSE);
+    }
     if (!m_pipeline)
     {
-        CreatePipeline(drawInfo.renderPass);
+        CreatePipeline(drawInfo.renderPass, m_pipeline, "./shaders_out/global.vert.spv", "./shaders_out/global.frag.spv", VK_TRUE);
     }
 
     auto& cmd = drawInfo.commandBuffer;
     auto& gm = GameManager::get();
 
-    cmd.bindPipeline(vk::PipelineBindPoint::eGraphics, *m_pipeline);
 
     // Matrices caméra (View et Projection)
     auto surfaceExtents = m_context.GetSurfaceExtents();
@@ -81,8 +84,18 @@ void GameScene::Draw(const DrawInfo& drawInfo)
     {
         if (!actor.mesh || actor.mesh->indexes.empty()) return;
 
-        // Lier le DescriptorSet (Lumière au binding 0 + Texture au binding 1)
-        if (actor.mesh->texture)
+        if (!actor.mesh || actor.mesh->indexes.empty()) return;
+
+        // Vérifier que la texture ET son descriptorSet existent avant de dessiner !
+        if (!actor.mesh->texture || !actor.mesh->texture->descriptorSet)
+        {
+            // Option A : Ne pas dessiner l'objet et afficher un log pour identifier lequel pose problème
+            Logger::Warn("Actor ignore au rendu : texture ou descriptorSet manquant.");
+
+            // Option B (recommandée) : Utiliser une texture par défaut
+            cmd.bindDescriptorSets(vk::PipelineBindPoint::eGraphics, *m_pipelineLayout, 0, { GameManager::get().textures.begin()->second->descriptorSet }, {});
+        }
+        else
         {
             cmd.bindDescriptorSets(
                 vk::PipelineBindPoint::eGraphics,
@@ -123,6 +136,17 @@ void GameScene::Draw(const DrawInfo& drawInfo)
         );
     };
 
+    if (!gm.characters.empty()) {
+
+        cmd.bindPipeline(vk::PipelineBindPoint::eGraphics, *m_skyboxPipeline);
+        for (const auto& character : gm.characters) {
+            if (character) drawActor(*character);
+        }
+    }
+
+
+    cmd.bindPipeline(vk::PipelineBindPoint::eGraphics, *m_pipeline);
+
     // Dessiner tous les Tracks et Players du GameManager
     for (const auto& track : gm.tracks) {
         if (track) drawActor(*track);
@@ -131,6 +155,8 @@ void GameScene::Draw(const DrawInfo& drawInfo)
     for (const auto& player : gm.players) {
         if (player) drawActor(*player);
     }
+
+    
 }
 
 void GameScene::CreateAndUploadBuffer(
@@ -467,10 +493,12 @@ namespace
 }
 
 
-void GameScene::CreatePipeline(vk::RenderPass renderPass)
+
+
+void GameScene::CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pipeline, const std::string& vertPath, const std::string& fragPath, bool depthWrite)
 {
-	auto vsModule = m_context.CreateShaderModuleFromFile("./shaders_out/global.vert.spv");
-	auto psModule = m_context.CreateShaderModuleFromFile("./shaders_out/global.frag.spv");
+	auto vsModule = m_context.CreateShaderModuleFromFile(vertPath.c_str());
+	auto psModule = m_context.CreateShaderModuleFromFile(fragPath.c_str());
 
 	std::array<vk::PipelineShaderStageCreateInfo, 2> shaderStages;
 	shaderStages[0].setModule(*vsModule);
@@ -538,8 +566,8 @@ void GameScene::CreatePipeline(vk::RenderPass renderPass)
 	viewportState.scissorCount = 1;
 
 	auto depthStencilState = vk::PipelineDepthStencilStateCreateInfo{};
-	depthStencilState.setDepthWriteEnable(VK_TRUE);
-	depthStencilState.setDepthTestEnable(VK_TRUE);
+	depthStencilState.setDepthWriteEnable(depthWrite);
+	depthStencilState.setDepthTestEnable(depthWrite);
 	depthStencilState.setDepthCompareOp(vk::CompareOp::eLessOrEqual);
 
 	auto colorAttachmentBlendState = vk::PipelineColorBlendAttachmentState{};
@@ -574,5 +602,5 @@ void GameScene::CreatePipeline(vk::RenderPass renderPass)
 	createInfo.setPMultisampleState(&multisampleState);
 
 	auto result = m_context.GetDevice().createGraphicsPipelineUnique({}, createInfo);
-	m_pipeline = std::move(result.value);
+	pipeline = std::move(result.value);
 }
