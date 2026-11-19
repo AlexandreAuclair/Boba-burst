@@ -3,6 +3,7 @@
     //      include externe
     //==========================================================================
 #include <map>
+#include <memory>
 #include <typeindex>
 #include <functional>
 #include <list>

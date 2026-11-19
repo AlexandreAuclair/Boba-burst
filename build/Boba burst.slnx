@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Release"/>
+		<BuildType Name="MinSizeRel"/>
+		<BuildType Name="RelWithDebInfo"/>
+		<Platform Name="x64"/>
+	</Configurations>
+	<Project Path="Boba burst/Boba_burst.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="4f5beeb2-1f3d-310d-999f-0bdde10f0d2f">
+		<BuildDependency Project="Boba burst/deps/JoltPhysics/Build/Jolt.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="Boba burst/deps/assimp/code/assimp.vcxproj"/>
+		<BuildDependency Project="Boba burst/deps/glfw/src/glfw.vcxproj"/>
+		<BuildDependency Project="Boba burst/deps/glm/glm/glm.vcxproj"/>
+		<BuildDependency Project="Boba burst/deps/assimp/contrib/zlib/zlibstatic.vcxproj"/>
+	</Project>
+	<Project Path="Boba burst/deps/JoltPhysics/Build/Jolt.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="f3842ba1-6e6f-3c3e-9798-cf10c5498b0a">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="Boba burst/deps/assimp/UpdateAssimpLibsDebugSymbolsAndDLLs.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="6667a132-f5b3-3d1d-b168-35a28594513a">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="Boba burst/deps/assimp/code/assimp.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="8ffa433b-1760-3614-a2c0-f69d2791da2f">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="Boba burst/deps/assimp/contrib/zlib/zlibstatic.vcxproj"/>
+	</Project>
+	<Project Path="Boba burst/deps/glm/glm/glm.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="1fa75b30-6b64-3f9a-b2cb-f07866645159">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="Boba burst/deps/assimp/test/unit.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="eb76ba0c-31a0-3f41-91df-84e10a07bb01">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="Boba burst/deps/assimp/code/assimp.vcxproj"/>
+		<BuildDependency Project="Boba burst/deps/assimp/contrib/zlib/zlibstatic.vcxproj"/>
+	</Project>
+	<Project Path="Boba burst/deps/assimp/contrib/zlib/zlibstatic.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="9fac1eb1-7eca-361d-9e04-2f643733eb8c">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Folder Name="/CMakePredefinedTargets/">
+		<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2c631689-b2c8-36ca-9522-e16104ab7cd3" DefaultStartup="true">
+			<BuildDependency Project="Boba burst/Boba_burst.vcxproj"/>
+			<BuildDependency Project="Boba burst/deps/JoltPhysics/Build/Jolt.vcxproj"/>
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<BuildDependency Project="Boba burst/deps/assimp/code/assimp.vcxproj"/>
+			<BuildDependency Project="Boba burst/deps/glfw/src/glfw.vcxproj"/>
+			<BuildDependency Project="Boba burst/deps/glm/glm/glm.vcxproj"/>
+			<BuildDependency Project="Boba burst/deps/assimp/test/unit.vcxproj"/>
+			<BuildDependency Project="Boba burst/deps/assimp/contrib/zlib/zlibstatic.vcxproj"/>
+		</Project>
+		<Project Path="INSTALL.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="fd451152-cccd-3e23-8b8f-5c8d01a48218">
+			<BuildDependency Project="ALL_BUILD.vcxproj"/>
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<Build Solution="Debug|*" Project="false"/>
+			<Build Solution="Release|*" Project="false"/>
+			<Build Solution="MinSizeRel|*" Project="false"/>
+			<Build Solution="RelWithDebInfo|*" Project="false"/>
+		</Project>
+		<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="97cf6679-028b-31bb-a2d7-c3fcfc526539"/>
+	</Folder>
+	<Folder Name="/GLFW3/">
+		<Project Path="Boba burst/deps/glfw/src/glfw.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="8657e1d7-f629-38bc-b468-502db6282f92">
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		</Project>
+		<Project Path="Boba burst/deps/glfw/uninstall.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="4e729945-e26e-38fb-a846-089498e5a70b">
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<Build Solution="Debug|*" Project="false"/>
+			<Build Solution="Release|*" Project="false"/>
+			<Build Solution="MinSizeRel|*" Project="false"/>
+			<Build Solution="RelWithDebInfo|*" Project="false"/>
+		</Project>
+		<Project Path="Boba burst/deps/glfw/src/update_mappings.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="e69320a1-7ca6-344b-bc26-3ce1c7233e30">
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<Build Solution="Debug|*" Project="false"/>
+			<Build Solution="Release|*" Project="false"/>
+			<Build Solution="MinSizeRel|*" Project="false"/>
+			<Build Solution="RelWithDebInfo|*" Project="false"/>
+		</Project>
+	</Folder>
+</Solution>

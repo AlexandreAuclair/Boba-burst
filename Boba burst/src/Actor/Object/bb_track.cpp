@@ -13,15 +13,22 @@ JPH::BodyID Track::InitPhysics(JPH::BodyInterface& bodyInterface){
     return JPH::BodyID(0);
 }
 
+void Track::Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) {
+    InitPhysics(bodyInterface);
+}
+
+
 void Track::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }
 
-void Track::Update(int dt) {
+void Track::Update(float dt) {
     //check for collision
     UpdateFromPhysics(*sections->bodyInterface);
 }
 
-void Track::Render(int dt) {
+void Track::Render(float dt) {
     // call vulkain to transfer vertex and color data
 }
+
+void Track::onCollision(CollisionEvent &event) {}

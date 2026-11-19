@@ -1,14 +1,11 @@
-﻿//==========================================================================
-//      include externe
-//==========================================================================
+﻿#include "bb_game.h"
+    //==========================================================================
+    //      include externe
+    //==========================================================================
 
-
-
-//==========================================================================
-//      include interne
-//==========================================================================
-#include "bb_game.h"
-
+    //==========================================================================
+    //      include interne
+    //==========================================================================
 #include "../Logger/Logger.h"
 #include "../Scenes/bb_gameScene.h"
 
@@ -23,6 +20,7 @@
 
 Game::Game() : isDebug(false), isRunning(true){
     Logger::Log("Game constructor called!");
+    gameEventBus = std::make_unique<EventBus>();
 }
 
 Game::~Game() {
@@ -50,8 +48,8 @@ bool Game::Initialize() {
         return false;
     }
 
-    // Donner la fenêtre au controller
-    controller.SetWindow(window);
+    //// Donner la fenêtre au controller
+    //controller.SetWindow(window);
 
     context.CreateInstance();
 	context.CreateDevice();
@@ -71,6 +69,11 @@ bool Game::Initialize() {
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);		// Cache le curseur et le verrouille au mileu de la fen�tre
     if (glfwRawMouseMotionSupported())
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+
+    /// Nous assure que le bus est vide au setup
+    gameEventBus->Reset();
+
+    m_physicsWorld = make_unique<PhysicsWorld>(gameEventBus);
 
     return true;
 }
@@ -93,11 +96,11 @@ void Game::Run() {
         double currentTime = glfwGetTime();
         double dt = currentTime - lastTime;
         lastTime = currentTime;
-        
-        // Ferme la fenêtre si on appuie sur Echap
-        if (controller.IsKeyPressed(GLFW_KEY_ESCAPE)) {
-            glfwSetWindowShouldClose(window, GLFW_TRUE);
-        }
+        millisecsPreviousFrame = dt;
+        //// Ferme la fenêtre si on appuie sur Echap
+        //if (controller.IsKeyPressed(GLFW_KEY_ESCAPE)) {
+        //    glfwSetWindowShouldClose(window, GLFW_TRUE);
+        //}
         
         // 3. Traiter les inputs
         ProcessInput();
@@ -132,7 +135,7 @@ void Game::Destroy() {
 
 void Game::Setup() {
     // Appeler le level Loader
-    if(!levelLoader.LoadLevel("level1.json")){
+        if(!levelLoader.LoadLevel("level1.json")){
         Logger::Err("Could not load level1.json");
     }
     else{
@@ -142,9 +145,53 @@ void Game::Setup() {
     // setter la 1er scene
     scene = std::make_shared<GameScene>(context);
 	renderer->SetScene(scene);
+
+    GameManager::get().players.back()->Init(gameEventBus, window, m_physicsWorld->GetBodyInterface());
+    gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
 }
 
-void Game::ProcessInput(){
+void Game::ProcessInput()
+{
+    switch (stateMachine.GetCurrentState())
+    {
+    case GameState::Menu:
+        // Gérer les clics sur les boutons du menu principal
+        // demander a GLFW de montrer la souris
+        // Si clic sur "Play" -> stateMachine.TriggerPlay(); cacher la souris avec glfwSetInputMode
+        // Si clic sur "Options" -> stateMachine.TriggerOption();
+        // Si clic sur "Quit" -> stateMachine.TriggerQuit();
+        break;
+    case GameState::Playing:
+    {
+        // Gérer les inputs du joueur
+        // Ask all players to check input
+        std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [](auto &player)
+                      { 
+                player.get()->controlManager.CheckInput(); 
+            });
+    }
+    break;
+    case GameState::Pause:
+    {
+        // Gérer les inputs du menu pause (Reprendre, Menu, Quitter)
+        std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [](auto &player)
+                      { player.get()->controlManager.CheckInput(); });
+    }
+    break;
+    case GameState::GameOver:
+        // Si le joueur clique sur "Rejouer" -> stateMachine.TriggerRestart();
+        // Si le joueur clique sur "Menu" -> stateMachine.TriggerBackToMenu();
+        break;
+    case GameState::Option:
+        // Si le joueur clique sur "Retour" -> stateMachine.TriggerBackToMenu();
+        break;
+    case GameState::Quitting:
+        // Si le joueur a appuyer sur QUIT alors on désactive son controleur et on remontre la souris
+        break;
+    }
+}
+
+/*void Game::ProcessInput(){
 
     bool tabPressed = controller.IsKeyPressed(GLFW_KEY_TAB);
 
@@ -216,37 +263,36 @@ void Game::ProcessInput(){
         case GameState::Quitting:
             // Si le joueur a appuyer sur QUIT alors on désactive son controleur et on remontre la souris
         break;
-    }*/
-}
+    }
+}*/
 
 void Game::Update(double dt) {
+    glfwPollEvents();
     switch (stateMachine.GetCurrentState()) {
-       
-    
         case GameState::Menu:
-            // On verra quand on aura le menu
         break;
+    case GameState::Playing:
+        // Mettre à jour la physique Jolt, les acteurs, la caméra
+	    scene->Update(dt);
+        // La physique de Jolt est mise à jours et les événement de collision sont lancer.
+        m_physicsWorld->Update(millisecsPreviousFrame);
 
+        std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [&](auto &player)
+                      {
+                        player->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
+                        player->Update(millisecsPreviousFrame); });
 
-        case GameState::Playing:
-            // Mettre à jour la physique Jolt, les acteurs, la caméra
-            scene->Update(dt);
         break;
-
-
         case GameState::Pause:
             // Le jeu est en pause (on ne met pas à jour la physique/le gameplay)
-
         break;
         case GameState::GameOver:
             // Le jeu devrais retourner a Setup() pour réinitialiser toute les variable du jeu
         break;
-
         case GameState::Option:
             // Selon les bouton appuyer on doit changer les options Vulkan ici
             // regarder les event qui on été activer
         break;
-
         case GameState::Quitting:
             // pas besoin que je vous explique ce qu'il faut faire ici
             isRunning = false;
@@ -257,16 +303,18 @@ void Game::Update(double dt) {
 void Game::Render(double dt) {
 
 
-/*    switch (stateMachine.GetCurrentState()) {
+    switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
             // Afficher l'écran de début et les options
         break;
         case GameState::Playing:
             // Afficher ce que la camera voit aka. la scène
+            renderer->Draw(false);
         break;
         case GameState::Pause:
             // Afficher la scène en plus noir(genre * 0.5 les couleurs)
             // afficher les options du menu Pause
+            renderer->Draw(true);
         break;
         case GameState::GameOver:
             // Afficher l'écran de Game Over
@@ -278,11 +326,28 @@ void Game::Render(double dt) {
         case GameState::Quitting:
             // honnêtement je sais pas si on a le temps d'afficher de quoi ici...
         break;
-    }*/
-
-    // Determine si menu de pause doit être visible 
-    bool showMenuPause = stateMachine.GetCurrentState() == GameState::Pause;
-   
-    // Dessine frame 3D, et eventuellement UI par-dessus
-    renderer->Draw(showMenuPause);
+    }
 }
+
+/// @brief Quand un événement de touche est lancé, s'il sagit de la touche ESC, trigger les changements états et les événements approprié selon l'états actuel (vers la pause ou vers la reprise)
+/// @param event La touche présentement active
+void Game::HandlePauseEvent(KeyPressedEvent &event)
+{
+    if (event.keyId != GLFW_KEY_ESCAPE)
+    {
+        return;
+    }
+
+    if (stateMachine.GetCurrentState() == GameState::Pause)
+    {
+        stateMachine.TriggerResume();
+        gameEventBus.get()->EmitEvent<PauseEvent>(false);
+    }
+    else
+    {
+        stateMachine.TriggerPause();
+        gameEventBus.get()->EmitEvent<PauseEvent>(true);
+    }
+}
+
+   
