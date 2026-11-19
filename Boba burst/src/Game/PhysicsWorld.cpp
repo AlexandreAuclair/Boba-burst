@@ -2,11 +2,11 @@
 
 PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
 {
+	RegisterDefaultAllocator();
+
 	// Will Recieve requests from player to move physical object
 	bus->SubscribeToEvent<GameMovementEvent>(this, &PhysicsWorld::HandleMovementEvent);
 	busPtr = &bus;
-
-	mTempAllocator = new TempAllocatorImpl(32 * 1024 * 1024);
 
 	// Create a factory, this class is responsible for creating instances of classes based on their name or hash and is mainly used for deserialization of saved data.
 	// It is not directly used in this example but still required.
@@ -16,6 +16,8 @@ PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
 	// If you have your own custom shape types you probably need to register their handlers with the CollisionDispatch before calling this function.
 	// If you implement your own default material (PhysicsMaterial::sDefault) make sure to initialize it before this function or else this function will create one for you.
 	RegisterTypes();
+
+	mTempAllocator = new TempAllocatorImpl(32 * 1024 * 1024);
 
 	// We need a job system that will execute physics jobs on multiple threads. Typically
 	// you would implement the JobSystem interface yourself and let Jolt Physics run on top
