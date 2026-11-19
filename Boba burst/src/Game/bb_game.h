@@ -17,6 +17,9 @@
 #include "bb_gameManager.h"
 #include <algorithm>
 
+#include "../EventBus/bb_eventBus.h"
+#include "../Events/bb_onCollisionEvent.h"
+
 //==========================================================================
 //      Constante
 //==========================================================================

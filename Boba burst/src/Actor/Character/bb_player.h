@@ -11,9 +11,10 @@ public:
     Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window);
     ~Player();
 
+void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) override final;
 private:
     JPH::BodyID InitPhysics(JPH::BodyInterface &bodyInterface) override final;
-    void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) override final;
+    
     /// @brief Accuser de réception d'un événement de la touche flèche gauche. Inputs vers Update
     bool leftKeyPressThisFrame = false;
     /// @brief Accuser de réception d'un événement de la touche flèche gauche. Inputs vers Update

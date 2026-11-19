@@ -144,13 +144,39 @@ void Game::Update()
     case GameState::Menu:
         break;
     case GameState::Playing:
-    {
         // Mettre à jour la physique Jolt, les acteurs, la caméra
-        auto players = GameManager::get().GetAllPlayers();
-        std::for_each(players->begin(), players->end(), [&](auto &player)
-                      { player.get()->Update(millisecsPreviousFrame); });
-    }
-    break;
+
+        // La physique de Jolt est mise à jours et les événement de collision sont lancer.
+        GameManager::get().m_physicsWorld.get()->Update(millisecsPreviousFrame);
+
+        auto &players = GameManager::get().players;
+        std::for_each(players.begin(), players.end(), [&](auto &player)
+                      {
+                        player.get()->UpdateFromPhysics(GameManager::get().m_physicsWorld.get()->GetBodyInterface());
+                        player.get()->Update(millisecsPreviousFrame); });
+
+        /*
+                // Update des différents acteurs
+                for(auto pair : GameManager::get().actorsById) {
+
+                    pair.second->Update(millisecsPreviousFrame);
+
+                }
+
+                // Traitement des collisions
+
+                for( auto collision : GameManager::get().m_physicsWorld.GetContactsQueue()) {
+
+                    gameEventBus.get()->EmitEvent<CollisionEvent>(collision.acteur1, collision.acteur2);
+                    //GameManager::get().actorsById[collision.acteur1],
+                    //GameManager::get().actorsById[collision.acteur2]
+
+                }
+
+                // On vide la liste des collisions
+                GameManager::get().m_physicsWorld.GetContactsQueue().clear();*/
+
+        break;
     case GameState::Pause:
         // Le jeu est en pause (on ne met pas à jour la physique/le gameplay)
         break;
