@@ -1,8 +1,4 @@
 #include "bb_trackObject.h"
-#include <Jolt/Physics/Collision/Shape/BoxShape.h>
-#include <Jolt/Physics/Body/BodyCreationSettings.h>
-#include "../../Game/PhysicsWorld.h"
-
 
 TrackObject::TrackObject(){}
 TrackObject::TrackObject(int id_, Transform t_) : Actor(id_, t_) { }
@@ -15,6 +11,10 @@ JPH::BodyID TrackObject::InitPhysics(JPH::BodyInterface& bodyInterface){
     sphere_settings.mUserData = static_cast<JPH::uint64>(id);
     return bodyInterface.CreateAndAddBody(sphere_settings, JPH::EActivation::DontActivate);
 
+}
+
+void TrackObject::Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) {
+    InitPhysics(bodyInterface);
 }
 
 void TrackObject::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){

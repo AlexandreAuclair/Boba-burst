@@ -16,6 +16,10 @@ JPH::BodyID BonusObject::InitPhysics(JPH::BodyInterface& bodyInterface){
     return bodyInterface.CreateAndAddBody(sphere_settings, JPH::EActivation::DontActivate);
 }
 
+void BonusObject::Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) {
+    InitPhysics(bodyInterface);
+}
+
 void BonusObject::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }

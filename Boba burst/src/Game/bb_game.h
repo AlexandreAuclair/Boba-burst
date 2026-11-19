@@ -4,6 +4,7 @@
     //==========================================================================
     //      include externe
     //==========================================================================
+#define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
     //==========================================================================
     //      include interne
@@ -37,7 +38,7 @@ public:
         return singleton;
     }
 
-    void Initialize();
+    bool Initialize();
     void Run();
     void Destroy();
 private:

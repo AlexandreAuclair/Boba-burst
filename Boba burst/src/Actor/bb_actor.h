@@ -1,12 +1,11 @@
 #pragma once
 
 #include <glm/glm.hpp>
-#include <Jolt/Jolt.h>
-#include <Jolt/Physics/Body/BodyID.h>
-#include <Jolt/Physics/Body/BodyInterface.h>
+#include "../Game/PhysicsWorld.h"
 #include "../EventBus/bb_eventBus.h"
 #include "../Events/bb_onCollisionEvent.h"
 #include <memory>
+#include <GLFW/glfw3.h>
 
 #include "../DataStruct/bb_mesh.h"
 #include "../DataStruct/bb_transform.h"
@@ -23,6 +22,7 @@ protected:
 	// Methode appelee a chaque frame pour synchroniser la position de l'acteur avec Jolt
 	virtual void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) = 0;
 public:
+	virtual void Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) = 0;
 	virtual void Update(float dt) = 0;
 	virtual void Render(float dt) = 0;
 	int getId() { return id;  }

@@ -146,7 +146,8 @@ void Game::Setup() {
     scene = std::make_shared<GameScene>(context);
 	renderer->SetScene(scene);
     // Temporaire pour test
-    GameManager::get().players.push_back(std::make_unique<Player>(1, gameEventBus, window, m_physicsWorld->GetBodyInterface()));
+    GameManager::get().players.push_back(std::make_unique<Player>(10, Transform{}));
+    GameManager::get().players.back()->Init(gameEventBus, window, m_physicsWorld->GetBodyInterface());
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
 }
 
@@ -261,7 +262,7 @@ void Game::ProcessInput()
         case GameState::Quitting:
             // Si le joueur a appuyer sur QUIT alors on désactive son controleur et on remontre la souris
         break;
-    }*/
+    }
 }*/
 
 void Game::Update(double dt) {
@@ -271,7 +272,7 @@ void Game::Update(double dt) {
         break;
     case GameState::Playing:
         // Mettre à jour la physique Jolt, les acteurs, la caméra
-	scene->Update(dt);
+	    scene->Update(dt);
         // La physique de Jolt est mise à jours et les événement de collision sont lancer.
         m_physicsWorld->Update(millisecsPreviousFrame);
 
@@ -279,9 +280,6 @@ void Game::Update(double dt) {
                       {
                         player->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
                         player->Update(millisecsPreviousFrame); });
-
-
-                }
 
         break;
         case GameState::Pause:
@@ -304,7 +302,7 @@ void Game::Update(double dt) {
 void Game::Render(double dt) {
 
 
-/*    switch (stateMachine.GetCurrentState()) {
+    switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
             // Afficher l'écran de début et les options
         break;
@@ -326,6 +324,12 @@ void Game::Render(double dt) {
             // honnêtement je sais pas si on a le temps d'afficher de quoi ici...
         break;
     }
+
+    // Determine si menu de pause doit être visible 
+    bool showMenuPause = stateMachine.GetCurrentState() == GameState::Pause;
+   
+    // Dessine frame 3D, et eventuellement UI par-dessus
+    renderer->Draw(showMenuPause);
 }
 
 /// @brief Quand un événement de touche est lancé, s'il sagit de la touche ESC, trigger les changements états et les événements approprié selon l'états actuel (vers la pause ou vers la reprise)
@@ -349,8 +353,4 @@ void Game::HandlePauseEvent(KeyPressedEvent &event)
     }
 }
 
-   // Determine si menu de pause doit être visible 
-    bool showMenuPause = stateMachine.GetCurrentState() == GameState::Pause;
    
-    // Dessine frame 3D, et eventuellement UI par-dessus
-    renderer->Draw(showMenuPause);

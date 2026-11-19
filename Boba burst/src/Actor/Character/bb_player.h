@@ -7,7 +7,7 @@
 class Player : public Character {
 public:
     Player();
-    Player(int id_, Transform t_, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface);
+    Player(int id_, Transform t_);
     ~Player();
 
 void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) override final;
@@ -23,9 +23,11 @@ private:
     bool isIgnoringInputs = false;
 
 public:
-    InputManager controlManager;
+    void Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) override final;
     void Input(KeyPressedEvent &event);
     void Update(float dt) override final;
     void Render(float dt) override final;
+
+    InputManager controlManager;
     std::unique_ptr<EventBus> *busPtr;
 };
