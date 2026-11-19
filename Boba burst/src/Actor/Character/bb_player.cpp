@@ -1,5 +1,6 @@
 #include "bb_player.h"
 #include "string"
+#include "src/Events/bb_gameMovementEvent.h"
 
 Player::Player() {}
 Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window)
@@ -14,6 +15,8 @@ Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window)
     inputBus->SubscribeToEvent<KeyPressedEvent>(this, &Player::Input);
     inputBus->SubscribeToEvent<PauseEvent>(this, &Player::HandlePauseEvent);
     Logger::Log("PLAYER CONSTRUCTOR #2 DONE!");
+
+    busPtr = &inputBus;
 }
 Player::~Player() {}
 
@@ -47,11 +50,15 @@ void Player::Input(KeyPressedEvent &event)
 
     if (event.keyId == GLFW_KEY_LEFT)
     {
-        leftKeyPressThisFrame = true;
+        //leftKeyPressThisFrame = true;
+        busPtr->get()->EmitEvent<GameMovementEvent>(this->bodyID, true, false);
+        Logger::Log("Left key pressed");
     }
     if (event.keyId == GLFW_KEY_RIGHT)
     {
-        RightKeyPressThisFrame = true;
+        //RightKeyPressThisFrame = true;
+        busPtr->get()->EmitEvent<GameMovementEvent>(this->bodyID, false, true);
+        Logger::Log("Right key pressed");
     }
     if (event.keyId == GLFW_MOUSE_BUTTON_LEFT)
     {

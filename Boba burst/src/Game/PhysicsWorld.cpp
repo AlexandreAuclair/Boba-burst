@@ -1,4 +1,5 @@
 #include "PhysicsWorld.h"
+#include <string>
 
 PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
 {
@@ -67,7 +68,9 @@ bool PhysicsWorld::Update(float dt)
 		for (size_t i = 0; i < movementRequestsQueue.size(); i++)
 		{
 			ImpulsionRequest currentMod = movementRequestsQueue[i];
+			Logger::Log("Vitesse avant :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetZ()));
 			bodyInterface.SetLinearVelocity(currentMod.mBodyID, currentMod.modsVec3);
+			Logger::Log("Vitesse apres :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetZ()));
 		}
 
 		movementRequestsQueue.clear();

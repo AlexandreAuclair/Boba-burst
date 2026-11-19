@@ -4,6 +4,7 @@
 #include <src/EventBus/bb_eventBus.h>
 #include "bb_inputManager.h"
 
+
 class Player : public Character
 {
 public:
@@ -28,4 +29,5 @@ public:
     void Input(KeyPressedEvent &event);
     void Update(float dt) override final;
     void Render(float dt) override final;
+    std::unique_ptr<EventBus> *busPtr;
 };
