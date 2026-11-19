@@ -16,6 +16,10 @@ find_package(Vulkan REQUIRED)
 list(APPEND SHADERS
     ./shaders/global.vert
     ./shaders/global.frag
+
+    # Shaders pour l'UI de test
+    ./shaders/ui.vert
+    ./shaders/ui.frag
 )
 set(SHADER_OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders_out)
 
@@ -55,8 +59,12 @@ add_executable (Boba_burst
 "./src/DataStruct/bb_sommet.h"
 "./src/DataStruct/bb_transform.h"
 "./src/Scenes/bb_scene.h"
-"./src/Scenes/CubeScene.h"
-"./src/Scenes/CubeScene.cpp"
+
+# Sert potentiellement à rien
+#"./src/Scenes/CubeScene.h"
+#"./src/Scenes/CubeScene.cpp"
+
+
 "./src/Scenes/bb_gameScene.h"
 "./src/Scenes/bb_gameScene.cpp"
 "./src/VulkanContext/bb_vulkanContext.h"
@@ -65,6 +73,14 @@ add_executable (Boba_burst
 "./src/VulkanRenderer/bb_vulkanRenderer.cpp"
 "./src/ModelImporter/bb_modelImporter.h"
 "./src/ModelImporter/bb_modelImporter.cpp"
+
+# Ajout des controller
+"./src/Controller/Controller.h"
+"./src/Controller/Controller.cpp"
+
+# Ajout des renderer de l'UI
+"./src/UIRenderer/UIRenderer.h"
+"./src/UIRenderer/UIRenderer.cpp"
 )
 
 foreach(SHADER IN LISTS SHADERS)

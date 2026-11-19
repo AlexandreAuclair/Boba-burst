@@ -5,6 +5,10 @@ VulkanRenderer::VulkanRenderer(VulkanContext& context)
 {
 	CreateDepthbuffer();
 	CreateRenderPass();
+	
+	// Le render pass existe ici : on peut construire le pipeline UI
+	m_uiRenderer = std::make_unique<UIRenderer>(m_context, *m_renderPass);
+
 	CreateFramebuffers();
 	CreatePerFrameInfo();
 	for(auto& semaPair : m_swapChainSemaPairs)
@@ -140,7 +144,7 @@ void VulkanRenderer::SetScene(std::shared_ptr<Scene> scene)
 	m_scene = scene;
 }
 
-void VulkanRenderer::Draw()
+void VulkanRenderer::Draw(bool showMenuPause)
 {
 	BeginFrame();
 
@@ -177,7 +181,10 @@ void VulkanRenderer::Draw()
 	scissor.setExtent(surfaceExtents);
 	perFrameInfo.commandBuffer->setScissor(0, {scissor});
 
-	if(m_scene)
+	// ==========================================================
+	// 1. RENDU DE LA SCÈNE 3D
+	// ==========================================================
+	if (m_scene)
 	{
 		DrawInfo drawInfo = {};
 		drawInfo.commandBuffer = *perFrameInfo.commandBuffer;
@@ -185,6 +192,19 @@ void VulkanRenderer::Draw()
 		m_scene->Draw(drawInfo);
 	}
 
+	// ==========================================================
+	// 2. RENDU DE L'INTERFACE UTILISATEUR (UI du menu principal en dehors de présence scène 3D)
+	// ==========================================================
+	if (showMenuPause && m_uiRenderer) {
+		m_uiRenderer->Draw(
+			*perFrameInfo.commandBuffer,
+			surfaceExtents);
+	}
+	
+
+	// ==========================================================
+	// 3. FIN DU RENDER PASS
+	// ==========================================================
 	perFrameInfo.commandBuffer->endRenderPass();
 
 	EndFrame();

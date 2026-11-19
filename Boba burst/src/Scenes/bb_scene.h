@@ -3,6 +3,8 @@
 #include "../DataStruct/VulkanDef.h"
 
 
+// Classe virtuelle utilisée par gameScene
+
 class Scene
 {
 public:

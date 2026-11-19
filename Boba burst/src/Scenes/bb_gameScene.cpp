@@ -467,8 +467,6 @@ namespace
 }
 
 
-
-
 void GameScene::CreatePipeline(vk::RenderPass renderPass)
 {
 	auto vsModule = m_context.CreateShaderModuleFromFile("./shaders_out/global.vert.spv");

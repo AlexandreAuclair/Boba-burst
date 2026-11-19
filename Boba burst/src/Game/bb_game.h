@@ -14,6 +14,7 @@
 #include "../LevelLoader/bb_levelLoader.h"
 #include "../VulkanContext/bb_vulkanContext.h"
 #include "../VulkanRenderer/bb_vulkanRenderer.h"
+#include "../Controller/Controller.h"
 
 //==========================================================================
 //      Constante
@@ -35,14 +36,22 @@ public:
     init l'application et retourne vrai si elle a marcher parfaitement, 
     retourne faux si il y a une erreur
     */
+
     bool Initialize();
     void Run();
     void Destroy();
+
 private:
     void Setup();
     void ProcessInput();
     void Update(double dt);
     void Render(double dt);
+
+public : 
+
+    Controller& GetController(){
+        return controller;
+    }
 
 private:
     bool isRunning;
@@ -55,6 +64,13 @@ private:
     std::unique_ptr<VulkanRenderer> renderer;
     std::shared_ptr<Scene> scene;
     //Profiler profiler; // pour plus tard
+
+    // Controller d'inputs (init dans Setup())
+    Controller controller;
+
+
+    // Booléen indiquant si touche vient d'être pressee (pour eviter multi-action) => pourra etre change plus tard par fonction du controller
+    bool tabWasPressed;
 };
 
 #endif

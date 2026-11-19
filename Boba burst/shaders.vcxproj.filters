@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\CMakeFiles\98a1fface88a4d6c3b6167ccca8ab777\global.frag.spv.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\CMakeFiles\98a1fface88a4d6c3b6167ccca8ab777\global.vert.spv.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\CMakeFiles\98a1fface88a4d6c3b6167ccca8ab777\ui.frag.spv.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\CMakeFiles\98a1fface88a4d6c3b6167ccca8ab777\ui.vert.spv.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\CMakeFiles\b46c56c5d0609528b642b59b914db6ce\shaders.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\CMakeFiles\shaders" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{4DD53814-495A-3058-8761-35BAE5F0D6E9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

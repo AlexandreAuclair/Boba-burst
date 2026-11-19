@@ -27,7 +27,10 @@ private:
 	void CreateVertexBuffer();
 	void CreateIndexBuffer();
 	void CreatePipelineLayout();
+
+	// Pipeline 3D
 	void CreatePipeline(vk::RenderPass renderPass);
+
 
 	VulkanContext& m_context;
 
@@ -43,8 +46,11 @@ private:
 	vk::UniqueBuffer m_indexBuffer;
 	vk::UniqueDeviceMemory m_indexBufferMemory;
 
-	vk::UniquePipelineLayout m_pipelineLayout;
-	vk::UniquePipeline m_pipeline;
+	//////////////
+	// Sert pour la 3D
+	vk::UniquePipelineLayout m_pipelineLayout;				// Layout Pipeline rendu 3D
+	vk::UniquePipeline m_pipeline;							// Pipeline rendu 3D
+	//////////////
 
 	LightData m_lightData{};
 	void* m_lightBufferMapped = nullptr; // memoire mappee en permanence
@@ -60,7 +66,7 @@ private:
 	void UpdateLightBuffer(const glm::vec3& cameraPosition);
 
 
-	// ---------- Donn�es pour les textures ----------
+	// ---------- Donnees pour les textures ----------
 private: 
 
 	// Prend le path de la texture et cr�� texture utilisable par Vulkain 

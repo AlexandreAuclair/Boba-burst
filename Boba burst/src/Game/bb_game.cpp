@@ -1,13 +1,22 @@
-﻿#include "bb_game.h"
-    //==========================================================================
-    //      include externe
-    //==========================================================================
+﻿//==========================================================================
+//      include externe
+//==========================================================================
 
-    //==========================================================================
-    //      include interne
-    //==========================================================================
+
+
+//==========================================================================
+//      include interne
+//==========================================================================
+#include "bb_game.h"
+
 #include "../Logger/Logger.h"
 #include "../Scenes/bb_gameScene.h"
+
+#include "../Controller/Controller.h"
+
+
+
+
 //==========================================================================
 //      fonction publique
 //==========================================================================
@@ -41,6 +50,9 @@ bool Game::Initialize() {
         return false;
     }
 
+    // Donner la fenêtre au controller
+    controller.SetWindow(window);
+
     context.CreateInstance();
 	context.CreateDevice();
 
@@ -64,15 +76,37 @@ bool Game::Initialize() {
 }
 
 void Game::Run() {
+   
+    // Setup l'ensemble du jeu 
     Setup();
+
+    // Récupérer le temps 
     double lastTime = glfwGetTime();
-    while (!glfwWindowShouldClose(window)) {
+
+
+    while (isRunning && !glfwWindowShouldClose(window)) {
+        
+        // 1. Actualiser les événements
+        glfwPollEvents();
+
+        // 2. Calculer le deltaTime
         double currentTime = glfwGetTime();
-        double elapsed = currentTime - lastTime;
-        ProcessInput();
-        Update(elapsed);
-        Render(elapsed);
+        double dt = currentTime - lastTime;
         lastTime = currentTime;
+        
+        // Ferme la fenêtre si on appuie sur Echap
+        if (controller.IsKeyPressed(GLFW_KEY_ESCAPE)) {
+            glfwSetWindowShouldClose(window, GLFW_TRUE);
+        }
+        
+        // 3. Traiter les inputs
+        ProcessInput();
+
+        // 4. Mettre à jour la logique
+        Update(dt);
+
+        // 5. Dessiner la frame
+        Render(dt);
     }
 }
 
@@ -85,6 +119,8 @@ void Game::Destroy() {
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
     */
+
+    // Fin de vie du programme
     context.GetQueue().waitIdle();
     glfwDestroyWindow(window);
     glfwTerminate();
@@ -108,9 +144,32 @@ void Game::Setup() {
 	renderer->SetScene(scene);
 }
 
-void Game::ProcessInput() {
+void Game::ProcessInput(){
 
-    switch (stateMachine.GetCurrentState()) {
+    bool tabPressed = controller.IsKeyPressed(GLFW_KEY_TAB);
+
+    if (tabPressed && !tabWasPressed) {
+        switch (stateMachine.GetCurrentState()) {
+            case GameState::Playing : 
+                Logger::Log("Tab pressee - Entree en pause");
+                stateMachine.TriggerPause();
+                glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+                break;
+        
+            case GameState::Pause : 
+                Logger::Log("Tab pressee - Retour au jeu");
+                stateMachine.TriggerPlay();
+                glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+                break;
+
+            default : 
+                Logger::Err("State incohérent avec la touche"); 
+        }
+
+    }
+    tabWasPressed = tabPressed;
+
+/*    switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
             // Gérer les clics sur les boutons du menu principal
             // demander a GLFW de montrer la souris
@@ -120,42 +179,74 @@ void Game::ProcessInput() {
         break;
         case GameState::Playing:
             // Gérer les inputs du joueur
+            if (controller.IsKeyPressed(GLFW_KEY_TAB)) {
+                Logger::Log("Touche Tab appuyée - Entrée mode menu");
+                stateMachine.TriggerPause();
+            }
+            
         break;
+
+
         case GameState::Pause:
             // Gérer les inputs du menu pause (Reprendre, Menu, Quitter)
+
+            // TAB : Quitter la pause, retour au jeu
+            // Voir s'il y aura besoin d'un système pour éviter les doubles inputs
+            if (controller.IsKeyPressed(GLFW_KEY_TAB)) {
+                Logger::Log("Touche Tab appuyée - Retour mode jeu");
+                stateMachine.TriggerPlay();
+            }
+
         break;
+
+
         case GameState::GameOver:
             // Si le joueur clique sur "Rejouer" -> stateMachine.TriggerRestart();
             // Si le joueur clique sur "Menu" -> stateMachine.TriggerBackToMenu();
         break;
+
+
+
         case GameState::Option:
             // Si le joueur clique sur "Retour" -> stateMachine.TriggerBackToMenu();
         break;
+
+
+
         case GameState::Quitting:
             // Si le joueur a appuyer sur QUIT alors on désactive son controleur et on remontre la souris
         break;
-    }
+    }*/
 }
 
 void Game::Update(double dt) {
-    scene->Update(dt);
-    glfwPollEvents();
     switch (stateMachine.GetCurrentState()) {
+       
+    
         case GameState::Menu:
+            // On verra quand on aura le menu
         break;
+
+
         case GameState::Playing:
             // Mettre à jour la physique Jolt, les acteurs, la caméra
+            scene->Update(dt);
         break;
+
+
         case GameState::Pause:
             // Le jeu est en pause (on ne met pas à jour la physique/le gameplay)
+
         break;
         case GameState::GameOver:
             // Le jeu devrais retourner a Setup() pour réinitialiser toute les variable du jeu
         break;
+
         case GameState::Option:
             // Selon les bouton appuyer on doit changer les options Vulkan ici
             // regarder les event qui on été activer
         break;
+
         case GameState::Quitting:
             // pas besoin que je vous explique ce qu'il faut faire ici
             isRunning = false;
@@ -164,7 +255,9 @@ void Game::Update(double dt) {
 }
 
 void Game::Render(double dt) {
-    switch (stateMachine.GetCurrentState()) {
+
+
+/*    switch (stateMachine.GetCurrentState()) {
         case GameState::Menu:
             // Afficher l'écran de début et les options
         break;
@@ -185,6 +278,11 @@ void Game::Render(double dt) {
         case GameState::Quitting:
             // honnêtement je sais pas si on a le temps d'afficher de quoi ici...
         break;
-    }
-    renderer->Draw();
+    }*/
+
+    // Determine si menu de pause doit être visible 
+    bool showMenuPause = stateMachine.GetCurrentState() == GameState::Pause;
+   
+    // Dessine frame 3D, et eventuellement UI par-dessus
+    renderer->Draw(showMenuPause);
 }
