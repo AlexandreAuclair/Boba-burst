@@ -2,9 +2,11 @@
 
 #include "PhysicsWorld.h"
 
-
-
-PhysicsWorld::PhysicsWorld() {
+PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
+{
+	// Will Recieve requests from player to move physical object
+	bus->SubscribeToEvent<GameMovementEvent>(this, &PhysicsWorld::HandleMovementEvent);
+	busPtr = &bus;
 
 	mTempAllocator = new TempAllocatorImpl(32 * 1024 * 1024);
 
@@ -17,12 +19,11 @@ PhysicsWorld::PhysicsWorld() {
 	// If you implement your own default material (PhysicsMaterial::sDefault) make sure to initialize it before this function or else this function will create one for you.
 	RegisterTypes();
 
-
 	// We need a job system that will execute physics jobs on multiple threads. Typically
 	// you would implement the JobSystem interface yourself and let Jolt Physics run on top
 	// of your own job scheduler. JobSystemThreadPool is an example implementation.
-	// 
-	//JobSystemThreadPool job_system(cMaxPhysicsJobs, cMaxPhysicsBarriers, thread::hardware_concurrency() - 1);
+	//
+	// JobSystemThreadPool job_system(cMaxPhysicsJobs, cMaxPhysicsBarriers, thread::hardware_concurrency() - 1);
 	mJobSystem = new JobSystemThreadPool(cMaxPhysicsJobs, cMaxPhysicsBarriers, thread::hardware_concurrency() - 1); // declaree ailleurs
 
 	physics_system.Init(cMaxBodies, cNumBodyMutexes, cMaxBodyPairs, cMaxContactConstraints, broad_phase_layer_interface, object_vs_broadphase_layer_filter, object_vs_object_layer_filter);
@@ -34,50 +35,69 @@ PhysicsWorld::PhysicsWorld() {
 	// ajout devoir : enlever gravité =========================
 	physics_system.SetGravity(Vec3(0.0f, 0.0f, 0.0f));
 
-	// -------------------- 
+	// --------------------
 
 	// The main way to interact with the bodies in the physics system is through the body interface. There is a locking and a non-locking
-// variant of this. We're going to use the locking version (even though we're not planning to access bodies from multiple threads)
-	//body_interface = physics_system.GetBodyInterface();
+	// variant of this. We're going to use the locking version (even though we're not planning to access bodies from multiple threads)
+	// body_interface = physics_system.GetBodyInterface();
 
 	//*/
 
 	// ---------------------------------------------------------------
-
 };
 
-
-
-bool PhysicsWorld::Update(float dt) 		
+bool PhysicsWorld::Update(float dt)
 {
 
-	//BodyInterface& body_interface = GetBodyInterface();
+	// BodyInterface& body_interface = GetBodyInterface();
 
-		if (dt != 0) {
-			// TRAITEMENT DES ICARUS 
-			/*while (!icarus_queue.empty()) {
-				BodyID ic_id = icarus_queue.back(); icarus_queue.pop_back();
-				body_interface.SetLinearVelocity(ic_id, Vec3(0.f, 50.f, 0.f));
-			}*/
+	if (dt != 0)
+	{
+		// TRAITEMENT DES ICARUS
+		/*while (!icarus_queue.empty()) {
+			BodyID ic_id = icarus_queue.back(); icarus_queue.pop_back();
+			body_interface.SetLinearVelocity(ic_id, Vec3(0.f, 50.f, 0.f));
+		}*/
 
+		// if (step % 60 == 0) {}
 
+		// ON TRAITE LES DEMANDES DE MOUVEMENTS
+		JPH::BodyInterface &bodyInterface = physics_system.GetBodyInterface();
 
-			//if (step % 60 == 0) {}
-
-			// If you take larger steps than 1 / 60th of a second you need to do multiple collision steps in order to keep the simulation stable. Do 1 collision step per 1 / 60th of a second (round up).
-			const int cCollisionSteps = 1;
-
-			// Step the world
-			physics_system.Update(dt, cCollisionSteps, mTempAllocator, mJobSystem);
-			//step++;
-
-			//BodyManager::DrawSettings draw_settings;
-			//draw_settings.mDrawShape = true;
-			//physics_system.DrawBodies(draw_settings, mDebugRenderer);
-
+		for (size_t i = 0; i < movementRequestsQueue.size(); i++)
+		{
+			ImpulsionRequest currentMod = movementRequestsQueue[i];
+			bodyInterface.SetLinearVelocity(currentMod.mBodyID, currentMod.modsVec3);
 		}
 
-		return true;
+		movementRequestsQueue.clear();
+
+		// If you take larger steps than 1 / 60th of a second you need to do multiple collision steps in order to keep the simulation stable. Do 1 collision step per 1 / 60th of a second (round up).
+		const int cCollisionSteps = 1;
+
+		// Step the world
+		physics_system.Update(dt, cCollisionSteps, mTempAllocator, mJobSystem);
+		// step++;
+
+		for (auto collision : contactsQueue)
+		{
+			busPtr->get()->EmitEvent<CollisionEvent>(collision.acteur1, collision.acteur2);
+		}
+
+		// BodyManager::DrawSettings draw_settings;
+		// draw_settings.mDrawShape = true;
+		// physics_system.DrawBodies(draw_settings, mDebugRenderer);
+	}
+
+	return true;
+}
+void PhysicsWorld::HandleMovementEvent(GameMovementEvent &event)
+{
+	ImpulsionRequest i;
+	i.mBodyID = event.bodyID;
+	i.modsVec3 = (event.isLeftInput == true ? impulseLeftValue : impulseRightValue);
+	std::lock_guard(mutexMovement);
+	movementRequestsQueue.push_back(i);
 };
 
-//ENTRY_POINT(MyApp, RegisterDefaultAllocator)
+// ENTRY_POINT(MyApp, RegisterDefaultAllocator)
