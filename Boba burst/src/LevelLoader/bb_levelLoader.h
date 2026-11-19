@@ -9,7 +9,8 @@ public:
     LevelLoader();
     ~LevelLoader();
 
-    bool LoadLevel(int n, std::string path);
+    bool LoadLevel(std::string path);
+    void FreeModelAndTextures();
 
 private:
 

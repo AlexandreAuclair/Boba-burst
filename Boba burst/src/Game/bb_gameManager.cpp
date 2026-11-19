@@ -2,14 +2,14 @@
 
 using namespace std;
 
-GameManager::GameManager()
-{
+GameManager::GameManager(){
+
 }
 
-GameManager::~GameManager()
-{
+GameManager::~GameManager(){
+
 }
 
-void GameManager::update()
-{
+void GameManager::update(){
+    
 }

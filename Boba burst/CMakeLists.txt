@@ -13,9 +13,21 @@ add_subdirectory(./deps/json-develop)
 
 find_package(Vulkan REQUIRED)
 
+list(APPEND SHADERS
+    ./shaders/global.vert
+    ./shaders/global.frag
+
+    # Shaders pour l'UI de test
+    ./shaders/ui.vert
+    ./shaders/ui.frag
+    ./shaders/skybox.frag
+)
+set(SHADER_OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders_out)
+
 # Ajoutez une source à l'exécutable de ce projet.
 add_executable (Boba_burst 
 "./src/bb_main.cpp"
+"./src/stb_image.h"
 "./src/Game/bb_game.cpp"
 "./src/Game/bb_game.h"
 "./src/Game/bb_camera.h"
@@ -58,13 +70,39 @@ add_executable (Boba_burst
 "./src/DataStruct/bb_section.h"
 "./src/DataStruct/bb_sommet.h"
 
+"./src/Scenes/bb_gameScene.h"
+"./src/Scenes/bb_gameScene.cpp"
+"./src/VulkanContext/bb_vulkanContext.h"
+"./src/VulkanContext/bb_vulkanContext.cpp"
+"./src/VulkanRenderer/bb_vulkanRenderer.h"
+"./src/VulkanRenderer/bb_vulkanRenderer.cpp"
+"./src/ModelImporter/bb_modelImporter.h"
+"./src/ModelImporter/bb_modelImporter.cpp"
+
+# Ajout des controller
+"./src/Controller/Controller.h"
+"./src/Controller/Controller.cpp"
+
+# Ajout des renderer de l'UI
+"./src/UIRenderer/UIRenderer.h"
+"./src/UIRenderer/UIRenderer.cpp"
+
 "./src/Events/bb_onCollisionEvent.h"
 "./src/Events/bb_gameMovementEvent.h"
 
 "./src/Utilities/utilities.h"
 )
 
+foreach(SHADER IN LISTS SHADERS)
+    get_filename_component(FILENAME ${SHADER} NAME)
+    add_custom_command(OUTPUT ${SHADER_OUT_DIR}/${FILENAME}.spv
+        COMMAND ${Vulkan_GLSLC_EXECUTABLE} --target-env=vulkan1.3 ${CMAKE_CURRENT_SOURCE_DIR}/${SHADER} -o ${SHADER_OUT_DIR}/${FILENAME}.spv
+        DEPENDS ${SHADER}
+        COMMENT "Compiling ${FILENAME}")
+    list(APPEND SPV_SHADERS ${SHADER_OUT_DIR}/${FILENAME}.spv)
+endForeach()
 
+add_custom_target(shaders ALL DEPENDS ${SPV_SHADERS})
 
 set_property(TARGET Boba_burst PROPERTY CXX_STANDARD 20)
 
@@ -73,3 +111,5 @@ set(LINK_LIBRARIES ${Vulkan_LIBRARIES} glfw glm assimp::assimp nlohmann_json Jol
 target_link_libraries(Boba_burst PRIVATE ${LINK_LIBRARIES})
 
 target_include_directories(Boba_burst PRIVATE ${Vulkan_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_dependencies(Boba_burst shaders)

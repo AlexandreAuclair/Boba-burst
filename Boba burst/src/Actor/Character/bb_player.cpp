@@ -1,13 +1,7 @@
 #include "bb_player.h"
-#include "string"
-#include "src/Events/bb_gameMovementEvent.h"
-#include <Jolt/Physics/Collision/Shape/BoxShape.h>
-#include <Jolt/Physics/Body/BodyCreationSettings.h>
-#include "../../Game/PhysicsWorld.h"
 
 Player::Player() {}
-Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface)
-{
+Player::Player(int id_, Transform t_, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) : Character(id_, t_){
     // Valeur pour Speed et Position sont temporaire à des fin de test.
     // TODO: RETIRER LORSQUE PLAYER INSTANCIER CORRECTEMENT
     speed = 10;
@@ -24,7 +18,6 @@ Player::Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, 
     busPtr = &inputBus;
 }
 Player::~Player() {}
-
 JPH::BodyID Player::InitPhysics(JPH::BodyInterface &bodyInterface)
 {
     JPH::BodyCreationSettings sphere_settings = BodyCreationSettings(new JPH::BoxShape(JPH::RVec3(0.5f, 0.5f, 0.5f)), JPH::RVec3(0.0_r, 0.0_r, 0.0_r), JPH::Quat::sIdentity(), JPH::EMotionType::Dynamic, Layers::BONUS_OBJECTS);
@@ -33,6 +26,7 @@ JPH::BodyID Player::InitPhysics(JPH::BodyInterface &bodyInterface)
     this->bodyID = bodyInterface.CreateAndAddBody(sphere_settings, JPH::EActivation::DontActivate);
     return this->bodyID;
 }
+
 
 void Player::UpdateFromPhysics(const JPH::BodyInterface &bodyInterface)
 {

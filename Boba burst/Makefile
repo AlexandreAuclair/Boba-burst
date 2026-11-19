@@ -175,6 +175,20 @@ Boba_burst/fast:
 	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/build"
 .PHONY : Boba_burst/fast
 
+# Convenience name for target.
+Boba\ burst/CMakeFiles/shaders.dir/rule:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 "Boba burst/CMakeFiles/shaders.dir/rule"
+.PHONY : Boba\ burst/CMakeFiles/shaders.dir/rule
+
+# Convenience name for target.
+shaders: Boba\ burst/CMakeFiles/shaders.dir/rule
+.PHONY : shaders
+
+# fast build rule for target.
+shaders/fast:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/shaders.dir/build.make" "Boba burst/CMakeFiles/shaders.dir/build"
+.PHONY : shaders/fast
+
 src/Actor/Character/bb_bot.o: src/Actor/Character/bb_bot.cpp.o
 .PHONY : src/Actor/Character/bb_bot.o
 
@@ -222,30 +236,6 @@ src/Actor/Character/bb_character.s: src/Actor/Character/bb_character.cpp.s
 src/Actor/Character/bb_character.cpp.s:
 	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Actor/Character/bb_character.cpp.s"
 .PHONY : src/Actor/Character/bb_character.cpp.s
-
-src/Actor/Character/bb_inputManager.o: src/Actor/Character/bb_inputManager.cpp.o
-.PHONY : src/Actor/Character/bb_inputManager.o
-
-# target to build an object file
-src/Actor/Character/bb_inputManager.cpp.o:
-	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Actor/Character/bb_inputManager.cpp.o"
-.PHONY : src/Actor/Character/bb_inputManager.cpp.o
-
-src/Actor/Character/bb_inputManager.i: src/Actor/Character/bb_inputManager.cpp.i
-.PHONY : src/Actor/Character/bb_inputManager.i
-
-# target to preprocess a source file
-src/Actor/Character/bb_inputManager.cpp.i:
-	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Actor/Character/bb_inputManager.cpp.i"
-.PHONY : src/Actor/Character/bb_inputManager.cpp.i
-
-src/Actor/Character/bb_inputManager.s: src/Actor/Character/bb_inputManager.cpp.s
-.PHONY : src/Actor/Character/bb_inputManager.s
-
-# target to generate assembly for a file
-src/Actor/Character/bb_inputManager.cpp.s:
-	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Actor/Character/bb_inputManager.cpp.s"
-.PHONY : src/Actor/Character/bb_inputManager.cpp.s
 
 src/Actor/Character/bb_player.o: src/Actor/Character/bb_player.cpp.o
 .PHONY : src/Actor/Character/bb_player.o
@@ -342,54 +332,6 @@ src/Actor/Object/bb_trackObject.s: src/Actor/Object/bb_trackObject.cpp.s
 src/Actor/Object/bb_trackObject.cpp.s:
 	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Actor/Object/bb_trackObject.cpp.s"
 .PHONY : src/Actor/Object/bb_trackObject.cpp.s
-
-src/Actor/Object/obstacle.o: src/Actor/Object/obstacle.cpp.o
-.PHONY : src/Actor/Object/obstacle.o
-
-# target to build an object file
-src/Actor/Object/obstacle.cpp.o:
-	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Actor/Object/obstacle.cpp.o"
-.PHONY : src/Actor/Object/obstacle.cpp.o
-
-src/Actor/Object/obstacle.i: src/Actor/Object/obstacle.cpp.i
-.PHONY : src/Actor/Object/obstacle.i
-
-# target to preprocess a source file
-src/Actor/Object/obstacle.cpp.i:
-	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Actor/Object/obstacle.cpp.i"
-.PHONY : src/Actor/Object/obstacle.cpp.i
-
-src/Actor/Object/obstacle.s: src/Actor/Object/obstacle.cpp.s
-.PHONY : src/Actor/Object/obstacle.s
-
-# target to generate assembly for a file
-src/Actor/Object/obstacle.cpp.s:
-	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Actor/Object/obstacle.cpp.s"
-.PHONY : src/Actor/Object/obstacle.cpp.s
-
-src/Game/PhysicsWorld.o: src/Game/PhysicsWorld.cpp.o
-.PHONY : src/Game/PhysicsWorld.o
-
-# target to build an object file
-src/Game/PhysicsWorld.cpp.o:
-	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Game/PhysicsWorld.cpp.o"
-.PHONY : src/Game/PhysicsWorld.cpp.o
-
-src/Game/PhysicsWorld.i: src/Game/PhysicsWorld.cpp.i
-.PHONY : src/Game/PhysicsWorld.i
-
-# target to preprocess a source file
-src/Game/PhysicsWorld.cpp.i:
-	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Game/PhysicsWorld.cpp.i"
-.PHONY : src/Game/PhysicsWorld.cpp.i
-
-src/Game/PhysicsWorld.s: src/Game/PhysicsWorld.cpp.s
-.PHONY : src/Game/PhysicsWorld.s
-
-# target to generate assembly for a file
-src/Game/PhysicsWorld.cpp.s:
-	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Game/PhysicsWorld.cpp.s"
-.PHONY : src/Game/PhysicsWorld.cpp.s
 
 src/Game/bb_game.o: src/Game/bb_game.cpp.o
 .PHONY : src/Game/bb_game.o
@@ -511,6 +453,126 @@ src/Logger/Logger.cpp.s:
 	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Logger/Logger.cpp.s"
 .PHONY : src/Logger/Logger.cpp.s
 
+src/ModelImporter/bb_modelImporter.o: src/ModelImporter/bb_modelImporter.cpp.o
+.PHONY : src/ModelImporter/bb_modelImporter.o
+
+# target to build an object file
+src/ModelImporter/bb_modelImporter.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/ModelImporter/bb_modelImporter.cpp.o"
+.PHONY : src/ModelImporter/bb_modelImporter.cpp.o
+
+src/ModelImporter/bb_modelImporter.i: src/ModelImporter/bb_modelImporter.cpp.i
+.PHONY : src/ModelImporter/bb_modelImporter.i
+
+# target to preprocess a source file
+src/ModelImporter/bb_modelImporter.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/ModelImporter/bb_modelImporter.cpp.i"
+.PHONY : src/ModelImporter/bb_modelImporter.cpp.i
+
+src/ModelImporter/bb_modelImporter.s: src/ModelImporter/bb_modelImporter.cpp.s
+.PHONY : src/ModelImporter/bb_modelImporter.s
+
+# target to generate assembly for a file
+src/ModelImporter/bb_modelImporter.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/ModelImporter/bb_modelImporter.cpp.s"
+.PHONY : src/ModelImporter/bb_modelImporter.cpp.s
+
+src/Scenes/CubeScene.o: src/Scenes/CubeScene.cpp.o
+.PHONY : src/Scenes/CubeScene.o
+
+# target to build an object file
+src/Scenes/CubeScene.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/CubeScene.cpp.o"
+.PHONY : src/Scenes/CubeScene.cpp.o
+
+src/Scenes/CubeScene.i: src/Scenes/CubeScene.cpp.i
+.PHONY : src/Scenes/CubeScene.i
+
+# target to preprocess a source file
+src/Scenes/CubeScene.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/CubeScene.cpp.i"
+.PHONY : src/Scenes/CubeScene.cpp.i
+
+src/Scenes/CubeScene.s: src/Scenes/CubeScene.cpp.s
+.PHONY : src/Scenes/CubeScene.s
+
+# target to generate assembly for a file
+src/Scenes/CubeScene.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/CubeScene.cpp.s"
+.PHONY : src/Scenes/CubeScene.cpp.s
+
+src/Scenes/bb_gameScene.o: src/Scenes/bb_gameScene.cpp.o
+.PHONY : src/Scenes/bb_gameScene.o
+
+# target to build an object file
+src/Scenes/bb_gameScene.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/bb_gameScene.cpp.o"
+.PHONY : src/Scenes/bb_gameScene.cpp.o
+
+src/Scenes/bb_gameScene.i: src/Scenes/bb_gameScene.cpp.i
+.PHONY : src/Scenes/bb_gameScene.i
+
+# target to preprocess a source file
+src/Scenes/bb_gameScene.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/bb_gameScene.cpp.i"
+.PHONY : src/Scenes/bb_gameScene.cpp.i
+
+src/Scenes/bb_gameScene.s: src/Scenes/bb_gameScene.cpp.s
+.PHONY : src/Scenes/bb_gameScene.s
+
+# target to generate assembly for a file
+src/Scenes/bb_gameScene.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/Scenes/bb_gameScene.cpp.s"
+.PHONY : src/Scenes/bb_gameScene.cpp.s
+
+src/VulkanContext/bb_vulkanContext.o: src/VulkanContext/bb_vulkanContext.cpp.o
+.PHONY : src/VulkanContext/bb_vulkanContext.o
+
+# target to build an object file
+src/VulkanContext/bb_vulkanContext.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanContext/bb_vulkanContext.cpp.o"
+.PHONY : src/VulkanContext/bb_vulkanContext.cpp.o
+
+src/VulkanContext/bb_vulkanContext.i: src/VulkanContext/bb_vulkanContext.cpp.i
+.PHONY : src/VulkanContext/bb_vulkanContext.i
+
+# target to preprocess a source file
+src/VulkanContext/bb_vulkanContext.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanContext/bb_vulkanContext.cpp.i"
+.PHONY : src/VulkanContext/bb_vulkanContext.cpp.i
+
+src/VulkanContext/bb_vulkanContext.s: src/VulkanContext/bb_vulkanContext.cpp.s
+.PHONY : src/VulkanContext/bb_vulkanContext.s
+
+# target to generate assembly for a file
+src/VulkanContext/bb_vulkanContext.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanContext/bb_vulkanContext.cpp.s"
+.PHONY : src/VulkanContext/bb_vulkanContext.cpp.s
+
+src/VulkanRenderer/bb_vulkanRenderer.o: src/VulkanRenderer/bb_vulkanRenderer.cpp.o
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.o
+
+# target to build an object file
+src/VulkanRenderer/bb_vulkanRenderer.cpp.o:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanRenderer/bb_vulkanRenderer.cpp.o"
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.cpp.o
+
+src/VulkanRenderer/bb_vulkanRenderer.i: src/VulkanRenderer/bb_vulkanRenderer.cpp.i
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.i
+
+# target to preprocess a source file
+src/VulkanRenderer/bb_vulkanRenderer.cpp.i:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanRenderer/bb_vulkanRenderer.cpp.i"
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.cpp.i
+
+src/VulkanRenderer/bb_vulkanRenderer.s: src/VulkanRenderer/bb_vulkanRenderer.cpp.s
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.s
+
+# target to generate assembly for a file
+src/VulkanRenderer/bb_vulkanRenderer.cpp.s:
+	cd /home/deom/Documents/Boba-burst && $(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/Boba_burst.dir/build.make" "Boba burst/CMakeFiles/Boba_burst.dir/src/VulkanRenderer/bb_vulkanRenderer.cpp.s"
+.PHONY : src/VulkanRenderer/bb_vulkanRenderer.cpp.s
+
 src/bb_main.o: src/bb_main.cpp.o
 .PHONY : src/bb_main.o
 
@@ -547,6 +609,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... shaders"
 	@echo "... Boba_burst"
 	@echo "... src/Actor/Character/bb_bot.o"
 	@echo "... src/Actor/Character/bb_bot.i"
@@ -554,9 +617,6 @@ help:
 	@echo "... src/Actor/Character/bb_character.o"
 	@echo "... src/Actor/Character/bb_character.i"
 	@echo "... src/Actor/Character/bb_character.s"
-	@echo "... src/Actor/Character/bb_inputManager.o"
-	@echo "... src/Actor/Character/bb_inputManager.i"
-	@echo "... src/Actor/Character/bb_inputManager.s"
 	@echo "... src/Actor/Character/bb_player.o"
 	@echo "... src/Actor/Character/bb_player.i"
 	@echo "... src/Actor/Character/bb_player.s"
@@ -569,12 +629,6 @@ help:
 	@echo "... src/Actor/Object/bb_trackObject.o"
 	@echo "... src/Actor/Object/bb_trackObject.i"
 	@echo "... src/Actor/Object/bb_trackObject.s"
-	@echo "... src/Actor/Object/obstacle.o"
-	@echo "... src/Actor/Object/obstacle.i"
-	@echo "... src/Actor/Object/obstacle.s"
-	@echo "... src/Game/PhysicsWorld.o"
-	@echo "... src/Game/PhysicsWorld.i"
-	@echo "... src/Game/PhysicsWorld.s"
 	@echo "... src/Game/bb_game.o"
 	@echo "... src/Game/bb_game.i"
 	@echo "... src/Game/bb_game.s"
@@ -590,6 +644,21 @@ help:
 	@echo "... src/Logger/Logger.o"
 	@echo "... src/Logger/Logger.i"
 	@echo "... src/Logger/Logger.s"
+	@echo "... src/ModelImporter/bb_modelImporter.o"
+	@echo "... src/ModelImporter/bb_modelImporter.i"
+	@echo "... src/ModelImporter/bb_modelImporter.s"
+	@echo "... src/Scenes/CubeScene.o"
+	@echo "... src/Scenes/CubeScene.i"
+	@echo "... src/Scenes/CubeScene.s"
+	@echo "... src/Scenes/bb_gameScene.o"
+	@echo "... src/Scenes/bb_gameScene.i"
+	@echo "... src/Scenes/bb_gameScene.s"
+	@echo "... src/VulkanContext/bb_vulkanContext.o"
+	@echo "... src/VulkanContext/bb_vulkanContext.i"
+	@echo "... src/VulkanContext/bb_vulkanContext.s"
+	@echo "... src/VulkanRenderer/bb_vulkanRenderer.o"
+	@echo "... src/VulkanRenderer/bb_vulkanRenderer.i"
+	@echo "... src/VulkanRenderer/bb_vulkanRenderer.s"
 	@echo "... src/bb_main.o"
 	@echo "... src/bb_main.i"
 	@echo "... src/bb_main.s"

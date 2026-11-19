@@ -3,10 +3,7 @@
 Track::Track() : nbSections(0) {
 }
 
-Track::Track(int _id, int _nbSections) : Actor(_id), nbSections(_nbSections){
-    //initaliser le corps dans Jolt
-    InitPhysics(*sections->bodyInterface);
-}
+Track::Track(int id_, Transform t_, int nbSections_) : Actor(id_, t_), nbSections(nbSections_){}
 
 Track::~Track(){
 

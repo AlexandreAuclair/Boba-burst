@@ -1,0 +1,75 @@
+{
+    "levelName": "Test_Gouttiere",
+    "models": [
+      {
+        "modelName": "gouttiere",
+        "modelPath": "assets/gouttiere.fbx"
+      },
+      {
+        "modelName": "gouttiere2",
+        "modelPath": "assets/gouttiere2.fbx"
+      },
+      {
+        "modelName": "sphere",
+        "modelPath": "assets/sphere.fbx"
+      }
+    ],
+    "textures": [
+        {
+            "textureName": "bugsBunny",
+            "texturePath" : "assets/bugs_bunny.jpg"
+        },
+        {
+            "textureName": "skybox",
+            "texturePath" : "assets/skybox.jpg"
+        }
+    ],
+    "actors": [
+      {
+        "id": 0,
+        "type": "Track",
+        "transform": {
+            "position": [1.0, 1.0, 1.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "nbSections": 2,
+        "modelName": "gouttiere",
+        "textureName": "bugsBunny"
+      },
+      {
+        "id": 1,
+        "type": "Track",
+        "transform": {
+            "position": [-1.0, -1.0, -1.0], 
+            "rotation": [0.0, 60.0, 90.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "nbSections": 2,
+        "modelName": "gouttiere",
+        "textureName": "bugsBunny"
+      },
+      {
+        "id": 2,
+        "type": "Player",
+        "transform": {
+            "position": [1.0, -1.0, -10.0],
+            "rotation": [0.0, 90.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "modelName": "sphere",
+        "textureName": "bugsBunny"
+      },
+      {
+        "id": 3,
+        "type": "Character",
+        "transform": {
+            "position": [0.0, 0.0, 0.0],
+            "rotation": [-90.0, 0.0, 0.0],
+            "scale": [7.0, 7.0, 7.0]
+        },
+        "modelName": "sphere",
+        "textureName": "skybox"
+      }
+    ]
+  }

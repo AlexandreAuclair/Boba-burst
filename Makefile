@@ -175,6 +175,19 @@ Boba_burst/fast:
 .PHONY : Boba_burst/fast
 
 #=============================================================================
+# Target rules for targets named shaders
+
+# Build rule for target.
+shaders: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 shaders
+.PHONY : shaders
+
+# fast build rule for target.
+shaders/fast:
+	$(MAKE) $(MAKESILENT) -f "Boba burst/CMakeFiles/shaders.dir/build.make" "Boba burst/CMakeFiles/shaders.dir/build"
+.PHONY : shaders/fast
+
+#=============================================================================
 # Target rules for targets named uninstall
 
 # Build rule for target.
@@ -277,6 +290,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... shaders"
 	@echo "... uninstall"
 	@echo "... update_mappings"
 	@echo "... Boba_burst"

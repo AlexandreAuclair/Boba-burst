@@ -1,40 +1,43 @@
 ﻿#include "bb_game.h"
-//==========================================================================
-//      include externe
-//==========================================================================
+    //==========================================================================
+    //      include externe
+    //==========================================================================
 
-//==========================================================================
-//      include interne
-//==========================================================================
+    //==========================================================================
+    //      include interne
+    //==========================================================================
 #include "../Logger/Logger.h"
+#include "../Scenes/bb_gameScene.h"
+
+#include "../Controller/Controller.h"
+
+
+
 
 //==========================================================================
 //      fonction publique
 //==========================================================================
 
-Game::Game() : isDebug(false), isRunning(true)
-{
+Game::Game() : isDebug(false), isRunning(true){
     Logger::Log("Game constructor called!");
     gameEventBus = std::make_unique<EventBus>();
 }
 
-Game::~Game()
-{
+Game::~Game() {
     Logger::Log("Game destructor called!");
 }
 
-void Game::Initialize()
-{
+bool Game::Initialize() {
     if (!glfwInit())
     {
         Logger::Err("Failed to initialize glfw.\r\n");
-        return;
+        return false;
     }
 
     if (!glfwVulkanSupported())
     {
         Logger::Err("Vulkan not supported.\r\n");
-        return;
+        return false;
     }
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -42,10 +45,28 @@ void Game::Initialize()
     if (!window)
     {
         Logger::Err("Failed to create window.\r\n");
-        return;
+        return false;
     }
 
-    // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);		// Cache le curseur et le verrouille au mileu de la fen�tre
+    // Donner la fenêtre au controller
+    controller.SetWindow(window);
+
+    context.CreateInstance();
+	context.CreateDevice();
+
+	VkSurfaceKHR surface = VK_NULL_HANDLE;
+	VkResult result = glfwCreateWindowSurface(context.GetInstance(), window, NULL, &surface);
+    if(result != VK_SUCCESS){
+        Logger::Err("Failed to create window surface.\r\n");
+        return false;
+    }
+
+	context.SetSurface(surface);
+	context.CreateSwapChain();
+
+    renderer = std::make_unique<VulkanRenderer>(context);
+
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);		// Cache le curseur et le verrouille au mileu de la fen�tre
     if (glfwRawMouseMotionSupported())
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
 
@@ -53,35 +74,57 @@ void Game::Initialize()
     gameEventBus->Reset();
 
     m_physicsWorld = make_unique<PhysicsWorld>(gameEventBus);
+
+    return true;
 }
 
-void Game::Run()
-{
-    gameEventBus;
+void Game::Run() {
+   
+    // Setup l'ensemble du jeu 
     Setup();
+
+    // Récupérer le temps 
     double lastTime = glfwGetTime();
-    while (!glfwWindowShouldClose(window))
-    {
+
+
+    while (isRunning && !glfwWindowShouldClose(window)) {
+        
+        // 1. Actualiser les événements
+        glfwPollEvents();
+
+        // 2. Calculer le deltaTime
         double currentTime = glfwGetTime();
-        double elapsed = currentTime - lastTime;
-        millisecsPreviousFrame = elapsed;
-        ProcessInput();
-        Update();
-        Render();
+        double dt = currentTime - lastTime;
         lastTime = currentTime;
+        millisecsPreviousFrame = dt;
+        // Ferme la fenêtre si on appuie sur Echap
+        if (controller.IsKeyPressed(GLFW_KEY_ESCAPE)) {
+            glfwSetWindowShouldClose(window, GLFW_TRUE);
+        }
+        
+        // 3. Traiter les inputs
+        ProcessInput();
+
+        // 4. Mettre à jour la logique
+        Update(dt);
+
+        // 5. Dessiner la frame
+        Render(dt);
     }
 }
 
-void Game::Destroy()
-{
+void Game::Destroy() {
     Logger::Shutdown();
-    // GameManager::Shutdown();
-
+    //GameManager::Shutdown();
+    levelLoader.FreeModelAndTextures();
     /*// Pour plus tard pour le profiler
     ImGui_ImplSDLRenderer2_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
     */
+
+    // Fin de vie du programme
+    context.GetQueue().waitIdle();
     glfwDestroyWindow(window);
     glfwTerminate();
 }
@@ -90,10 +133,18 @@ void Game::Destroy()
 //      fonction privé
 //==========================================================================
 
-void Game::Setup()
-{
+void Game::Setup() {
     // Appeler le level Loader
-    levelLoader.LoadLevel(1, "level.json");
+        if(!levelLoader.LoadLevel("level1.json")){
+        Logger::Err("Could not load level1.json");
+    }
+    else{
+        Logger::Log("level1.json successfully loaded");
+    }
+
+    // setter la 1er scene
+    scene = std::make_shared<GameScene>(context);
+	renderer->SetScene(scene);
     // Temporaire pour test
     GameManager::get().players.push_back(std::make_unique<Player>(1, gameEventBus, window, m_physicsWorld->GetBodyInterface()));
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
@@ -138,16 +189,89 @@ void Game::ProcessInput()
     }
 }
 
-void Game::Update()
-{
+/*void Game::ProcessInput(){
+
+    bool tabPressed = controller.IsKeyPressed(GLFW_KEY_TAB);
+
+    if (tabPressed && !tabWasPressed) {
+        switch (stateMachine.GetCurrentState()) {
+            case GameState::Playing : 
+                Logger::Log("Tab pressee - Entree en pause");
+                stateMachine.TriggerPause();
+                glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+                break;
+        
+            case GameState::Pause : 
+                Logger::Log("Tab pressee - Retour au jeu");
+                stateMachine.TriggerPlay();
+                glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+                break;
+
+            default : 
+                Logger::Err("State incohérent avec la touche"); 
+        }
+
+    }
+    tabWasPressed = tabPressed;
+
+/*    switch (stateMachine.GetCurrentState()) {
+        case GameState::Menu:
+            // Gérer les clics sur les boutons du menu principal
+            // demander a GLFW de montrer la souris
+            // Si clic sur "Play" -> stateMachine.TriggerPlay(); cacher la souris avec glfwSetInputMode
+            // Si clic sur "Options" -> stateMachine.TriggerOption();
+            // Si clic sur "Quit" -> stateMachine.TriggerQuit();
+        break;
+        case GameState::Playing:
+            // Gérer les inputs du joueur
+            if (controller.IsKeyPressed(GLFW_KEY_TAB)) {
+                Logger::Log("Touche Tab appuyée - Entrée mode menu");
+                stateMachine.TriggerPause();
+            }
+            
+        break;
+
+
+        case GameState::Pause:
+            // Gérer les inputs du menu pause (Reprendre, Menu, Quitter)
+
+            // TAB : Quitter la pause, retour au jeu
+            // Voir s'il y aura besoin d'un système pour éviter les doubles inputs
+            if (controller.IsKeyPressed(GLFW_KEY_TAB)) {
+                Logger::Log("Touche Tab appuyée - Retour mode jeu");
+                stateMachine.TriggerPlay();
+            }
+
+        break;
+
+
+        case GameState::GameOver:
+            // Si le joueur clique sur "Rejouer" -> stateMachine.TriggerRestart();
+            // Si le joueur clique sur "Menu" -> stateMachine.TriggerBackToMenu();
+        break;
+
+
+
+        case GameState::Option:
+            // Si le joueur clique sur "Retour" -> stateMachine.TriggerBackToMenu();
+        break;
+
+
+
+        case GameState::Quitting:
+            // Si le joueur a appuyer sur QUIT alors on désactive son controleur et on remontre la souris
+        break;
+    }*/
+}*/
+
+void Game::Update(double dt) {
     glfwPollEvents();
-    switch (stateMachine.GetCurrentState())
-    {
-    case GameState::Menu:
+    switch (stateMachine.GetCurrentState()) {
+        case GameState::Menu:
         break;
     case GameState::Playing:
         // Mettre à jour la physique Jolt, les acteurs, la caméra
-
+	scene->Update(dt);
         // La physique de Jolt est mise à jours et les événement de collision sont lancer.
         m_physicsWorld->Update(millisecsPreviousFrame);
 
@@ -156,68 +280,50 @@ void Game::Update()
                         player->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
                         player->Update(millisecsPreviousFrame); });
 
-        /*
-                // Update des différents acteurs
-                for(auto pair : GameManager::get().actorsById) {
-
-                    pair.second->Update(millisecsPreviousFrame);
 
                 }
 
-                // Traitement des collisions
-
-                for( auto collision : GameManager::get().m_physicsWorld.GetContactsQueue()) {
-
-                    gameEventBus.get()->EmitEvent<CollisionEvent>(collision.acteur1, collision.acteur2);
-                    //GameManager::get().actorsById[collision.acteur1],
-                    //GameManager::get().actorsById[collision.acteur2]
-
-                }
-
-                // On vide la liste des collisions
-                GameManager::get().m_physicsWorld.GetContactsQueue().clear();*/
-
         break;
-    case GameState::Pause:
-        // Le jeu est en pause (on ne met pas à jour la physique/le gameplay)
+        case GameState::Pause:
+            // Le jeu est en pause (on ne met pas à jour la physique/le gameplay)
         break;
-    case GameState::GameOver:
-        // Le jeu devrais retourner a Setup() pour réinitialiser toute les variable du jeu
+        case GameState::GameOver:
+            // Le jeu devrais retourner a Setup() pour réinitialiser toute les variable du jeu
         break;
-    case GameState::Option:
-        // Selon les bouton appuyer on doit changer les options Vulkan ici
-        // regarder les event qui on été activer
+        case GameState::Option:
+            // Selon les bouton appuyer on doit changer les options Vulkan ici
+            // regarder les event qui on été activer
         break;
-    case GameState::Quitting:
-        // pas besoin que je vous explique ce qu'il faut faire ici
-        isRunning = false;
+        case GameState::Quitting:
+            // pas besoin que je vous explique ce qu'il faut faire ici
+            isRunning = false;
         break;
     }
 }
 
-void Game::Render()
-{
-    switch (stateMachine.GetCurrentState())
-    {
-    case GameState::Menu:
-        // Afficher l'écran de début et les options
+void Game::Render(double dt) {
+
+
+/*    switch (stateMachine.GetCurrentState()) {
+        case GameState::Menu:
+            // Afficher l'écran de début et les options
         break;
-    case GameState::Playing:
-        // Afficher ce que la camera voit aka. la scène
+        case GameState::Playing:
+            // Afficher ce que la camera voit aka. la scène
         break;
-    case GameState::Pause:
-        // Afficher la scène en plus noir(genre * 0.5 les couleurs)
-        // afficher les options du menu Pause
+        case GameState::Pause:
+            // Afficher la scène en plus noir(genre * 0.5 les couleurs)
+            // afficher les options du menu Pause
         break;
-    case GameState::GameOver:
-        // Afficher l'écran de Game Over
-        // UI image
+        case GameState::GameOver:
+            // Afficher l'écran de Game Over
+            // UI image
         break;
-    case GameState::Option:
-        // Afficher les options dans le UI
+        case GameState::Option:
+            // Afficher les options dans le UI
         break;
-    case GameState::Quitting:
-        // honnêtement je sais pas si on a le temps d'afficher de quoi ici...
+        case GameState::Quitting:
+            // honnêtement je sais pas si on a le temps d'afficher de quoi ici...
         break;
     }
 }
@@ -242,3 +348,9 @@ void Game::HandlePauseEvent(KeyPressedEvent &event)
         gameEventBus.get()->EmitEvent<PauseEvent>(true);
     }
 }
+
+   // Determine si menu de pause doit être visible 
+    bool showMenuPause = stateMachine.GetCurrentState() == GameState::Pause;
+   
+    // Dessine frame 3D, et eventuellement UI par-dessus
+    renderer->Draw(showMenuPause);

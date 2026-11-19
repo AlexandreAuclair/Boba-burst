@@ -7,7 +7,7 @@ GameState GameStateMachine::GetCurrentState() const {
 }
 
 void GameStateMachine::TriggerPlay() {
-    if (currentState == GameState::Menu) {
+    if (currentState == GameState::Menu || currentState == GameState::Pause) {
         ChangeState(GameState::Playing);
         Logger::Log("Game state is now playing");
     }

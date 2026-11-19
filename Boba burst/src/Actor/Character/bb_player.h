@@ -4,12 +4,10 @@
 #include <src/EventBus/bb_eventBus.h>
 #include "bb_inputManager.h"
 
-
-class Player : public Character
-{
+class Player : public Character {
 public:
     Player();
-    Player(int id, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface);
+    Player(int id_, Transform t_, std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface);
     ~Player();
 
 void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) override final;

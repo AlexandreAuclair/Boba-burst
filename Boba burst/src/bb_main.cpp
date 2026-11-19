@@ -3,13 +3,23 @@
 
 #include "Game/bb_game.h"
 
+
 using namespace std;
 
 int main()
 {
-	Game::get().Initialize();
+	// 1. Récupérer la référence vers singleton
+	Game& game = Game::get();
 	
-	Game::get().Run();
+	// 2. Initialiser le jeu
+	if(!game.Initialize()){
+		return -1;
+	}
+	
+	// 3. On fait rouler la boucle de jeu
+	game.Run();
 
-	Game::get().Destroy();
+
+	// 4. On sort proprement
+	game.Destroy();
 }

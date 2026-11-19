@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\CMakeFiles\2249ddf0cb13db38418ad9b736bfcb6e\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{4DD53814-495A-3058-8761-35BAE5F0D6E9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

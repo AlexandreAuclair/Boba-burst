@@ -5,6 +5,7 @@
 
 
 TrackObject::TrackObject(){}
+TrackObject::TrackObject(int id_, Transform t_) : Actor(id_, t_) { }
 TrackObject::~TrackObject(){}
 
 JPH::BodyID TrackObject::InitPhysics(JPH::BodyInterface& bodyInterface){

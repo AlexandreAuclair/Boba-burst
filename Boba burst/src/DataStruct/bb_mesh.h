@@ -3,18 +3,24 @@
 #include <cstdint>
 #include <vector>
 #include <string>
+#include <memory>
+#include <vulkan/vulkan.hpp>
 
 #include "bb_sommet.h"
+#include "bb_texture.h"
 
 struct Mesh{
-    Mesh(const std::string &name) : nom(name){}
-    ~Mesh() = default;
-
-    std::string GetName(){ return nom; }
-
-private:
     std::string nom;
     glm::vec2 dimension; // pour boite englobantes
     std::vector<Sommet> sommets;
-    std::vector<uint32_t> indices;
+    std::vector<uint32_t> indexes;
+    std::shared_ptr<Texture> texture;
+
+    // Vulkan Vertex Buffer
+    vk::UniqueBuffer vertexBuffer;
+    vk::UniqueDeviceMemory vertexBufferMemory;
+
+    // Vulkan Index Buffer
+    vk::UniqueBuffer indexBuffer;
+    vk::UniqueDeviceMemory indexBufferMemory;
 };
