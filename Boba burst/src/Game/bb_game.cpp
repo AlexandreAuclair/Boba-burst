@@ -48,6 +48,8 @@ void Game::Initialize()
     // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);		// Cache le curseur et le verrouille au mileu de la fen�tre
     if (glfwRawMouseMotionSupported())
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+
+    m_physicsWorld = make_unique<PhysicsWorld>(gameEventBus);
 }
 
 void Game::Run()
@@ -91,7 +93,7 @@ void Game::Setup()
     /// Nous assure que le bus est vide au setup
     gameEventBus->Reset();
     // Temporaire pour test
-    GameManager::get().registerPlayer(std::make_unique<Player>(1, gameEventBus, window));
+    GameManager::get().players.push_back(std::make_unique<Player>(1, gameEventBus, window));
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
 }
 
@@ -110,16 +112,14 @@ void Game::ProcessInput()
     {
         // Gérer les inputs du joueur
         // Ask all players to check input
-        auto players = GameManager::get().GetAllPlayers();
-        std::for_each(players->begin(), players->end(), [](auto &player)
+        std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [](auto &player)
                       { player.get()->controlManager.CheckInput(); });
     }
     break;
     case GameState::Pause:
     {
         // Gérer les inputs du menu pause (Reprendre, Menu, Quitter)
-        auto players = GameManager::get().GetAllPlayers();
-        std::for_each(players->begin(), players->end(), [](auto &player)
+        std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [](auto &player)
                       { player.get()->controlManager.CheckInput(); });
     }
     break;
@@ -147,13 +147,12 @@ void Game::Update()
         // Mettre à jour la physique Jolt, les acteurs, la caméra
 
         // La physique de Jolt est mise à jours et les événement de collision sont lancer.
-        GameManager::get().m_physicsWorld.get()->Update(millisecsPreviousFrame);
+        m_physicsWorld->Update(millisecsPreviousFrame);
 
-        auto &players = GameManager::get().players;
-        std::for_each(players.begin(), players.end(), [&](auto &player)
+        std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [&](auto &player)
                       {
-                        player.get()->UpdateFromPhysics(GameManager::get().m_physicsWorld.get()->GetBodyInterface());
-                        player.get()->Update(millisecsPreviousFrame); });
+                        player->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
+                        player->Update(millisecsPreviousFrame); });
 
         /*
                 // Update des différents acteurs

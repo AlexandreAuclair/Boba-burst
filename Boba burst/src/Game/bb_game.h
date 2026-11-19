@@ -57,6 +57,8 @@ private:
     GameStateMachine stateMachine;
     LevelLoader levelLoader;
     std::unique_ptr<EventBus> gameEventBus;
+    std::unique_ptr<PhysicsWorld> m_physicsWorld;
+
     //  Profiler profiler; // pour plus tard
 };
 

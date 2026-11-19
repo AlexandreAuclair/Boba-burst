@@ -11,6 +11,7 @@ public:
 protected:
     JPH::BodyID InitPhysics(JPH::BodyInterface &bodyInterface) override;
     void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) override;
+    void onCollision(CollisionEvent &event) override;
     float speed;
 
 public:

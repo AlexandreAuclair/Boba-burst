@@ -1,5 +1,3 @@
-#pragma once
-
 #include "PhysicsWorld.h"
 
 PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
@@ -96,7 +94,7 @@ void PhysicsWorld::HandleMovementEvent(GameMovementEvent &event)
 	ImpulsionRequest i;
 	i.mBodyID = event.bodyID;
 	i.modsVec3 = (event.isLeftInput == true ? impulseLeftValue : impulseRightValue);
-	std::lock_guard(mutexMovement);
+	std::lock_guard<std::mutex> lock(mutexMovem);
 	movementRequestsQueue.push_back(i);
 };
 

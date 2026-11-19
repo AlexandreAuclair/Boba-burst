@@ -14,3 +14,4 @@ void Character::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
 
 void Character::Update(float dt) {}
 void Character::Render(float dt) {}
+void Character::onCollision(CollisionEvent &event) {}

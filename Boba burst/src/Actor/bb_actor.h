@@ -6,7 +6,6 @@
 #include <Jolt/Physics/Body/BodyInterface.h>
 #include "../EventBus/bb_eventBus.h"
 #include "../Events/bb_onCollisionEvent.h"
-#include "../Game/bb_gameManager.h"
 
 #include "../DataStruct/bb_mesh.h"
 

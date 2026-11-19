@@ -19,6 +19,11 @@ CMakeCache.txt
 # Mono auto generated files
 mono_crash.*
 
+*.o
+*.a
+*.so
+*.dylib
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

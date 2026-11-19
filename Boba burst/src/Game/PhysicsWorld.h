@@ -64,8 +64,8 @@
 #include "../Events/bb_gameMovementEvent.h"
 #include "../Events/bb_onCollisionEvent.h"
 
-std::mutex mutexContacts;
-std::mutex mutexMovement;
+inline std::mutex mutexContacts;
+inline std::mutex mutexMovem;
 
 // Disable common warnings triggered by Jolt, you can use JPH_SUPPRESS_WARNING_PUSH / JPH_SUPPRESS_WARNING_POP to store and restore the warning state
 JPH_SUPPRESS_WARNINGS
@@ -320,7 +320,7 @@ private:
 		{
 			ContactEvent c{static_cast<const int>(b1.GetUserData()), static_cast<const int>(b2.GetUserData())};
 
-			std::lock_guard(mutexContacts);
+			std::lock_guard<std::mutex> lock(mutexContacts);
 			currentWorld.contactsQueue.push_back(c);
 
 			cout << "Contact added to the queue " << endl;

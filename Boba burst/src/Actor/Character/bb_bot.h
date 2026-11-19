@@ -10,6 +10,7 @@ public:
 private:
 	JPH::BodyID InitPhysics(JPH::BodyInterface& bodyInterface) override final;
 	void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override final;
+    void onCollision(CollisionEvent &event) override final;
 public:
     void Update(float dt) override final;
     void Render(float dt) override final;

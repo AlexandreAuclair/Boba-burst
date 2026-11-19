@@ -1,3 +1,4 @@
+#pragma once
 #include "../EventBus/bb_event.h"
 
 class KeyPressedEvent : public Event

@@ -1,3 +1,4 @@
+#pragma once
 #include "../EventBus/bb_event.h"
 #include <Jolt/Jolt.h>
 #include <Jolt/Physics/Body/BodyID.h>

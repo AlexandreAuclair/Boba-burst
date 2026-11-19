@@ -20,8 +20,8 @@ void Obstacle::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }
 
-void Obstacle::Update(int dt){}
-void Obstacle::Render(int dt){}
+void Obstacle::Update(float dt){}
+void Obstacle::Render(float dt){}
 
 void Obstacle::onCollision(CollisionEvent &event) {
 

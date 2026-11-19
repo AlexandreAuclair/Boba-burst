@@ -13,3 +13,5 @@ void Bot::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
 
 void Bot::Update(float dt) {}
 void Bot::Render(float dt) {}
+
+void Bot::onCollision(CollisionEvent &event) {}
