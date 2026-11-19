@@ -309,10 +309,12 @@ void Game::Render(double dt) {
         break;
         case GameState::Playing:
             // Afficher ce que la camera voit aka. la scène
+            renderer->Draw(false);
         break;
         case GameState::Pause:
             // Afficher la scène en plus noir(genre * 0.5 les couleurs)
             // afficher les options du menu Pause
+            renderer->Draw(true);
         break;
         case GameState::GameOver:
             // Afficher l'écran de Game Over
@@ -325,12 +327,6 @@ void Game::Render(double dt) {
             // honnêtement je sais pas si on a le temps d'afficher de quoi ici...
         break;
     }
-
-    // Determine si menu de pause doit être visible 
-    bool showMenuPause = stateMachine.GetCurrentState() == GameState::Pause;
-   
-    // Dessine frame 3D, et eventuellement UI par-dessus
-    renderer->Draw(showMenuPause);
 }
 
 /// @brief Quand un événement de touche est lancé, s'il sagit de la touche ESC, trigger les changements états et les événements approprié selon l'états actuel (vers la pause ou vers la reprise)
