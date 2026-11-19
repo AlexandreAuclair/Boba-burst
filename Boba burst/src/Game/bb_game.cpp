@@ -48,8 +48,8 @@ bool Game::Initialize() {
         return false;
     }
 
-    // Donner la fenêtre au controller
-    controller.SetWindow(window);
+    //// Donner la fenêtre au controller
+    //controller.SetWindow(window);
 
     context.CreateInstance();
 	context.CreateDevice();
@@ -97,10 +97,10 @@ void Game::Run() {
         double dt = currentTime - lastTime;
         lastTime = currentTime;
         millisecsPreviousFrame = dt;
-        // Ferme la fenêtre si on appuie sur Echap
-        if (controller.IsKeyPressed(GLFW_KEY_ESCAPE)) {
-            glfwSetWindowShouldClose(window, GLFW_TRUE);
-        }
+        //// Ferme la fenêtre si on appuie sur Echap
+        //if (controller.IsKeyPressed(GLFW_KEY_ESCAPE)) {
+        //    glfwSetWindowShouldClose(window, GLFW_TRUE);
+        //}
         
         // 3. Traiter les inputs
         ProcessInput();
@@ -145,8 +145,7 @@ void Game::Setup() {
     // setter la 1er scene
     scene = std::make_shared<GameScene>(context);
 	renderer->SetScene(scene);
-    // Temporaire pour test
-    GameManager::get().players.push_back(std::make_unique<Player>(10, Transform{}));
+
     GameManager::get().players.back()->Init(gameEventBus, window, m_physicsWorld->GetBodyInterface());
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
 }
@@ -167,7 +166,9 @@ void Game::ProcessInput()
         // Gérer les inputs du joueur
         // Ask all players to check input
         std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [](auto &player)
-                      { player.get()->controlManager.CheckInput(); });
+                      { 
+                player.get()->controlManager.CheckInput(); 
+            });
     }
     break;
     case GameState::Pause:
