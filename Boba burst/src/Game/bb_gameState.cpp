@@ -1,13 +1,13 @@
 #include "bb_gameState.h"
 
-GameStateMachine::GameStateMachine() : currentState(GameState::Menu) {}
+GameStateMachine::GameStateMachine() : /*currentState(GameState::Menu)*/ currentState(GameState::Playing) {}
 
 GameState GameStateMachine::GetCurrentState() const {
     return currentState; 
 }
 
 void GameStateMachine::TriggerPlay() {
-    if (currentState == GameState::Menu) {
+    if (currentState == GameState::Menu || currentState == GameState::Pause) {
         ChangeState(GameState::Playing);
         Logger::Log("Game state is now playing");
     }

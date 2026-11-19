@@ -4,6 +4,7 @@
 
 #include "../Scenes/bb_scene.h"
 #include "../VulkanContext/bb_vulkanContext.h"
+#include "../UIRenderer/UIRenderer.h"
 
 class VulkanRenderer
 {
@@ -15,7 +16,7 @@ public:
 
 	void SetScene(std::shared_ptr<Scene>);
 
-	void Draw();
+	void Draw(bool showMenuPause);
 	void BeginFrame();
 	void EndFrame();
 
@@ -37,6 +38,9 @@ private:
 	void CreateDepthbuffer();
 	void CreateRenderPass();
 	void CreateFramebuffers();
+
+	// Creer pipeline graphique 2D pour l'UI
+	std::unique_ptr<UIRenderer> m_uiRenderer;
 
 	VulkanContext& m_context;
 

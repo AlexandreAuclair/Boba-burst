@@ -4,6 +4,8 @@
 #include "../Logger/Logger.h"
 
 
+// Classe virtuelle utilisée par gameScene
+
 class Scene
 {
 public:

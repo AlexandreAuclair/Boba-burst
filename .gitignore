@@ -14,6 +14,10 @@ Makefile
 revision.h
 
 
+#Shaders intermédiaires de la compilation
+shaders_out/
+*.slnx
+
 # User-specific files
 *.rsuser
 *.suo
@@ -129,7 +133,7 @@ StyleCopReport.xml
 *.rsp
 *.sln
 *.vcxproj
-*.vcxproj.filters
+# *.vcxproj.filters         // garder les filtres car c'est utile pour le dev dans Visual Studio
 *.stamp
 *.yml
 # but not Directory.Build.rsp, as it configures directory-level build defaults

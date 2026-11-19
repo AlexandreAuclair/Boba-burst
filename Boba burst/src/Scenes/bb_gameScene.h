@@ -28,6 +28,7 @@ private:
 	void CreatePipelineLayout();
 	void CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pipeline, const std::string& vertPath, const std::string& fragPath, bool depthWrite);
 
+
 	VulkanContext& m_context;
 
 	// Pour placer mon terrain devant ma cam�ra
@@ -60,7 +61,7 @@ private:
 	void UpdateLightBuffer(const glm::vec3& cameraPosition);
 
 
-	// ---------- Donn�es pour les textures ----------
+	// ---------- Donnees pour les textures ----------
 private: 
 
 	// Prend le path de la texture et cr�� texture utilisable par Vulkain 
