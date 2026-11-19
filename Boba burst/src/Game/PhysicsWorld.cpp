@@ -70,6 +70,8 @@ bool PhysicsWorld::Update(float dt)
 			bodyInterface.SetLinearVelocity(currentMod.mBodyID, currentMod.modsVec3);
 		}
 
+		movementRequestsQueue.clear();
+
 		// If you take larger steps than 1 / 60th of a second you need to do multiple collision steps in order to keep the simulation stable. Do 1 collision step per 1 / 60th of a second (round up).
 		const int cCollisionSteps = 1;
 
