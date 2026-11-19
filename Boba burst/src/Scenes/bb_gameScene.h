@@ -22,12 +22,11 @@ private:
 		glm::mat4 worldMatrix;
 	};
 
-	void LoadMesh(const std::string& meshPath);
     void CreateAndUploadBuffer(const void* srcData, vk::DeviceSize size, vk::BufferUsageFlags usage, vk::UniqueBuffer& outBuffer, vk::UniqueDeviceMemory& outMemory);
 	void CreateVertexBuffer();
 	void CreateIndexBuffer();
 	void CreatePipelineLayout();
-	void CreatePipeline(vk::RenderPass renderPass);
+	void CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pipeline, const std::string& vertPath, const std::string& fragPath, bool depthWrite);
 
 	VulkanContext& m_context;
 
@@ -45,6 +44,7 @@ private:
 
 	vk::UniquePipelineLayout m_pipelineLayout;
 	vk::UniquePipeline m_pipeline;
+	vk::UniquePipeline m_skyboxPipeline;
 
 	LightData m_lightData{};
 	void* m_lightBufferMapped = nullptr; // memoire mappee en permanence

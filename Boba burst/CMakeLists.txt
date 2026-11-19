@@ -16,6 +16,7 @@ find_package(Vulkan REQUIRED)
 list(APPEND SHADERS
     ./shaders/global.vert
     ./shaders/global.frag
+    ./shaders/skybox.frag
 )
 set(SHADER_OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders_out)
 
