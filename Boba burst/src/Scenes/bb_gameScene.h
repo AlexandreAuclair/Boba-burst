@@ -26,7 +26,7 @@ private:
 	void CreateVertexBuffer();
 	void CreateIndexBuffer();
 	void CreatePipelineLayout();
-	void CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pipeline, const std::string& vertPath, const std::string& fragPath, bool depthWrite);
+	void CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pipeline, const std::string& vertPath, const std::string& fragPath, bool depthWrite, vk::FrontFace frontFace);
 
 
 	VulkanContext& m_context;

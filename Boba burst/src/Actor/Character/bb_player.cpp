@@ -91,8 +91,9 @@ void Player::Update(float dt)
         const double deltaX = controlManager.GetMouseDeltaX();
         const double deltaY = controlManager.GetMouseDeltaY();
         if (deltaX != 0 || deltaY != 0) {
-            cam.ProcessMouseMovement(GetTransform().position, deltaX, deltaY, dt);
+            cam.ProcessMouseMovement(deltaX, deltaY);
         }
+        cam.Update(GetTransform().position, dt);
     }
     // UpdateFromPhysics();
 }

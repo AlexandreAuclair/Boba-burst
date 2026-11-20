@@ -61,11 +61,11 @@ void GameScene::Draw(const DrawInfo& drawInfo)
 {
     if (!m_skyboxPipeline)
     {
-        CreatePipeline(drawInfo.renderPass, m_skyboxPipeline, "./shaders_out/global.vert.spv", "./shaders_out/skybox.frag.spv", VK_FALSE);
+        CreatePipeline(drawInfo.renderPass, m_skyboxPipeline, "./shaders_out/global.vert.spv", "./shaders_out/skybox.frag.spv", VK_FALSE, vk::FrontFace::eCounterClockwise);
     }
     if (!m_pipeline)
     {
-        CreatePipeline(drawInfo.renderPass, m_pipeline, "./shaders_out/global.vert.spv", "./shaders_out/global.frag.spv", VK_TRUE);
+        CreatePipeline(drawInfo.renderPass, m_pipeline, "./shaders_out/global.vert.spv", "./shaders_out/global.frag.spv", VK_TRUE, vk::FrontFace::eClockwise);
     }
 
     auto& cmd = drawInfo.commandBuffer;
@@ -505,7 +505,7 @@ namespace
 
 
 
-void GameScene::CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pipeline, const std::string& vertPath, const std::string& fragPath, bool depthWrite)
+void GameScene::CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pipeline, const std::string& vertPath, const std::string& fragPath, bool depthWrite, vk::FrontFace frontFace)
 {
 	auto vsModule = m_context.CreateShaderModuleFromFile(vertPath.c_str());
 	auto psModule = m_context.CreateShaderModuleFromFile(fragPath.c_str());
@@ -567,6 +567,7 @@ void GameScene::CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pi
 
 	auto rasterizationState = vk::PipelineRasterizationStateCreateInfo{};
 	rasterizationState.setLineWidth(1.0f);
+    rasterizationState.setFrontFace(frontFace);
 
 	// ACTIVER/DESACTIVER Backface culling
 	rasterizationState.setCullMode(vk::CullModeFlagBits::eBack);

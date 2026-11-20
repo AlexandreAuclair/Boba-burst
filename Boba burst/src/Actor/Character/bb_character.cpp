@@ -12,6 +12,9 @@ void Character::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }
 void Character::Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) {}
-void Character::Update(float dt) {}
+void Character::Update(float dt){
+    if(followTarget)
+        transform.position = followTarget->GetTransform().position;
+}
 void Character::Render(float dt) {}
 void Character::onCollision(CollisionEvent &event) {}
