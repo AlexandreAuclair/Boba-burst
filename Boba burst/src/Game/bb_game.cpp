@@ -143,6 +143,7 @@ void Game::Setup() {
 
     GameManager::get().players.back()->Init(gameEventBus, window, m_physicsWorld->GetBodyInterface());
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
+    GameManager::get().characters.front()->SetFollowTarget(GameManager::get().players.front().get());
 }
 
 void Game::ProcessInput()
@@ -160,6 +161,7 @@ void Game::ProcessInput()
     {
         // Gérer les inputs du joueur
         // Ask all players to check input
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [](auto &player)
                       { 
                 player.get()->controlManager.CheckInput(); 
@@ -169,6 +171,7 @@ void Game::ProcessInput()
     case GameState::Pause:
     {
         // Gérer les inputs du menu pause (Reprendre, Menu, Quitter)
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [](auto &player)
                       { player.get()->controlManager.CheckInput(); });
     }
@@ -272,10 +275,15 @@ void Game::Update(double dt) {
         // La physique de Jolt est mise à jours et les événement de collision sont lancer.
         m_physicsWorld->Update(millisecsPreviousFrame);
 
-        std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [&](auto &player)
-                      {
-                        player->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
-                        player->Update(millisecsPreviousFrame); });
+        for(auto& player : GameManager::get().players)
+        {
+            player->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
+            player->Update(millisecsPreviousFrame); 
+        }
+        for(auto& character : GameManager::get().characters)
+        {
+            character->Update(millisecsPreviousFrame); 
+        }
 
         break;
         case GameState::Pause:

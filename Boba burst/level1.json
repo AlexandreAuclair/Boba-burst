@@ -12,49 +12,89 @@
       {
         "modelName": "sphere",
         "modelPath": "assets/sphere.fbx"
+      },
+      {
+        "modelName": "track",
+        "modelPath": "assets/track.fbx"
+      },
+      {
+        "modelName": "entonnoir",
+        "modelPath": "assets/entonnoir.fbx"
+      },
+      {
+        "modelName": "mystery_box",
+        "modelPath": "assets/mystery_box.fbx"
+      },
+      {
+        "modelName": "finishing_line",
+        "modelPath": "assets/finishing_line.fbx"
+      },
+      {
+        "modelName": "paille",
+        "modelPath": "assets/paille_simple.fbx"
+      },
+      {
+        "modelName": "sugar_cube",
+        "modelPath": "assets/sugar_cube_cartoon.fbx"
       }
     ],
     "textures": [
-        {
-            "textureName": "bugsBunny",
-            "texturePath" : "assets/bugs_bunny.jpg"
-        },
-        {
-            "textureName": "skybox",
-            "texturePath" : "assets/skybox.jpg"
-        }
+      {
+        "textureName": "bugsBunny",
+        "texturePath" : "assets/bugs_bunny.jpg"
+      },
+      {
+        "textureName": "skybox",
+        "texturePath" : "assets/skybox.jpg"
+      },
+      {
+        "textureName": "interoggation",
+        "texturePath" : "assets/interrogation_point_texture.png"
+      },
+      {
+        "textureName": "brun",
+        "texturePath" : "assets/brun.jpg"
+      },
+      {
+        "textureName": "gray",
+        "texturePath" : "assets/gray.png"
+      },
+      {
+        "textureName": "sugar",
+        "texturePath" : "assets/sugar_cube_albedo.png"
+      }
     ],
     "actors": [
       {
         "id": 0,
         "type": "Track",
         "transform": {
-            "position": [1.0, 1.0, 1.0],
-            "rotation": [0.0, 0.0, 0.0],
-            "scale": [1.0, 1.0, 1.0]
+            "position": [0.0, 3.5, -6.5],
+            "rotation": [14.0, 0.0, 90.0],
+            "scale": [2.0, 2.0, 2.0]
         },
         "nbSections": 2,
-        "modelName": "gouttiere",
-        "textureName": "bugsBunny"
+        "modelName": "track",
+        "textureName": "gray"
       },
       {
         "id": 1,
         "type": "Track",
         "transform": {
-            "position": [-1.0, -1.0, -1.0], 
-            "rotation": [0.0, 60.0, 90.0],
-            "scale": [1.0, 1.0, 1.0]
+            "position": [0.0, 6.0, -18.0], 
+            "rotation": [90.0, 0.0, 0.0],
+            "scale": [5.0, 5.0, 5.0]
         },
         "nbSections": 2,
-        "modelName": "gouttiere",
-        "textureName": "bugsBunny"
+        "modelName": "finishing_line",
+        "textureName": "brun"
       },
       {
         "id": 2,
         "type": "Player",
         "transform": {
-            "position": [1.0, -1.0, -10.0],
-            "rotation": [0.0, 90.0, 0.0],
+            "position": [0.0, 0.0, 0.0],
+            "rotation": [0.0, 0.0, 0.0],
             "scale": [1.0, 1.0, 1.0]
         },
         "camera": {
@@ -75,10 +115,32 @@
         "transform": {
             "position": [0.0, 0.0, 0.0],
             "rotation": [-90.0, 0.0, 0.0],
-            "scale": [7.0, 7.0, 7.0]
+            "scale": [20.0, 20.0, 20.0]
         },
         "modelName": "sphere",
         "textureName": "skybox"
+      },
+      {
+        "id": 4,
+        "type": "BonusObject",
+        "transform": {
+            "position": [0.0, 0.0, 0.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "modelName": "mystery_box",
+        "textureName": "interoggation"
+      },
+      {
+        "id": 5,
+        "type": "TrackObject",
+        "transform": {
+            "position": [0.0, 0.0, 0.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "modelName": "sugar_cube",
+        "textureName": "sugar"
       }
     ]
   }

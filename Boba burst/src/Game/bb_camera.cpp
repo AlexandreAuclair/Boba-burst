@@ -55,20 +55,18 @@ glm::vec3 Camera::ComputeDesiredTarget(const glm::vec3& targetPos, float yawDegr
     return targetPos + m_config.thirdPersonLookOffset;
 }
 
-void Camera::ProcessMouseMovement(const glm::vec3& targetPos, float dx, float dy, float dt) {
+void Camera::ProcessMouseMovement(float dx, float dy) {
     constexpr float sensitivity = 0.1f;
 
     m_yaw += dx * sensitivity;
     m_pitch -= dy * sensitivity;
 
     m_pitch = glm::clamp(m_pitch, -89.0f, 89.0f);
-
-    Update(targetPos, m_yaw, m_pitch, dt);
 }
 
-void Camera::Update(const glm::vec3& targetPos, float yawDegrees, float pitchDegrees, float dt) {
-    glm::vec3 desiredPos    = ComputeDesiredPosition(targetPos, yawDegrees, pitchDegrees);
-    glm::vec3 desiredTarget = ComputeDesiredTarget(targetPos, yawDegrees, pitchDegrees);
+void Camera::Update(const glm::vec3& targetPos, float dt) {
+    glm::vec3 desiredPos    = ComputeDesiredPosition(targetPos, m_yaw, m_pitch);
+    glm::vec3 desiredTarget = ComputeDesiredTarget(targetPos, m_yaw, m_pitch);
 
     if (!m_initialized || m_config.smoothSpeed <= 0.0f) {
         m_position = desiredPos;

@@ -32,8 +32,8 @@ public:
     /// @param yawDegrees Rotation horizontale en degrés (autour de Y)
     /// @param pitchDegrees Rotation verticale en degrés (autour de X)
     /// @param dt Delta time en secondes
-    void Update(const glm::vec3& targetPos, float yawDegrees, float pitchDegrees, float dt);
-    void ProcessMouseMovement(const glm::vec3& targetPos, float dx, float dy, float dt);
+    void Update(const glm::vec3& targetPos, float dt);
+    void ProcessMouseMovement(float dx, float dy);
 
     /// @brief Calcule la matrice de vue (World -> View)
     glm::mat4 GetViewMatrix() const;
