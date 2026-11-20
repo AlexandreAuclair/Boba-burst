@@ -34,6 +34,11 @@ JPH::BodyID Player::InitPhysics(JPH::BodyInterface &bodyInterface)
 
 void Player::UpdateFromPhysics(const JPH::BodyInterface &bodyInterface)
 {
+    auto pos = bodyInterface.GetPosition(this->bodyID);
+    this->transform.position = glm::vec3(pos.GetX(), -(pos.GetY()), pos.GetZ());
+
+    auto rot = bodyInterface.GetRotation(this->bodyID).GetXYZ();
+    this->transform.rotation = glm::vec3(rot[0], -(rot[1]), rot[2]);
 }
 
 /// @brief Réception de l'événement de pause. Détermine si le joueur doit ignorer les entrées ou non.
