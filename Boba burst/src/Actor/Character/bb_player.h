@@ -1,13 +1,15 @@
 #pragma once
 
 #include "bb_character.h"
-#include <src/EventBus/bb_eventBus.h>
+
 #include "bb_inputManager.h"
+#include "../../EventBus/bb_eventBus.h"
+#include "../../Game/bb_camera.h"
 
 class Player : public Character {
 public:
     Player();
-    Player(int id_, Transform t_);
+    Player(int id_, Transform t_, Camera cam_);
     ~Player();
 
 void UpdateFromPhysics(const JPH::BodyInterface &bodyInterface) override final;
@@ -30,4 +32,5 @@ public:
 
     InputManager controlManager;
     std::unique_ptr<EventBus> *busPtr;
+    Camera cam;
 };

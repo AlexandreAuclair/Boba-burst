@@ -9,6 +9,7 @@
 #include "../Logger/Logger.h"
 #include "../ModelImporter/bb_modelImporter.h"
 #include "../Game/bb_gameManager.h"
+#include "../Game/bb_camera.h"
 
 using nlohmann::json;
 
@@ -101,7 +102,22 @@ bool LevelLoader::LoadLevel(std::string path)
             }
 
             if (type == "Player") {
-                auto player = std::make_unique<Player>(id,transform);
+                CameraConfig c;
+                const auto& camJson = actorJson.at("camera");
+                c.fovDegrees = camJson.at("fovDegrees").get<float>();
+                c.nearPlane = camJson.at("nearPlane").get<float>();
+                c.farPlane = camJson.at("farPlane").get<float>();
+                c.firstPersonOffset.x = camJson.at("firstPersonOffset").at(0).get<float>();
+                c.firstPersonOffset.y = camJson.at("firstPersonOffset").at(1).get<float>();
+                c.firstPersonOffset.z = camJson.at("firstPersonOffset").at(2).get<float>();
+                c.thirdPersonOffset.x = camJson.at("thirdPersonOffset").at(0).get<float>();
+                c.thirdPersonOffset.y = camJson.at("thirdPersonOffset").at(1).get<float>();
+                c.thirdPersonOffset.z = camJson.at("thirdPersonOffset").at(2).get<float>();
+                c.thirdPersonLookOffset.x = camJson.at("thirdPersonLookOffset").at(0).get<float>();
+                c.thirdPersonLookOffset.y = camJson.at("thirdPersonLookOffset").at(1).get<float>();
+                c.thirdPersonLookOffset.z = camJson.at("thirdPersonLookOffset").at(2).get<float>();
+                c.smoothSpeed = camJson.at("smoothSpeed").get<float>();
+                auto player = std::make_unique<Player>(id,transform,Camera(c));
                 player->mesh = mesh;
                 player->texture = texture;
                 gm.players.push_back(std::move(player));

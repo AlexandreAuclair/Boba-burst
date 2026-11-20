@@ -1,10 +1,8 @@
 #include "bb_player.h"
 
 Player::Player() {}
-Player::Player(int id_, Transform t_) : Character(id_, t_){
-    // Valeur pour Speed et Position sont temporaire à des fin de test.
-    // TODO: RETIRER LORSQUE PLAYER INSTANCIER CORRECTEMENT
-    
+Player::Player(int id_, Transform t_, Camera cam_) : Character(id_, t_){
+    cam = Camera(cam_);
 }
 
 void Player::Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) {
@@ -80,6 +78,10 @@ void Player::Input(KeyPressedEvent &event)
         Logger::Log("MOUSE Y POS: " + std::to_string(event.mouseYPos));
     }
 
+    if (event.keyId == GLFW_KEY_TAB) {
+        cam.ToggleMode();
+    }
+
     Logger::Log("-------- ");
 }
 
@@ -87,6 +89,12 @@ void Player::Input(KeyPressedEvent &event)
 /// @param dt deltaTime
 void Player::Update(float dt)
 {
+    if (!isIgnoringInputs) {
+        // Exemple : rotation horizontale via flèches gauche/droite (à adapter à ton système)
+        if (leftKeyPressThisFrame)  transform.rotation.z += 90.0f * dt;
+        if (RightKeyPressThisFrame) transform.rotation.z -= 90.0f * dt;
+    }
+    cam.Update(GetTransform().position, transform.rotation.z, transform.rotation.x, dt);
     // UpdateFromPhysics();
 }
 void Player::Render(float dt) {}

@@ -75,8 +75,18 @@ void GameScene::Draw(const DrawInfo& drawInfo)
     // Matrices caméra (View et Projection)
     auto surfaceExtents = m_context.GetSurfaceExtents();
     float aspectRatio = static_cast<float>(surfaceExtents.width) / static_cast<float>(surfaceExtents.height);
-    glm::mat4 projMat = glm::perspective(glm::pi<float>() * 0.25f, aspectRatio, 0.1f, 1000.f);
-    glm::mat4 viewMat = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -5.f));
+    glm::mat4 projMat;
+    glm::mat4 viewMat;
+
+    if (!gm.players.empty() && gm.players[0]) {
+        const Camera& cam = gm.players[0]->cam;
+        projMat = cam.GetProjectionMatrix(aspectRatio);
+        viewMat = cam.GetViewMatrix();
+    } else {
+        projMat = glm::perspective(glm::pi<float>() * 0.25f, aspectRatio, 0.1f, 1000.f);
+        viewMat = glm::lookAt(glm::vec3(0.0f, 2.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    }
+
     glm::mat4 viewProjMat = projMat * viewMat;
 
     // Fonction d'aide pour dessiner un Actor

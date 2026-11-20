@@ -4,7 +4,9 @@ void InputManager::CheckInput()
 {
     // Array des touches d'ont nous voulons restrindre le traitement à une fois par appuit
     int keys[] = {
-        GLFW_KEY_ESCAPE};
+        GLFW_KEY_TAB,
+        GLFW_KEY_ESCAPE
+    };
 
     // Pour chaque touche dans l'array, nous vérifions si elle est active.
     // Si c'est le cas, et que sont dernier état connus n'est pas actif, nous émétons l'événement corespondant à la touche.

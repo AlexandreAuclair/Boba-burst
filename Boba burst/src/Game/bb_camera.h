@@ -4,77 +4,55 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <cmath>
 
+#include "../DataStruct/bb_cameraConfig.h"
+
 enum class CameraMode
 {
-    LevelView,  // Orbite autour de la cible
-    Freecam     // Déplacement libre
+    FirstPerson,  // devant l'objet
+    ThirdPerson   // derrière l'objet
 };
 
-class Camera
-{
+class Camera {
 public:
-    Camera(
-        glm::vec3 position = glm::vec3(255.0f, 255.0f, -255.0f),
-        glm::vec3 target = glm::vec3(0.0f),
-        glm::vec3 worldUp = glm::vec3(0.0f, 0.0f, 1.0f)
-    ) ;
+    explicit Camera(const CameraConfig& config = CameraConfig{});
+    Camera(const Camera& cam)
+        : m_config(cam.m_config)
+        , m_mode(cam.m_mode)
+        , m_position(cam.m_position)
+        , m_target(cam.m_target)
+        , m_up(cam.m_up)
+        , m_initialized(cam.m_initialized) { }
 
+    void ToggleMode();
+    void SetMode(CameraMode mode);
+    CameraMode GetMode() const { return m_mode; }
+
+    /// @brief Met à jour la position et l'orientation selon le transform et l'orientation du joueur
+    /// @param targetPos Position monde du joueur (ou point d'ancrage)
+    /// @param yawDegrees Rotation horizontale en degrés (autour de Y)
+    /// @param pitchDegrees Rotation verticale en degrés (autour de X)
+    /// @param dt Delta time en secondes
+    void Update(const glm::vec3& targetPos, float yawDegrees, float pitchDegrees, float dt);
+
+    /// @brief Calcule la matrice de vue (World -> View)
     glm::mat4 GetViewMatrix() const;
 
-    glm::mat4 GetProjMatrix(float width, float height) const;
+    /// @brief Calcule la matrice de projection (View -> Clip)
+    glm::mat4 GetProjectionMatrix(float aspectRatio) const;
 
-    const glm::vec3& GetPosition() const;
-
-    const glm::vec3& GetTarget() const ;
-
-    CameraMode GetMode() const ;
-private:
-    void SetMode(CameraMode mode)  ;
-public:
-    void ToggleMode()  ;
-
-    void ProcessMouseMovement(float dx, float dy)  ;
-
-    void MoveForward(float amount)  ;
-
-    void MoveRight(float amount)  ;
-
-    void MoveUp(float amount)  ;
-
-    void ResetCurrentCam();
+    const glm::vec3& GetPosition() const { return m_position; }
+    const glm::vec3& GetTarget() const { return m_target; }
 
 private:
-    CameraMode m_mode = CameraMode::LevelView;
+    glm::vec3 ComputeDesiredPosition(const glm::vec3& targetPos, float yawDegrees, float pitchDegrees) const;
+    glm::vec3 ComputeDesiredTarget(const glm::vec3& targetPos, float yawDegrees, float pitchDegrees) const;
 
-    // LEVELCAM =======
+    CameraConfig m_config;
+    CameraMode m_mode = CameraMode::FirstPerson;
 
-    glm::vec3 m_position_l;
-    glm::vec3 m_target_l;
-    glm::vec3 m_worldUp_l;
+    glm::vec3 m_position = glm::vec3(0.0f, 1.6f, 0.0f);
+    glm::vec3 m_target   = glm::vec3(0.0f, 1.6f, -1.0f);
+    glm::vec3 m_up       = glm::vec3(0.0f, 1.0f, 0.0f);
+    bool m_initialized   = false;
 
-    glm::vec3 m_front_l;
-    glm::vec3 m_right_l;
-    glm::vec3 m_up_l;
-
-    float m_yaw_l = 0.0f;
-    float m_pitch_l = -90.0f;
-    float m_distance_l = 1000.0f;
-
-    // FREECAM
-
-    glm::vec3 m_position_f;
-    glm::vec3 m_target_f;
-    glm::vec3 m_worldUp_f;
-
-    glm::vec3 m_front_f;
-    glm::vec3 m_right_f;
-    glm::vec3 m_up_f;
-
-    float m_yaw_f = 0.0f;
-    float m_pitch_f = 0.0f;
-    float m_distance_f = 1.0f;
-
-    void UpdateAnglesFromDirection(const glm::vec3& direction)  ;
-
-    void UpdateVectors()  ;
 };
