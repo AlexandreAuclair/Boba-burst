@@ -31,13 +31,14 @@ void InputManager::CheckInput()
 
     // Pour chaque clique dans l'array, nous vérifions si elle est active.
     // Si c'est le cas, et que sont dernier état connus n'est pas actif, nous émétons l'événement corespondant à ce clique ainsi que ses coordonées.
+    UpdateMouse();
     for (auto mouseClick : clicks)
     {
         bool isKeyPressed = IsMouseClick(mouseClick);
 
         if (isKeyPressed && !lastInputs[mouseClick])
         {
-            UpdateMouse();
+
             busPtr->get()->EmitEvent<KeyPressedEvent>(mouseClick, m_lastMouseX, m_lastMouseY);
         }
 
@@ -72,8 +73,8 @@ void InputManager::UpdateMouse()
 {
     double mouseX;
     double mouseY;
-
     glfwGetCursorPos(m_window, &mouseX, &mouseY);
+
 
     if (m_firstMouse)
     {

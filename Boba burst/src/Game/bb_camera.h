@@ -33,6 +33,7 @@ public:
     /// @param pitchDegrees Rotation verticale en degrés (autour de X)
     /// @param dt Delta time en secondes
     void Update(const glm::vec3& targetPos, float yawDegrees, float pitchDegrees, float dt);
+    void ProcessMouseMovement(const glm::vec3& targetPos, float dx, float dy, float dt);
 
     /// @brief Calcule la matrice de vue (World -> View)
     glm::mat4 GetViewMatrix() const;
@@ -54,5 +55,7 @@ private:
     glm::vec3 m_target   = glm::vec3(0.0f, 1.6f, -1.0f);
     glm::vec3 m_up       = glm::vec3(0.0f, 1.0f, 0.0f);
     bool m_initialized   = false;
+    float m_yaw = 0.0f;
+    float m_pitch = -90.0f;
 
 };

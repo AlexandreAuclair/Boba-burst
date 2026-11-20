@@ -18,6 +18,8 @@ public:
 	~InputManager() {};
 	// Fonction principale qui vérifie les inputs et émets les événements si nécésaire
 	void CheckInput();
+	inline double GetMouseDeltaX() const { return m_mouseDeltaX; }
+	inline double GetMouseDeltaY() const { return m_mouseDeltaY; }
 
 private:
 	GLFWwindow *m_window;
@@ -39,6 +41,5 @@ protected:
 	bool IsMouseClick(int key) const;
 	void UpdateMouse();
 
-	inline double GetMouseDeltaX() const { return m_mouseDeltaX; }
-	inline double GetMouseDeltaY() const { return m_mouseDeltaY; }
+	
 };

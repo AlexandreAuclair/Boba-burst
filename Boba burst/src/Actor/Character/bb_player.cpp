@@ -62,13 +62,11 @@ void Player::Input(KeyPressedEvent &event)
 
     if (event.keyId == GLFW_KEY_LEFT)
     {
-        //leftKeyPressThisFrame = true;
         busPtr->get()->EmitEvent<GameMovementEvent>(this->bodyID, true, false);
         Logger::Log("Left key pressed");
     }
     if (event.keyId == GLFW_KEY_RIGHT)
     {
-        //RightKeyPressThisFrame = true;
         busPtr->get()->EmitEvent<GameMovementEvent>(this->bodyID, false, true);
         Logger::Log("Right key pressed");
     }
@@ -90,11 +88,12 @@ void Player::Input(KeyPressedEvent &event)
 void Player::Update(float dt)
 {
     if (!isIgnoringInputs) {
-        // Exemple : rotation horizontale via flèches gauche/droite (à adapter à ton système)
-        if (leftKeyPressThisFrame)  transform.rotation.z += 90.0f * dt;
-        if (RightKeyPressThisFrame) transform.rotation.z -= 90.0f * dt;
+        const double deltaX = controlManager.GetMouseDeltaX();
+        const double deltaY = controlManager.GetMouseDeltaY();
+        if (deltaX != 0 || deltaY != 0) {
+            cam.ProcessMouseMovement(GetTransform().position, deltaX, deltaY, dt);
+        }
     }
-    cam.Update(GetTransform().position, transform.rotation.z, transform.rotation.x, dt);
     // UpdateFromPhysics();
 }
 void Player::Render(float dt) {}
