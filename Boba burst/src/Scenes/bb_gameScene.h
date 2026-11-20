@@ -10,10 +10,10 @@ class GameScene : public Scene
 {
 
 public:
-    GameScene(VulkanContext& context);
+	GameScene(VulkanContext &context);
 
 	void Update(double dt) override;
-	void Draw(const DrawInfo& drawInfo) override;
+	void Draw(const DrawInfo &drawInfo) override;
 
 private:
 	struct Matrices
@@ -22,17 +22,17 @@ private:
 		glm::mat4 worldMatrix;
 	};
 
-    void CreateAndUploadBuffer(const void* srcData, vk::DeviceSize size, vk::BufferUsageFlags usage, vk::UniqueBuffer& outBuffer, vk::UniqueDeviceMemory& outMemory);
+	void CreateAndUploadBuffer(const void *srcData, vk::DeviceSize size, vk::BufferUsageFlags usage, vk::UniqueBuffer &outBuffer, vk::UniqueDeviceMemory &outMemory);
 	void CreateVertexBuffer();
 	void CreateIndexBuffer();
 	void CreatePipelineLayout();
-	void CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pipeline, const std::string& vertPath, const std::string& fragPath, bool depthWrite);
+	void CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline &pipeline, const std::string &vertPath, const std::string &fragPath, bool depthWrite);
+	bool IsSphereVisible(const BoundingSphere& sphere, const Frustum& frustum);
 
-
-	VulkanContext& m_context;
+	VulkanContext &m_context;
 
 	// Pour placer mon terrain devant ma cam�ra
-	glm::vec3 m_center{ 0.0f };
+	glm::vec3 m_center{0.0f};
 	float m_scale = 1.0f;
 
 	Matrices m_matrices = {};
@@ -48,7 +48,7 @@ private:
 	vk::UniquePipeline m_skyboxPipeline;
 
 	LightData m_lightData{};
-	void* m_lightBufferMapped = nullptr; // memoire mappee en permanence
+	void *m_lightBufferMapped = nullptr; // memoire mappee en permanence
 
 	vk::UniqueBuffer m_lightBuffer;
 	vk::UniqueDeviceMemory m_lightBufferMemory;
@@ -58,17 +58,13 @@ private:
 	vk::DescriptorSet m_lightDescriptorSet{};
 
 	void CreateLightResources();
-	void UpdateLightBuffer(const glm::vec3& cameraPosition);
-
+	void UpdateLightBuffer(const glm::vec3 &cameraPosition);
 
 	// ---------- Donnees pour les textures ----------
-private: 
+private:
+	// Prend le path de la texture et cr�� texture utilisable par Vulkain
+	void SendTextureToGPU(Texture &tex);
 
-	// Prend le path de la texture et cr�� texture utilisable par Vulkain 
-	void SendTextureToGPU(Texture& tex);
-
-    vk::DescriptorPool *m_descriptorPool;
-    vk::DescriptorSetLayout *m_descriptorSetLayout;
-    
+	vk::DescriptorPool *m_descriptorPool;
+	vk::DescriptorSetLayout *m_descriptorSetLayout;
 };
-

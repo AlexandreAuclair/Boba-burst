@@ -5,7 +5,7 @@
 #include <cmath>
 
 #include "../DataStruct/bb_cameraConfig.h"
-#include "..\DataStruct\bb_frustumCulling.h"
+#include "../DataStruct/bb_frustumCulling.h"
 
 enum class CameraMode
 {
@@ -41,6 +41,8 @@ public:
     const glm::vec3 &GetPosition() const { return m_position; }
     const glm::vec3 &GetTarget() const { return m_target; }
 
+    Frustum frustum;
+
 private:
     glm::vec3 ComputeDesiredPosition(const glm::vec3 &targetPos, float yawDegrees, float pitchDegrees) const;
     glm::vec3 ComputeDesiredTarget(const glm::vec3 &targetPos, float yawDegrees, float pitchDegrees) const;
@@ -54,6 +56,4 @@ private:
     bool m_initialized = false;
     float m_yaw = 0.0f;
     float m_pitch = -90.0f;
-
-    Frustum frustum;
 };

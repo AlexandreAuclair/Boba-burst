@@ -86,8 +86,6 @@ void Camera::Update(const glm::vec3 &targetPos, float yawDegrees, float pitchDeg
     float alpha = 1.0f - std::exp(-m_config.smoothSpeed * std::max(dt, 0.0f));
     m_position = glm::mix(m_position, desiredPos, alpha);
     m_target = glm::mix(m_target, desiredTarget, alpha);
-
-    this->frustum = this->frustum.ExtractFrustum(this->GetProjectionMatrix() * this->GetViewMatrix());
 }
 
 glm::mat4 Camera::GetViewMatrix() const
