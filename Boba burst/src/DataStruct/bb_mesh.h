@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include <vulkan/vulkan.hpp>
+#include "..\Boba burst\src\DataStruct\bb_frustumCulling.h"
 
 #include "bb_sommet.h"
 #include "bb_texture.h"
@@ -22,4 +23,6 @@ struct Mesh{
     // Vulkan Index Buffer
     vk::UniqueBuffer indexBuffer;
     vk::UniqueDeviceMemory indexBufferMemory;
+
+    BoundingSphere bs;
 };

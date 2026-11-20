@@ -67,6 +67,7 @@ add_executable (Boba_burst
 "./src/DataStruct/bb_section.h"
 "./src/DataStruct/bb_sommet.h"
 "./src/DataStruct/bb_cameraConfig.h"
+"./src/DataStruct/bb_frustumCulling.h"
 "./src/Scenes/bb_gameScene.h"
 "./src/Scenes/bb_gameScene.cpp"
 "./src/VulkanContext/bb_vulkanContext.h"

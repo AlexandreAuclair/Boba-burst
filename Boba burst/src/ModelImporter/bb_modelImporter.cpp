@@ -86,8 +86,44 @@ bool ModelImporter::LoadModel(const std::string& filepath, Mesh& mesh){
 
     }
 
+    mesh.bs = CalculateBoundingSphere(mesh.sommets);
+
     Logger::Log("Importation reussie : " + filepath);
 
     return true;
 
+}
+
+BoundingSphere ModelImporter::CalculateBoundingSphere(const std::vector<Sommet>& sommets)
+{
+    if (sommets.empty())
+        return { glm::vec3(0.0f), 0.0f };
+
+    glm::vec3 min = sommets[0].position;
+    glm::vec3 max = sommets[0].position;
+
+    // Find minimum and maximum coordinates
+    for (const Sommet& sommet : sommets)
+    {
+        min = glm::min(min, sommet.position);
+        max = glm::max(max, sommet.position);
+    }
+
+    // Calculate sphere center
+    glm::vec3 center = (min + max) * 0.5f;
+
+    // Calculate sphere radius
+    float radius = 0.0f;
+
+    for (const Sommet& sommet : sommets)
+    {
+        float distance = glm::distance(
+            center,
+            sommet.position
+        );
+
+        radius = glm::max(radius, distance);
+    }
+
+    return { center, radius };
 }
