@@ -18,8 +18,10 @@ protected:
 
 public:
     void Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) override;
+    void SetFollowTarget(Actor *tr) { followTarget = tr;}
     void Update(float dt) override;
     void Render(float dt) override;
 
 private:
+    Actor *followTarget;
 };

@@ -4,7 +4,8 @@
 #include <cstring>
 #include <fstream>
 #include <stdexcept>
-#include <cstring> //pour memcpy
+#include <cstring>			//pour memcpy
+
 
 // Include de debug pour conna�tre r�pertoire travail courant
 #include <filesystem>
@@ -14,56 +15,62 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <cmath>
 
+
 // Definition constructeur surcharge
 GameScene::GameScene(
-    VulkanContext &context)
-    : m_context(context)
+	VulkanContext& context)
+	: m_context(context)
 {
 
-    CreateVertexBuffer();
-    CreateIndexBuffer();
+	CreateVertexBuffer();
+	CreateIndexBuffer();
 
-    // Creation des attributs de la lumiere
-    // =======================================
-    m_lightData.direction = glm::vec4(glm::normalize(glm::vec3(-1.0f, -1.0f, -1.0f)), 0.0f);
+	// Creation des attributs de la lumiere
+	// =======================================
+	m_lightData.direction = glm::vec4(glm::normalize(glm::vec3(-1.0f, -1.0f, -1.0f)), 0.0f);
 
-    // Lumiere couleur blanche
-    m_lightData.color = glm::vec4(1.0f, 1.0f, 1.0f, 0.0f);
+	// Lumiere couleur blanche
+	m_lightData.color = glm::vec4(1.0f, 1.0f, 1.0f, 0.0f);
 
-    // Init avec vecteur bidon car elle sera �cras�e � chaque frame dans Draw().
-    m_lightData.cameraPosition = glm::vec4(20.0f, 20.0f, 20.0f, 1.0f);
-    // =======================================
+	// Init avec vecteur bidon car elle sera �cras�e � chaque frame dans Draw().
+	m_lightData.cameraPosition = glm::vec4(20.0f, 20.0f, 20.0f, 1.0f);
+	// =======================================
 
-    CreateLightResources();
+	CreateLightResources();
 
-    for (auto &[name, tex] : GameManager::get().textures)
-    {
-        SendTextureToGPU(*tex);
-    }
+    for (auto& [name, tex] : GameManager::get().textures) {
+		SendTextureToGPU(*tex);
+	}
 
-    CreatePipelineLayout();
+	CreatePipelineLayout();
 }
+
 
 void GameScene::Update(double dt)
 {
     Scene::Update(dt);
 
+
+
     // UpdateLightBuffer(cam.GetPosition());
 }
 
-void GameScene::Draw(const DrawInfo &drawInfo)
+
+
+void GameScene::Draw(const DrawInfo& drawInfo)
 {
     if (!m_skyboxPipeline)
     {
-        CreatePipeline(drawInfo.renderPass, m_skyboxPipeline, "./shaders_out/global.vert.spv", "./shaders_out/skybox.frag.spv", VK_FALSE);
+        CreatePipeline(drawInfo.renderPass, m_skyboxPipeline, "./shaders_out/global.vert.spv", "./shaders_out/skybox.frag.spv", VK_FALSE, vk::FrontFace::eCounterClockwise);
     }
     if (!m_pipeline)
     {
-        CreatePipeline(drawInfo.renderPass, m_pipeline, "./shaders_out/global.vert.spv", "./shaders_out/global.frag.spv", VK_TRUE);
+        CreatePipeline(drawInfo.renderPass, m_pipeline, "./shaders_out/global.vert.spv", "./shaders_out/global.frag.spv", VK_TRUE, vk::FrontFace::eClockwise);
     }
 
-    auto &cmd = drawInfo.commandBuffer;
-    auto &gm = GameManager::get();
+    auto& cmd = drawInfo.commandBuffer;
+    auto& gm = GameManager::get();
+
 
     // Matrices caméra (View et Projection)
     auto surfaceExtents = m_context.GetSurfaceExtents();
@@ -77,9 +84,7 @@ void GameScene::Draw(const DrawInfo &drawInfo)
         const Camera &cam = gm.players[0]->cam;
         projMat = cam.GetProjectionMatrix(aspectRatio);
         viewMat = cam.GetViewMatrix();
-    }
-    else
-    {
+    } else {
         projMat = glm::perspective(glm::pi<float>() * 0.25f, aspectRatio, 0.1f, 1000.f);
         viewMat = glm::lookAt(glm::vec3(0.0f, 2.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     }
@@ -87,7 +92,7 @@ void GameScene::Draw(const DrawInfo &drawInfo)
     glm::mat4 viewProjMat = projMat * viewMat;
 
     // Fonction d'aide pour dessiner un Actor
-    auto drawActor = [&](const Actor &actor)
+    auto drawActor = [&](const Actor& actor)
     {
         if (!IsSphereVisible(actor.mesh->bs.GetWorldBoundingSphere(actor.mesh->bs, viewProjMat), gm.players[0]->cam.frustum))
         {
@@ -108,7 +113,7 @@ void GameScene::Draw(const DrawInfo &drawInfo)
             Logger::Warn("Actor ignore au rendu : texture ou descriptorSet manquant.");
 
             // Option B (recommandée) : Utiliser une texture par défaut
-            cmd.bindDescriptorSets(vk::PipelineBindPoint::eGraphics, *m_pipelineLayout, 0, {GameManager::get().textures.begin()->second->descriptorSet}, {});
+            cmd.bindDescriptorSets(vk::PipelineBindPoint::eGraphics, *m_pipelineLayout, 0, { GameManager::get().textures.begin()->second->descriptorSet }, {});
         }
         else
         {
@@ -116,12 +121,13 @@ void GameScene::Draw(const DrawInfo &drawInfo)
                 vk::PipelineBindPoint::eGraphics,
                 *m_pipelineLayout,
                 0,
-                {actor.texture->descriptorSet},
-                {});
+                { actor.texture->descriptorSet },
+                {}
+            );
         }
 
         // Lier les buffers de géométrie du Mesh
-        cmd.bindVertexBuffers(0, {*actor.mesh->vertexBuffer}, {0});
+        cmd.bindVertexBuffers(0, { *actor.mesh->vertexBuffer }, { 0 });
         cmd.bindIndexBuffer(*actor.mesh->indexBuffer, 0, vk::IndexType::eUint32);
 
         // Calculer la matrice monde de cet acteur
@@ -141,46 +147,44 @@ void GameScene::Draw(const DrawInfo &drawInfo)
             vk::ShaderStageFlagBits::eVertex,
             0,
             sizeof(Matrices),
-            &pushMatrices);
+            &pushMatrices
+        );
 
         cmd.drawIndexed(
             static_cast<uint32_t>(actor.mesh->indexes.size()),
-            1, 0, 0, 0);
+            1, 0, 0, 0
+        );
     };
 
-    if (!gm.characters.empty())
-    {
+    if (!gm.characters.empty()) {
 
         cmd.bindPipeline(vk::PipelineBindPoint::eGraphics, *m_skyboxPipeline);
-        for (const auto &character : gm.characters)
-        {
-            if (character)
-                drawActor(*character);
+        for (const auto& character : gm.characters) {
+            if (character) drawActor(*character);
         }
     }
+
 
     cmd.bindPipeline(vk::PipelineBindPoint::eGraphics, *m_pipeline);
 
     // Dessiner tous les Tracks et Players du GameManager
-    for (const auto &track : gm.tracks)
-    {
-        if (track)
-            drawActor(*track);
+    for (const auto& track : gm.tracks) {
+        if (track) drawActor(*track);
     }
 
-    for (const auto &player : gm.players)
-    {
-        if (player)
-            drawActor(*player);
+    for (const auto& player : gm.players) {
+        if (player) drawActor(*player);
     }
+
+    
 }
 
 void GameScene::CreateAndUploadBuffer(
-    const void *srcData,
+    const void* srcData,
     vk::DeviceSize size,
     vk::BufferUsageFlags usage,
-    vk::UniqueBuffer &outBuffer,
-    vk::UniqueDeviceMemory &outMemory)
+    vk::UniqueBuffer& outBuffer,
+    vk::UniqueDeviceMemory& outMemory)
 {
     auto bufferCreateInfo = vk::BufferCreateInfo{};
     bufferCreateInfo.setSize(size);
@@ -193,7 +197,8 @@ void GameScene::CreateAndUploadBuffer(
     uint32_t memoryTypeIndex = m_context.GetMemoryTypeIndex(
         memoryReqs.memoryTypeBits,
         vk::MemoryPropertyFlagBits::eHostVisible |
-            vk::MemoryPropertyFlagBits::eDeviceLocal);
+        vk::MemoryPropertyFlagBits::eDeviceLocal
+    );
     assert(memoryTypeIndex != static_cast<uint32_t>(-1));
 
     auto memoryAllocateInfo = vk::MemoryAllocateInfo{};
@@ -204,19 +209,18 @@ void GameScene::CreateAndUploadBuffer(
 
     m_context.GetDevice().bindBufferMemory(*outBuffer, *outMemory, 0);
 
-    void *bufferPtr = m_context.GetDevice().mapMemory(*outMemory, 0, size);
+    void* bufferPtr = m_context.GetDevice().mapMemory(*outMemory, 0, size);
     std::memcpy(bufferPtr, srcData, static_cast<size_t>(size));
     m_context.GetDevice().unmapMemory(*outMemory);
 }
 
 void GameScene::CreateVertexBuffer()
 {
-    auto &gm = GameManager::get();
+	auto& gm = GameManager::get();
 
-    for (auto &[modelName, mesh] : gm.models)
+    for (auto& [modelName, mesh] : gm.models)
     {
-        if (!mesh || mesh->sommets.empty())
-            continue;
+        if (!mesh || mesh->sommets.empty()) continue;
 
         vk::DeviceSize taille = mesh->sommets.size() * sizeof(Sommet);
 
@@ -225,18 +229,19 @@ void GameScene::CreateVertexBuffer()
             taille,
             vk::BufferUsageFlagBits::eVertexBuffer,
             mesh->vertexBuffer,
-            mesh->vertexBufferMemory);
+            mesh->vertexBufferMemory
+        );
     }
 }
 
+
 void GameScene::CreateIndexBuffer()
 {
-    auto &gm = GameManager::get();
+    auto& gm = GameManager::get();
 
-    for (auto &[modelName, mesh] : gm.models)
+    for (auto& [modelName, mesh] : gm.models)
     {
-        if (!mesh || mesh->indexes.empty())
-            continue;
+        if (!mesh || mesh->indexes.empty()) continue;
 
         vk::DeviceSize taille = mesh->indexes.size() * sizeof(uint32_t);
 
@@ -245,7 +250,8 @@ void GameScene::CreateIndexBuffer()
             taille,
             vk::BufferUsageFlagBits::eIndexBuffer,
             mesh->indexBuffer,
-            mesh->indexBufferMemory);
+            mesh->indexBufferMemory
+        );
     }
 }
 // Cr�� mes ressources pour les lights, notamment les buffer
@@ -264,7 +270,7 @@ void GameScene::CreateLightResources()
     uint32_t memoryTypeIndex = m_context.GetMemoryTypeIndex(
         memoryReqs.memoryTypeBits,
         vk::MemoryPropertyFlagBits::eHostVisible |
-            vk::MemoryPropertyFlagBits::eHostCoherent);
+        vk::MemoryPropertyFlagBits::eHostCoherent);
 
     assert(memoryTypeIndex != static_cast<uint32_t>(-1));
 
@@ -315,10 +321,10 @@ void GameScene::CreateLightResources()
 }
 
 // Update le light buffer avec la position de la cam�ra
-void GameScene::UpdateLightBuffer(const glm::vec3 &cameraPosition)
+void GameScene::UpdateLightBuffer(const glm::vec3& cameraPosition)
 {
-    m_lightData.cameraPosition = glm::vec4(cameraPosition, 1.0f);
-    std::memcpy(m_lightBufferMapped, &m_lightData, sizeof(LightData));
+	m_lightData.cameraPosition = glm::vec4(cameraPosition, 1.0f);
+	std::memcpy(m_lightBufferMapped, &m_lightData, sizeof(LightData));
 }
 
 void GameScene::CreatePipelineLayout()
@@ -328,14 +334,15 @@ void GameScene::CreatePipelineLayout()
     pushConstantRange.setStageFlags(vk::ShaderStageFlagBits::eVertex);
 
     auto pipelineLayoutCreateInfo = vk::PipelineLayoutCreateInfo{};
-    pipelineLayoutCreateInfo.setSetLayouts({*m_lightDescriptorSetLayout});
-    pipelineLayoutCreateInfo.setPushConstantRanges({pushConstantRange});
+    pipelineLayoutCreateInfo.setSetLayouts({ *m_lightDescriptorSetLayout });
+    pipelineLayoutCreateInfo.setPushConstantRanges({ pushConstantRange });
 
     m_pipelineLayout =
         m_context.GetDevice().createPipelineLayoutUnique(pipelineLayoutCreateInfo);
 }
 
-void GameScene::SendTextureToGPU(Texture &tex)
+
+void GameScene::SendTextureToGPU(Texture& tex)
 {
     vk::DeviceSize imageSize = static_cast<vk::DeviceSize>(tex.width) * tex.height * 4;
     auto device = m_context.GetDevice();
@@ -352,11 +359,11 @@ void GameScene::SendTextureToGPU(Texture &tex)
     stagingAlloc.setMemoryTypeIndex(m_context.GetMemoryTypeIndex(
         stagingReqs.memoryTypeBits,
         vk::MemoryPropertyFlagBits::eHostVisible |
-            vk::MemoryPropertyFlagBits::eHostCoherent));
+        vk::MemoryPropertyFlagBits::eHostCoherent));
     auto stagingMemory = device.allocateMemoryUnique(stagingAlloc);
     device.bindBufferMemory(*stagingBuffer, *stagingMemory, 0);
 
-    void *data = device.mapMemory(*stagingMemory, 0, imageSize);
+    void* data = device.mapMemory(*stagingMemory, 0, imageSize);
     std::memcpy(data, tex.pixels, static_cast<size_t>(imageSize));
     device.unmapMemory(*stagingMemory);
 
@@ -364,7 +371,7 @@ void GameScene::SendTextureToGPU(Texture &tex)
     auto imageInfo = vk::ImageCreateInfo{};
     imageInfo.setImageType(vk::ImageType::e2D);
     imageInfo.setFormat(vk::Format::eR8G8B8A8Srgb);
-    imageInfo.setExtent({static_cast<uint32_t>(tex.width), static_cast<uint32_t>(tex.height), 1});
+    imageInfo.setExtent({ static_cast<uint32_t>(tex.width), static_cast<uint32_t>(tex.height), 1 });
     imageInfo.setMipLevels(1);
     imageInfo.setArrayLayers(1);
     imageInfo.setSamples(vk::SampleCountFlagBits::e1);
@@ -387,13 +394,13 @@ void GameScene::SendTextureToGPU(Texture &tex)
     cmdAlloc.setLevel(vk::CommandBufferLevel::ePrimary);
     cmdAlloc.setCommandBufferCount(1);
     auto cmdBuffers = device.allocateCommandBuffersUnique(cmdAlloc);
-    auto &cmd = cmdBuffers[0];
+    auto& cmd = cmdBuffers[0];
 
     auto beginInfo = vk::CommandBufferBeginInfo{};
     beginInfo.setFlags(vk::CommandBufferUsageFlagBits::eOneTimeSubmit);
     cmd->begin(beginInfo);
 
-    auto range = vk::ImageSubresourceRange{vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1};
+    auto range = vk::ImageSubresourceRange{ vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1 };
 
     auto toTransfer = vk::ImageMemoryBarrier{};
     toTransfer.setOldLayout(vk::ImageLayout::eUndefined);
@@ -410,8 +417,8 @@ void GameScene::SendTextureToGPU(Texture &tex)
         {}, {}, {}, toTransfer);
 
     auto region = vk::BufferImageCopy{};
-    region.setImageSubresource({vk::ImageAspectFlagBits::eColor, 0, 0, 1});
-    region.setImageExtent({static_cast<uint32_t>(tex.width), static_cast<uint32_t>(tex.height), 1});
+    region.setImageSubresource({ vk::ImageAspectFlagBits::eColor, 0, 0, 1 });
+    region.setImageExtent({ static_cast<uint32_t>(tex.width), static_cast<uint32_t>(tex.height), 1 });
     cmd->copyBufferToImage(
         *stagingBuffer, *(tex.image),
         vk::ImageLayout::eTransferDstOptimal, region);
@@ -482,137 +489,141 @@ void GameScene::SendTextureToGPU(Texture &tex)
     writeTexture.setDescriptorType(vk::DescriptorType::eCombinedImageSampler);
     writeTexture.setImageInfo(textureInfo);
 
-    std::array<vk::WriteDescriptorSet, 2> writes = {writeLight, writeTexture};
+    std::array<vk::WriteDescriptorSet, 2> writes = { writeLight, writeTexture };
     device.updateDescriptorSets(writes, {});
 }
 
 namespace
 {
-    struct VERTEX
-    {
-        glm::vec3 position;
-        uint32_t color;
-    };
+	struct VERTEX
+	{
+		glm::vec3 position;
+		uint32_t color;
+	};
 
-    enum VERTEX_ATTRIBUTES
-    {
-        POSITION,
-        NORMAL,
-        UV_COORDS,
-    };
+	enum VERTEX_ATTRIBUTES
+	{
+		POSITION,
+		NORMAL,
+		UV_COORDS,
+	};
 
-    constexpr int g_vertexCount = 8;
-    constexpr int g_indexCount = 36;
+	constexpr int g_vertexCount = 8;
+	constexpr int g_indexCount = 36;
 }
 
-void GameScene::CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline &pipeline, const std::string &vertPath, const std::string &fragPath, bool depthWrite)
+
+
+
+void GameScene::CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pipeline, const std::string& vertPath, const std::string& fragPath, bool depthWrite, vk::FrontFace frontFace)
 {
-    auto vsModule = m_context.CreateShaderModuleFromFile(vertPath.c_str());
-    auto psModule = m_context.CreateShaderModuleFromFile(fragPath.c_str());
+	auto vsModule = m_context.CreateShaderModuleFromFile(vertPath.c_str());
+	auto psModule = m_context.CreateShaderModuleFromFile(fragPath.c_str());
 
-    std::array<vk::PipelineShaderStageCreateInfo, 2> shaderStages;
-    shaderStages[0].setModule(*vsModule);
-    shaderStages[0].setStage(vk::ShaderStageFlagBits::eVertex);
-    shaderStages[0].setPName("main");
+	std::array<vk::PipelineShaderStageCreateInfo, 2> shaderStages;
+	shaderStages[0].setModule(*vsModule);
+	shaderStages[0].setStage(vk::ShaderStageFlagBits::eVertex);
+	shaderStages[0].setPName("main");
 
-    shaderStages[1].setModule(*psModule);
-    shaderStages[1].setStage(vk::ShaderStageFlagBits::eFragment);
-    shaderStages[1].setPName("main");
+	shaderStages[1].setModule(*psModule);
+	shaderStages[1].setStage(vk::ShaderStageFlagBits::eFragment);
+	shaderStages[1].setPName("main");
 
-    std::vector<vk::VertexInputAttributeDescription> vertexAttributes;
+	std::vector<vk::VertexInputAttributeDescription> vertexAttributes;
 
-    // Position : x, y, z
-    {
-        auto attribute = vk::VertexInputAttributeDescription{};
-        attribute.setBinding(0);
-        attribute.setLocation(POSITION);
-        attribute.setFormat(vk::Format::eR32G32B32Sfloat); // 3 float : x, y, z
-        attribute.setOffset(offsetof(Sommet, position));   // On commence � regarder � partir de x pour ce binding
+	// Position : x, y, z
+	{
+		auto attribute = vk::VertexInputAttributeDescription{};
+		attribute.setBinding(0);
+		attribute.setLocation(POSITION);
+		attribute.setFormat(vk::Format::eR32G32B32Sfloat);			// 3 float : x, y, z	
+		attribute.setOffset(offsetof(Sommet, position));		// On commence � regarder � partir de x pour ce binding
 
-        vertexAttributes.push_back(attribute);
-    }
+		vertexAttributes.push_back(attribute);
+	}
 
-    // Normale : nx, ny, nz
-    {
-        auto attribute = vk::VertexInputAttributeDescription{};
-        attribute.setBinding(0);
-        attribute.setLocation(NORMAL);
-        attribute.setFormat(vk::Format::eR32G32B32Sfloat); // 3 float : nx, ny, nz
-        attribute.setOffset(offsetof(Sommet, normal));     // On commence � regarder � partir de nx pour ce binding
+	// Normale : nx, ny, nz
+	{
+		auto attribute = vk::VertexInputAttributeDescription{};
+		attribute.setBinding(0);
+		attribute.setLocation(NORMAL);
+		attribute.setFormat(vk::Format::eR32G32B32Sfloat);			// 3 float : nx, ny, nz 	
+		attribute.setOffset(offsetof(Sommet, normal));		// On commence � regarder � partir de nx pour ce binding
 
-        vertexAttributes.push_back(attribute);
-    }
+		vertexAttributes.push_back(attribute);
+	}
 
-    // Coordonn�es de texture : U, V
-    {
-        auto attribute = vk::VertexInputAttributeDescription{};
-        attribute.setBinding(0);
-        attribute.setLocation(UV_COORDS);
-        attribute.setFormat(vk::Format::eR32G32Sfloat); // 2 float : u, v
-        attribute.setOffset(offsetof(Sommet, UVcoord)); // On commence � regarder � partir de u pour ce binding
+	// Coordonn�es de texture : U, V
+	{
+		auto attribute = vk::VertexInputAttributeDescription{};
+		attribute.setBinding(0);
+		attribute.setLocation(UV_COORDS);
+		attribute.setFormat(vk::Format::eR32G32Sfloat);		// 2 float : u, v 	
+		attribute.setOffset(offsetof(Sommet, UVcoord));				// On commence � regarder � partir de u pour ce binding
 
-        vertexAttributes.push_back(attribute);
-    }
+		vertexAttributes.push_back(attribute);
+	}
 
-    auto vertexBinding = vk::VertexInputBindingDescription{};
-    vertexBinding.setInputRate(vk::VertexInputRate::eVertex);
-    vertexBinding.setStride(sizeof(Sommet));
+	auto vertexBinding = vk::VertexInputBindingDescription{};
+	vertexBinding.setInputRate(vk::VertexInputRate::eVertex);
+	vertexBinding.setStride(sizeof(Sommet));
 
-    auto vertexInputState = vk::PipelineVertexInputStateCreateInfo{};
-    vertexInputState.setVertexAttributeDescriptions(vertexAttributes);
-    vertexInputState.setVertexBindingDescriptions(vertexBinding);
+	auto vertexInputState = vk::PipelineVertexInputStateCreateInfo{};
+	vertexInputState.setVertexAttributeDescriptions(vertexAttributes);
+	vertexInputState.setVertexBindingDescriptions(vertexBinding);
 
-    auto inputAssemblyState = vk::PipelineInputAssemblyStateCreateInfo{};
-    inputAssemblyState.setTopology(vk::PrimitiveTopology::eTriangleList);
+	auto inputAssemblyState = vk::PipelineInputAssemblyStateCreateInfo{};
+	inputAssemblyState.setTopology(vk::PrimitiveTopology::eTriangleList);
 
-    auto rasterizationState = vk::PipelineRasterizationStateCreateInfo{};
-    rasterizationState.setLineWidth(1.0f);
+	auto rasterizationState = vk::PipelineRasterizationStateCreateInfo{};
+	rasterizationState.setLineWidth(1.0f);
+    rasterizationState.setFrontFace(frontFace);
 
-    // ACTIVER/DESACTIVER Backface culling
-    rasterizationState.setCullMode(vk::CullModeFlagBits::eBack);
+	// ACTIVER/DESACTIVER Backface culling
+	rasterizationState.setCullMode(vk::CullModeFlagBits::eBack);
 
-    auto viewportState = vk::PipelineViewportStateCreateInfo{};
-    viewportState.viewportCount = 1;
-    viewportState.scissorCount = 1;
+	auto viewportState = vk::PipelineViewportStateCreateInfo{};
+	viewportState.viewportCount = 1;
+	viewportState.scissorCount = 1;
 
-    auto depthStencilState = vk::PipelineDepthStencilStateCreateInfo{};
-    depthStencilState.setDepthWriteEnable(depthWrite);
-    depthStencilState.setDepthTestEnable(depthWrite);
-    depthStencilState.setDepthCompareOp(vk::CompareOp::eLessOrEqual);
+	auto depthStencilState = vk::PipelineDepthStencilStateCreateInfo{};
+	depthStencilState.setDepthWriteEnable(depthWrite);
+	depthStencilState.setDepthTestEnable(depthWrite);
+	depthStencilState.setDepthCompareOp(vk::CompareOp::eLessOrEqual);
 
-    auto colorAttachmentBlendState = vk::PipelineColorBlendAttachmentState{};
-    colorAttachmentBlendState.colorWriteMask =
-        vk::ColorComponentFlagBits::eR |
-        vk::ColorComponentFlagBits::eG |
-        vk::ColorComponentFlagBits::eB |
-        vk::ColorComponentFlagBits::eA;
+	auto colorAttachmentBlendState = vk::PipelineColorBlendAttachmentState{};
+	colorAttachmentBlendState.colorWriteMask =
+		vk::ColorComponentFlagBits::eR |
+		vk::ColorComponentFlagBits::eG |
+		vk::ColorComponentFlagBits::eB |
+		vk::ColorComponentFlagBits::eA;
 
-    std::array<vk::PipelineColorBlendAttachmentState, 1> colorAttachmentBlendStates = {colorAttachmentBlendState};
-    auto colorBlendState = vk::PipelineColorBlendStateCreateInfo{};
-    colorBlendState.setAttachments(colorAttachmentBlendStates);
+	std::array<vk::PipelineColorBlendAttachmentState, 1> colorAttachmentBlendStates = { colorAttachmentBlendState };
+	auto colorBlendState = vk::PipelineColorBlendStateCreateInfo{};
+	colorBlendState.setAttachments(colorAttachmentBlendStates);
 
-    std::array<vk::DynamicState, 2> dynamicStates = {vk::DynamicState::eViewport, vk::DynamicState::eScissor};
-    auto dynamicState = vk::PipelineDynamicStateCreateInfo{};
-    dynamicState.setDynamicStates(dynamicStates);
+	std::array<vk::DynamicState, 2> dynamicStates = { vk::DynamicState::eViewport, vk::DynamicState::eScissor };
+	auto dynamicState = vk::PipelineDynamicStateCreateInfo{};
+	dynamicState.setDynamicStates(dynamicStates);
 
-    auto multisampleState = vk::PipelineMultisampleStateCreateInfo{};
-    multisampleState.rasterizationSamples = vk::SampleCountFlagBits::e1;
+	auto multisampleState = vk::PipelineMultisampleStateCreateInfo{};
+	multisampleState.rasterizationSamples = vk::SampleCountFlagBits::e1;
 
-    vk::GraphicsPipelineCreateInfo createInfo = {};
-    createInfo.setStages(shaderStages);
-    createInfo.setRenderPass(renderPass);
-    createInfo.setLayout(*m_pipelineLayout);
-    createInfo.setPVertexInputState(&vertexInputState);
-    createInfo.setPInputAssemblyState(&inputAssemblyState);
-    createInfo.setPRasterizationState(&rasterizationState);
-    createInfo.setPDepthStencilState(&depthStencilState);
-    createInfo.setPViewportState(&viewportState);
-    createInfo.setPDynamicState(&dynamicState);
-    createInfo.setPColorBlendState(&colorBlendState);
-    createInfo.setPMultisampleState(&multisampleState);
+	vk::GraphicsPipelineCreateInfo createInfo = {};
+	createInfo.setStages(shaderStages);
+	createInfo.setRenderPass(renderPass);
+	createInfo.setLayout(*m_pipelineLayout);
+	createInfo.setPVertexInputState(&vertexInputState);
+	createInfo.setPInputAssemblyState(&inputAssemblyState);
+	createInfo.setPRasterizationState(&rasterizationState);
+	createInfo.setPDepthStencilState(&depthStencilState);
+	createInfo.setPViewportState(&viewportState);
+	createInfo.setPDynamicState(&dynamicState);
+	createInfo.setPColorBlendState(&colorBlendState);
+	createInfo.setPMultisampleState(&multisampleState);
 
-    auto result = m_context.GetDevice().createGraphicsPipelineUnique({}, createInfo);
-    pipeline = std::move(result.value);
+	auto result = m_context.GetDevice().createGraphicsPipelineUnique({}, createInfo);
+	pipeline = std::move(result.value);
 }
 
 bool GameScene::IsSphereVisible(const BoundingSphere &sphere, const Frustum &frustum)

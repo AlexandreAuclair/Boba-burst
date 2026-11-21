@@ -13,6 +13,11 @@ Makefile
 *Config.cmake
 revision.h
 
+# Shaders intermédiaires de la compilation
+shaders_out/
+
+# Ne pas pousser le .snlx
+*.snlx
 
 #Shaders intermédiaires de la compilation
 shaders_out/
@@ -133,7 +138,11 @@ StyleCopReport.xml
 *.rsp
 *.sln
 *.vcxproj
+<<<<<<< Updated upstream
 # *.vcxproj.filters         // garder les filtres car c'est utile pour le dev dans Visual Studio
+=======
+# *.vcxproj.filters         => Besoin des filtres pour organisation
+>>>>>>> Stashed changes
 *.stamp
 *.yml
 # but not Directory.Build.rsp, as it configures directory-level build defaults

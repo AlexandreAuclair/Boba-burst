@@ -135,6 +135,18 @@ bool LevelLoader::LoadLevel(std::string path)
                 character->texture = texture;
                 gm.characters.push_back(std::move(character));
             }
+            else if(type == "TrackObject"){
+                auto track = std::make_unique<TrackObject>(id,transform);
+                track->mesh = mesh;
+                track->texture = texture;
+                gm.trackObjects.push_back(std::move(track));
+            }
+            else if(type == "BonusObject"){
+                auto track = std::make_unique<BonusObject>(id,transform);
+                track->mesh = mesh;
+                track->texture = texture;
+                gm.bonusObjects.push_back(std::move(track));
+            }
             else
             {
                 Logger::Warn("Type d'actor inconnu : " + type);
