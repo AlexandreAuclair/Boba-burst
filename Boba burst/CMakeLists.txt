@@ -89,7 +89,6 @@ add_executable (Boba_burst
 
 "./src/Utilities/utilities.h"
 "./src/Utilities/bb_frustum.h"
-"./src/Utilities/bb_frustum.cpp"
 )
 
 foreach(SHADER IN LISTS SHADERS)
