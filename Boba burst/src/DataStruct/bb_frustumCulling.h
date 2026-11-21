@@ -44,28 +44,40 @@ struct Frustum
 {
     PlaneCulling planes[6];
 
-    Frustum ExtractFrustum(const glm::mat4& vp)
+    Frustum ExtractFrustum(const glm::mat4 &vp)
     {
-        glm::vec4 c0 = vp[0];
-        glm::vec4 c1 = vp[1];
-        glm::vec4 c2 = vp[2];
-        glm::vec4 c3 = vp[3];
+        // Reconstruct matrix rows from GLM columns
+        glm::vec4 r0(
+            vp[0][0], vp[1][0],
+            vp[2][0], vp[3][0]);
+
+        glm::vec4 r1(
+            vp[0][1], vp[1][1],
+            vp[2][1], vp[3][1]);
+
+        glm::vec4 r2(
+            vp[0][2], vp[1][2],
+            vp[2][2], vp[3][2]);
+
+        glm::vec4 r3(
+            vp[0][3], vp[1][3],
+            vp[2][3], vp[3][3]);
 
         Frustum frustum;
 
-        frustum.planes[0] = NormalizePlane(c3 + c0); // Left
-        frustum.planes[1] = NormalizePlane(c3 - c0); // Right
+        frustum.planes[0] = NormalizePlane(r3 + r0); // Left
+        frustum.planes[1] = NormalizePlane(r3 - r0); // Right
 
-        frustum.planes[2] = NormalizePlane(c3 + c1); // Bottom
-        frustum.planes[3] = NormalizePlane(c3 - c1); // Top
+        frustum.planes[2] = NormalizePlane(r3 + r1); // Bottom
+        frustum.planes[3] = NormalizePlane(r3 - r1); // Top
 
-        frustum.planes[4] = NormalizePlane(c2);      // Near
-        frustum.planes[5] = NormalizePlane(c3 - c2); // Far
+        frustum.planes[4] = NormalizePlane(r2);      // Near
+        frustum.planes[5] = NormalizePlane(r3 - r2); // Far
 
         return frustum;
     }
 
-    PlaneCulling NormalizePlane(const glm::vec4& p)
+    PlaneCulling NormalizePlane(const glm::vec4 &p)
     {
         glm::vec3 normal = glm::vec3(p);
 
@@ -73,6 +85,6 @@ struct Frustum
 
         return {
             glm::normalize(normal),
-            p.w / length };
+            p.w / length};
     }
 };

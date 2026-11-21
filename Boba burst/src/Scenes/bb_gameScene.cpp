@@ -73,7 +73,7 @@ void GameScene::Draw(const DrawInfo &drawInfo)
 
     if (!gm.players.empty() && gm.players[0])
     {
-        gm.players[0]->cam.frustum = gm.players[0]->cam.frustum.ExtractFrustum(projMat * viewMat);
+        gm.players[0]->cam.frustum = gm.players[0]->cam.frustum.ExtractFrustum(gm.players[0]->cam.GetProjectionMatrix(aspectRatio) * gm.players[0]->cam.GetViewMatrix());
         const Camera &cam = gm.players[0]->cam;
         projMat = cam.GetProjectionMatrix(aspectRatio);
         viewMat = cam.GetViewMatrix();
@@ -89,7 +89,6 @@ void GameScene::Draw(const DrawInfo &drawInfo)
     // Fonction d'aide pour dessiner un Actor
     auto drawActor = [&](const Actor &actor)
     {
-
         if (!IsSphereVisible(actor.mesh->bs.GetWorldBoundingSphere(actor.mesh->bs, viewProjMat), gm.players[0]->cam.frustum))
         {
             Logger::Log("actor has been culled!");
@@ -616,15 +615,20 @@ void GameScene::CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline &pi
     pipeline = std::move(result.value);
 }
 
-bool GameScene::IsSphereVisible(const BoundingSphere& sphere, const Frustum& frustum)
+bool GameScene::IsSphereVisible(const BoundingSphere &sphere, const Frustum &frustum)
 {
-    for (const PlaneCulling& plane : frustum.planes)
+    for (int i = 0; i < 6; i++)
     {
+        const PlaneCulling &plane = frustum.planes[i];
+
         float distance =
             glm::dot(plane.normal, sphere.center) + plane.distance;
 
         if (distance < -sphere.radius)
         {
+            std::cout << "Culled by plane: "
+                      << i << std::endl;
+
             return false;
         }
     }
