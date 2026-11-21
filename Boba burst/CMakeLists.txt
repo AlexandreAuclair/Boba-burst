@@ -88,6 +88,7 @@ add_executable (Boba_burst
 "./src/Events/bb_gameMovementEvent.h"
 
 "./src/Utilities/utilities.h"
+"./src/Utilities/bb_frustum.h"
 )
 
 foreach(SHADER IN LISTS SHADERS)
