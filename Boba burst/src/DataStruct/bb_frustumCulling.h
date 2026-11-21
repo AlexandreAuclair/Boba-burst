@@ -6,6 +6,7 @@
 #include <memory>
 #include <vulkan/vulkan.hpp>
 #include <glm/glm.hpp>
+#include <iostream>
 
 struct BoundingSphere
 {
@@ -65,14 +66,33 @@ struct Frustum
 
         Frustum frustum;
 
+        //frustum.planes[0] = NormalizePlane(r3 + r0); // Left
+        //frustum.planes[1] = NormalizePlane(r3 - r0); // Right
+
+        //frustum.planes[2] = NormalizePlane(r3 + r1); // Bottom
+        //frustum.planes[3] = NormalizePlane(r3 - r1); // Top
+
+        //frustum.planes[4] = NormalizePlane(r2);      // Near
+        //frustum.planes[5] = NormalizePlane(r3 - r2); // Far
+
         frustum.planes[0] = NormalizePlane(r3 + r0); // Left
         frustum.planes[1] = NormalizePlane(r3 - r0); // Right
 
         frustum.planes[2] = NormalizePlane(r3 + r1); // Bottom
         frustum.planes[3] = NormalizePlane(r3 - r1); // Top
 
-        frustum.planes[4] = NormalizePlane(r2);      // Near
+        frustum.planes[4] = NormalizePlane(r3 + r2); // Near
         frustum.planes[5] = NormalizePlane(r3 - r2); // Far
+
+        const PlaneCulling& nearPlane = frustum.planes[4];
+
+        std::cout << "Near Normal: "
+            << nearPlane.normal.x << ", "
+            << nearPlane.normal.y << ", "
+            << nearPlane.normal.z << std::endl;
+
+        std::cout << "Near Distance: "
+            << nearPlane.distance << std::endl;
 
         return frustum;
     }

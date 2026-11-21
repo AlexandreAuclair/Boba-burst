@@ -84,6 +84,27 @@ void GameScene::Draw(const DrawInfo& drawInfo)
         const Camera &cam = gm.players[0]->cam;
         projMat = cam.GetProjectionMatrix(aspectRatio);
         viewMat = cam.GetViewMatrix();
+
+        float cameraDistance =
+            glm::dot(cam.frustum.planes[4].normal, cam.GetPosition())
+            + cam.frustum.planes[4].distance;
+
+        std::cout << "Camera distance to Near: "
+            << cameraDistance << std::endl;
+
+        glm::vec3 cameraForward =
+            glm::normalize(cam.GetTarget() - cam.GetPosition());
+
+        glm::vec3 pointInFront =
+            cam.GetPosition() + cameraForward * 1.0f;
+
+        float frontDistance =
+            glm::dot(cam.frustum.planes[4].normal, pointInFront)
+            + cam.frustum.planes[4].distance;
+
+        std::cout << "Front distance: "
+            << frontDistance << std::endl;
+
     } else {
         projMat = glm::perspective(glm::pi<float>() * 0.25f, aspectRatio, 0.1f, 1000.f);
         viewMat = glm::lookAt(glm::vec3(0.0f, 2.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -94,17 +115,17 @@ void GameScene::Draw(const DrawInfo& drawInfo)
     // Fonction d'aide pour dessiner un Actor
     auto drawActor = [&](const Actor& actor)
     {
+        if (!actor.mesh || actor.mesh->indexes.empty())
+            return;
+
+        if (!actor.mesh || actor.mesh->indexes.empty())
+            return;
+
         if (!IsSphereVisible(actor.mesh->bs.GetWorldBoundingSphere(actor.mesh->bs, viewProjMat), gm.players[0]->cam.frustum))
         {
             Logger::Log("actor has been culled!");
             return;
         }
-
-        if (!actor.mesh || actor.mesh->indexes.empty())
-            return;
-
-        if (!actor.mesh || actor.mesh->indexes.empty())
-            return;
 
         // Vérifier que la texture ET son descriptorSet existent avant de dessiner !
         if (!actor.texture || !actor.texture->descriptorSet)
@@ -628,20 +649,53 @@ void GameScene::CreatePipeline(vk::RenderPass renderPass, vk::UniquePipeline& pi
 
 bool GameScene::IsSphereVisible(const BoundingSphere &sphere, const Frustum &frustum)
 {
-    for (int i = 0; i < 6; i++)
+    /*for (int i = 2; i < 3; i++)
     {
         const PlaneCulling &plane = frustum.planes[i];
 
         float distance =
             glm::dot(plane.normal, sphere.center) + plane.distance;
 
-        if (distance < -sphere.radius)
+        if (i == 2)
+        {
+            std::cout << "Bottom distance: " << distance
+                << " | Radius: " << sphere.radius
+                << " | Center: "
+                << sphere.center.x << ", "
+                << sphere.center.y << ", "
+                << sphere.center.z
+                << std::endl;
+        }
+
+        if (distance < -(sphere.radius* 1.10f))
         {
             std::cout << "Culled by plane: "
                       << i << std::endl;
 
             return false;
         }
+    }
+
+    return true;*/
+
+     //Tester uniquement Near et Far
+    for (int i = 4; i < 5; i++)
+    {
+        const PlaneCulling& plane = frustum.planes[i];
+
+        float distance =
+            glm::dot(plane.normal, sphere.center)
+            + plane.distance;
+
+        std::cout
+            << "Near Distance: " << distance
+            << " | Radius: " << sphere.radius
+            << " | Threshold: " << -sphere.radius
+            << " | Culled: " << (distance < -sphere.radius)
+            << std::endl;
+
+        if (distance < -sphere.radius)
+            return false;
     }
 
     return true;
