@@ -11,7 +11,8 @@ JPH::BodyID Character::InitPhysics(JPH::BodyInterface& bodyInterface){
 void Character::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
     
 }
-void Character::Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) {}
+void Character::Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyInterface) {
+}
 void Character::Update(float dt){
     if(followTarget)
         transform.position = followTarget->GetTransform().position;

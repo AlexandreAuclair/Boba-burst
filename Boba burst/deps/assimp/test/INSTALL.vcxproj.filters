@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\CMakeFiles\64721176f96d935ac86be68b3a3db08d\INSTALL_force.rule">
+    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\CMakeFiles\60691da10b2bae0c2b8298962f48e726\INSTALL_force.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{4DD53814-495A-3058-8761-35BAE5F0D6E9}</UniqueIdentifier>
+      <UniqueIdentifier>{73341C7B-2401-3609-9F54-31FD3D15E45F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

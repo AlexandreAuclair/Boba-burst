@@ -1,32 +1,45 @@
 #include "bb_player.h"
+#include "src/Utilities/utilities.h"
 
 Player::Player() {}
 Player::Player(int id_, Transform t_, Camera cam_) : Character(id_, t_){
     cam = Camera(cam_);
 }
 
-void Player::Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) {
-    Logger::Log("PLAYER CONSTRUCTOR #2 CALLED!");
-    controlManager = InputManager(inputBus, window);
-    Actor::id = id;
+void Player::Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyInterface) {
+
     inputBus->SubscribeToEvent<KeyPressedEvent>(this, &Player::Input);
     inputBus->SubscribeToEvent<PauseEvent>(this, &Player::HandlePauseEvent);
-    Logger::Log("PLAYER CONSTRUCTOR #2 DONE!");
 
-    InitPhysics(bodyInterface);
+    bodyID = InitPhysics(bodyInterface);
+
+    // Logger::Log("Actor id=" + std::to_string(id)
+    //     + " invalide=" + std::to_string(bodyID.IsInvalid())
+    //     + " ajoute=" + std::to_string(!bodyID.IsInvalid() && bodyInterface.IsAdded(bodyID))
+    //     + " layer=" + std::to_string(!bodyID.IsInvalid() ? bodyInterface.GetObjectLayer(bodyID) : -1)
+    //     + " actif=" + std::to_string(!bodyID.IsInvalid() && bodyInterface.IsActive(bodyID))
+    //     + " pos=" + (bodyID.IsInvalid() ? std::string("-") :
+    //         std::to_string(bodyInterface.GetCenterOfMassPosition(bodyID).GetX()) + ","
+    //         + std::to_string(bodyInterface.GetCenterOfMassPosition(bodyID).GetY()) + ","
+    //         + std::to_string(bodyInterface.GetCenterOfMassPosition(bodyID).GetZ())));
 
     busPtr = &inputBus;
+
+
+    JPH::AABox b = bodyInterface.GetTransformedShape(bodyID).GetWorldSpaceBounds();
+    Logger::Log("id=" + std::to_string(id)
+        + " Y min/max = " + std::to_string(b.mMin.GetY()) + " / " + std::to_string(b.mMax.GetY()));
 }
 
 Player::~Player() {}
 
 JPH::BodyID Player::InitPhysics(JPH::BodyInterface &bodyInterface)
-{
-    JPH::BodyCreationSettings sphere_settings = BodyCreationSettings(new JPH::BoxShape(JPH::RVec3(0.5f, 0.5f, 0.5f)), JPH::RVec3(0.0_r, 0.0_r, 0.0_r), JPH::Quat::sIdentity(), JPH::EMotionType::Dynamic, Layers::BONUS_OBJECTS);
+{ // glmToJPH(transform.position)
+    JPH::BodyCreationSettings sphere_settings = BodyCreationSettings(new JPH::BoxShape(JPH::RVec3(0.5f, 0.5f, 0.5f)), glmToJPH(transform.position), JPH::Quat::sIdentity(), JPH::EMotionType::Dynamic, Layers::PLAYER);
 
     sphere_settings.mUserData = static_cast<JPH::uint64>(id);
-    this->bodyID = bodyInterface.CreateAndAddBody(sphere_settings, JPH::EActivation::DontActivate);
-    return this->bodyID;
+    return  bodyInterface.CreateAndAddBody(sphere_settings, JPH::EActivation::Activate);
+
 }
 
 

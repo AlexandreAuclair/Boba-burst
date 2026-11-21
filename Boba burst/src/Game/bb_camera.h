@@ -56,6 +56,6 @@ private:
     glm::vec3 m_up       = glm::vec3(0.0f, 1.0f, 0.0f);
     bool m_initialized   = false;
     float m_yaw = 0.0f;
-    float m_pitch = -90.0f;
+    float m_pitch = 0.0f;
 
 };
