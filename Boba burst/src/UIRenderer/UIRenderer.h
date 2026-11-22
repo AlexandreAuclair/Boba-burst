@@ -33,6 +33,12 @@ private :
 
 	////////////////////////
 	// Attributs nécessaires pour la texture (ordre des parametres a ne pas TOUCHER !!! => importance dans la memoire)
+	
+	// Texture avec infos pour garder un bon ratio pour l'UI à l'affichage
+	struct UIPushConstants {
+		float halfWidth;
+		float halfHeight;
+	};
 
 	struct VulkanTexture{
 

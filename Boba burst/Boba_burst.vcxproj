@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{15FFA1E7-2134-37A8-B98C-DA1B664070A3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>Boba_burst</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bouboune\Documents\Boba-burst\Boba burst\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Boba_burst.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Boba_burst</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Bouboune\Documents\Boba-burst\Boba burst\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Boba_burst.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Boba_burst</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Bouboune\Documents\Boba-burst\Boba burst\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Boba_burst.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Boba_burst</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Bouboune\Documents\Boba-burst\Boba burst\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Boba_burst.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Boba_burst</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <CallingConvention>
+      </CallingConvention>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>
+      </FloatingPointModel>
+      <ForceConformanceInForLoopScope>
+      </ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>
+      </RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType>
+      </TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\VulkanSDK\1.4.363.1\Lib\vulkan-1.lib;deps\glfw\src\Debug\glfw3d.lib;deps\glm\glm\Debug\glmd.lib;deps\assimp\lib\Debug\assimp-vc145-mtd.lib;deps\JoltPhysics\Build\Debug\Joltd.lib;deps\assimp\contrib\zlib\Debug\zlibstaticd.lib;dxgi.lib;d3d12.lib;d3dcompiler.lib;dxguid.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>
+      </ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/Bouboune/Documents/Boba-burst/Boba burst/Debug/Boba_burst.lib</ImportLibrary>
+      <LinkErrorReporting>
+      </LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/Bouboune/Documents/Boba-burst/Boba burst/Debug/Boba_burst.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress>
+      </RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <CallingConvention>
+      </CallingConvention>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>
+      </FloatingPointModel>
+      <ForceConformanceInForLoopScope>
+      </ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>
+      </RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType>
+      </TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\VulkanSDK\1.4.363.1\Lib\vulkan-1.lib;deps\glfw\src\Release\glfw3.lib;deps\glm\glm\Release\glm.lib;deps\assimp\lib\Release\assimp-vc145-mt.lib;deps\JoltPhysics\Build\Release\Jolt.lib;deps\assimp\contrib\zlib\Release\zlibstatic.lib;dxgi.lib;d3d12.lib;d3dcompiler.lib;dxguid.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>
+      </ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/Bouboune/Documents/Boba-burst/Boba burst/Release/Boba_burst.lib</ImportLibrary>
+      <LinkErrorReporting>
+      </LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/Bouboune/Documents/Boba-burst/Boba burst/Release/Boba_burst.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress>
+      </RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <CallingConvention>
+      </CallingConvention>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>
+      </FloatingPointModel>
+      <ForceConformanceInForLoopScope>
+      </ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>
+      </RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType>
+      </TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\VulkanSDK\1.4.363.1\Lib\vulkan-1.lib;deps\glfw\src\MinSizeRel\glfw3.lib;deps\glm\glm\MinSizeRel\glm.lib;deps\assimp\lib\MinSizeRel\assimp-vc145-mt.lib;deps\JoltPhysics\Build\MinSizeRel\Jolt.lib;deps\assimp\contrib\zlib\MinSizeRel\zlibstatic.lib;dxgi.lib;d3d12.lib;d3dcompiler.lib;dxguid.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>
+      </ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/Bouboune/Documents/Boba-burst/Boba burst/MinSizeRel/Boba_burst.lib</ImportLibrary>
+      <LinkErrorReporting>
+      </LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/Bouboune/Documents/Boba-burst/Boba burst/MinSizeRel/Boba_burst.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress>
+      </RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <CallingConvention>
+      </CallingConvention>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>
+      </FloatingPointModel>
+      <ForceConformanceInForLoopScope>
+      </ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>
+      </RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType>
+      </TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.4.363.1\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\..\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\include;C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\VulkanSDK\1.4.363.1\Lib\vulkan-1.lib;deps\glfw\src\RelWithDebInfo\glfw3.lib;deps\glm\glm\RelWithDebInfo\glm.lib;deps\assimp\lib\RelWithDebInfo\assimp-vc145-mt.lib;deps\JoltPhysics\Build\RelWithDebInfo\Jolt.lib;deps\assimp\contrib\zlib\RelWithDebInfo\zlibstatic.lib;dxgi.lib;d3d12.lib;d3dcompiler.lib;dxguid.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>
+      </ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/Bouboune/Documents/Boba-burst/Boba burst/RelWithDebInfo/Boba_burst.lib</ImportLibrary>
+      <LinkErrorReporting>
+      </LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/Bouboune/Documents/Boba-burst/Boba burst/RelWithDebInfo/Boba_burst.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress>
+      </RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Bouboune/Documents/Boba-burst/Boba burst/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bouboune/Documents/Boba-burst -BC:/Users/Bouboune/Documents/Boba-burst --check-stamp-file "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.5\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.5\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.5\Modules\FindVulkan.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bouboune\Documents\Boba-burst\Boba burst\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Bouboune/Documents/Boba-burst/Boba burst/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bouboune/Documents/Boba-burst -BC:/Users/Bouboune/Documents/Boba-burst --check-stamp-file "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.5\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.5\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.5\Modules\FindVulkan.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Bouboune\Documents\Boba-burst\Boba burst\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Bouboune/Documents/Boba-burst/Boba burst/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bouboune/Documents/Boba-burst -BC:/Users/Bouboune/Documents/Boba-burst --check-stamp-file "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.5\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.5\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.5\Modules\FindVulkan.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Bouboune\Documents\Boba-burst\Boba burst\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Bouboune/Documents/Boba-burst/Boba burst/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bouboune/Documents/Boba-burst -BC:/Users/Bouboune/Documents/Boba-burst --check-stamp-file "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.5\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.5\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.5\Modules\FindVulkan.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Bouboune\Documents\Boba-burst\Boba burst\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\bb_main.cpp" />
+    <ClCompile Include="UIManager.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\stb_image.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_game.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_game.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_camera.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_camera.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_gameState.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_gameState.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_gameManager.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_gameManager.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\PhysicsWorld.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\PhysicsWorld.cpp" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Logger\Logger.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Logger\Logger.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\LevelLoader\bb_levelLoader.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\LevelLoader\bb_levelLoader.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\bb_actor.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_character.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_character.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_inputManager.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_inputManager.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_bot.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_bot.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_player.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_player.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_track.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_track.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_trackObject.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_trackObject.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_bonusObject.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_bonusObject.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\ObjectTypes.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\obstacle.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\obstacle.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_keyPressedEvent.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\EventBus\bb_event.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\EventBus\bb_eventBus.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\DataStruct\bb_mesh.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\DataStruct\bb_section.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\DataStruct\bb_sommet.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\DataStruct\bb_cameraConfig.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Scenes\bb_gameScene.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Scenes\bb_gameScene.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\VulkanContext\bb_vulkanContext.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\VulkanContext\bb_vulkanContext.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\VulkanRenderer\bb_vulkanRenderer.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\VulkanRenderer\bb_vulkanRenderer.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\ModelImporter\bb_modelImporter.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\ModelImporter\bb_modelImporter.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Controller\Controller.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Controller\Controller.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.h" />
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.cpp" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_onCollisionEvent.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_gameMovementEvent.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Utilities\utilities.h" />
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Utilities\bb_frustum.h" />
+    <ClInclude Include="UIManager.h" />
+    <Natvis Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\nlohmann_json.natvis">
+    </Natvis>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\ui.frag" />
+    <None Include="shaders\ui.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Bouboune\Documents\Boba-burst\ZERO_CHECK.vcxproj">
+      <Project>{6E0833F5-B5D4-3937-A670-E5D32FE550D8}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\JoltPhysics\Build\Jolt.vcxproj">
+      <Project>{69A9596A-BEAD-3CA7-A86A-9CA95DD5C9BC}</Project>
+      <Name>Jolt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\code\assimp.vcxproj">
+      <Project>{1E548F87-F35C-3847-82FA-16BD013FF36B}</Project>
+      <Name>assimp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glfw\src\glfw.vcxproj">
+      <Project>{0BD3908F-18FE-3A88-A863-0AA221DADC1C}</Project>
+      <Name>glfw</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\glm\glm\glm.vcxproj">
+      <Project>{2F398C0E-F9BF-3D6D-9E18-6C5589F370D3}</Project>
+      <Name>glm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\shaders.vcxproj">
+      <Project>{CA94AFEF-FB58-38E4-9928-5F763EA409AE}</Project>
+      <Name>shaders</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\assimp\contrib\zlib\zlibstatic.vcxproj">
+      <Project>{29755ADB-8B6A-38EC-8D51-30A07576E025}</Project>
+      <Name>zlibstatic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

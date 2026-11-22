@@ -13,7 +13,7 @@ UIRenderer::UIRenderer(
 	vk::RenderPass renderpass) : m_context{ context } {
 	
 	// 1. Charger la texture en mémoire
-	m_pauseTexture = CreateTexture("assets/menu_pause_version_0.png");
+	m_pauseTexture = CreateTexture("assets/images/menu_pause_version_2.png");
 
 	// 2. Declarations des ressources necessaires en memoire pour le shader (disposition du descriptor set avant le descriptor set en lui-même)
 	CreateUIDescriptorSetLayout();
@@ -30,6 +30,45 @@ void UIRenderer::Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent) {
     // ETAPE 1 : Activer le pipeline UI
     commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics, *m_ui_pipeline);
     
+
+	// ===================================================
+	// ETAPE 1.5 - CONSERVER LES PROPORTIONS DU PNG
+	// ===================================================
+	
+	// Hauteur du menu : 50 % de la hauteur du framebuffer.
+	// Comme le rectangle est centré : demi-hauteur NDC = 0.5.
+	float halfHeight = 0.5f;
+
+	// Rapport largeur / hauteur de la texture.
+	// On conserve ainsi les proportions originales du PNG.
+	float textureRatio =
+		static_cast<float>(m_pauseTexture.width) /
+		static_cast<float>(m_pauseTexture.height);
+
+	// Rapport hauteur / largeur du framebuffer.
+	// Permet de compenser ses proportions.
+	float framebufferRatio =
+		static_cast<float>(extent.height) /
+		static_cast<float>(extent.width);
+
+	// Calcul de la demi-largeur NDC correspondante.
+	float halfWidth =
+		halfHeight * textureRatio * framebufferRatio;
+
+	// Données destinées au Vertex Shader.
+	UIPushConstants pushConstants{
+		halfWidth,
+		halfHeight
+	};
+
+	// Envoi des Push Constants au Vertex Shader.
+	commandBuffer.pushConstants(
+		*m_ui_pipelineLayout,
+		vk::ShaderStageFlagBits::eVertex,
+		0,
+		sizeof(UIPushConstants),
+		&pushConstants
+	);
 
 	// ETAPE 2. Binder le Descriptor Set avec le layout du pipeline UI
 	commandBuffer.bindDescriptorSets(
@@ -121,11 +160,36 @@ void UIRenderer::CreateUIPipeline(vk::RenderPass renderPass) {
 	vk::PipelineLayoutCreateInfo layoutInfo{};
 	layoutInfo.setSetLayouts(setLayout);
 
+
+	// Ajout du push constant pour avoir bon dimensionnement UI
+	//////////////
+	vk::PushConstantRange pushConstantRange{};
+
+	// Vertex Shader aura accès aux infos
+	pushConstantRange.setStageFlags(
+		vk::ShaderStageFlagBits::eVertex
+	);
+
+	pushConstantRange.setOffset(0);
+
+	// Taille que l'on pousse
+	pushConstantRange.setSize(
+		sizeof(UIPushConstants)
+	);
+
+	// Ajouter les infos du push constant au layout
+	layoutInfo.setPushConstantRanges(pushConstantRange);
+	/////////////////////
+
 	m_ui_pipelineLayout =
 		m_context.GetDevice().createPipelineLayoutUnique(layoutInfo);
 
     // Color attachement
     auto colorAttachmentBlendState = vk::PipelineColorBlendAttachmentState{};
+
+	// Pas encore de transparence pour le prototype
+	colorAttachmentBlendState.setBlendEnable(VK_FALSE);
+
     colorAttachmentBlendState.colorWriteMask =
         vk::ColorComponentFlagBits::eR |
         vk::ColorComponentFlagBits::eG |
@@ -133,11 +197,10 @@ void UIRenderer::CreateUIPipeline(vk::RenderPass renderPass) {
         vk::ColorComponentFlagBits::eA;
 
     std::array<vk::PipelineColorBlendAttachmentState, 1> colorAttachmentBlendStates = { colorAttachmentBlendState };
-    auto colorBlendState = vk::PipelineColorBlendStateCreateInfo{};
+   
+	auto colorBlendState = vk::PipelineColorBlendStateCreateInfo{};
     colorBlendState.setAttachments(colorAttachmentBlendStates);
 
-    // Pas encore de transparence pour le prototype
-    colorAttachmentBlendState.setBlendEnable(VK_FALSE);
 
     std::array<vk::DynamicState, 2> dynamicStates = { vk::DynamicState::eViewport, vk::DynamicState::eScissor };
     auto dynamicState = vk::PipelineDynamicStateCreateInfo{};
@@ -265,8 +328,8 @@ UIRenderer::VulkanTexture UIRenderer::CreateTexture(const std::string& path){
 		throw std::runtime_error("Impossible de charger la texture : " + path);
 
 	// -- Chargement reussi, stocker dimensions textures -- // 
-	tex.width = static_cast<uint16_t>(width);
-	tex.height = static_cast<uint16_t>(height);
+	tex.width = static_cast<uint32_t>(width);
+	tex.height = static_cast<uint32_t>(height);
 
 
 	vk::DeviceSize imageSize = static_cast<vk::DeviceSize>(width) * height * 4;

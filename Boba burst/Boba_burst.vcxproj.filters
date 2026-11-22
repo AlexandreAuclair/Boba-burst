@@ -65,7 +65,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -159,9 +162,6 @@
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Controller\Controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_onCollisionEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -170,6 +170,15 @@
     </ClInclude>
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Utilities\utilities.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Utilities\bb_frustum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -185,25 +194,22 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{73E0DCEE-6FD2-3817-BECB-9B489F0F4783}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders">
-      <UniqueIdentifier>{e9445cfb-5c17-4b87-9334-57aa3d4fa778}</UniqueIdentifier>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{5c799f5f-f45d-4be0-82c0-45bcde73fbef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{eed59fd4-46d7-4797-b825-d8329ccd27f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{40fac59a-389a-433a-a166-743a3b636b07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\global.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="shaders\global.vert">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="shaders\skybox.frag">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="shaders\ui.frag">
-      <Filter>Shaders</Filter>
+      <Filter>Shader</Filter>
     </None>
     <None Include="shaders\ui.vert">
-      <Filter>Shaders</Filter>
+      <Filter>Shader</Filter>
     </None>
   </ItemGroup>
 </Project>
