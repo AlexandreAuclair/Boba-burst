@@ -112,8 +112,11 @@ public:
 	void HandleMovementEvent(GameMovementEvent &event);
 
 private:
-	const JPH::Vec3 impulseLeftValue = JPH::Vec3(0.0f, 0.0f, 5.0f);
-	const JPH::Vec3 impulseRightValue = JPH::Vec3(0.0f, 0.0f, -5.0f);
+	/*VEC 3 (-LEFT,-UP,-FORWARD)*/
+	/*VEC 3 (RIGHT,DOWN,BACKWARD)*/
+	const JPH::Vec3 impulseLeftValue = JPH::Vec3(-0.5f, 0.0f, 0.0f);
+	const JPH::Vec3 impulseRightValue = JPH::Vec3(0.5f, 0.0f, 0.0f);
+
 	std::unique_ptr<EventBus> *busPtr;
 	// This is the max amount of rigid bodies that you can add to the physics system. If you try to add more you'll get an error.
 	// Note: This value is low because this is a simple test. For a real project use something in the order of 65536.
@@ -318,7 +321,7 @@ private:
 		// See: ContactListener
 		virtual ValidateResult OnContactValidate(const Body &b1, const Body &b2, RVec3Arg inBaseOffset, const CollideShapeResult &inCollisionResult) override
 		{
-			
+
 			// Allows you to ignore a contact before it is created (using layers to not make objects collide is cheaper!)
 			return ValidateResult::AcceptAllContactsForThisBodyPair;
 		}
@@ -331,7 +334,7 @@ private:
 			std::lock_guard<std::mutex> lock(mutexContacts);
 			currentWorld.contactsQueue.push_back(c);
 
-			//cout << "Contact added to the queue " << endl;
+			// cout << "Contact added to the queue " << endl;
 			Logger::Log("Contact between bodiiiies");
 
 			cout << "A contact was added between " << (int)b1.GetObjectLayer() << " and " << (int)b2.GetObjectLayer() << endl;
