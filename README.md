@@ -33,9 +33,18 @@ Ce projet est le résultat d'une collaboration serrée où chacun a apporté son
 
 ---
 
-Dans notre façon d'implémenter on a pas mal respecté notre graphique de notre GDD. Par contre, nous avons pas mal rajouté d'élément, car le projet a fallu plus d'élément que prévu pour réaliser notre vision.On a ajouté une classe LevelLoader qui load l'emplacement de tout les objet grace a un fichier JSON ce qui permet de bouger les objets sans avoir a recompilé tout.On a ajouté toute les classes qui sont nécessaire a un rendu Vulkan : VulkanContext, VulkanRenderer et Scene. On a aussi des classes pour le rendu 2D pour le UI : le UIRenderer. On a aussi la classe qui fait le lien avec Jolt: PhysicWorld. On a rajouté aussi un gestionnaire d'event: EventBus qui utilise le pattern de subscribers pour envoyer des messages a tous ceux qui veulent recevoir un certain type d'event tout les event hérite de Event qui est plus simplifier que ce qu'on a écrit dans le GDD. On a aussi ajouté des classification de plus comme Goal qui hérite de track pour que son collider sache qu'on terminer le jeu. On a enlevé Face, car sa ne marchait pas bien avec le système qu'on faisait comme nous on expliqué les professeurs.
+En général, nous avons bien respecté ce que nous avions établi comme base dans le GDD. Cependant, comme dans tout projet, nous avons dû effectuer quelque changement après avoir réalisé les premières implémentations.
 
-J'ai du beaucoup modifier notre boucle de jeu comparé au GDD. Une fois que les choses ce sont concrétisé j'ai pus voir comment les choses vont s'exécuter. On a une classe Game qui est un singleton. et une classe GameManager qui est aussi un singleton. La classe Game est l'application dans lequel tout est appelé pour l'éxécution du programme. Le GameManager est l'objet qui regroupe tout les objets en un endroit pour les appeler quand on a besoin d'eux. On a aussi le GameState qui est un membre de Game qui fait office de machine d'état gameloop comme décrit dans le GDD. les fonctions : ProcessInput(), Update(), Render() de la classe Game éxécute leurs fonctionalité dépendant de la valeur de la variable gameState. On a aussi rajouté la fonction Initialisation() et Setup() dans Game, la première pour initialiser les bibliothèque et valeurs nécessaire au fonctionnement de l'application et la seconde pour assigner les valeurs de départ de notre jeu au objet du jeu.
+Premièrement, nous avons ajouté la classe « LevelLoader » qui, au démarrage du jeu, nous permet d’instancier en mémoire les divers éléments d’un niveau précis. En effet, en bâtissant un fichier de type « .JSON » pour le « LevelLoader » contenant les éléments de notre scène, nous pouvons effectuer des modifications des objets du niveau sans avoir a effectué une nouvelle compilation du projet.
+
+Par la suite, nous avons aussi ajouté toutes les classes nécessaires afin d’obtenir notre rendu Vulkan. C’est-à-dire, « VulkanContext », « VulkanRenderer » et « Scene ». De plus, afin de rendre notre menu 2D, nous lui avons créer une classe séparer de notre rendu 3D mentionner plutôt. Nous l’avons appelé « UIRenderer ».
+
+En continuant, nous avons modifié nos liens avec Jolt ainsi que nos événements. Dans cette version du projet, tous nos appels à Jolt sont effectués dans une classe appelée « PhysicWorld ». Tout comme avec notre rendu, cela nous permet d’isoler Jolt dans une partie centraliser du projet afin de permettre un meilleur contrôle sur la physique ainsi que des améliorations futures simplifier. Du côté de nos événements, nous avons réussi à grandement réduire le nombre d’événements différents grâce à l’implémenter de la classe « EventBus ». Il s’agit d’un gestionnaire d’événement unique qui permet à tous ceux qui le veulent de s’inscrire afin de recevoir des messages d’un certain type ou d’en émettre avec le schéma de conception « Publisher-Subscriber ». Pour nos messages / « Événement », ils héritent tous d’une classe commune et peuvent passer des arguments afin de réduire grandement le nombre de classes d’événement nécessaire.
+
+Pour l’architecture des niveaux, nous avons ajouté une spécification pour les buts afin qu’un détecteur puisse noter la fin du jeu et nous avons retiré le concept de face comme il ajoutait beaucoup trop de complexité pour le projet selon les commentaires des enseignants.
+
+Pour terminer, nous avons grandement modifié notre boucle de jeu. Nos classes « Game » et « GameManager » sont des singletons permettant un contrôle centralisé de la boucle de jeux. « Game » est la classe principale du jeu contenant toutes les fonctions nécessaires appelé pour l’exécution du programme tandis que « GameManager » regroupe tous les objets au même endroit et contrôle leur vérité. Dans « Game » , notre machine dicte quelles fonctions sont exécutées. Ses dernières sont « ProcessInput(), Update(), Render() » dans cet ordre avec chacune d’entre elles regardant l’état courant pour décider des fonctions à exécuter. Afin de garder l’ordre, nous avons aussi ajouté les fonctions « Initialisation() » et « Setup() » pour établir les bases du jeu avant d’exécuter la volonté du joueur.
+
 
 ---
 
@@ -46,3 +55,11 @@ J'ai du beaucoup modifier notre boucle de jeu comparé au GDD. Une fois que les 
 4. c/c++ -> Code Generation
 5. change Runtime Library to /MDd
 6. compile whole project
+
+---
+
+## LES TOUCHES
+1. flèche gauche du clavier -> déplacement vers la gauche
+2. flèche droite du clavier -> déplacement vers la droite
+3. TAB -> changement de la caméra
+4. ESC -> ouverture du menu
