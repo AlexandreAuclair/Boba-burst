@@ -1,5 +1,5 @@
 #include "bb_player.h"
-#include "src/Utilities/utilities.h"
+#include "../../Utilities/utilities.h"
 
 Player::Player() {}
 Player::Player(int id_, Transform t_, Camera cam_) : Character(id_, t_){
@@ -35,7 +35,7 @@ Player::~Player() {}
 
 JPH::BodyID Player::InitPhysics(JPH::BodyInterface &bodyInterface)
 { // glmToJPH(transform.position)
-    JPH::BodyCreationSettings sphere_settings = BodyCreationSettings(new JPH::BoxShape(JPH::RVec3(0.5f, 0.5f, 0.5f)), glmToJPH(transform.position), JPH::Quat::sIdentity(), JPH::EMotionType::Dynamic, Layers::PLAYER);
+    JPH::BodyCreationSettings sphere_settings = BodyCreationSettings(new JPH::SphereShape(0.5f), glmToJPH(transform.position), JPH::Quat::sIdentity(), JPH::EMotionType::Dynamic, Layers::PLAYER);
 
     sphere_settings.mUserData = static_cast<JPH::uint64>(id);
     return  bodyInterface.CreateAndAddBody(sphere_settings, JPH::EActivation::Activate);
