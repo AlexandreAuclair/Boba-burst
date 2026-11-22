@@ -108,6 +108,9 @@ void VulkanRenderer::RecreateSwapChain()
 	// Attendre que la fenêtre retrouve une taille valide
 	while (width == 0 || height == 0)
 	{
+		if (glfwWindowShouldClose(m_context.window))
+			return;
+
 		glfwWaitEvents();
 		glfwGetFramebufferSize(m_context.window, &width, &height);
 	}
