@@ -100,17 +100,17 @@ void VulkanRenderer::RecreateSwapChain()
 	//// Recréer les framebuffers
 	//CreateFramebuffers();
 
-	//int width = 0;
-	//int height = 0;
+	int width = 0;
+	int height = 0;
 
-	//glfwGetFramebufferSize(m_context.m_window, &width, &height);
+	glfwGetFramebufferSize(m_context.window, &width, &height);
 
-	//// Attendre que la fenêtre retrouve une taille valide
-	//while (width == 0 || height == 0)
-	//{
-	//	glfwWaitEvents();
-	//	glfwGetFramebufferSize(m_context.m_window, &width, &height);
-	//}
+	// Attendre que la fenêtre retrouve une taille valide
+	while (width == 0 || height == 0)
+	{
+		glfwWaitEvents();
+		glfwGetFramebufferSize(m_context.window, &width, &height);
+	}
 
 	m_context.GetDevice().waitIdle();
 

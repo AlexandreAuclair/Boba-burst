@@ -5,7 +5,6 @@
 #include "../Scenes/bb_scene.h"
 #include "../VulkanContext/bb_vulkanContext.h"
 #include "../UIRenderer/UIRenderer.h"
-#include <GLFW/glfw3.h>
 
 class VulkanRenderer
 {

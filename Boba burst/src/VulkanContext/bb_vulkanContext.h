@@ -4,6 +4,9 @@
 
 #include "../DataStruct/VulkanDef.h"
 
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
 class VulkanContext
 {
 public:
@@ -66,6 +69,8 @@ public:
 
 	uint32_t GetMemoryTypeIndex(uint32_t, vk::MemoryPropertyFlags) const;
 	vk::UniqueShaderModule CreateShaderModuleFromFile(const char *) const;
+
+	GLFWwindow* window;
 
 private:
 	void CreateSwapChainImageViews();
