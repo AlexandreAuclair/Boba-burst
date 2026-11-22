@@ -7,7 +7,10 @@
     <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\CMakeFiles\ea92310ac7819ff053d8d08a10aa13a9\global.vert.spv.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\CMakeFiles\ea92310ac7819ff053d8d08a10aa13a9\skybox.frag.spv.rule">
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\CMakeFiles\98a1fface88a4d6c3b6167ccca8ab777\skybox.frag.spv.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\CMakeFiles\98a1fface88a4d6c3b6167ccca8ab777\ui.frag.spv.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
     <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\CMakeFiles\ea92310ac7819ff053d8d08a10aa13a9\ui.frag.spv.rule">

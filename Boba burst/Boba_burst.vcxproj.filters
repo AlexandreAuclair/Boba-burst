@@ -7,13 +7,19 @@
     <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_camera.cpp">
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_gameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_gameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_gameManager.cpp">
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\PhysicsWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Logger\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\PhysicsWorld.cpp">
@@ -22,7 +28,10 @@
     <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Logger\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\LevelLoader\bb_levelLoader.cpp">
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_inputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_bot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_character.cpp">
@@ -37,7 +46,10 @@
     <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_track.cpp">
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\obstacle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Scenes\bb_gameScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_goal.cpp">
@@ -111,7 +123,10 @@
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_track.h">
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\PhysicsWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Logger\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_goal.h">
@@ -123,7 +138,10 @@
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_bonusObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\ObjectTypes.h">
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_inputManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_bot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\obstacle.h">
@@ -138,7 +156,13 @@
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\EventBus\bb_eventBus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\DataStruct\bb_mesh.h">
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\ObjectTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\obstacle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_keyPressedEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\DataStruct\bb_section.h">
@@ -156,10 +180,7 @@
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\VulkanContext\bb_vulkanContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\VulkanRenderer\bb_vulkanRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\ModelImporter\bb_modelImporter.h">
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\DataStruct\bb_cameraConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Controller\Controller.h">
@@ -180,6 +201,15 @@
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Utilities\utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_onCollisionEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_gameMovementEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Utilities\utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\CMakeLists.txt" />
@@ -194,5 +224,25 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{42D90FE2-07A5-330E-9721-F7F8496703CB}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{e9445cfb-5c17-4b87-9334-57aa3d4fa778}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\global.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\global.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\skybox.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\ui.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\ui.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
