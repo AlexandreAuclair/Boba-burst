@@ -5,6 +5,9 @@
 #include <glm/glm.hpp>
 #include <cassert>
 
+#include <glm/gtc/quaternion.hpp>
+#include <Jolt/Math/Quat.h>
+
 inline JPH::Array<JPH::Vec3> MeshToJoltVertices(const Mesh& m) {
 
 	std::vector<Sommet> sommets = m.sommets;
@@ -19,6 +22,17 @@ inline JPH::Array<JPH::Vec3> MeshToJoltVertices(const Mesh& m) {
 
 inline JPH::Vec3 glmToJPH(glm::vec3 v) {
     return JPH::Vec3(v.x, v.y, v.z);
+}
+
+inline JPH::Quat glmEulerToJPHQuat(const glm::vec3& eulerDegrees)
+{
+	glm::vec3 rad = glm::radians(eulerDegrees);
+    glm::quat qz = glm::angleAxis(rad.z, glm::vec3(0.0f, 0.0f, 1.0f));
+    glm::quat qy = glm::angleAxis(rad.y, glm::vec3(0.0f, 1.0f, 0.0f));
+    glm::quat qx = glm::angleAxis(rad.x, glm::vec3(1.0f, 0.0f, 0.0f));
+
+    glm::quat q = glm::normalize(qx * qy * qz);
+    return JPH::Quat(-q.x, q.y, -q.z, q.w);
 }
 
 inline JPH::IndexedTriangleList MeshToJoltTriangles(const Mesh& m) {

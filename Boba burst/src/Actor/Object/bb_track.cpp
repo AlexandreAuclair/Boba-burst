@@ -32,16 +32,31 @@ JPH::BodyID Track::InitPhysics(JPH::BodyInterface& bodyInterface){
     if (result.HasError())
     {
         // Handle error: result.GetError().c_str()
-        Logger::Log("pbm de création de la shape");
+        Logger::Err("probleme de création de la shape");
         throw;
     }
 
     JPH::RefConst<JPH::Shape> track_shape = result.Get();
+    JPH::RefConst<JPH::Shape> finalShape = track_shape;
 
-    JPH::BodyCreationSettings trackSettings = BodyCreationSettings(track_shape, glmToJPH(transform.position), JPH::Quat::sIdentity(), JPH::EMotionType::Static, Layers::NON_MOVING);
+    // Évite d'envelopper inutilement si l'échelle est déjà (1, 1, 1)
+    if (transform.scale != glm::vec3(1.0f))
+    {
+        JPH::ScaledShapeSettings scaledSettings(track_shape, glmToJPH(transform.scale));
+        JPH::ShapeSettings::ShapeResult scaledResult = scaledSettings.Create();
+        if (scaledResult.HasError())
+        {
+            Logger::Err("probleme de création de la shape");
+            throw;
+        }
+        finalShape = scaledResult.Get();
+    }
+
+    JPH::BodyCreationSettings trackSettings = BodyCreationSettings(finalShape, glmToJPH(transform.position), glmEulerToJPHQuat(transform.rotation), JPH::EMotionType::Static, Layers::NON_MOVING);
 
     trackSettings.mUserData = static_cast<JPH::uint64>(id);
     
+
     return bodyInterface.CreateAndAddBody(trackSettings, JPH::EActivation::DontActivate);
 
 }
@@ -70,12 +85,13 @@ void Track::Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyIn
 
 
 void Track::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
-    
+    auto pos = bodyInterface.GetPosition(this->bodyID);
+    this->transform.position = glm::vec3(pos.GetX(), -(pos.GetY()), pos.GetZ());
+
 }
 
 void Track::Update(float dt) {
     //check for collision
-    UpdateFromPhysics(*sections->bodyInterface);
 }
 
 void Track::Render(float dt) {

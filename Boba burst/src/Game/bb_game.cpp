@@ -293,6 +293,10 @@ void Game::Update(double dt) {
         // La physique de Jolt est mise à jours et les événement de collision sont lancer.
         m_physicsWorld->Update(millisecsPreviousFrame);
 
+        for(auto& track : GameManager::get().tracks){
+            track->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
+        }
+
         for(auto& player : GameManager::get().players)
         {
             player->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());

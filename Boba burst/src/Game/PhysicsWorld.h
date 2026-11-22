@@ -334,7 +334,7 @@ private:
 			//cout << "Contact added to the queue " << endl;
 			Logger::Log("Contact between bodiiiies");
 
-			cout << "A contact was added between" << (int)b1.GetObjectLayer() << "and" << (int)b2.GetObjectLayer() << endl;
+			cout << "A contact was added between " << (int)b1.GetObjectLayer() << " and " << (int)b2.GetObjectLayer() << endl;
 		}
 
 		virtual void OnContactPersisted(const Body &b1, const Body &b2, const ContactManifold &inManifold, ContactSettings &ioSettings) override
