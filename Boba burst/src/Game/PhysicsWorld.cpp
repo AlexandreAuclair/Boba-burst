@@ -74,9 +74,11 @@ bool PhysicsWorld::Update(float dt)
 		for (size_t i = 0; i < movementRequestsQueue.size(); i++)
 		{
 			ImpulsionRequest currentMod = movementRequestsQueue[i];
-			Logger::Log("Vitesse avant :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetZ()));
-			bodyInterface.SetLinearVelocity(currentMod.mBodyID, currentMod.modsVec3);
-			Logger::Log("Vitesse apres :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetZ()));
+			bodyInterface.GetLinearVelocity(currentMod.mBodyID);
+			Logger::Log("Vitesse avant :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetX()));
+			JPH::Vec3 newSpeed = bodyInterface.GetLinearVelocity(currentMod.mBodyID) + currentMod.modsVec3;
+			bodyInterface.SetLinearVelocity(currentMod.mBodyID, newSpeed);
+			Logger::Log("Vitesse apres :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetX()));
 		}
 
 		movementRequestsQueue.clear();
