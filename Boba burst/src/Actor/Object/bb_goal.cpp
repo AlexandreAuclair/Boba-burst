@@ -2,6 +2,7 @@
 #include "src/Utilities/utilities.h"
 #include "../Character/bb_player.h"
 #include "../../Events/bb_winEvent.h"
+#include "src/Game/bb_gameManager.h"
 
 // MARCHE PAS 
 
@@ -12,7 +13,7 @@ Goal::~Goal() {}
 
 
 void Goal::onCollision(CollisionEvent &event) {
-    /*
+    
     if (event.acteur1 != id && event.acteur2 != id) return;
     int otherId = (event.acteur1 == id) ? event.acteur2 : event.acteur1;
 
@@ -21,8 +22,7 @@ void Goal::onCollision(CollisionEvent &event) {
     if (it == actors.end()) return;
 
     if (auto* p = dynamic_cast<Player*>(it->second))     // les bots sont sur le layer PLAYER aussi
-        busPtr->get()->EmitEvent<WinEvent>(p->GetId());  // GetId() : accesseur public � ajouter
+        busPtr->get()->EmitEvent<WinEvent>(p->getId());
 
-        */
 
 }

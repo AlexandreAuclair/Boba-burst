@@ -161,10 +161,24 @@ void GameScene::Draw(const DrawInfo& drawInfo)
     for (const auto& track : gm.tracks) {
         if (track) drawActor(*track);
     }
-
+    for (const auto& track : gm.trackObjects) {
+        if (track) drawActor(*track);
+    }
+    for (const auto& track : gm.bonusObjects) {
+        if (track) drawActor(*track);
+    }
+    for (const auto& track : gm.obstacles) {
+        if (track) drawActor(*track);
+    }
     for (const auto& player : gm.players) {
         if (player) drawActor(*player);
     }
+    for (const auto& player : gm.bots) {
+        if (player) drawActor(*player);
+    }
+
+
+    if(gm.goal) drawActor(*gm.goal);
 
     
 }

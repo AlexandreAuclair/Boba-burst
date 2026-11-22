@@ -10,6 +10,7 @@
 #include "../ModelImporter/bb_modelImporter.h"
 #include "../Game/bb_gameManager.h"
 #include "../Game/bb_camera.h"
+#include "../Actor/Object/bb_goal.h"
 
 using nlohmann::json;
 
@@ -140,6 +141,22 @@ bool LevelLoader::LoadLevel(std::string path)
 
 
             }
+
+            else  if (type == "Goal") {
+                int nbSections = actorJson.at("nbSections").get<int>();
+                auto track = std::make_unique<Goal>(id, transform, nbSections);
+                track->mesh = mesh;
+                track->texture = texture;
+
+                gm.actorsById.insert({ id, track.get() });
+
+                gm.goal = std::move(track);
+
+
+            }
+
+
+
             else if (type == "Character") {
                 auto character = std::make_unique<Character>(id, transform);
                 character->mesh = mesh;
