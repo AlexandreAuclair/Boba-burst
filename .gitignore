@@ -133,7 +133,7 @@ StyleCopReport.xml
 *.pgd
 *.rsp
 *.sln
-# *.vcxproj
+*.vcxproj
 !*.vcxproj.filters         # Garder les filtres car c'est utile pour le dev dans Visual Studio
 *.stamp
 *.yml
