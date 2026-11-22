@@ -78,27 +78,6 @@ void VulkanRenderer::CreateFramebuffers()
 
 void VulkanRenderer::RecreateSwapChain()
 {
-	//m_context.GetDevice().waitIdle();
-
-	//// Détruire les framebuffers
-	//m_framebuffers.clear();
-
-	//// Détruire les ressources de profondeur
-	//m_depthbufferImageView.reset();
-	//m_depthbufferImage.reset();
-	//m_depthbufferImageMemory.reset();
-
-	//// Détruire le Swapchain
-	//m_context.CleanUpSwapChain();
-
-	//// Recréer le Swapchain et ses ImageViews
-	//m_context.CreateSwapChain();
-
-	//// Recréer le depth buffer
-	//CreateDepthbuffer();
-
-	//// Recréer les framebuffers
-	//CreateFramebuffers();
 
 	int width = 0;
 	int height = 0;
