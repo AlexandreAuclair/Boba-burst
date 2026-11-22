@@ -50,6 +50,7 @@ bool Game::Initialize() {
 
     context.CreateInstance();
 	context.CreateDevice();
+    context.window = window;
 
 	VkSurfaceKHR surface = VK_NULL_HANDLE;
 	VkResult result = glfwCreateWindowSurface(context.GetInstance(), window, NULL, &surface);
