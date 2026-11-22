@@ -16,9 +16,11 @@ public:
     void Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyInterface) override final;
     void Update(float dt) override final;
     void Render(float dt) override final;
-    void onCollision(CollisionEvent &event);
+    virtual void onCollision(CollisionEvent &event);
 
-private:
+    std::unique_ptr<EventBus>* busPtr;
+
+protected:
     int nbSections;
     std::unique_ptr<Section> sections;
 };

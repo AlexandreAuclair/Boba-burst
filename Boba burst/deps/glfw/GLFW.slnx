@@ -8,11 +8,11 @@
 		<Platform Name="x64"/>
 	</Configurations>
 	<Folder Name="/CMakePredefinedTargets/">
-		<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="89a78755-91a3-3bb4-9d49-819e76b3acd0" DefaultStartup="true">
+		<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="a757eaf2-77e0-3d9e-93ee-b4d6fd0924e1" DefaultStartup="true">
 			<BuildDependency Project="../../../ZERO_CHECK.vcxproj"/>
 			<BuildDependency Project="src/glfw.vcxproj"/>
 		</Project>
-		<Project Path="INSTALL.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="392ce5bc-886e-3ff0-b7c1-76e900ec0123">
+		<Project Path="INSTALL.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="4a462161-6e2f-3a6f-b10a-3cfed2a8ed7f">
 			<BuildDependency Project="ALL_BUILD.vcxproj"/>
 			<BuildDependency Project="../../../ZERO_CHECK.vcxproj"/>
 			<Build Solution="Debug|*" Project="false"/>
@@ -20,20 +20,20 @@
 			<Build Solution="MinSizeRel|*" Project="false"/>
 			<Build Solution="RelWithDebInfo|*" Project="false"/>
 		</Project>
-		<Project Path="../../../ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="6e0833f5-b5d4-3937-a670-e5d32fe550d8"/>
+		<Project Path="../../../ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="83a511f0-e230-3daa-a996-ed545307ae42"/>
 	</Folder>
 	<Folder Name="/GLFW3/">
-		<Project Path="src/glfw.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="0bd3908f-18fe-3a88-a863-0aa221dadc1c">
+		<Project Path="src/glfw.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="5977a63d-82e4-3100-a7cd-2c8911889351">
 			<BuildDependency Project="../../../ZERO_CHECK.vcxproj"/>
 		</Project>
-		<Project Path="uninstall.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="ea5e09d0-f0f1-3097-9980-6c0ba6d3c756">
+		<Project Path="uninstall.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="d67ae289-dbd0-32cc-ad7e-4eb5a3522b9d">
 			<BuildDependency Project="../../../ZERO_CHECK.vcxproj"/>
 			<Build Solution="Debug|*" Project="false"/>
 			<Build Solution="Release|*" Project="false"/>
 			<Build Solution="MinSizeRel|*" Project="false"/>
 			<Build Solution="RelWithDebInfo|*" Project="false"/>
 		</Project>
-		<Project Path="src/update_mappings.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="5140d6bc-519b-3403-8031-909a66f8020b">
+		<Project Path="src/update_mappings.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="41da018f-cbfc-3bca-b923-6c2d0fa6acc6">
 			<BuildDependency Project="../../../ZERO_CHECK.vcxproj"/>
 			<Build Solution="Debug|*" Project="false"/>
 			<Build Solution="Release|*" Project="false"/>

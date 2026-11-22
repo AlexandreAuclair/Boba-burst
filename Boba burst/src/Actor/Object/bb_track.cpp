@@ -48,6 +48,9 @@ JPH::BodyID Track::InitPhysics(JPH::BodyInterface& bodyInterface){
 
 void Track::Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyInterface) {
     bodyID = InitPhysics(bodyInterface);
+    busPtr = &inputBus;
+
+    inputBus->SubscribeToEvent<CollisionEvent>(this, &Track::onCollision); // le goal va faire ça aussi
 
     // Logger::Log("Actor id=" + std::to_string(id)
     //     + " invalide=" + std::to_string(bodyID.IsInvalid())

@@ -1,32 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\CMakeFiles\c363e8f02d02a1ae7d5ebd61ea9b335e\global.frag.spv.rule">
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\CMakeFiles\ea92310ac7819ff053d8d08a10aa13a9\global.frag.spv.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\CMakeFiles\c363e8f02d02a1ae7d5ebd61ea9b335e\global.vert.spv.rule">
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\CMakeFiles\ea92310ac7819ff053d8d08a10aa13a9\global.vert.spv.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\CMakeFiles\c363e8f02d02a1ae7d5ebd61ea9b335e\skybox.frag.spv.rule">
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\CMakeFiles\ea92310ac7819ff053d8d08a10aa13a9\skybox.frag.spv.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\CMakeFiles\c363e8f02d02a1ae7d5ebd61ea9b335e\ui.frag.spv.rule">
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\CMakeFiles\ea92310ac7819ff053d8d08a10aa13a9\ui.frag.spv.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\CMakeFiles\c363e8f02d02a1ae7d5ebd61ea9b335e\ui.vert.spv.rule">
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\CMakeFiles\ea92310ac7819ff053d8d08a10aa13a9\ui.vert.spv.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\CMakeFiles\b5747fc92432df268cf56f7f5c866ba2\shaders.rule">
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\CMakeFiles\e3795020e91d117c467a797f63c046d8\shaders.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\CMakeFiles\shaders" />
+    <None Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\CMakeFiles\shaders" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{73341C7B-2401-3609-9F54-31FD3D15E45F}</UniqueIdentifier>
+      <UniqueIdentifier>{71D56C52-DE5B-374D-BD06-8C3A7AAAEBB5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

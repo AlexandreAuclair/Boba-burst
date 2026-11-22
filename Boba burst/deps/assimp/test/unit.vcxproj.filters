@@ -1,456 +1,456 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\CCompilerTest.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\CCompilerTest.c">
       <Filter>UnitTests\Compiler</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Main.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\code\Common\Version.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\code\Common\Version.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\code\Common\Base64.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\code\Common\Base64.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utSimd.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utSimd.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utIOSystem.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utIOSystem.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utIOStreamBuffer.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utIOStreamBuffer.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utIssues.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utIssues.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utAnim.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utAnim.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiMatrix3x3.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiMatrix3x3.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiMatrix4x4.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiMatrix4x4.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiQuaternion.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiQuaternion.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiVector2D.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiVector2D.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiVector3D.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\AssimpAPITest_aiVector3D.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\MathTest.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\MathTest.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utBatchLoader.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utBatchLoader.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utDefaultIOStream.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utDefaultIOStream.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utFastAtof.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utFastAtof.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utMetadata.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utMetadata.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\SceneDiffer.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\SceneDiffer.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\AbstractImportExportBase.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\AbstractImportExportBase.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utTypes.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utTypes.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utVersion.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utVersion.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utParsingUtils.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utParsingUtils.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utProfiler.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utProfiler.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utSharedPPData.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utSharedPPData.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utStringUtils.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utStringUtils.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utMaybe.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utMaybe.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utMesh.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utMesh.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utStandardShapes.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utStandardShapes.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\uiScene.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\uiScene.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utLineSplitter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utLineSplitter.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utSpatialSort.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utSpatialSort.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utAssertHandler.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utAssertHandler.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utXmlParser.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utXmlParser.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utBase64.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utBase64.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utHash.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utHash.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utBaseProcess.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utBaseProcess.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utLogger.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Common\utLogger.cpp">
       <Filter>UnitTests\Common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Geometry\utGeometryUtils.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Geometry\utGeometryUtils.cpp">
       <Filter>UnitTests\GeometryTools</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\Assxml\utAssxmlImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\Assxml\utAssxmlImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utLWSImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utLWSImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utLWOImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utLWOImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utMS3DImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utMS3DImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utSMDImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utSMDImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utglTFImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utglTFImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utglTF2ImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utglTF2ImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utHMPImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utHMPImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utIFCImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utIFCImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utFBXImporterExporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utFBXImporterExporter.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utImporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utImporter.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utExporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utExporter.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ut3DImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ut3DImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ut3DSImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ut3DSImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utACImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utACImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utAMFImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utAMFImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utASEImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utASEImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utD3MFImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utD3MFImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utQ3DImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utQ3DImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utSTLImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utSTLImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utXImporterExporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utXImporterExporter.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utX3DImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utX3DImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utDXFImporterExporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utDXFImporterExporter.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utPMXImporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utPMXImporter.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utPLYImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utPLYImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utObjImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utObjImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utObjTools.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utObjTools.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utOpenGEXImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utOpenGEXImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utSIBImporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utSIBImporter.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utBlenderIntermediate.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utBlenderIntermediate.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utBlendImportAreaLight.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utBlendImportAreaLight.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utBlenderImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utBlenderImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utBlendImportMaterials.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utBlendImportMaterials.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utBlenderWork.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utBlenderWork.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utBVHImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utBVHImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utColladaExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utColladaExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utColladaImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utColladaImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utCSMImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utCSMImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utB3DImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utB3DImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utNDOImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utNDOImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utMDCImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utMDCImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utAssbinImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utAssbinImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utAssjsonImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utAssjsonImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utCOBImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utCOBImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utOgreImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utOgreImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utQ3BSPFileImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utQ3BSPFileImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utOFFImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utOFFImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utOFFSecurity.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utOFFSecurity.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utNFFImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utNFFImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utXGLImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utXGLImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utMD2Importer.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utMD2Importer.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utMD5Importer.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utMD5Importer.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utIQMImporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utIQMImporter.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utMDLImporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\utMDLImporter.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\IRR\utIrrImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\IRR\utIrrImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\MDL\utMDLImporter_HL1_ImportSettings.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\MDL\utMDLImporter_HL1_ImportSettings.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\MDL\utMDLImporter_HL1_Materials.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\MDL\utMDLImporter_HL1_Materials.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\MDL\utMDLImporter_HL1_Nodes.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\MDL\utMDLImporter_HL1_Nodes.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\RAW\utRAWImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\RAW\utRAWImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\Terragen\utTerragenImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\Terragen\utTerragenImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\Pbrt\utPbrtImportExport.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\Pbrt\utPbrtImportExport.cpp">
       <Filter>UnitTests\ImportExport</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utMaterialSystem.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utMaterialSystem.cpp">
       <Filter>UnitTests\Material</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utMatrix3x3.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utMatrix3x3.cpp">
       <Filter>UnitTests\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utMatrix4x4.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utMatrix4x4.cpp">
       <Filter>UnitTests\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utVector3.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utVector3.cpp">
       <Filter>UnitTests\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utImproveCacheLocality.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utImproveCacheLocality.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utFixInfacingNormals.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utFixInfacingNormals.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utGenNormals.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utGenNormals.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utTriangulate.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utTriangulate.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utTextureTransform.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utTextureTransform.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utRemoveRedundantMaterials.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utRemoveRedundantMaterials.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utRemoveVCProcess.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utRemoveVCProcess.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utScaleProcess.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utScaleProcess.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utArmaturePopulate.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utArmaturePopulate.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utJoinVertices.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utJoinVertices.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utRemoveComments.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utRemoveComments.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utRemoveComponent.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utRemoveComponent.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utVertexTriangleAdjacency.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utVertexTriangleAdjacency.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utSplitLargeMeshes.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utSplitLargeMeshes.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utFindDegenerates.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utFindDegenerates.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utFindInvalidData.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utFindInvalidData.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utLimitBoneWeights.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utLimitBoneWeights.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utPretransformVertices.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utPretransformVertices.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utScenePreprocessor.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utScenePreprocessor.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utTargetAnimation.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utTargetAnimation.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utSortByPType.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utSortByPType.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utSceneCombiner.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utSceneCombiner.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\utGenBoundingBoxesProcess.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\utGenBoundingBoxesProcess.cpp">
       <Filter>UnitTests\PostProcess</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\googletest\googletest\src\gtest-all.cc">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\googletest\googletest\src\gtest-all.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\MathTest.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\MathTest.h">
       <Filter>UnitTests\Common</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\RandomNumberGeneration.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\RandomNumberGeneration.h">
       <Filter>UnitTests\Common</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\SceneDiffer.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\SceneDiffer.h">
       <Filter>UnitTests\Common</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\UTLogStream.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\UTLogStream.h">
       <Filter>UnitTests\Common</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\TestIOSystem.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\TestIOSystem.h">
       <Filter>UnitTests\Common</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\TestModelFactory.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\TestModelFactory.h">
       <Filter>UnitTests\Common</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\MDL\MDLHL1TestFiles.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\ImportExport\MDL\MDLHL1TestFiles.h">
       <Filter>UnitTests\ImportExport</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\unit\Tools\TestTools.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\unit\Tools\TestTools.h">
       <Filter>UnitTests\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\test\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\test\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{02DCB317-4AE4-3B18-BD3A-E19A1332E9B6}</UniqueIdentifier>
+      <UniqueIdentifier>{42D90FE2-07A5-330E-9721-F7F8496703CB}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTests">
-      <UniqueIdentifier>{A7A62861-8BCB-33CC-A472-534296277552}</UniqueIdentifier>
+      <UniqueIdentifier>{46934D90-583A-3708-8970-168E664F88CA}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTests\Common">
-      <UniqueIdentifier>{CD0ED975-63E5-325F-9136-23A1863832E0}</UniqueIdentifier>
+      <UniqueIdentifier>{7F1F6DCF-B461-34B8-997D-1CC9190440F1}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTests\Compiler">
-      <UniqueIdentifier>{99EA5004-FABC-322D-B96C-1D3C6F555254}</UniqueIdentifier>
+      <UniqueIdentifier>{86D0AC41-D54B-3DD8-A5DE-16EF04962335}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTests\GeometryTools">
-      <UniqueIdentifier>{32305E88-F870-304E-BD98-85E1E2AFAEF3}</UniqueIdentifier>
+      <UniqueIdentifier>{234700AC-1F76-3992-88CC-669772F8E103}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTests\ImportExport">
-      <UniqueIdentifier>{7B895653-9CA3-3987-B612-52331BE6CC6E}</UniqueIdentifier>
+      <UniqueIdentifier>{BD764E9C-943E-34A4-93A6-7EBE5B36EA5A}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTests\Material">
-      <UniqueIdentifier>{F9B630F8-20B4-3D66-B0CC-9345096A9478}</UniqueIdentifier>
+      <UniqueIdentifier>{4B976B3F-2B65-3289-A738-11C58B5D1C63}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTests\Math">
-      <UniqueIdentifier>{F34E749B-0622-38C9-ABCA-3708AC9F56BB}</UniqueIdentifier>
+      <UniqueIdentifier>{0EC91503-C1A1-3EED-AA3B-8CBBBF0AE2E5}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTests\PostProcess">
-      <UniqueIdentifier>{127F9A1B-786B-33F1-9DBD-C92E35AFDB20}</UniqueIdentifier>
+      <UniqueIdentifier>{F7B50627-4C48-3442-BB3A-CAAF9987605C}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTests\Tools">
-      <UniqueIdentifier>{F6AB2377-806F-382C-9FED-B1C869BB47FE}</UniqueIdentifier>
+      <UniqueIdentifier>{D6B482ED-9131-3A76-AAB3-449F832E3756}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

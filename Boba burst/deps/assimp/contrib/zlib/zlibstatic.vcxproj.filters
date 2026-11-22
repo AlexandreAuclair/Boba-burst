@@ -1,96 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\adler32.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\adler32.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\compress.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\compress.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\crc32.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\crc32.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\deflate.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\deflate.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzclose.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzclose.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzlib.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzlib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzread.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzread.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzwrite.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzwrite.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inflate.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inflate.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\infback.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\infback.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inftrees.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inftrees.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inffast.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inffast.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\trees.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\trees.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\uncompr.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\uncompr.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\zutil.c">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\zutil.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\zconf.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\zconf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\zlib.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\zlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\crc32.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\crc32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\deflate.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\deflate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzguts.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\gzguts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inffast.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inffast.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inffixed.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inffixed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inflate.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inflate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inftrees.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\inftrees.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\trees.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\trees.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\zutil.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\zutil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\lamc5718\Documents\Cours\Boba-burst\Boba burst\deps\assimp\contrib\zlib\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\assimp\contrib\zlib\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{1E58169A-8A06-3E34-BCAC-C739737D04F5}</UniqueIdentifier>
+      <UniqueIdentifier>{58584B64-1DD5-34FB-A6D1-1E7172408E49}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{02DCB317-4AE4-3B18-BD3A-E19A1332E9B6}</UniqueIdentifier>
+      <UniqueIdentifier>{42D90FE2-07A5-330E-9721-F7F8496703CB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
