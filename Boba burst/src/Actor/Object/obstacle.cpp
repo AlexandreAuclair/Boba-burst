@@ -4,7 +4,7 @@
 #include "../../Game/PhysicsWorld.h"
 #include "src/Utilities/utilities.h"
 
-Obstacle::Obstacle(){}
+Obstacle::Obstacle(int id_, Transform t_): Actor(id_,t_){}
 Obstacle::~Obstacle(){}
 
 JPH::BodyID Obstacle::InitPhysics(JPH::BodyInterface& bodyInterface){
@@ -17,7 +17,8 @@ JPH::BodyID Obstacle::InitPhysics(JPH::BodyInterface& bodyInterface){
 }
 
 void Obstacle::UpdateFromPhysics(const JPH::BodyInterface& bodyInterface){
-    
+    auto pos = bodyInterface.GetPosition(this->bodyID);
+    this->transform.position = glm::vec3(pos.GetX(), -(pos.GetY()), pos.GetZ());
 }
 
 

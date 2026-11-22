@@ -141,7 +141,6 @@ bool LevelLoader::LoadLevel(std::string path)
 
 
             }
-
             else  if (type == "Goal") {
                 int nbSections = actorJson.at("nbSections").get<int>();
                 auto track = std::make_unique<Goal>(id, transform, nbSections);
@@ -154,9 +153,6 @@ bool LevelLoader::LoadLevel(std::string path)
 
 
             }
-
-
-
             else if (type == "Character") {
                 auto character = std::make_unique<Character>(id, transform);
                 character->mesh = mesh;
@@ -187,6 +183,17 @@ bool LevelLoader::LoadLevel(std::string path)
                 gm.actorsById.insert({ id, track.get() });
 
                 gm.bonusObjects.push_back(std::move(track));
+
+
+            }
+            else if(type == "Obstacle"){
+                auto track = std::make_unique<Obstacle>(id,transform);
+                track->mesh = mesh;
+                track->texture = texture;
+
+                gm.actorsById.insert({ id, track.get() });
+
+                gm.obstacles.push_back(std::move(track));
 
 
             }

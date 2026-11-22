@@ -297,7 +297,9 @@ void Game::Update(double dt) {
         for(auto& track : GameManager::get().tracks){
             track->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
         }
-
+        for(auto& obstacle : GameManager::get().obstacles){
+            obstacle->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
+        }
         for(auto& player : GameManager::get().players)
         {
             player->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
