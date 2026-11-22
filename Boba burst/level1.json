@@ -79,9 +79,9 @@
       },
       {
         "id": 1,
-        "type": "Track",
+        "type": "Goal",
         "transform": {
-            "position": [0.0, 6.0, -18.0], 
+            "position": [0.0, 0.0, -18.0], 
             "rotation": [90.0, 0.0, 0.0],
             "scale": [5.0, 5.0, 5.0]
         },
@@ -93,9 +93,9 @@
         "id": 2,
         "type": "Player",
         "transform": {
-            "position": [0.0, 0.0, 0.0],
+            "position": [0.0, 10.0, 0.0],
             "rotation": [0.0, 0.0, 0.0],
-            "scale": [1.0, 1.0, 1.0]
+            "scale": [0.5, 0.5, 0.5]
         },
         "camera": {
           "fovDegrees": 45.0,

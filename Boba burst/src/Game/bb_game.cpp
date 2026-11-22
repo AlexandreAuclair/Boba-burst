@@ -131,7 +131,7 @@ void Game::Destroy() {
 
 void Game::Setup() {
     // Appeler le level Loader
-        if(!levelLoader.LoadLevel("level1.json")){
+    if(!levelLoader.LoadLevel("level1.json")){
         Logger::Err("Could not load level1.json");
     }
     else{
@@ -142,9 +142,27 @@ void Game::Setup() {
     scene = std::make_shared<GameScene>(context);
 	renderer->SetScene(scene);
 
-    GameManager::get().players.back()->Init(gameEventBus, window, m_physicsWorld->GetBodyInterface());
+    //GameManager::get().players.back()->Init(gameEventBus, window, m_physicsWorld->GetBodyInterface());
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
     GameManager::get().characters.front()->SetFollowTarget(GameManager::get().players.front().get());
+    for (auto& p : GameManager::get().players) {
+        p->SetControlManager(InputManager(gameEventBus, window));
+    }
+
+    Logger::Log("Setup : actorsById.size() = " + std::to_string(GameManager::get().actorsById.size()));
+    auto& gm = GameManager::get();
+    Logger::Log("actorsById=" + std::to_string(gm.actorsById.size())
+        + " trackObjects=" + std::to_string(gm.trackObjects.size())
+        + " bonusObjects=" + std::to_string(gm.bonusObjects.size())
+        + " obstacles=" + std::to_string(gm.obstacles.size()));
+
+    for (auto &a : GameManager::get().actorsById) {
+        a.second->Init(gameEventBus, m_physicsWorld->GetBodyInterface());
+    }
+    
+
+    
+
 }
 
 void Game::ProcessInput()
@@ -275,6 +293,10 @@ void Game::Update(double dt) {
 	    scene->Update(dt);
         // La physique de Jolt est mise à jours et les événement de collision sont lancer.
         m_physicsWorld->Update(millisecsPreviousFrame);
+
+        for(auto& track : GameManager::get().tracks){
+            track->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
+        }
 
         for(auto& player : GameManager::get().players)
         {

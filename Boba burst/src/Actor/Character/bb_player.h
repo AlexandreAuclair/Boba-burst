@@ -25,7 +25,8 @@ private:
     bool isIgnoringInputs = false;
 
 public:
-    void Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) override final;
+    void SetControlManager(const InputManager& inputM) { controlManager = inputM; }
+    void Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyInterface) override final;
     void Input(KeyPressedEvent &event);
     void Update(float dt) override final;
     void Render(float dt) override final;

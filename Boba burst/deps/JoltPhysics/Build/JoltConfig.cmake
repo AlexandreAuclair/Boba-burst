@@ -7,7 +7,7 @@ if(CMAKE_VERSION VERSION_LESS "2.8.3")
    message(FATAL_ERROR "CMake >= 2.8.3 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 2.8.3...4.2)
+cmake_policy(VERSION 2.8.3...4.1)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -52,7 +52,7 @@ add_library(Jolt::Jolt STATIC IMPORTED)
 set_target_properties(Jolt::Jolt PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "\$<\$<CONFIG:Release,Distribution,ReleaseASAN,ReleaseUBSAN,ReleaseTSAN,ReleaseCoverage>:NDEBUG>;\$<\$<CONFIG:ReleaseASAN,ReleaseTSAN>:JPH_DISABLE_TEMP_ALLOCATOR;JPH_DISABLE_CUSTOM_ALLOCATOR>;\$<\$<CONFIG:Debug,Release>:JPH_FLOATING_POINT_EXCEPTIONS_ENABLED>;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;\$<\$<CONFIG:Debug,Release,ReleaseASAN,ReleaseUBSAN,ReleaseTSAN>:JPH_DEBUG_RENDERER>;\$<\$<CONFIG:Debug,Release,ReleaseASAN,ReleaseUBSAN,ReleaseTSAN>:JPH_PROFILE_ENABLED>;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD"
   INTERFACE_COMPILE_OPTIONS "/arch:AVX2"
-  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/lamc5718/Documents/Cours/Boba-burst/Boba burst/deps/JoltPhysics/Build/../;C:/VulkanSDK/1.4.357.0/include"
+  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/../;C:/VulkanSDK/1.4.357.0/include"
   INTERFACE_LINK_LIBRARIES "dxgi.lib;d3d12.lib;d3dcompiler.lib;dxguid.lib"
 )
 
@@ -60,28 +60,28 @@ set_target_properties(Jolt::Jolt PROPERTIES
 set_property(TARGET Jolt::Jolt APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(Jolt::Jolt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/lamc5718/Documents/Cours/Boba-burst/Boba burst/deps/JoltPhysics/Build/Debug/Joltd.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/Debug/Joltd.lib"
   )
 
 # Import target "Jolt::Jolt" for configuration "Release"
 set_property(TARGET Jolt::Jolt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(Jolt::Jolt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "C:/Users/lamc5718/Documents/Cours/Boba-burst/Boba burst/deps/JoltPhysics/Build/Release/Jolt.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/Release/Jolt.lib"
   )
 
 # Import target "Jolt::Jolt" for configuration "MinSizeRel"
 set_property(TARGET Jolt::Jolt APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(Jolt::Jolt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_MINSIZEREL "CXX"
-  IMPORTED_LOCATION_MINSIZEREL "C:/Users/lamc5718/Documents/Cours/Boba-burst/Boba burst/deps/JoltPhysics/Build/MinSizeRel/Jolt.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/MinSizeRel/Jolt.lib"
   )
 
 # Import target "Jolt::Jolt" for configuration "RelWithDebInfo"
 set_property(TARGET Jolt::Jolt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(Jolt::Jolt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELWITHDEBINFO "CXX"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/lamc5718/Documents/Cours/Boba-burst/Boba burst/deps/JoltPhysics/Build/RelWithDebInfo/Jolt.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/RelWithDebInfo/Jolt.lib"
   )
 
 # This file does not depend on other imported targets which have

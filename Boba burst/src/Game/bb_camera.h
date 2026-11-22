@@ -46,12 +46,13 @@ private:
     glm::vec3 ComputeDesiredTarget(const glm::vec3 &targetPos, float yawDegrees, float pitchDegrees) const;
 
     CameraConfig m_config;
-    CameraMode m_mode = CameraMode::FirstPerson;
+    CameraMode m_mode = CameraMode::ThirdPerson;
 
     glm::vec3 m_position = glm::vec3(0.0f, 1.6f, 0.0f);
     glm::vec3 m_target = glm::vec3(0.0f, 1.6f, -1.0f);
     glm::vec3 m_up = glm::vec3(0.0f, 1.0f, 0.0f);
     bool m_initialized = false;
     float m_yaw = 0.0f;
-    float m_pitch = -90.0f;
+    float m_pitch = 0.0f;
+
 };

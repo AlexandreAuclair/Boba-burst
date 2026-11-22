@@ -4,7 +4,7 @@ Bot::Bot(){}
 Bot::Bot(int id_, Transform t_) : Character(id_,t_){}
 Bot::~Bot(){}
 
-void Bot::Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) {}
+void Bot::Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyInterface) {}
 
 JPH::BodyID Bot::InitPhysics(JPH::BodyInterface& bodyInterface){
     return JPH::BodyID(0);

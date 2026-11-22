@@ -14,6 +14,7 @@
 #include "../Actor/Object/bb_track.h"
 #include "../DataStruct/bb_texture.h"
 #include "../Actor/Object/obstacle.h"
+#include "../Actor/Object/bb_goal.h"
 
 class GameManager {
     GameManager();
@@ -49,8 +50,10 @@ public:
     std::vector<std::unique_ptr<Character>> characters;
     std::vector<std::unique_ptr<BonusObject>> bonusObjects;
     std::vector<std::unique_ptr<Obstacle>> obstacles;
+    std::unique_ptr<Goal> goal;
     std::unordered_map<int, Actor *> actorsById;
     std::unordered_map<std::string, std::shared_ptr<Mesh>> models;
     std::unordered_map<std::string, std::shared_ptr<Texture>> textures;
+    
 
 };
