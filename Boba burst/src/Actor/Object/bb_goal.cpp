@@ -1,7 +1,7 @@
 #include "bb_goal.h"
 #include "src/Utilities/utilities.h"
 #include "../Character/bb_player.h"
-#include "src/Events/bb_WinEvent.h"
+#include "../../Events/bb_winEvent.h"
 
 // MARCHE PAS 
 
@@ -21,7 +21,7 @@ void Goal::onCollision(CollisionEvent &event) {
     if (it == actors.end()) return;
 
     if (auto* p = dynamic_cast<Player*>(it->second))     // les bots sont sur le layer PLAYER aussi
-        busPtr->get()->EmitEvent<WinEvent>(p->GetId());  // GetId() : accesseur public à ajouter
+        busPtr->get()->EmitEvent<WinEvent>(p->GetId());  // GetId() : accesseur public ï¿½ ajouter
 
         */
 
