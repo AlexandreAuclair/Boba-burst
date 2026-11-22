@@ -11,14 +11,17 @@ public:
     ~Track();
 private:
     JPH::BodyID InitPhysics(JPH::BodyInterface& bodyInterface) override final;
-    void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override final;
+    
 public:
-    void Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) override final;
+    void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override final;
+    void Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyInterface) override final;
     void Update(float dt) override final;
     void Render(float dt) override final;
-    void onCollision(CollisionEvent &event);
+    virtual void onCollision(CollisionEvent &event);
 
-private:
+    std::unique_ptr<EventBus>* busPtr;
+
+protected:
     int nbSections;
     std::unique_ptr<Section> sections;
 };

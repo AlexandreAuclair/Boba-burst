@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/lamc5718/Documents/Cours/Boba-burst/Boba burst/deps/assimp/test
+# Install script for directory: C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,13 +34,13 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/lamc5718/Documents/Cours/Boba-burst/Boba burst/deps/assimp/test/headercheck/cmake_install.cmake")
+  include("C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/test/headercheck/cmake_install.cmake")
 
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/lamc5718/Documents/Cours/Boba-burst/Boba burst/deps/assimp/test/install_local_manifest.txt"
+  file(WRITE "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/test/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

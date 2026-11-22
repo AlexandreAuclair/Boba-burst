@@ -318,24 +318,26 @@ private:
 		// See: ContactListener
 		virtual ValidateResult OnContactValidate(const Body &b1, const Body &b2, RVec3Arg inBaseOffset, const CollideShapeResult &inCollisionResult) override
 		{
+			
+			// Allows you to ignore a contact before it is created (using layers to not make objects collide is cheaper!)
+			return ValidateResult::AcceptAllContactsForThisBodyPair;
+		}
+
+		virtual void OnContactAdded(const Body &b1, const Body &b2, const ContactManifold &inManifold, ContactSettings &ioSettings) override
+		{
+
 			ContactEvent c{static_cast<const int>(b1.GetUserData()), static_cast<const int>(b2.GetUserData())};
 
 			std::lock_guard<std::mutex> lock(mutexContacts);
 			currentWorld.contactsQueue.push_back(c);
 
-			cout << "Contact added to the queue " << endl;
+			//cout << "Contact added to the queue " << endl;
+			Logger::Log("Contact between bodiiiies");
 
-			// Allows you to ignore a contact before it is created (using layers to not make objects collide is cheaper!)
-			return ValidateResult::AcceptAllContactsForThisBodyPair;
+			cout << "A contact was added between " << (int)b1.GetObjectLayer() << " and " << (int)b2.GetObjectLayer() << endl;
 		}
 
-		virtual void OnContactAdded(const Body &inBody1, const Body &inBody2, const ContactManifold &inManifold, ContactSettings &ioSettings) override
-		{
-
-			cout << "A contact was added between" << (int)inBody1.GetObjectLayer() << "and" << (int)inBody2.GetObjectLayer() << endl;
-		}
-
-		virtual void OnContactPersisted(const Body &inBody1, const Body &inBody2, const ContactManifold &inManifold, ContactSettings &ioSettings) override
+		virtual void OnContactPersisted(const Body &b1, const Body &b2, const ContactManifold &inManifold, ContactSettings &ioSettings) override
 		{
 			// cout << "A contact was persisted" << endl;
 		}

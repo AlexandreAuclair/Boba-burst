@@ -10,6 +10,7 @@
 #include "../ModelImporter/bb_modelImporter.h"
 #include "../Game/bb_gameManager.h"
 #include "../Game/bb_camera.h"
+#include "../Actor/Object/bb_goal.h"
 
 using nlohmann::json;
 
@@ -120,37 +121,80 @@ bool LevelLoader::LoadLevel(std::string path)
                 auto player = std::make_unique<Player>(id,transform,Camera(c));
                 player->mesh = mesh;
                 player->texture = texture;
+
+
+                gm.actorsById.insert({ id, player.get() });
+
                 gm.players.push_back(std::move(player));
+
+
             }
             else if (type == "Track") {
                 int nbSections = actorJson.at("nbSections").get<int>();
                 auto track = std::make_unique<Track>(id,transform,nbSections);
                 track->mesh = mesh;
                 track->texture = texture;
+
+                gm.actorsById.insert({ id, track.get() });
+
                 gm.tracks.push_back(std::move(track));
+
+
             }
+
+            else  if (type == "Goal") {
+                int nbSections = actorJson.at("nbSections").get<int>();
+                auto track = std::make_unique<Goal>(id, transform, nbSections);
+                track->mesh = mesh;
+                track->texture = texture;
+
+                gm.actorsById.insert({ id, track.get() });
+
+                gm.goal = std::move(track);
+
+
+            }
+
+
+
             else if (type == "Character") {
                 auto character = std::make_unique<Character>(id, transform);
                 character->mesh = mesh;
                 character->texture = texture;
+
+                gm.actorsById.insert({ id, character.get() });
+
                 gm.characters.push_back(std::move(character));
+
+
             }
             else if(type == "TrackObject"){
                 auto track = std::make_unique<TrackObject>(id,transform);
                 track->mesh = mesh;
                 track->texture = texture;
+
+                gm.actorsById.insert({ id, track.get() });
+
                 gm.trackObjects.push_back(std::move(track));
+
+
             }
             else if(type == "BonusObject"){
                 auto track = std::make_unique<BonusObject>(id,transform);
                 track->mesh = mesh;
                 track->texture = texture;
+
+                gm.actorsById.insert({ id, track.get() });
+
                 gm.bonusObjects.push_back(std::move(track));
+
+
             }
             else
             {
                 Logger::Warn("Type d'actor inconnu : " + type);
             }
+
         }
     }
     catch (const json::exception& e)

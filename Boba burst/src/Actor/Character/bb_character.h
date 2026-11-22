@@ -17,7 +17,7 @@ protected:
     float speed;
 
 public:
-    void Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) override;
+    void Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyInterface) override;
     void SetFollowTarget(Actor *tr) { followTarget = tr;}
     void Update(float dt) override;
     void Render(float dt) override;
