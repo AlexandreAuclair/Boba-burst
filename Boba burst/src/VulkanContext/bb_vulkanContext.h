@@ -8,13 +8,14 @@ class VulkanContext
 {
 public:
 	VulkanContext() = default;
-	VulkanContext(VulkanContext&&) = delete;
+	VulkanContext(VulkanContext &&) = delete;
 
-	VulkanContext& operator=(VulkanContext&&) = delete;
+	VulkanContext &operator=(VulkanContext &&) = delete;
 
 	void CreateInstance();
 	void CreateDevice();
 	void CreateSwapChain();
+	void CleanUpSwapChain();
 
 	void TransitionColorImage(vk::Image, vk::ImageLayout, vk::ImageLayout);
 
@@ -64,7 +65,7 @@ public:
 	}
 
 	uint32_t GetMemoryTypeIndex(uint32_t, vk::MemoryPropertyFlags) const;
-	vk::UniqueShaderModule CreateShaderModuleFromFile(const char*) const;
+	vk::UniqueShaderModule CreateShaderModuleFromFile(const char *) const;
 
 private:
 	void CreateSwapChainImageViews();

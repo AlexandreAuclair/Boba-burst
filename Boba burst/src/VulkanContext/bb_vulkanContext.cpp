@@ -5,17 +5,17 @@
 
 void VulkanContext::CreateInstance()
 {
-	const char* layers[] = {"VK_LAYER_KHRONOS_validation"};
+	const char *layers[] = {"VK_LAYER_KHRONOS_validation"};
 
 	uint32_t glfwExtensionCount = 0;
-    const char** glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+	const char **glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
-    std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
-    // Add any extra extensions you need, like validation debug utils:
-    extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+	std::vector<const char *> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+	// Add any extra extensions you need, like validation debug utils:
+	extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 
-    auto appInfo = vk::ApplicationInfo{};
-    appInfo.apiVersion = VK_API_VERSION_1_3;
+	auto appInfo = vk::ApplicationInfo{};
+	appInfo.apiVersion = VK_API_VERSION_1_3;
 
 	auto instanceCreateInfo = vk::InstanceCreateInfo{};
 	instanceCreateInfo.setPApplicationInfo(&appInfo);
@@ -26,7 +26,6 @@ void VulkanContext::CreateInstance()
 #endif
 
 	m_instance = vk::createInstanceUnique(instanceCreateInfo);
-    
 }
 
 void VulkanContext::CreateDevice()
@@ -37,8 +36,8 @@ void VulkanContext::CreateDevice()
 	assert(!physicalDevices.empty());
 	m_physicalDevice = physicalDevices[0];
 
-	const char* extensions[] = {
-	    VK_KHR_SWAPCHAIN_EXTENSION_NAME};
+	const char *extensions[] = {
+		VK_KHR_SWAPCHAIN_EXTENSION_NAME};
 
 	float queuePriorities[] = {1.0f};
 
@@ -66,63 +65,73 @@ void VulkanContext::CreateDevice()
 
 void VulkanContext::CreateSwapChain()
 {
-    assert(m_surface);
+	assert(m_surface);
 
-    auto surfaceCaps = m_physicalDevice.getSurfaceCapabilitiesKHR(*m_surface);
-    m_surfaceExtents = surfaceCaps.currentExtent;
+	auto surfaceCaps = m_physicalDevice.getSurfaceCapabilitiesKHR(*m_surface);
+	m_surfaceExtents = surfaceCaps.currentExtent;
 
-    // 1. Dynamically determine image count (respecting min and max limits)
-    uint32_t imageCount = surfaceCaps.minImageCount + 1;
-    if (surfaceCaps.maxImageCount > 0 && imageCount > surfaceCaps.maxImageCount) {
-        imageCount = surfaceCaps.maxImageCount;
-    }
+	// 1. Dynamically determine image count (respecting min and max limits)
+	uint32_t imageCount = surfaceCaps.minImageCount + 1;
+	if (surfaceCaps.maxImageCount > 0 && imageCount > surfaceCaps.maxImageCount)
+	{
+		imageCount = surfaceCaps.maxImageCount;
+	}
 
-    // 2. Query supported surface formats instead of hardcoding
-    auto formats = m_physicalDevice.getSurfaceFormatsKHR(*m_surface);
-    assert(!formats.empty());
+	// 2. Query supported surface formats instead of hardcoding
+	auto formats = m_physicalDevice.getSurfaceFormatsKHR(*m_surface);
+	assert(!formats.empty());
 
-    vk::SurfaceFormatKHR surfaceFormat = formats[0];
-    for (const auto& fmt : formats) {
-        // Prefer B8G8R8A8_UNORM with sRGB color space if available
-        if (fmt.format == vk::Format::eB8G8R8A8Unorm && fmt.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear) {
-            surfaceFormat = fmt;
-            break;
-        }
-    }
-    m_swapChainImageFormat = surfaceFormat.format;
+	vk::SurfaceFormatKHR surfaceFormat = formats[0];
+	for (const auto &fmt : formats)
+	{
+		// Prefer B8G8R8A8_UNORM with sRGB color space if available
+		if (fmt.format == vk::Format::eB8G8R8A8Unorm && fmt.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear)
+		{
+			surfaceFormat = fmt;
+			break;
+		}
+	}
+	m_swapChainImageFormat = surfaceFormat.format;
 
-    auto swapChainCreateInfo = vk::SwapchainCreateInfoKHR{};
-    swapChainCreateInfo.setSurface(*m_surface);
-    swapChainCreateInfo.setMinImageCount(imageCount); // Use dynamic count
-    swapChainCreateInfo.setImageFormat(m_swapChainImageFormat);
-    swapChainCreateInfo.setImageColorSpace(surfaceFormat.colorSpace); // Use queried color space
-    swapChainCreateInfo.setImageExtent(m_surfaceExtents);
-    swapChainCreateInfo.setImageUsage(vk::ImageUsageFlagBits::eColorAttachment);
-    swapChainCreateInfo.setPreTransform(surfaceCaps.currentTransform); // Match current transform
-    swapChainCreateInfo.setImageArrayLayers(1);
-    swapChainCreateInfo.setImageSharingMode(vk::SharingMode::eExclusive);
-    swapChainCreateInfo.setPresentMode(vk::PresentModeKHR::eFifo);
-    swapChainCreateInfo.setClipped(VK_TRUE);
-    swapChainCreateInfo.setCompositeAlpha(vk::CompositeAlphaFlagBitsKHR::eOpaque);
+	auto swapChainCreateInfo = vk::SwapchainCreateInfoKHR{};
+	swapChainCreateInfo.setSurface(*m_surface);
+	swapChainCreateInfo.setMinImageCount(imageCount); // Use dynamic count
+	swapChainCreateInfo.setImageFormat(m_swapChainImageFormat);
+	swapChainCreateInfo.setImageColorSpace(surfaceFormat.colorSpace); // Use queried color space
+	swapChainCreateInfo.setImageExtent(m_surfaceExtents);
+	swapChainCreateInfo.setImageUsage(vk::ImageUsageFlagBits::eColorAttachment);
+	swapChainCreateInfo.setPreTransform(surfaceCaps.currentTransform); // Match current transform
+	swapChainCreateInfo.setImageArrayLayers(1);
+	swapChainCreateInfo.setImageSharingMode(vk::SharingMode::eExclusive);
+	swapChainCreateInfo.setPresentMode(vk::PresentModeKHR::eFifo);
+	swapChainCreateInfo.setClipped(VK_TRUE);
+	swapChainCreateInfo.setCompositeAlpha(vk::CompositeAlphaFlagBitsKHR::eOpaque);
 
-    m_swapChain = m_device->createSwapchainKHRUnique(swapChainCreateInfo);
-    m_swapChainImages = m_device->getSwapchainImagesKHR(*m_swapChain);
+	m_swapChain = m_device->createSwapchainKHRUnique(swapChainCreateInfo);
+	m_swapChainImages = m_device->getSwapchainImagesKHR(*m_swapChain);
 
-    CreateSwapChainImageViews();
-    m_swapChainValid = true;
+	CreateSwapChainImageViews();
+	m_swapChainValid = true;
+}
+
+void VulkanContext::CleanUpSwapChain()
+{
+	m_swapChainImageViews.clear();
+	m_swapChainImages.clear();
+	m_swapChain.reset();
 }
 
 void VulkanContext::CreateSwapChainImageViews()
 {
-	for(const auto& image : m_swapChainImages)
+	for (const auto &image : m_swapChainImages)
 	{
 		auto imageViewCreateInfo = vk::ImageViewCreateInfo{};
 		imageViewCreateInfo.setFormat(m_swapChainImageFormat);
 		imageViewCreateInfo.setViewType(vk::ImageViewType::e2D);
 		imageViewCreateInfo.image = image;
 		imageViewCreateInfo.setComponents(
-		    {vk::ComponentSwizzle::eR, vk::ComponentSwizzle::eG,
-		     vk::ComponentSwizzle::eB, vk::ComponentSwizzle::eA});
+			{vk::ComponentSwizzle::eR, vk::ComponentSwizzle::eG,
+			 vk::ComponentSwizzle::eB, vk::ComponentSwizzle::eA});
 		imageViewCreateInfo.setSubresourceRange({vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1});
 
 		auto imageView = m_device->createImageViewUnique(imageViewCreateInfo);
@@ -153,7 +162,7 @@ void VulkanContext::TransitionColorImage(vk::Image image, vk::ImageLayout srcIma
 
 	commandBuffer.begin(commandBufferBeginInfo);
 	commandBuffer.pipelineBarrier(vk::PipelineStageFlagBits::eTopOfPipe, vk::PipelineStageFlagBits::eBottomOfPipe,
-	                              {}, {}, {}, {imageMemoryBarrier});
+								  {}, {}, {}, {imageMemoryBarrier});
 	commandBuffer.end();
 
 	vk::SubmitInfo submitInfo = {};
@@ -164,12 +173,12 @@ void VulkanContext::TransitionColorImage(vk::Image image, vk::ImageLayout srcIma
 
 uint32_t VulkanContext::GetMemoryTypeIndex(uint32_t deviceRequirements, vk::MemoryPropertyFlags hostRequirements) const
 {
-	for(uint32_t i = 0; i < VK_MAX_MEMORY_TYPES; i++)
+	for (uint32_t i = 0; i < VK_MAX_MEMORY_TYPES; i++)
 	{
-		if(deviceRequirements & 1 << i)
+		if (deviceRequirements & 1 << i)
 		{
-			const auto& memoryType = m_memoryProperties.memoryTypes[i];
-			if((memoryType.propertyFlags & hostRequirements) == hostRequirements)
+			const auto &memoryType = m_memoryProperties.memoryTypes[i];
+			if ((memoryType.propertyFlags & hostRequirements) == hostRequirements)
 			{
 				return i;
 			}
@@ -178,9 +187,9 @@ uint32_t VulkanContext::GetMemoryTypeIndex(uint32_t deviceRequirements, vk::Memo
 	return -1;
 }
 
-vk::UniqueShaderModule VulkanContext::CreateShaderModuleFromFile(const char* modulePath) const
+vk::UniqueShaderModule VulkanContext::CreateShaderModuleFromFile(const char *modulePath) const
 {
-	FILE* inputStream = fopen(modulePath, "rb");
+	FILE *inputStream = fopen(modulePath, "rb");
 	assert(inputStream);
 	fseek(inputStream, 0, SEEK_END);
 	uint64_t shaderLength = ftell(inputStream);

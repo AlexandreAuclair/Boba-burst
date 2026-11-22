@@ -5,14 +5,15 @@
 #include "../Scenes/bb_scene.h"
 #include "../VulkanContext/bb_vulkanContext.h"
 #include "../UIRenderer/UIRenderer.h"
+#include <GLFW/glfw3.h>
 
 class VulkanRenderer
 {
 public:
-    VulkanRenderer(VulkanContext&);
-    VulkanRenderer(VulkanRenderer&&) = delete;
+	VulkanRenderer(VulkanContext &);
+	VulkanRenderer(VulkanRenderer &&) = delete;
 
-	VulkanRenderer& operator=(VulkanRenderer&&) = delete;
+	VulkanRenderer &operator=(VulkanRenderer &&) = delete;
 
 	void SetScene(std::shared_ptr<Scene>);
 
@@ -25,7 +26,7 @@ private:
 	{
 		vk::UniqueFence doneFence;
 		vk::UniqueCommandBuffer commandBuffer;
-		//TODO: Descriptor pool
+		// TODO: Descriptor pool
 	};
 
 	struct SWAPCHAIN_SEMAPAIR
@@ -39,10 +40,12 @@ private:
 	void CreateRenderPass();
 	void CreateFramebuffers();
 
+	void RecreateSwapChain();
+
 	// Creer pipeline graphique 2D pour l'UI
 	std::unique_ptr<UIRenderer> m_uiRenderer;
 
-	VulkanContext& m_context;
+	VulkanContext &m_context;
 
 	vk::UniqueImage m_depthbufferImage;
 	vk::UniqueDeviceMemory m_depthbufferImageMemory;
