@@ -15,7 +15,7 @@ private:
     void UpdateFromPhysics(const JPH::BodyInterface& bodyInterface) override final;
     BonusObjectsType type;
 public:
-    void Init(std::unique_ptr<EventBus> &inputBus, GLFWwindow *window, JPH::BodyInterface& bodyInterface) override final;
+    void Init(std::unique_ptr<EventBus> &inputBus, JPH::BodyInterface& bodyInterface) override final;
     void Update(float dt) override final;
     void Render(float dt) override final;
     void onCollision(CollisionEvent &event) override;

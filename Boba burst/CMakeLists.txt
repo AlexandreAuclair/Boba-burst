@@ -53,6 +53,10 @@ add_executable (Boba_burst
 "./src/Actor/Character/bb_player.cpp"
 "./src/Actor/Object/bb_track.h"
 "./src/Actor/Object/bb_track.cpp"
+
+"./src/Actor/Object/bb_goal.h"
+"./src/Actor/Object/bb_goal.cpp"
+
 "./src/Actor/Object/bb_trackObject.h"
 "./src/Actor/Object/bb_trackObject.cpp"
 "./src/Actor/Object/bb_bonusObject.h"
@@ -89,6 +93,7 @@ add_executable (Boba_burst
 
 "./src/Events/bb_onCollisionEvent.h"
 "./src/Events/bb_gameMovementEvent.h"
+"./src/Events/bb_winEvent.h"
 
 "./src/Utilities/utilities.h"
 "./src/Utilities/bb_frustum.h"

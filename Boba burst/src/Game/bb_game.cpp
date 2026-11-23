@@ -53,7 +53,8 @@ bool Game::Initialize()
 
     // Préparer les ressources Vulkan et la surface associée à la fenêtre.
     context.CreateInstance();
-    context.CreateDevice();
+	  context.CreateDevice();
+    context.window = window;
 
     VkSurfaceKHR surface = VK_NULL_HANDLE;
     const VkResult result = glfwCreateWindowSurface(
@@ -141,10 +142,9 @@ void Game::Destroy()
 // Préparation de la scène et des abonnements aux événements
 // ============================================================================
 
-void Game::Setup()
-{
-    if (!levelLoader.LoadLevel("level1.json"))
-    {
+void Game::Setup() {
+    // Appeler le level Loader
+    if(!levelLoader.LoadLevel("level1.json")){
         Logger::Err("Could not load level1.json");
         isRunning = false;
         return;
@@ -163,16 +163,27 @@ void Game::Setup()
     scene = std::make_shared<GameScene>(context);
     renderer->SetScene(scene);
 
-    // Le contrôleur du joueur utilise le bus du jeu et la fenêtre GLFW.
-    gameManager.players.back()->Init(
-        gameEventBus, window, m_physicsWorld->GetBodyInterface());
-
-    // Échap est reçu via l'EventBus et géré par HandlePauseEvent().
+    //GameManager::get().players.back()->Init(gameEventBus, window, m_physicsWorld->GetBodyInterface());
     gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
+    GameManager::get().characters.front()->SetFollowTarget(GameManager::get().players.front().get());
+    for (auto& p : GameManager::get().players) {
+        p->SetControlManager(InputManager(gameEventBus, window));
+    }
 
-    // Initialiser la cible suivie par le premier personnage.
-    gameManager.characters.front()->SetFollowTarget(
-        gameManager.players.front().get());
+    Logger::Log("Setup : actorsById.size() = " + std::to_string(GameManager::get().actorsById.size()));
+    auto& gm = GameManager::get();
+    Logger::Log("actorsById=" + std::to_string(gm.actorsById.size())
+        + " trackObjects=" + std::to_string(gm.trackObjects.size())
+        + " bonusObjects=" + std::to_string(gm.bonusObjects.size())
+        + " obstacles=" + std::to_string(gm.obstacles.size()));
+
+    for (auto &a : GameManager::get().actorsById) {
+        a.second->Init(gameEventBus, m_physicsWorld->GetBodyInterface());
+    }
+    
+
+    
+
 }
 
 // ============================================================================
@@ -326,8 +337,13 @@ void Game::Update(double dt)
         scene->Update(dt);
         m_physicsWorld->Update(millisecsPreviousFrame);
 
-        // Synchroniser les joueurs avec Jolt, puis les mettre à jour.
-        for (auto& player : GameManager::get().players)
+        for(auto& track : GameManager::get().tracks){
+            track->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
+        }
+        for(auto& obstacle : GameManager::get().obstacles){
+            obstacle->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
+        }
+        for(auto& player : GameManager::get().players)
         {
             player->UpdateFromPhysics(m_physicsWorld->GetBodyInterface());
             player->Update(millisecsPreviousFrame);

@@ -1,17 +1,17 @@
 #include "bb_vulkanRenderer.h"
 
-VulkanRenderer::VulkanRenderer(VulkanContext& context)
-    : m_context(context)
+VulkanRenderer::VulkanRenderer(VulkanContext &context)
+	: m_context(context)
 {
 	CreateDepthbuffer();
 	CreateRenderPass();
-	
+
 	// Le render pass existe ici : on peut construire le pipeline UI
 	m_uiRenderer = std::make_unique<UIRenderer>(m_context, *m_renderPass);
 
 	CreateFramebuffers();
 	CreatePerFrameInfo();
-	for(auto& semaPair : m_swapChainSemaPairs)
+	for (auto &semaPair : m_swapChainSemaPairs)
 	{
 		semaPair.imageAcquireSema = context.GetDevice().createSemaphoreUnique({});
 		semaPair.renderCompleteSema = context.GetDevice().createSemaphoreUnique({});
@@ -75,7 +75,7 @@ void VulkanRenderer::CreateFramebuffers()
 
 	auto surfaceExtents = m_context.GetSurfaceExtents();
 	m_framebuffers.resize(swapChainImageViews.size());
-	for(int i = 0; i < swapChainImageViews.size(); i++)
+	for (int i = 0; i < swapChainImageViews.size(); i++)
 	{
 		auto attachments = {*swapChainImageViews[i], *m_depthbufferImageView};
 		auto framebufferCreateInfo = vk::FramebufferCreateInfo{};
@@ -88,6 +88,42 @@ void VulkanRenderer::CreateFramebuffers()
 	}
 }
 
+void VulkanRenderer::RecreateSwapChain()
+{
+
+	int width = 0;
+	int height = 0;
+
+	glfwGetFramebufferSize(m_context.window, &width, &height);
+
+	// Attendre que la fenêtre retrouve une taille valide
+	while (width == 0 || height == 0)
+	{
+		if (glfwWindowShouldClose(m_context.window))
+			return;
+
+		glfwWaitEvents();
+		glfwGetFramebufferSize(m_context.window, &width, &height);
+	}
+
+	m_context.GetDevice().waitIdle();
+
+	m_framebuffers.clear();
+
+	// Détruire le depth buffer
+	// Détruire les ressources de profondeur
+	m_depthbufferImageView.reset();
+	m_depthbufferImage.reset();
+	m_depthbufferImageMemory.reset();
+
+	m_context.CleanUpSwapChain();
+
+	m_context.CreateSwapChain();
+
+	CreateDepthbuffer();
+	CreateFramebuffers();
+}
+
 void VulkanRenderer::CreatePerFrameInfo()
 {
 	auto commandBufferAllocateInfo = vk::CommandBufferAllocateInfo{};
@@ -96,9 +132,9 @@ void VulkanRenderer::CreatePerFrameInfo()
 	commandBufferAllocateInfo.setCommandPool(m_context.GetCommandPool());
 	auto commandBuffers = m_context.GetDevice().allocateCommandBuffersUnique(commandBufferAllocateInfo);
 
-	for(int i = 0; i < m_perFrameInfos.size(); i++)
+	for (int i = 0; i < m_perFrameInfos.size(); i++)
 	{
-		auto& perFrameInfo = m_perFrameInfos[i];
+		auto &perFrameInfo = m_perFrameInfos[i];
 
 		{
 			auto fenceCreateInfo = vk::FenceCreateInfo{};
@@ -130,7 +166,7 @@ void VulkanRenderer::CreateDepthbuffer()
 		auto memoryReqs = m_context.GetDevice().getImageMemoryRequirements(*m_depthbufferImage);
 
 		uint32_t memoryTypeIndex = m_context.GetMemoryTypeIndex(memoryReqs.memoryTypeBits,
-		                                                        vk::MemoryPropertyFlagBits::eDeviceLocal);
+																vk::MemoryPropertyFlagBits::eDeviceLocal);
 		assert(memoryTypeIndex != -1);
 
 		auto memoryAllocateInfo = vk::MemoryAllocateInfo{};
@@ -161,7 +197,7 @@ void VulkanRenderer::Draw(bool showMenuPause)
 	BeginFrame();
 
 	auto surfaceExtents = m_context.GetSurfaceExtents();
-	auto& perFrameInfo = m_perFrameInfos[m_currentFrameIndex];
+	auto &perFrameInfo = m_perFrameInfos[m_currentFrameIndex];
 
 	{
 		auto colorClearValue = vk::ClearValue{};
@@ -207,12 +243,12 @@ void VulkanRenderer::Draw(bool showMenuPause)
 	// ==========================================================
 	// 2. RENDU DE L'INTERFACE UTILISATEUR (UI du menu principal en dehors de présence scène 3D)
 	// ==========================================================
-	if (showMenuPause && m_uiRenderer) {
+	if (showMenuPause && m_uiRenderer)
+	{
 		m_uiRenderer->Draw(
 			*perFrameInfo.commandBuffer,
 			surfaceExtents);
 	}
-	
 
 	// ==========================================================
 	// 3. FIN DU RENDER PASS
@@ -224,17 +260,27 @@ void VulkanRenderer::Draw(bool showMenuPause)
 
 void VulkanRenderer::BeginFrame()
 {
-	auto& perFrameInfo = m_perFrameInfos[m_currentFrameIndex];
-	auto& swapChainSemaPair = m_swapChainSemaPairs[m_currentSwapChainSemaPair];
+	auto &perFrameInfo = m_perFrameInfos[m_currentFrameIndex];
+	auto &swapChainSemaPair = m_swapChainSemaPairs[m_currentSwapChainSemaPair];
 
-	vk::ResultValue result = m_context.GetDevice().acquireNextImageKHR(m_context.GetSwapChain(),
-	                                                                   UINT64_MAX, *swapChainSemaPair.imageAcquireSema);
-	m_currentSwapChainImageIndex = result.value;
+	m_context.GetDevice().waitForFences({ *perFrameInfo.doneFence }, vk::True, UINT64_MAX);
 
-	m_context.GetDevice().waitForFences({*perFrameInfo.doneFence}, vk::True, UINT64_MAX);
+	try
+	{
+		vk::ResultValue result = m_context.GetDevice().acquireNextImageKHR(m_context.GetSwapChain(),
+																		   UINT64_MAX, *swapChainSemaPair.imageAcquireSema);
+
+		m_currentSwapChainImageIndex = result.value;
+	}
+	catch (const vk::OutOfDateKHRError &)
+	{
+		RecreateSwapChain();
+		return;
+	}
+
 	m_context.GetDevice().resetFences({*perFrameInfo.doneFence});
 	perFrameInfo.commandBuffer->reset(vk::CommandBufferResetFlagBits::eReleaseResources);
-	//TODO: Reset descriptor pool
+	// TODO: Reset descriptor pool
 
 	vk::CommandBufferBeginInfo beginInfo = {};
 	beginInfo.flags = vk::CommandBufferUsageFlagBits::eOneTimeSubmit;
@@ -243,8 +289,8 @@ void VulkanRenderer::BeginFrame()
 
 void VulkanRenderer::EndFrame()
 {
-	auto& perFrameInfo = m_perFrameInfos[m_currentFrameIndex];
-	auto& swapChainSemaPair = m_swapChainSemaPairs[m_currentSwapChainSemaPair];
+	auto &perFrameInfo = m_perFrameInfos[m_currentFrameIndex];
+	auto &swapChainSemaPair = m_swapChainSemaPairs[m_currentSwapChainSemaPair];
 
 	perFrameInfo.commandBuffer->end();
 
@@ -259,14 +305,22 @@ void VulkanRenderer::EndFrame()
 		m_context.GetQueue().submit(submitInfo, *perFrameInfo.doneFence);
 	}
 
-	//Queue present
+	// Queue present
 	{
 		auto swapChains = {m_context.GetSwapChain()};
 		auto presentInfo = vk::PresentInfoKHR{};
 		presentInfo.setSwapchains(swapChains);
 		presentInfo.setImageIndices({m_currentSwapChainImageIndex});
 		presentInfo.setWaitSemaphores({*swapChainSemaPair.renderCompleteSema});
-		m_context.GetQueue().presentKHR(presentInfo);
+
+		try
+		{
+			m_context.GetQueue().presentKHR(presentInfo);
+		}
+		catch (const vk::OutOfDateKHRError&)
+		{
+			RecreateSwapChain();
+		}
 	}
 
 	m_currentSwapChainSemaPair++;

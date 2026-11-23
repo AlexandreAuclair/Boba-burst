@@ -11,5 +11,4 @@ struct Section {
     std::unique_ptr<Section> prev;
     std::unique_ptr<Section> next;
     std::unique_ptr<Mesh> mesh;
-    std::unique_ptr<JPH::BodyInterface> bodyInterface;
 };

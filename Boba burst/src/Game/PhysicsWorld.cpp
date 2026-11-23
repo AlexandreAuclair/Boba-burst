@@ -33,14 +33,26 @@ PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
 
 	physics_system.SetContactListener(&contact_listener);
 
-	// ajout devoir : enlever gravité =========================
-	physics_system.SetGravity(Vec3(0.0f, 0.0f, 0.0f));
 
-	// --------------------
+	// DEBUG =========================================================
 
-	// The main way to interact with the bodies in the physics system is through the body interface. There is a locking and a non-locking
-	// variant of this. We're going to use the locking version (even though we're not planning to access bodies from multiple threads)
-	// body_interface = physics_system.GetBodyInterface();
+	/*
+	JPH::BodyInterface& bi = physics_system.GetBodyInterface();
+
+	// "joueur" : sphère dynamique, activée
+	bi.CreateAndAddBody(JPH::BodyCreationSettings(
+		new JPH::SphereShape(0.5f), JPH::RVec3(0.0f, 0.0f, 0.0f),
+		JPH::Quat::sIdentity(), JPH::EMotionType::Dynamic, Layers::PLAYER),
+		JPH::EActivation::Activate);
+
+	// "bonus" : gros capteur statique au même endroit
+	JPH::BodyCreationSettings s(
+		new JPH::SphereShape(2.0f), JPH::RVec3(0.0f, 0.0f, 0.0f),
+		JPH::Quat::sIdentity(), JPH::EMotionType::Static, Layers::BONUS_OBJECTS);
+	s.mIsSensor = true;
+	bi.CreateAndAddBody(s, JPH::EActivation::DontActivate);
+
+	// DEBUG =========================================================
 
 	//*/
 
@@ -50,27 +62,23 @@ PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
 bool PhysicsWorld::Update(float dt)
 {
 
-	// BodyInterface& body_interface = GetBodyInterface();
+
+	//Logger::Log("Update : dt = " + std::to_string(dt));
 
 	if (dt != 0)
 	{
-		// TRAITEMENT DES ICARUS
-		/*while (!icarus_queue.empty()) {
-			BodyID ic_id = icarus_queue.back(); icarus_queue.pop_back();
-			body_interface.SetLinearVelocity(ic_id, Vec3(0.f, 50.f, 0.f));
-		}*/
-
-		// if (step % 60 == 0) {}
-
+		
 		// ON TRAITE LES DEMANDES DE MOUVEMENTS
 		JPH::BodyInterface &bodyInterface = physics_system.GetBodyInterface();
 
 		for (size_t i = 0; i < movementRequestsQueue.size(); i++)
 		{
 			ImpulsionRequest currentMod = movementRequestsQueue[i];
-			Logger::Log("Vitesse avant :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetZ()));
-			bodyInterface.SetLinearVelocity(currentMod.mBodyID, currentMod.modsVec3);
-			Logger::Log("Vitesse apres :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetZ()));
+			bodyInterface.GetLinearVelocity(currentMod.mBodyID);
+			Logger::Log("Vitesse avant :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetX()));
+			JPH::Vec3 newSpeed = bodyInterface.GetLinearVelocity(currentMod.mBodyID) + currentMod.modsVec3;
+			bodyInterface.SetLinearVelocity(currentMod.mBodyID, newSpeed);
+			Logger::Log("Vitesse apres :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetX()));
 		}
 
 		movementRequestsQueue.clear();
@@ -81,11 +89,17 @@ bool PhysicsWorld::Update(float dt)
 		// Step the world
 		physics_system.Update(dt, cCollisionSteps, mTempAllocator, mJobSystem);
 		// step++;
+		//Logger::Log("Contact Queue size : " + std::to_string(contactsQueue.size()));
 
-		for (auto collision : contactsQueue)
-		{
-			busPtr->get()->EmitEvent<CollisionEvent>(collision.acteur1, collision.acteur2);
-		}
+		// for (auto collision : contactsQueue)
+		// {
+		// 	busPtr->get()->EmitEvent<CollisionEvent>(collision.acteur1, collision.acteur2);
+		// }
+
+		std::vector<ContactEvent> events;
+		{ std::lock_guard<std::mutex> lock(mutexContacts); events.swap(contactsQueue); }
+		for (auto& c : events) 
+			busPtr->get()->EmitEvent<CollisionEvent>(c.acteur1, c.acteur2);
 
 		// BodyManager::DrawSettings draw_settings;
 		// draw_settings.mDrawShape = true;

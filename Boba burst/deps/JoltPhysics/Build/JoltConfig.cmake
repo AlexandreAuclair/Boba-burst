@@ -7,7 +7,7 @@ if(CMAKE_VERSION VERSION_LESS "2.8.3")
    message(FATAL_ERROR "CMake >= 2.8.3 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 2.8.3...4.3)
+cmake_policy(VERSION 2.8.3...4.1)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -52,7 +52,7 @@ add_library(Jolt::Jolt STATIC IMPORTED)
 set_target_properties(Jolt::Jolt PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "\$<\$<CONFIG:Release,Distribution,ReleaseASAN,ReleaseUBSAN,ReleaseTSAN,ReleaseCoverage>:NDEBUG>;\$<\$<CONFIG:ReleaseASAN,ReleaseTSAN>:JPH_DISABLE_TEMP_ALLOCATOR;JPH_DISABLE_CUSTOM_ALLOCATOR>;\$<\$<CONFIG:Debug,Release>:JPH_FLOATING_POINT_EXCEPTIONS_ENABLED>;JPH_USE_DX12;JPH_USE_VK;JPH_USE_CPU_COMPUTE;\$<\$<CONFIG:Debug,Release,ReleaseASAN,ReleaseUBSAN,ReleaseTSAN>:JPH_DEBUG_RENDERER>;\$<\$<CONFIG:Debug,Release,ReleaseASAN,ReleaseUBSAN,ReleaseTSAN>:JPH_PROFILE_ENABLED>;JPH_OBJECT_STREAM;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;JPH_USE_FMADD"
   INTERFACE_COMPILE_OPTIONS "/arch:AVX2"
-  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/JoltPhysics/Build/../;C:/VulkanSDK/1.4.363.1/include"
+  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/../;C:/VulkanSDK/1.4.357.0/include"
   INTERFACE_LINK_LIBRARIES "dxgi.lib;d3d12.lib;d3dcompiler.lib;dxguid.lib"
 )
 

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\bb_main.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\bb_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_game.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_camera.cpp">
@@ -13,7 +13,7 @@
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_gameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_gameManager.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_gameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\PhysicsWorld.cpp">
@@ -22,10 +22,10 @@
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Logger\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\LevelLoader\bb_levelLoader.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\PhysicsWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_character.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Logger\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_inputManager.cpp">
@@ -34,16 +34,16 @@
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_bot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_player.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_track.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_inputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_trackObject.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_bot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_bonusObject.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\obstacle.cpp">
@@ -52,19 +52,34 @@
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Scenes\bb_gameScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\VulkanContext\bb_vulkanContext.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_goal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\VulkanRenderer\bb_vulkanRenderer.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_trackObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\ModelImporter\bb_modelImporter.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_bonusObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Controller\Controller.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\obstacle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.cpp">
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Scenes\bb_gameScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\VulkanContext\bb_vulkanContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\VulkanRenderer\bb_vulkanRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\ModelImporter\bb_modelImporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Controller\Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\UIRenderer\UIManager.cpp">
@@ -72,19 +87,43 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\stb_image.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_game.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_camera.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_gameState.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_gameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\bb_gameManager.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\bb_gameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Game\PhysicsWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Logger\Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\LevelLoader\bb_levelLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\bb_actor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_inputManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_bot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Character\bb_player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Game\PhysicsWorld.h">
@@ -93,13 +132,13 @@
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Logger\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\LevelLoader\bb_levelLoader.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_goal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\bb_actor.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_trackObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_character.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\bb_bonusObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_inputManager.h">
@@ -108,16 +147,16 @@
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_bot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Character\bb_player.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Actor\Object\obstacle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_track.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Events\bb_keyPressedEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_trackObject.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\EventBus\bb_event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\bb_bonusObject.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\EventBus\bb_eventBus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Actor\Object\ObjectTypes.h">
@@ -129,40 +168,40 @@
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_keyPressedEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\EventBus\bb_event.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\DataStruct\bb_section.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\EventBus\bb_eventBus.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\DataStruct\bb_sommet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\DataStruct\bb_mesh.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\DataStruct\bb_cameraConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\DataStruct\bb_section.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Scenes\bb_gameScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\DataStruct\bb_sommet.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\VulkanContext\bb_vulkanContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\DataStruct\bb_cameraConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Scenes\bb_gameScene.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Controller\Controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\VulkanContext\bb_vulkanContext.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\VulkanRenderer\bb_vulkanRenderer.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Events\bb_onCollisionEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\ModelImporter\bb_modelImporter.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Events\bb_gameMovementEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Controller\Controller.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Events\bb_winEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.h">
+    <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\Utilities\utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_onCollisionEvent.h">
@@ -182,17 +221,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Natvis Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\deps\json-develop\nlohmann_json.natvis" />
+    <Natvis Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\deps\json-develop\nlohmann_json.natvis" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{B0ECC694-331F-36BC-9400-306D83F7FAAC}</UniqueIdentifier>
+      <UniqueIdentifier>{58584B64-1DD5-34FB-A6D1-1E7172408E49}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{73E0DCEE-6FD2-3817-BECB-9B489F0F4783}</UniqueIdentifier>
+      <UniqueIdentifier>{42D90FE2-07A5-330E-9721-F7F8496703CB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\UI">
       <UniqueIdentifier>{8719b965-fde9-41fe-8441-7280abe91661}</UniqueIdentifier>
