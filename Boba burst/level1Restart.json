@@ -1,0 +1,95 @@
+{
+    "levelName": "Test_Gouttiere",
+    "models": [],
+    "textures": [],
+    "actors": [
+      {
+        "id": 0,
+        "type": "Track",
+        "transform": {
+            "position": [0.0, 3.5, -6.5],
+            "rotation": [14.0, 0.0, 90.0],
+            "scale": [2.0, 5.0, 2.0]
+        },
+        "nbSections": 2,
+        "modelName": "track",
+        "textureName": "gray"
+      },
+      {
+        "id": 1,
+        "type": "Goal",
+        "transform": {
+            "position": [0.0, 0.0, -18.0], 
+            "rotation": [90.0, 0.0, 0.0],
+            "scale": [5.0, 5.0, 5.0]
+        },
+        "nbSections": 2,
+        "modelName": "finishing_line",
+        "textureName": "brun"
+      },
+      {
+        "id": 2,
+        "type": "Player",
+        "transform": {
+            "position": [0.0, 10.0, 0.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [0.5, 0.5, 0.5]
+        },
+        "camera": {
+          "fovDegrees": 45.0,
+          "nearPlane": 0.1,
+          "farPlane": 1000.0,
+          "firstPersonOffset": [0.0, 1.6, 0.0],
+          "thirdPersonOffset": [0.0, -2.5, -6.0],
+          "thirdPersonLookOffset": [0.0, 1.2, 0.0],
+          "smoothSpeed": 12.0
+        },
+        "modelName": "sphere",
+        "textureName": "bugsBunny"
+      },
+      {
+        "id": 3,
+        "type": "Character",
+        "transform": {
+            "position": [0.0, 0.0, 0.0],
+            "rotation": [-90.0, 0.0, 0.0],
+            "scale": [20.0, 20.0, 20.0]
+        },
+        "modelName": "sphere",
+        "textureName": "skybox"
+      },
+      {
+        "id": 4,
+        "type": "BonusObject",
+        "transform": {
+            "position": [0.0, 0.0, 0.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "modelName": "mystery_box",
+        "textureName": "interoggation"
+      },
+      {
+        "id": 5,
+        "type": "TrackObject",
+        "transform": {
+            "position": [10.0, 0.0, 0.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "modelName": "sugar_cube",
+        "textureName": "sugar"
+      },
+      {
+        "id": 6,
+        "type": "Obstacle",
+        "transform": {
+            "position": [0.0, 5.0, -4.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+        "modelName": "sugar_cube",
+        "textureName": "sugar"
+      }
+    ]
+  }

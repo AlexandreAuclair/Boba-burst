@@ -11,7 +11,7 @@ class GameScene : public Scene
 
 public:
     GameScene(VulkanContext& context);
-
+	~GameScene() override;
 	void Update(double dt) override;
 	void Draw(const DrawInfo& drawInfo) override;
 

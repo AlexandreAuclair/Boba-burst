@@ -45,6 +45,37 @@ GameScene::GameScene(
     CreatePipelineLayout();
 }
 
+GameScene::~GameScene()
+{
+    //m_context.GetDevice().waitIdle();
+
+    //// Release GPU resources owned by textures & meshes (or reset their Unique handles)
+    //for (auto& [name, tex] : GameManager::get().textures)
+    //{
+    //    if (!tex) continue;
+    //    tex->descriptorSet = nullptr; // DescriptorSets aren't Unique; freed with pool or reset
+    //    tex->sampler.reset();
+    //    tex->view.reset();
+    //    tex->memory.reset();
+    //    tex->image.reset();
+    //}
+
+    //for (auto& [modelName, mesh] : GameManager::get().models)
+    //{
+    //    if (!mesh) continue;
+    //    mesh->indexBufferMemory.reset();
+    //    mesh->indexBuffer.reset();
+    //    mesh->vertexBufferMemory.reset();
+    //    mesh->vertexBuffer.reset();
+    //}
+
+    //if (m_lightBufferMapped && m_lightBufferMemory)
+    //{
+    //    m_context.GetDevice().unmapMemory(*m_lightBufferMemory);
+    //    m_lightBufferMapped = nullptr;
+    //}
+}
+
 void GameScene::Update(double dt)
 {
     Scene::Update(dt);

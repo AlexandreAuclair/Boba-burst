@@ -114,8 +114,8 @@ public:
 private:
 	/*VEC 3 (-LEFT,-UP,-FORWARD)*/
 	/*VEC 3 (RIGHT,DOWN,BACKWARD)*/
-	const JPH::Vec3 impulseLeftValue = JPH::Vec3(-0.5f, 0.0f, 0.0f);
-	const JPH::Vec3 impulseRightValue = JPH::Vec3(0.5f, 0.0f, 0.0f);
+	const JPH::Vec3 impulseLeftValue = JPH::Vec3(-0.1f, 0.0f, 0.0f);
+	const JPH::Vec3 impulseRightValue = JPH::Vec3(0.1f, 0.0f, 0.0f);
 
 	std::unique_ptr<EventBus> *busPtr;
 	// This is the max amount of rigid bodies that you can add to the physics system. If you try to add more you'll get an error.

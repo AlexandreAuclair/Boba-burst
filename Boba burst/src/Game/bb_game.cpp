@@ -282,8 +282,8 @@ void Game::ProcessInput()
 
         case UIAction::RESTART:
             std::cout << "Bouton RECOMMENCER" << std::endl;
-            levelLoader.FreeModelAndTextures();
-            Setup();
+            GameManager::get().FreeThisBitch();
+            RestartGame();
             stateMachine.TriggerPlay();
             break;
 
@@ -417,4 +417,26 @@ void Game::HandlePauseEvent(KeyPressedEvent& event)
         stateMachine.TriggerPause();
         gameEventBus.get()->EmitEvent<PauseEvent>(true);
     }
+}
+
+void Game::RestartGame()
+{
+    gameEventBus->Reset();
+    m_physicsWorld = std::make_unique<PhysicsWorld>(gameEventBus);
+    // Appeler le level Loader
+    if (!levelLoader.LoadLevel("level1Restart.json")) {
+        Logger::Err("Could not load level1Restart.json");
+        isRunning = false;
+        return;
+    }
+    Logger::Log("level1.json successfully loaded");
+    GameManager::get().goal->goalWasReach = false;
+    GameManager::get().characters.front()->SetFollowTarget(GameManager::get().players.front().get());
+    for (auto& p : GameManager::get().players) {
+        p->SetControlManager(InputManager(gameEventBus, window));
+    }
+    for (auto& a : GameManager::get().actorsById) {
+        a.second->Init(gameEventBus, m_physicsWorld->GetBodyInterface());
+    }
+    gameEventBus->SubscribeToEvent<KeyPressedEvent>(this, &Game::HandlePauseEvent);
 }

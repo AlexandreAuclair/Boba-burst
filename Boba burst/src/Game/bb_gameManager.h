@@ -55,5 +55,15 @@ public:
     std::unordered_map<std::string, std::shared_ptr<Mesh>> models;
     std::unordered_map<std::string, std::shared_ptr<Texture>> textures;
     
-
+    void FreeThisBitch() {
+        players.clear();
+        bots.clear();
+        tracks.clear();
+        trackObjects.clear();
+        characters.clear();
+        bonusObjects.clear();
+        obstacles.clear();
+        goal.reset();
+        actorsById.clear();
+    }
 };

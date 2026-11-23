@@ -50,7 +50,7 @@ private:
     void Update(double dt);
     void Render(double dt);
     void HandlePauseEvent(KeyPressedEvent &event);
-
+    void RestartGame();
 private:
 
     //  Booleen etat
