@@ -293,6 +293,7 @@ void Game::ProcessInput()
 
         case UIAction::RESUME:
             std::cout << "Bouton CONTINUER" << std::endl;
+            gameEventBus->EmitEvent<KeyPressedEvent>(GLFW_KEY_ESCAPE,0,0);
             break;
 
         case UIAction::RESTART:
