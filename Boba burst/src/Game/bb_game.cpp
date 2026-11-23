@@ -201,28 +201,7 @@ void Game::ProcessInput()
     // Pour ce prototype, on réutilise le contrôleur du joueur initialisé dans Setup()
     auto& inputManager = players.back()->controlManager;
 
-    // CheckInput() émet des événements pouvant modifier immédiatement l'état
-    const GameState previousState = stateMachine.GetCurrentState();
-    inputManager.CheckInput();
-    const GameState currentState = stateMachine.GetCurrentState();
-
-    if (currentState != previousState)
-    {
-        // Libérer la souris en pause ; la capturer à la reprise du gameplay
-        if (currentState == GameState::Pause)
-        {
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-        }
-        else if (currentState == GameState::Playing)
-        {
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-        }
-
-        // Ne pas interpréter un clic enregistré pendant la transition d'état
-        return;
-    }
-
-    switch (currentState)
+    switch (stateMachine.GetCurrentState())
     {
     case GameState::Menu:
         // À compléter : interactions du menu principal.
@@ -240,6 +219,10 @@ void Game::ProcessInput()
 
     case GameState::Pause:
     {
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [](auto& player)
+            { player.get()->controlManager.CheckInput(); });
+
         // Le clic doit être un nouvel appui gauche, pas un bouton maintenu
         if (!renderer || !inputManager.WasLeftMouseClicked())
         {
