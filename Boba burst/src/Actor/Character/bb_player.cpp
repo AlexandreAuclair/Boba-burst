@@ -35,7 +35,7 @@ Player::~Player() {}
 
 JPH::BodyID Player::InitPhysics(JPH::BodyInterface &bodyInterface)
 { // glmToJPH(transform.position)
-    JPH::BodyCreationSettings sphere_settings = BodyCreationSettings(new JPH::SphereShape(0.5f), glmToJPH(transform.position), JPH::Quat::sIdentity(), JPH::EMotionType::Dynamic, Layers::PLAYER);
+    JPH::BodyCreationSettings sphere_settings = BodyCreationSettings(new JPH::SphereShape(0.5f), glmToJPH(transform.position), glmEulerToJPHQuat(transform.rotation), JPH::EMotionType::Dynamic, Layers::PLAYER);
 
     sphere_settings.mUserData = static_cast<JPH::uint64>(id);
     return  bodyInterface.CreateAndAddBody(sphere_settings, JPH::EActivation::Activate);
@@ -48,8 +48,11 @@ void Player::UpdateFromPhysics(const JPH::BodyInterface &bodyInterface)
     auto pos = bodyInterface.GetPosition(this->bodyID);
     this->transform.position = glm::vec3(pos.GetX(), -(pos.GetY()), pos.GetZ());
 
-    auto rot = bodyInterface.GetRotation(this->bodyID).GetXYZ();
-    this->transform.rotation = glm::vec3(rot[0], -(rot[1]), rot[2]);
+    //auto rot = bodyInterface.GetRotation(this->bodyID).GetXYZ();
+    //this->transform.rotation = glm::vec3(rot[0], -(rot[1]), rot[2]);
+
+    auto rot = bodyInterface.GetRotation(this->bodyID);
+    this->transform.rotation = JPHQuatToGlmEuler(rot);
 }
 
 /// @brief Réception de l'événement de pause. Détermine si le joueur doit ignorer les entrées ou non.

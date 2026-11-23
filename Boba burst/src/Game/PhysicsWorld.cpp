@@ -33,7 +33,6 @@ PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
 
 	physics_system.SetContactListener(&contact_listener);
 
-
 	// DEBUG =========================================================
 
 	/*
@@ -62,12 +61,14 @@ PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
 bool PhysicsWorld::Update(float dt)
 {
 
+	const JPH::Vec3 test1 = JPH::Vec3(-0.1f, 0.0f, 0.0f);
+	const JPH::Vec3 test2 = JPH::Vec3(0.1f, 0.0f, 0.0f);
 
-	//Logger::Log("Update : dt = " + std::to_string(dt));
+	// Logger::Log("Update : dt = " + std::to_string(dt));
 
 	if (dt != 0)
 	{
-		
+
 		// ON TRAITE LES DEMANDES DE MOUVEMENTS
 		JPH::BodyInterface &bodyInterface = physics_system.GetBodyInterface();
 
@@ -77,7 +78,9 @@ bool PhysicsWorld::Update(float dt)
 			bodyInterface.GetLinearVelocity(currentMod.mBodyID);
 			Logger::Log("Vitesse avant :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetX()));
 			JPH::Vec3 newSpeed = bodyInterface.GetLinearVelocity(currentMod.mBodyID) + currentMod.modsVec3;
-			bodyInterface.SetLinearVelocity(currentMod.mBodyID, newSpeed);
+			// bodyInterface.SetLinearVelocity(currentMod.mBodyID, newSpeed);
+			bodyInterface.SetAngularVelocity(currentMod.mBodyID, newSpeed);
+			//bodyInterface.SetLinearAndAngularVelocity(currentMod.mBodyID, newSpeed, newRot);
 			Logger::Log("Vitesse apres :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetX()));
 		}
 
@@ -89,7 +92,7 @@ bool PhysicsWorld::Update(float dt)
 		// Step the world
 		physics_system.Update(dt, cCollisionSteps, mTempAllocator, mJobSystem);
 		// step++;
-		//Logger::Log("Contact Queue size : " + std::to_string(contactsQueue.size()));
+		// Logger::Log("Contact Queue size : " + std::to_string(contactsQueue.size()));
 
 		// for (auto collision : contactsQueue)
 		// {
@@ -97,8 +100,11 @@ bool PhysicsWorld::Update(float dt)
 		// }
 
 		std::vector<ContactEvent> events;
-		{ std::lock_guard<std::mutex> lock(mutexContacts); events.swap(contactsQueue); }
-		for (auto& c : events) 
+		{
+			std::lock_guard<std::mutex> lock(mutexContacts);
+			events.swap(contactsQueue);
+		}
+		for (auto &c : events)
 			busPtr->get()->EmitEvent<CollisionEvent>(c.acteur1, c.acteur2);
 
 		// BodyManager::DrawSettings draw_settings;

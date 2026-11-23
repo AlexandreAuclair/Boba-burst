@@ -35,6 +35,17 @@ inline JPH::Quat glmEulerToJPHQuat(const glm::vec3& eulerDegrees)
     return JPH::Quat(-q.x, q.y, -q.z, q.w);
 }
 
+inline glm::vec3 JPHQuatToGlmEuler(const JPH::Quat& quat)
+{
+    glm::quat q(quat.GetW(), -quat.GetX(), quat.GetY(), -quat.GetZ());
+
+    q = glm::normalize(q);
+
+    glm::vec3 rad = glm::eulerAngles(q);
+
+    return glm::degrees(rad);
+}
+
 inline JPH::IndexedTriangleList MeshToJoltTriangles(const Mesh& m) {
     const std::vector<uint32_t>& indices = m.indexes; 
     assert(indices.size() % 3 == 0); 
