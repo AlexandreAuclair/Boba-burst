@@ -60,10 +60,6 @@ PhysicsWorld::PhysicsWorld(std::unique_ptr<EventBus> &bus)
 
 bool PhysicsWorld::Update(float dt)
 {
-
-	const JPH::Vec3 test1 = JPH::Vec3(-0.1f, 0.0f, 0.0f);
-	const JPH::Vec3 test2 = JPH::Vec3(0.1f, 0.0f, 0.0f);
-
 	// Logger::Log("Update : dt = " + std::to_string(dt));
 
 	if (dt != 0)
@@ -78,9 +74,8 @@ bool PhysicsWorld::Update(float dt)
 			bodyInterface.GetLinearVelocity(currentMod.mBodyID);
 			Logger::Log("Vitesse avant :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetX()));
 			JPH::Vec3 newSpeed = bodyInterface.GetLinearVelocity(currentMod.mBodyID) + currentMod.modsVec3;
-			// bodyInterface.SetLinearVelocity(currentMod.mBodyID, newSpeed);
-			bodyInterface.SetAngularVelocity(currentMod.mBodyID, newSpeed);
-			//bodyInterface.SetLinearAndAngularVelocity(currentMod.mBodyID, newSpeed, newRot);
+			JPH::Vec3 newRot = bodyInterface.GetAngularVelocity(currentMod.mBodyID) + currentMod.modsRotVec3;
+			bodyInterface.SetLinearAndAngularVelocity(currentMod.mBodyID, newSpeed, newRot);
 			Logger::Log("Vitesse apres :" + std::to_string(bodyInterface.GetLinearVelocity(currentMod.mBodyID).GetX()));
 		}
 
@@ -119,6 +114,7 @@ void PhysicsWorld::HandleMovementEvent(GameMovementEvent &event)
 	ImpulsionRequest i;
 	i.mBodyID = event.bodyID;
 	i.modsVec3 = (event.isLeftInput == true ? impulseLeftValue : impulseRightValue);
+	i.modsRotVec3 = (event.isLeftInput == true ? impulseRotLeftValue : impulseRotRightValue);
 	std::lock_guard<std::mutex> lock(mutexMovem);
 	movementRequestsQueue.push_back(i);
 };
