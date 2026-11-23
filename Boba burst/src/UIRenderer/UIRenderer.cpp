@@ -25,6 +25,16 @@ UIRenderer::UIRenderer(
 	CreateUIDescriptorSet();
 }
 
+// Retourner les demi-dimensions de la texture en NDC
+UIPushConstants UIRenderer::GetPauseMenuSize(uint32_t framebufferWidth,
+	uint32_t framebufferHeight) const {
+
+	return CalculatePauseMenuSize(m_pauseTexture.width,
+		m_pauseTexture.height,
+		framebufferWidth,
+		framebufferHeight);
+}
+
 void UIRenderer::Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent) {
     
     // ETAPE 1 : Activer le pipeline UI
@@ -35,31 +45,15 @@ void UIRenderer::Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent) {
 	// ETAPE 1.5 - CONSERVER LES PROPORTIONS DU PNG
 	// ===================================================
 	
-	// Hauteur du menu : 50 % de la hauteur du framebuffer.
-	// Comme le rectangle est centré : demi-hauteur NDC = 0.5.
-	float halfHeight = 0.5f;
-
-	// Rapport largeur / hauteur de la texture.
-	// On conserve ainsi les proportions originales du PNG.
-	float textureRatio =
-		static_cast<float>(m_pauseTexture.width) /
-		static_cast<float>(m_pauseTexture.height);
-
-	// Rapport hauteur / largeur du framebuffer.
-	// Permet de compenser ses proportions.
-	float framebufferRatio =
-		static_cast<float>(extent.height) /
-		static_cast<float>(extent.width);
-
-	// Calcul de la demi-largeur NDC correspondante.
-	float halfWidth =
-		halfHeight * textureRatio * framebufferRatio;
-
 	// Données destinées au Vertex Shader.
-	UIPushConstants pushConstants{
-		halfWidth,
-		halfHeight
-	};
+	const UIPushConstants pushConstants = GetPauseMenuSize(extent.width, extent.height);
+
+	// Sécurité : pas de dessin si le framebuffer est invalide.
+	if (pushConstants.halfWidth <= 0.0f ||
+		pushConstants.halfHeight <= 0.0f)
+	{
+		return;
+	}
 
 	// Envoi des Push Constants au Vertex Shader.
 	commandBuffer.pushConstants(
@@ -108,6 +102,7 @@ void UIRenderer::Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent) {
         0   // Première instance
     );
 }
+
 
 // Creation pipeline 2D pour UI au-dessus de la 3D
 void UIRenderer::CreateUIPipeline(vk::RenderPass renderPass) {

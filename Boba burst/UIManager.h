@@ -7,7 +7,8 @@ class UIManager {
 
 public : 
 
-	/// <summary> Fonction stipulant si clic souris est dans le menu </summary>
+	/// <summary> Fonction vérifiant si position normaliséee (0 à 1) est dans le menu </summary>
+	/// <param name="mouseX">Position en X du clic</param>
 	/// <param name="mouseX">Position en X du clic</param>
 	/// <param name="mouseY">Position en Y du clic</param>
 	/// <param name="halfWidth">Demi-largeur du rectangle</param>

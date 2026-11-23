@@ -76,13 +76,16 @@ add_executable (Boba_burst
 "./src/ModelImporter/bb_modelImporter.h"
 "./src/ModelImporter/bb_modelImporter.cpp"
 
-# Ajout des controller
-"./src/Controller/Controller.h"
-"./src/Controller/Controller.cpp"
+# Ajout des controller => Deprecie
+#"./src/Controller/Controller.h"
+#"./src/Controller/Controller.cpp"
 
 # Ajout des renderer de l'UI
 "./src/UIRenderer/UIRenderer.h"
 "./src/UIRenderer/UIRenderer.cpp"
+"./src/UIRenderer/PauseMenuGeometry.h"
+"./src/UIRenderer/UIManager.h"
+"./src/UIRenderer/UIManager.cpp"
 
 "./src/Events/bb_onCollisionEvent.h"
 "./src/Events/bb_gameMovementEvent.h"

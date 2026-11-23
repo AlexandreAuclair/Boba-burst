@@ -21,6 +21,36 @@ public:
 	inline double GetMouseDeltaX() const { return m_mouseDeltaX; }
 	inline double GetMouseDeltaY() const { return m_mouseDeltaY; }
 
+
+	//////////////////////////
+	// GETTER d'info pour la gestion de l'UI
+
+	// Vrai uniquement pendant la frame où le bouton gauche vient d'être enfoncé => Pour problème où input détecté plusieurs fois
+	bool WasLeftMouseClicked() const
+	{
+		return m_leftMouseClicked;
+	}
+
+	// Récupérer la position absolue du curseur.
+	void GetMousePosition(double& x, double& y) const
+	{
+		x = m_lastMouseX;
+		y = m_lastMouseY;
+	}
+
+	// Dimensions de la fenêtre GLFW.
+	void GetWindowSize(int& width, int& height) const
+	{
+		glfwGetWindowSize(m_window, &width, &height);
+	}
+
+	// Dimensions du framebuffer.
+	void GetFramebufferSize(int& width, int& height) const
+	{
+		glfwGetFramebufferSize(m_window, &width, &height);
+	}
+	//////////////////////////
+
 private:
 	GLFWwindow *m_window;
 	std::unique_ptr<EventBus> *busPtr;
@@ -36,10 +66,14 @@ private:
 	// Mémoire des dernier états des touches et cliques pour éviter une répétition
 	std::unordered_map<int, bool> lastInputs;
 
+	// Appui détecté pendant frame courante
+	bool m_leftMouseClicked = false;
+
 protected:
 	bool IsKeyPressed(int key) const;
 	bool IsMouseClick(int key) const;
 	void UpdateMouse();
-
 	
 };
+
+

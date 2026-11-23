@@ -3,6 +3,7 @@
 #pragma once
 
 #include "../VulkanContext/bb_vulkanContext.h"
+#include "PauseMenuGeometry.h"
 
 class UIRenderer {
 
@@ -17,6 +18,10 @@ public :
 	/// <param name="commandBuffer">Command buffer a qui on donne les ordre de dessin</param>
 	/// <param name="extent">Dimensions de la surface de rendu en 2D, exprimes en pixels (largeur et hauteur)</param>
 	void Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent);
+
+	// Renvoie les demi-dimensions du menu en NDC [-1.0, 1.0].
+	UIPushConstants GetPauseMenuSize(uint32_t framebufferWidth,uint32_t framebufferHeight) const;
+
 
 private : 
 
@@ -34,12 +39,6 @@ private :
 	////////////////////////
 	// Attributs nécessaires pour la texture (ordre des parametres a ne pas TOUCHER !!! => importance dans la memoire)
 	
-	// Texture avec infos pour garder un bon ratio pour l'UI à l'affichage
-	struct UIPushConstants {
-		float halfWidth;
-		float halfHeight;
-	};
-
 	struct VulkanTexture{
 
 		// Memoire associee a l'image

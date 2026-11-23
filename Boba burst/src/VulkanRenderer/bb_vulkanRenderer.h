@@ -5,6 +5,9 @@
 #include "../Scenes/bb_scene.h"
 #include "../VulkanContext/bb_vulkanContext.h"
 #include "../UIRenderer/UIRenderer.h"
+#include "../UIRenderer/PauseMenuGeometry.h"
+
+
 
 class VulkanRenderer
 {
@@ -19,6 +22,12 @@ public:
 	void Draw(bool showMenuPause);
 	void BeginFrame();
 	void EndFrame();
+
+	// Methode pour recuperer dimensions du menu
+	UIPushConstants GetPauseMenuSize(
+		uint32_t framebufferWidth,
+		uint32_t framebufferHeight
+	) const;
 
 private:
 	struct PerFrameInfo
