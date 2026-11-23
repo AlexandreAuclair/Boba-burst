@@ -192,7 +192,7 @@ void VulkanRenderer::SetScene(std::shared_ptr<Scene> scene)
 	m_scene = scene;
 }
 
-void VulkanRenderer::Draw(bool showMenuPause)
+void VulkanRenderer::Draw(UIScreen menu)
 {
 	BeginFrame();
 
@@ -243,11 +243,12 @@ void VulkanRenderer::Draw(bool showMenuPause)
 	// ==========================================================
 	// 2. RENDU DE L'INTERFACE UTILISATEUR (UI du menu principal en dehors de présence scène 3D)
 	// ==========================================================
-	if (showMenuPause && m_uiRenderer)
+	if (m_uiRenderer)
 	{
 		m_uiRenderer->Draw(
 			*perFrameInfo.commandBuffer,
-			surfaceExtents);
+			surfaceExtents,
+			menu);
 	}
 
 	// ==========================================================

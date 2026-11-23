@@ -13,7 +13,7 @@ struct UIPushConstants
 };
 
 // Calcule les dimensions du PNG à afficher sans déformation.
-inline UIPushConstants CalculatePauseMenuSize(
+inline UIPushConstants CalculateTextureSize(
     uint32_t textureWidth,
     uint32_t textureHeight,
     uint32_t framebufferWidth,
@@ -44,3 +44,5 @@ inline UIPushConstants CalculatePauseMenuSize(
 
     return { halfWidth, halfHeight };
 }
+
+

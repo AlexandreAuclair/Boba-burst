@@ -5,6 +5,12 @@
 #include "../VulkanContext/bb_vulkanContext.h"
 #include "PauseMenuGeometry.h"
 
+enum class UIScreen {
+    None,
+    Pause,
+    Victory
+};
+
 class UIRenderer {
 
 public :
@@ -17,7 +23,7 @@ public :
 	/// </summary>
 	/// <param name="commandBuffer">Command buffer a qui on donne les ordre de dessin</param>
 	/// <param name="extent">Dimensions de la surface de rendu en 2D, exprimes en pixels (largeur et hauteur)</param>
-	void Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent);
+	void Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent, UIScreen screen);
 
 	// Renvoie les demi-dimensions du menu en NDC [-1.0, 1.0].
 	UIPushConstants GetPauseMenuSize(uint32_t framebufferWidth,uint32_t framebufferHeight) const;
@@ -60,11 +66,14 @@ private :
 
 	// Texture pour le menu
 	VulkanTexture m_pauseTexture;
+	VulkanTexture m_victoire;
 
 	// Descriptor set avec bindings où mettre la texture qui sera passee au fragment shader
 	vk::UniqueDescriptorSetLayout m_uiDescriptorSetLayout;
 	vk::UniqueDescriptorPool m_uiDescriptorPool;
-	vk::DescriptorSet m_uiDescriptorSet;
+	vk::DescriptorSet m_pauseDescriptorSet;
+	vk::DescriptorSet m_victoireDescriptorSet;
+	vk::DescriptorSet activeDescriptorSet;
 	
 	// Prend le path de la texture et créé texture utilisable par Vulkain 
 	VulkanTexture CreateTexture(const std::string& path);

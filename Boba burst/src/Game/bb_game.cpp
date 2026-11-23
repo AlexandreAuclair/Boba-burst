@@ -76,9 +76,7 @@ bool Game::Initialize()
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
     }
 
-    // Créer le bus d'événements et le monde physique.
-    gameEventBus->Reset();
-    m_physicsWorld = std::make_unique<PhysicsWorld>(gameEventBus);
+   
 
     return true;
 }
@@ -143,6 +141,9 @@ void Game::Destroy()
 // ============================================================================
 
 void Game::Setup() {
+     // Créer le bus d'événements et le monde physique.
+     gameEventBus->Reset();
+     m_physicsWorld = std::make_unique<PhysicsWorld>(gameEventBus);
     // Appeler le level Loader
     if(!levelLoader.LoadLevel("level1.json")){
         Logger::Err("Could not load level1.json");
@@ -281,6 +282,9 @@ void Game::ProcessInput()
 
         case UIAction::RESTART:
             std::cout << "Bouton RECOMMENCER" << std::endl;
+            levelLoader.FreeModelAndTextures();
+            Setup();
+            stateMachine.TriggerPlay();
             break;
 
         case UIAction::NONE:
@@ -369,11 +373,14 @@ void Game::Render(double /*dt*/)
         break;
 
     case GameState::Playing:
-        renderer->Draw(false); // Scène 3D seule.
+        if(GameManager::get().goal->goalWasReach)
+            renderer->Draw(UIScreen::Victory);
+        else
+            renderer->Draw(UIScreen::None); // Scène 3D seule.
         break;
 
     case GameState::Pause:
-        renderer->Draw(true); // Scène 3D + PNG du menu de pause.
+        renderer->Draw(UIScreen::Pause); // Scène 3D + PNG du menu de pause.
         break;
 
     case GameState::GameOver:

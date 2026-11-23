@@ -7,6 +7,8 @@
 #include "../stb_image.h"
 
 
+
+
 // Definition constructeur
 UIRenderer::UIRenderer(
 	VulkanContext& context,
@@ -14,6 +16,7 @@ UIRenderer::UIRenderer(
 	
 	// 1. Charger la texture en mémoire
 	m_pauseTexture = CreateTexture("assets/images/menu_pause_version_2.png");
+	m_victoire = CreateTexture("assets/images/victory_screen.png");
 
 	// 2. Declarations des ressources necessaires en memoire pour le shader (disposition du descriptor set avant le descriptor set en lui-même)
 	CreateUIDescriptorSetLayout();
@@ -29,78 +32,85 @@ UIRenderer::UIRenderer(
 UIPushConstants UIRenderer::GetPauseMenuSize(uint32_t framebufferWidth,
 	uint32_t framebufferHeight) const {
 
-	return CalculatePauseMenuSize(m_pauseTexture.width,
+	return CalculateTextureSize(m_pauseTexture.width,
 		m_pauseTexture.height,
 		framebufferWidth,
 		framebufferHeight);
 }
 
-void UIRenderer::Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent) {
+void UIRenderer::Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent, UIScreen screen) {
     
+    // Rien à dessiner en jeu normal ou si le framebuffer est vide
+    if (screen == UIScreen::None || extent.width == 0 || extent.height == 0) {
+        return;
+    }
+
+    // Sélection de la texture et du descriptor set selon l'écran actif
+    const VulkanTexture* activeTexture = nullptr;
+    switch (screen) {
+    case UIScreen::Pause:
+        activeTexture = &m_pauseTexture;
+        activeDescriptorSet = m_pauseDescriptorSet;
+        break;
+    case UIScreen::Victory:
+        activeTexture = &m_victoire;
+        activeDescriptorSet = m_victoireDescriptorSet;
+        break;
+    default:
+        return;
+    }
+
+    // Calcul des proportions pour la texture active uniquement
+    const UIPushConstants pushConstants = CalculateTextureSize(
+        activeTexture->width,
+        activeTexture->height,
+        extent.width,
+        extent.height
+    );
+
+    if (pushConstants.halfWidth <= 0.0f || pushConstants.halfHeight <= 0.0f) {
+        return;
+    }
+
     // ETAPE 1 : Activer le pipeline UI
     commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics, *m_ui_pipeline);
-    
 
-	// ===================================================
-	// ETAPE 1.5 - CONSERVER LES PROPORTIONS DU PNG
-	// ===================================================
-	
-	// Données destinées au Vertex Shader.
-	const UIPushConstants pushConstants = GetPauseMenuSize(extent.width, extent.height);
+    // ETAPE 1.5 : Envoyer les Push Constants de la texture active
+    commandBuffer.pushConstants(
+        *m_ui_pipelineLayout,
+        vk::ShaderStageFlagBits::eVertex,
+        0,
+        sizeof(UIPushConstants),
+        &pushConstants
+    );
 
-	// Sécurité : pas de dessin si le framebuffer est invalide.
-	if (pushConstants.halfWidth <= 0.0f ||
-		pushConstants.halfHeight <= 0.0f)
-	{
-		return;
-	}
+    // ETAPE 2 : Binder le Descriptor Set correspondant à la texture active
+    commandBuffer.bindDescriptorSets(
+        vk::PipelineBindPoint::eGraphics,
+        *m_ui_pipelineLayout,
+        0,
+        activeDescriptorSet,
+        {}
+    );
 
-	// Envoi des Push Constants au Vertex Shader.
-	commandBuffer.pushConstants(
-		*m_ui_pipelineLayout,
-		vk::ShaderStageFlagBits::eVertex,
-		0,
-		sizeof(UIPushConstants),
-		&pushConstants
-	);
-
-	// ETAPE 2. Binder le Descriptor Set avec le layout du pipeline UI
-	commandBuffer.bindDescriptorSets(
-		vk::PipelineBindPoint::eGraphics,
-		*m_ui_pipelineLayout,
-		0,
-		m_uiDescriptorSet,
-		{}
-	);
-
-    // ETAPE 3. Configurer le viewport (zone où on veut dessiner)
+    // ETAPE 3 : Viewport
     vk::Viewport viewport{};
-
     viewport.setX(0.0f);
     viewport.setY(0.0f);
     viewport.setWidth(static_cast<float>(extent.width));
     viewport.setHeight(static_cast<float>(extent.height));
     viewport.setMinDepth(0.0f);
     viewport.setMaxDepth(1.0f);
-
     commandBuffer.setViewport(0, { viewport });
 
-    // ETAPE 4. Configurer le scissor (zone où on peut dessiner)
+    // ETAPE 4 : Scissor
     vk::Rect2D scissor{};
-
     scissor.setOffset({ 0, 0 });
     scissor.setExtent(extent);
-
     commandBuffer.setScissor(0, { scissor });
 
-
-    // ETAPE 5 : Enregistre commande dessin 2 triangles
-    commandBuffer.draw(
-        6,  // Nombre de sommets : 2 triangles
-        1,  // Une seule instance
-        0,  // Premier sommet
-        0   // Première instance
-    );
+    // ETAPE 5 : Dessin des 2 triangles (6 sommets)
+    commandBuffer.draw(6, 1, 0, 0);
 }
 
 
@@ -253,60 +263,62 @@ void UIRenderer::CreateUIDescriptorSetLayout() {
 
 
 // Creer le descriptor set avec la texture au binding 0
+// Creer un descriptor set pour chaque ecran UI (Pause et Victoire)
 void UIRenderer::CreateUIDescriptorSet() {
-	
-	// Facilite la vie pour le reste de l'ecriture de la fonction (pas faire m_context.GetDevice() a chaque fois)
 	auto device = m_context.GetDevice();
 
-	// ---------- 1. Descriptor Pool ----------
+	// ---------- 1. Descriptor Pool (2 sets + 2 samplers) ----------
 	vk::DescriptorPoolSize poolSize{};
-
-	// Le type est un sampler car on a une image
-	poolSize.setType(
-		vk::DescriptorType::eCombinedImageSampler
-	);
-	poolSize.setDescriptorCount(1);
+	poolSize.setType(vk::DescriptorType::eCombinedImageSampler);
+	poolSize.setDescriptorCount(2);
 
 	auto poolInfo = vk::DescriptorPoolCreateInfo{};
-	poolInfo.setMaxSets(1);
+	poolInfo.setMaxSets(2);
 	poolInfo.setPoolSizes(poolSize);
 
-	m_uiDescriptorPool =
-		device.createDescriptorPoolUnique(poolInfo);
+	m_uiDescriptorPool = device.createDescriptorPoolUnique(poolInfo);
 
+	// ---------- 2. Allocation de 2 Descriptor Sets ----------
+	std::array<vk::DescriptorSetLayout, 2> setLayouts = {
+		*m_uiDescriptorSetLayout,
+		*m_uiDescriptorSetLayout
+	};
 
-	// ---------- 2. Allocation du Descriptor Set ----------
 	auto allocateInfo = vk::DescriptorSetAllocateInfo{};
-
 	allocateInfo.setDescriptorPool(*m_uiDescriptorPool);
-	allocateInfo.setSetLayouts(*m_uiDescriptorSetLayout);
+	allocateInfo.setSetLayouts(setLayouts);
 
-	m_uiDescriptorSet =
-		device.allocateDescriptorSets(allocateInfo).front();
+	std::vector<vk::DescriptorSet> sets = device.allocateDescriptorSets(allocateInfo);
+	m_pauseDescriptorSet = sets[0];
+	m_victoireDescriptorSet = sets[1];
 
+	// ---------- 3. Informations des 2 textures ----------
+	auto pauseTextureInfo = vk::DescriptorImageInfo{};
+	pauseTextureInfo.setSampler(*m_pauseTexture.m_uiSampler);
+	pauseTextureInfo.setImageView(*m_pauseTexture.m_uiImageView);
+	pauseTextureInfo.setImageLayout(vk::ImageLayout::eShaderReadOnlyOptimal);
 
-	// ---------- 3. Informations de notre texture ----------
-	auto textureInfo = vk::DescriptorImageInfo{};
+	auto victoireTextureInfo = vk::DescriptorImageInfo{};
+	victoireTextureInfo.setSampler(*m_victoire.m_uiSampler);
+	victoireTextureInfo.setImageView(*m_victoire.m_uiImageView);
+	victoireTextureInfo.setImageLayout(vk::ImageLayout::eShaderReadOnlyOptimal);
 
-	textureInfo.setSampler(*m_pauseTexture.m_uiSampler);
-	textureInfo.setImageView(*m_pauseTexture.m_uiImageView);
-	textureInfo.setImageLayout(
-		vk::ImageLayout::eShaderReadOnlyOptimal
-	);
+	// ---------- 4. Écriture des 2 Descriptor Sets ----------
+	std::array<vk::WriteDescriptorSet, 2> writes{};
 
+	writes[0].setDstSet(m_pauseDescriptorSet);
+	writes[0].setDstBinding(0);
+	writes[0].setDstArrayElement(0);
+	writes[0].setDescriptorType(vk::DescriptorType::eCombinedImageSampler);
+	writes[0].setImageInfo(pauseTextureInfo);
 
-	// ---------- 4. Écriture du Descriptor Set ----------
-	auto write = vk::WriteDescriptorSet{};
+	writes[1].setDstSet(m_victoireDescriptorSet);
+	writes[1].setDstBinding(0);
+	writes[1].setDstArrayElement(0);
+	writes[1].setDescriptorType(vk::DescriptorType::eCombinedImageSampler);
+	writes[1].setImageInfo(victoireTextureInfo);
 
-	write.setDstSet(m_uiDescriptorSet);
-	write.setDstBinding(0);
-	write.setDstArrayElement(0);
-	write.setDescriptorType(
-		vk::DescriptorType::eCombinedImageSampler
-	);
-	write.setImageInfo(textureInfo);
-
-	device.updateDescriptorSets(write, {});
+	device.updateDescriptorSets(writes, {});
 }
 
 

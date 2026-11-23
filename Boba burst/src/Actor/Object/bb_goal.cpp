@@ -8,7 +8,7 @@
 
 
 Goal::Goal() : Track() {}
-Goal::Goal(int id_, Transform t_, int nbSections_) : Track(id_, t_, nbSections_) {}
+Goal::Goal(int id_, Transform t_, int nbSections_) : Track(id_, t_, nbSections_), goalWasReach(false) {}
 Goal::~Goal() {}
 
 
@@ -23,6 +23,6 @@ void Goal::onCollision(CollisionEvent &event) {
 
     if (auto* p = dynamic_cast<Player*>(it->second))     // les bots sont sur le layer PLAYER aussi
         busPtr->get()->EmitEvent<WinEvent>(p->getId());
-
+    goalWasReach = true;
 
 }

@@ -9,5 +9,5 @@ public:
     Goal(int id_, Transform t_, int nbSections);
     ~Goal();
     void onCollision(CollisionEvent &event) override ;
-
+    bool goalWasReach;
 };

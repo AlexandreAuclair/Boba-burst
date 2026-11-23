@@ -19,7 +19,7 @@ public:
 
 	void SetScene(std::shared_ptr<Scene>);
 
-	void Draw(bool showMenuPause);
+	void Draw(UIScreen menu);
 	void BeginFrame();
 	void EndFrame();
 
