@@ -2,6 +2,11 @@
 
 void InputManager::CheckInput()
 {
+
+    // ==================================================
+    // GESTION DES CLICS DE TOUCHES
+    // ==================================================
+
     // Array des touches d'ont nous voulons restrindre le traitement à une fois par appuit
     int keys[] = {
         GLFW_KEY_TAB,
@@ -23,30 +28,56 @@ void InputManager::CheckInput()
         lastInputs[key] = isKeyPressed;
     }
 
-    // Array des cliques de souris d'ont nous voulons restrindre le traitement à une fois par appuit
+    // ==================================================
+    // GESTION DES CLICS DE SOURIS
+    // ==================================================
+
+   // Array des cliques de souris d'ont nous voulons restrindre le traitement à une fois par appuit
     int clicks[] = {
         GLFW_MOUSE_BUTTON_LEFT,
         GLFW_MOUSE_BUTTON_RIGHT,
     };
 
-    // Pour chaque clique dans l'array, nous vérifions si elle est active.
-    // Si c'est le cas, et que sont dernier état connus n'est pas actif, nous émétons l'événement corespondant à ce clique ainsi que ses coordonées.
+    // Réinitialiser le clic gauche pour la frame courante.
+    m_leftMouseClicked = false;
+
+    // Mettre à jour la position et les déplacements souris.
     UpdateMouse();
-    for (auto mouseClick : clicks)
+
+    for (auto mouseButton : clicks)
     {
-        bool isKeyPressed = IsMouseClick(mouseClick);
+        // État actuel du bouton.
+        const bool isPressed = IsMouseClick(mouseButton);
 
-        if (isKeyPressed && !lastInputs[mouseClick])
+        // Nouvel appui : RELEASE -> PRESS.
+        const bool clicked = isPressed && !lastInputs[mouseButton];
+
+        if (clicked)
         {
+            // Conserver l'émission d'événement existante.
+            busPtr->get()->EmitEvent<KeyPressedEvent>(
+                mouseButton,
+                m_lastMouseX,
+                m_lastMouseY
+            );
 
-            busPtr->get()->EmitEvent<KeyPressedEvent>(mouseClick, m_lastMouseX, m_lastMouseY);
+            // Mémoriser uniquement le clic gauche pour le traitement du menu de pause
+            if (mouseButton == GLFW_MOUSE_BUTTON_LEFT)
+            {
+                m_leftMouseClicked = true;
+            }
         }
 
-        // Mémoire des dernier états des cliques
-        lastInputs[mouseClick] = isKeyPressed;
+        // Mémoriser l'état RÉEL du bouton pour la prochaine frame
+        lastInputs[mouseButton] = isPressed;
     }
 
-    // Si la touche est active, peut importe si elle est maintenu, nous émétons l'événement corespondant.
+
+    // ==================================================
+    // GESTION DEPLACEMENT UTILISATEUR
+    // ==================================================
+
+    // Si la touche est active, peut importe si elle est maintenu, nous émétons l'événement corespondant
     if (IsKeyPressed(GLFW_KEY_LEFT))
     {
         busPtr->get()->EmitEvent<KeyPressedEvent>(GLFW_KEY_LEFT);
@@ -58,6 +89,7 @@ void InputManager::CheckInput()
         busPtr->get()->EmitEvent<KeyPressedEvent>(GLFW_KEY_RIGHT);
     }
 }
+
 
 bool InputManager::IsKeyPressed(int key) const
 {

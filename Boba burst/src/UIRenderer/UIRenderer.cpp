@@ -13,7 +13,7 @@ UIRenderer::UIRenderer(
 	vk::RenderPass renderpass) : m_context{ context } {
 	
 	// 1. Charger la texture en mémoire
-	m_pauseTexture = CreateTexture("assets/menu_pause_version_0.png");
+	m_pauseTexture = CreateTexture("assets/images/menu_pause_version_2.png");
 
 	// 2. Declarations des ressources necessaires en memoire pour le shader (disposition du descriptor set avant le descriptor set en lui-même)
 	CreateUIDescriptorSetLayout();
@@ -25,11 +25,44 @@ UIRenderer::UIRenderer(
 	CreateUIDescriptorSet();
 }
 
+// Retourner les demi-dimensions de la texture en NDC
+UIPushConstants UIRenderer::GetPauseMenuSize(uint32_t framebufferWidth,
+	uint32_t framebufferHeight) const {
+
+	return CalculatePauseMenuSize(m_pauseTexture.width,
+		m_pauseTexture.height,
+		framebufferWidth,
+		framebufferHeight);
+}
+
 void UIRenderer::Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent) {
     
     // ETAPE 1 : Activer le pipeline UI
     commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics, *m_ui_pipeline);
     
+
+	// ===================================================
+	// ETAPE 1.5 - CONSERVER LES PROPORTIONS DU PNG
+	// ===================================================
+	
+	// Données destinées au Vertex Shader.
+	const UIPushConstants pushConstants = GetPauseMenuSize(extent.width, extent.height);
+
+	// Sécurité : pas de dessin si le framebuffer est invalide.
+	if (pushConstants.halfWidth <= 0.0f ||
+		pushConstants.halfHeight <= 0.0f)
+	{
+		return;
+	}
+
+	// Envoi des Push Constants au Vertex Shader.
+	commandBuffer.pushConstants(
+		*m_ui_pipelineLayout,
+		vk::ShaderStageFlagBits::eVertex,
+		0,
+		sizeof(UIPushConstants),
+		&pushConstants
+	);
 
 	// ETAPE 2. Binder le Descriptor Set avec le layout du pipeline UI
 	commandBuffer.bindDescriptorSets(
@@ -69,6 +102,7 @@ void UIRenderer::Draw(vk::CommandBuffer commandBuffer, vk::Extent2D extent) {
         0   // Première instance
     );
 }
+
 
 // Creation pipeline 2D pour UI au-dessus de la 3D
 void UIRenderer::CreateUIPipeline(vk::RenderPass renderPass) {
@@ -121,11 +155,36 @@ void UIRenderer::CreateUIPipeline(vk::RenderPass renderPass) {
 	vk::PipelineLayoutCreateInfo layoutInfo{};
 	layoutInfo.setSetLayouts(setLayout);
 
+
+	// Ajout du push constant pour avoir bon dimensionnement UI
+	//////////////
+	vk::PushConstantRange pushConstantRange{};
+
+	// Vertex Shader aura accès aux infos
+	pushConstantRange.setStageFlags(
+		vk::ShaderStageFlagBits::eVertex
+	);
+
+	pushConstantRange.setOffset(0);
+
+	// Taille que l'on pousse
+	pushConstantRange.setSize(
+		sizeof(UIPushConstants)
+	);
+
+	// Ajouter les infos du push constant au layout
+	layoutInfo.setPushConstantRanges(pushConstantRange);
+	/////////////////////
+
 	m_ui_pipelineLayout =
 		m_context.GetDevice().createPipelineLayoutUnique(layoutInfo);
 
     // Color attachement
     auto colorAttachmentBlendState = vk::PipelineColorBlendAttachmentState{};
+
+	// Pas encore de transparence pour le prototype
+	colorAttachmentBlendState.setBlendEnable(VK_FALSE);
+
     colorAttachmentBlendState.colorWriteMask =
         vk::ColorComponentFlagBits::eR |
         vk::ColorComponentFlagBits::eG |
@@ -133,11 +192,10 @@ void UIRenderer::CreateUIPipeline(vk::RenderPass renderPass) {
         vk::ColorComponentFlagBits::eA;
 
     std::array<vk::PipelineColorBlendAttachmentState, 1> colorAttachmentBlendStates = { colorAttachmentBlendState };
-    auto colorBlendState = vk::PipelineColorBlendStateCreateInfo{};
+   
+	auto colorBlendState = vk::PipelineColorBlendStateCreateInfo{};
     colorBlendState.setAttachments(colorAttachmentBlendStates);
 
-    // Pas encore de transparence pour le prototype
-    colorAttachmentBlendState.setBlendEnable(VK_FALSE);
 
     std::array<vk::DynamicState, 2> dynamicStates = { vk::DynamicState::eViewport, vk::DynamicState::eScissor };
     auto dynamicState = vk::PipelineDynamicStateCreateInfo{};
@@ -265,8 +323,8 @@ UIRenderer::VulkanTexture UIRenderer::CreateTexture(const std::string& path){
 		throw std::runtime_error("Impossible de charger la texture : " + path);
 
 	// -- Chargement reussi, stocker dimensions textures -- // 
-	tex.width = static_cast<uint16_t>(width);
-	tex.height = static_cast<uint16_t>(height);
+	tex.width = static_cast<uint32_t>(width);
+	tex.height = static_cast<uint32_t>(height);
 
 
 	vk::DeviceSize imageSize = static_cast<vk::DeviceSize>(width) * height * 4;

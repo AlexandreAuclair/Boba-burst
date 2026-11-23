@@ -60,28 +60,28 @@ set_target_properties(Jolt::Jolt PROPERTIES
 set_property(TARGET Jolt::Jolt APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(Jolt::Jolt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/Debug/Joltd.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/JoltPhysics/Build/Debug/Joltd.lib"
   )
 
 # Import target "Jolt::Jolt" for configuration "Release"
 set_property(TARGET Jolt::Jolt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(Jolt::Jolt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/Release/Jolt.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/JoltPhysics/Build/Release/Jolt.lib"
   )
 
 # Import target "Jolt::Jolt" for configuration "MinSizeRel"
 set_property(TARGET Jolt::Jolt APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(Jolt::Jolt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_MINSIZEREL "CXX"
-  IMPORTED_LOCATION_MINSIZEREL "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/MinSizeRel/Jolt.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/JoltPhysics/Build/MinSizeRel/Jolt.lib"
   )
 
 # Import target "Jolt::Jolt" for configuration "RelWithDebInfo"
 set_property(TARGET Jolt::Jolt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(Jolt::Jolt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELWITHDEBINFO "CXX"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/JoltPhysics/Build/RelWithDebInfo/Jolt.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/JoltPhysics/Build/RelWithDebInfo/Jolt.lib"
   )
 
 # This file does not depend on other imported targets which have

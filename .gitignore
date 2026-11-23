@@ -17,7 +17,7 @@ revision.h
 shaders_out/
 
 # Ne pas pousser le .snlx
-*.snlx
+*.slnx
 
 # User-specific files
 *.rsuser
@@ -133,8 +133,8 @@ StyleCopReport.xml
 *.pgd
 *.rsp
 *.sln
-# *.vcxproj
-# *.vcxproj.filters         // garder les filtres car c'est utile pour le dev dans Visual Studio
+*.vcxproj
+!*.vcxproj.filters         # Garder les filtres car c'est utile pour le dev dans Visual Studio
 *.stamp
 *.yml
 # but not Directory.Build.rsp, as it configures directory-level build defaults

@@ -18,6 +18,18 @@ VulkanRenderer::VulkanRenderer(VulkanContext &context)
 	}
 }
 
+
+// Petite methode pour recuperer dimensions menu
+UIPushConstants VulkanRenderer::GetPauseMenuSize(uint32_t framebufferWidth, uint32_t framebufferHeight) const {
+	
+	// Close guard, il faut que le rendu UI soit initialisé
+	if (!m_uiRenderer) return{};
+
+	return m_uiRenderer->GetPauseMenuSize(framebufferWidth, framebufferHeight);
+}
+
+
+
 void VulkanRenderer::CreateRenderPass()
 {
 	vk::AttachmentReference colorRef = {};

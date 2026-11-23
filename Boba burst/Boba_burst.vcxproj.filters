@@ -82,6 +82,9 @@
     <ClCompile Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\UIRenderer\UIManager.cpp">
+      <Filter>Header Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\src\stb_image.h">
@@ -210,6 +213,12 @@
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Utilities\utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Utilities\bb_frustum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UIRenderer\UIManager.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\raito\Documents\Cours\3A_Sherbrooke\Boba-burst\Boba burst\CMakeLists.txt" />
@@ -224,25 +233,8 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{42D90FE2-07A5-330E-9721-F7F8496703CB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders">
-      <UniqueIdentifier>{e9445cfb-5c17-4b87-9334-57aa3d4fa778}</UniqueIdentifier>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{8719b965-fde9-41fe-8441-7280abe91661}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="shaders\global.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="shaders\global.vert">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="shaders\skybox.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="shaders\ui.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="shaders\ui.vert">
-      <Filter>Shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

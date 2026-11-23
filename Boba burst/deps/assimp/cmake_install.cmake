@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp
+# Install script for directory: C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,8 +34,8 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "libassimp6.0.6-dev" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES
-    "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/generated/assimpConfig.cmake"
-    "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/generated/assimpConfigVersion.cmake"
+    "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/generated/assimpConfig.cmake"
+    "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/generated/assimpConfigVersion.cmake"
     )
 endif()
 
@@ -43,7 +43,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "libassimp6.0.6-dev" OR NOT CMAKE_INSTALL_CO
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0/assimpTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0/assimpTargets.cmake"
-         "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets.cmake")
+         "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0/assimpTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -56,43 +56,43 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "libassimp6.0.6-dev" OR NOT CMAKE_INSTALL_CO
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets-debug.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets-debug.cmake")
   endif()
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets-minsizerel.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets-minsizerel.cmake")
   endif()
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets-relwithdebinfo.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets-relwithdebinfo.cmake")
   endif()
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets-release.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/assimp-6.0" TYPE FILE FILES "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/CMakeFiles/Export/1e829e3d292b021f8d48f0e209725d79/assimpTargets-release.cmake")
   endif()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/contrib/zlib/cmake_install.cmake")
+  include("C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/contrib/zlib/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/code/cmake_install.cmake")
+  include("C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/code/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/test/cmake_install.cmake")
+  include("C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/test/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "libassimp6.0.6-dev" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/assimp.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/assimp.pc")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/raito/Documents/Cours/3A_Sherbrooke/Boba-burst/Boba burst/deps/assimp/install_local_manifest.txt"
+  file(WRITE "C:/Users/Bouboune/Documents/Boba-burst/Boba burst/deps/assimp/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -1,30 +1,34 @@
 #ifndef BB_GAME_H
 #define BB_GAME_H
 
-    //==========================================================================
-    //      include externe
-    //==========================================================================
+//==========================================================================
+//      include externe
+//==========================================================================
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
-    //==========================================================================
-    //      include interne
-    //==========================================================================
+#include <algorithm>
+#include <unordered_map>
+
+
+//==========================================================================
+//      include interne
+//==========================================================================
 #include "bb_camera.h"
 #include "bb_gameState.h"
 #include "../LevelLoader/bb_levelLoader.h"
 #include "../VulkanContext/bb_vulkanContext.h"
 #include "../VulkanRenderer/bb_vulkanRenderer.h"
 #include "../Controller/Controller.h"
-#include <src/EventBus/bb_eventBus.h>
-#include <unordered_map>
+#include "../EventBus/bb_eventBus.h"
 #include "../Actor/Character/bb_player.h"
 #include "bb_gameManager.h"
-#include <algorithm>
 #include "../Events/bb_onCollisionEvent.h"
 
-    //==========================================================================
-    //      Constante
-    //==========================================================================
+#include "../UIRenderer/UIManager.h"
+
+//==========================================================================
+//      Constante
+//==========================================================================
 const int FPS = 60;
 const int MILLISECS_PER_FRAME = 1000 / FPS;
 
@@ -47,27 +51,30 @@ private:
     void Update(double dt);
     void Render(double dt);
     void HandlePauseEvent(KeyPressedEvent &event);
-public : 
-
-    Controller& GetController(){
-        return controller;
-    }
 
 private:
+
+    //  Booleen etat
     bool isRunning;
     bool isDebug;
+    
+    // Fenetre GLFW
     GLFWwindow* window;
+    
     float millisecsPreviousFrame = 0;
+    
     GameStateMachine stateMachine;
+    
     LevelLoader levelLoader;
+    
     VulkanContext context;
+    
     std::unique_ptr<VulkanRenderer> renderer;
+    
     std::shared_ptr<Scene> scene;
-    //Profiler profiler; // pour plus tard
 
-    // Controller d'inputs (init dans Setup())
-    Controller controller;
-
+    // UI Manager pour zones interactives menu
+    UIManager m_uiManager;
 
     // Booléen indiquant si touche vient d'être pressee (pour eviter multi-action) => pourra etre change plus tard par fonction du controller
     bool tabWasPressed;
