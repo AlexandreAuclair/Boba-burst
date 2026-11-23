@@ -1,16 +1,15 @@
-# Boba-burst
+# Projet de jeu Boba-burst
 
 > **Un projet captivant développé avec passion et un travail d'équipe hors pair !**
 
----
 
-##  À propos du projet
+##  📝À propos du projet
 
 **Buba-burst** est un jeu dynamique conçu pour offrir une expérience fluide, amusant et engageante. Ce projet démontre notre capacité à collaborer efficacement, à concevoir des fonctionnalités robustes et à offrir une interface propre et réactive dans le contexte du programme DDJV de l'université de Sherbrooke.
 
 ---
 
-## Technologies & Outils
+## ⚙️Technologies & Outils 
 
 - **Langage principal** : C++ / CMake
 - **Framework & Libraries** : Vulkan / Jolt / glm / GLFW
@@ -33,33 +32,52 @@ Ce projet est le résultat d'une collaboration serrée où chacun a apporté son
 
 ---
 
-En général, nous avons bien respecté ce que nous avions établi comme base dans le GDD. Cependant, comme dans tout projet, nous avons dû effectuer quelque changement après avoir réalisé les premières implémentations.
+## 🛠️ Description de l'implémentation
 
-Premièrement, nous avons ajouté la classe « LevelLoader » qui, au démarrage du jeu, nous permet d’instancier en mémoire les divers éléments d’un niveau précis. En effet, en bâtissant un fichier de type « .JSON » pour le « LevelLoader » contenant les éléments de notre scène, nous pouvons effectuer des modifications des objets du niveau sans avoir a effectué une nouvelle compilation du projet.
+En général, nous avons respecté les fondations établies dans le GDD. Cependant, comme dans tout projet, les premières implémentations nous ont amenés à apporter certains ajustements d'architecture.
 
-Par la suite, nous avons aussi ajouté toutes les classes nécessaires afin d’obtenir notre rendu Vulkan. C’est-à-dire, « VulkanContext », « VulkanRenderer » et « Scene ». De plus, afin de rendre notre menu 2D, nous lui avons créer une classe séparer de notre rendu 3D mentionner plutôt. Nous l’avons appelé « UIRenderer ».
+### Chargement des niveaux et rendu 
 
-En continuant, nous avons modifié nos liens avec Jolt ainsi que nos événements. Dans cette version du projet, tous nos appels à Jolt sont effectués dans une classe appelée « PhysicWorld ». Tout comme avec notre rendu, cela nous permet d’isoler Jolt dans une partie centraliser du projet afin de permettre un meilleur contrôle sur la physique ainsi que des améliorations futures simplifier. Du côté de nos événements, nous avons réussi à grandement réduire le nombre d’événements différents grâce à l’implémenter de la classe « EventBus ». Il s’agit d’un gestionnaire d’événement unique qui permet à tous ceux qui le veulent de s’inscrire afin de recevoir des messages d’un certain type ou d’en émettre avec le schéma de conception « Publisher-Subscriber ». Pour nos messages / « Événement », ils héritent tous d’une classe commune et peuvent passer des arguments afin de réduire grandement le nombre de classes d’événement nécessaire.
-
-Pour l’architecture des niveaux, nous avons ajouté une spécification pour les buts afin qu’un détecteur puisse noter la fin du jeu et nous avons retiré le concept de face comme il ajoutait beaucoup trop de complexité pour le projet selon les commentaires des enseignants.
-
-Pour terminer, nous avons grandement modifié notre boucle de jeu. Nos classes « Game » et « GameManager » sont des singletons permettant un contrôle centralisé de la boucle de jeux. « Game » est la classe principale du jeu contenant toutes les fonctions nécessaires appelé pour l’exécution du programme tandis que « GameManager » regroupe tous les objets au même endroit et contrôle leur vérité. Dans « Game » , notre machine dicte quelles fonctions sont exécutées. Ses dernières sont « ProcessInput(), Update(), Render() » dans cet ordre avec chacune d’entre elles regardant l’état courant pour décider des fonctions à exécuter. Afin de garder l’ordre, nous avons aussi ajouté les fonctions « Initialisation() » et « Setup() » pour établir les bases du jeu avant d’exécuter la volonté du joueur.
+Chargement dynamique (``LevelLoader``) : Nous avons ajouté la classe ``LevelLoader`` afin d'instancier en mémoire les éléments d'un niveau au démarrage. En s'appuyant sur un fichier *.json* décrivant la scène, cette approche permet de modifier les objets d'un niveau sans avoir à recompiler le projet.
 
 
----
+Rendu 3D et interface 2D : Nous avons mis en place l'architecture de rendu Vulkan à travers les classes ``VulkanContext``, ``VulkanRenderer`` et ``Scene``. Pour le menu 2D, nous avons choisi de créer une classe dédiée, ``UIRenderer``, distincte du rendu 3D.
 
-## Compiling
-1. cmake . in cmd at root
-2. open Boba burst.sln
-3. right click Jolt project -> propreties
+### Chargement des niveaux et rendu 
+
+Isolation de la physique (``PhysicWorld``) : Tous les appels à Jolt sont désormais regroupés dans une classe ``PhysicWorld``. À l'image du rendu, cette centralisation isole la dépendance externe, facilite le contrôle de la simulation physique et simplifie les évolutions futures.
+
+Système d'événements (``EventBus``) : Nous avons simplifié la gestion des événements grâce à un ``EventBus`` unique reposant sur le patron Publisher-Subscriber. Chaque module peut s'abonner à un type de message ou en publier. Comme tous les événements héritent d'une classe de base et transportent leurs arguments, nous avons pu réduire considérablement le nombre de classes d'événements nécessaires.
+
+### Conception des niveaux
+
+- **Détection de fin de partie** : Nous avons ajouté une spécification dédiée aux buts afin qu'un détecteur puisse identifier clairement la fin de la partie.
+
+- **Simplification de la piste** : Nous avons abandonné la notion de face pour les morceaux de piste, une mécanique qui ajoutait trop de complexité pour peu de valeur ajoutée.
+
+### Boucle de jeu et cycle d'initialisation 
+
+Enfin, nous avons profondément revu la boucle de jeu. Les classes ``Game`` et ``GameManager`` sont implémentées comme des singletons afin d'assurer un contrôle centralisé :
+
+- ``Game`` orchestre l'exécution du programme. Sa machine à états détermine les actions à exécuter à chaque étape selon l'état courant, en suivant l'ordre strict *ProcessInput()*, *Update()*, puis *Render()*.
+
+- ``GameManager`` rassemble les objets du jeu et constitue la source de vérité sur leur état.
+
+Pour garantir un démarrage ordonné avant de traiter les entrées du joueur, nous avons également introduit les étapes *Initialisation()* et *Setup()*.
+
+
+## 💻 Compilation
+1. **cmake .** dans la console à la racine
+2. Ouvrir Boba burst.sln
+3. Clic droit Jolt project -> propreties
 4. c/c++ -> Code Generation
-5. change Runtime Library to /MDd
-6. compile whole project
+5. Changer Runtime Library à /MDd
+6. Compiler le projet au global
 
 ---
 
-## LES TOUCHES
-1. flèche gauche du clavier -> déplacement vers la gauche
-2. flèche droite du clavier -> déplacement vers la droite
-3. TAB -> changement de la caméra
+## ⌨️ Touches du clavier 
+1. Flèche gauche -> déplacement vers la gauche
+2. Flèche droite -> déplacement vers la droite
+3. TAB -> changement de la caméra (1ère / 3ème personne)
 4. ESC -> ouverture du menu
