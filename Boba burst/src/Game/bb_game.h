@@ -18,7 +18,6 @@
 #include "../LevelLoader/bb_levelLoader.h"
 #include "../VulkanContext/bb_vulkanContext.h"
 #include "../VulkanRenderer/bb_vulkanRenderer.h"
-#include "../Controller/Controller.h"
 #include "../EventBus/bb_eventBus.h"
 #include "../Actor/Character/bb_player.h"
 #include "bb_gameManager.h"
