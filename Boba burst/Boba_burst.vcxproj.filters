@@ -61,11 +61,14 @@
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\ModelImporter\bb_modelImporter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Controller\Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\UIRenderer\UIManager.cpp">
+      <Filter>Header Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,13 +159,10 @@
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\ModelImporter\bb_modelImporter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Controller\Controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\PauseMenuGeometry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\UIRenderer\UIManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Events\bb_onCollisionEvent.h">
@@ -177,6 +177,9 @@
     <ClInclude Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\src\Utilities\bb_frustum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\UIRenderer\UIManager.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Bouboune\Documents\Boba-burst\Boba burst\CMakeLists.txt" />
@@ -190,6 +193,9 @@
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{73E0DCEE-6FD2-3817-BECB-9B489F0F4783}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{8719b965-fde9-41fe-8441-7280abe91661}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

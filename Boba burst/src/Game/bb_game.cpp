@@ -6,6 +6,7 @@
 
 #include "../Logger/Logger.h"
 #include "../Scenes/bb_gameScene.h"
+#include "../UIRenderer/UIManager.h"
 
 // ============================================================================
 // Construction et initialisation
@@ -186,17 +187,17 @@ void Game::ProcessInput()
         return;
     }
 
-    // Pour ce prototype, on réutilise le contrôleur du joueur initialisé dans Setup().
+    // Pour ce prototype, on réutilise le contrôleur du joueur initialisé dans Setup()
     auto& inputManager = players.back()->controlManager;
 
-    // CheckInput() émet des événements pouvant modifier immédiatement l'état.
+    // CheckInput() émet des événements pouvant modifier immédiatement l'état
     const GameState previousState = stateMachine.GetCurrentState();
     inputManager.CheckInput();
     const GameState currentState = stateMachine.GetCurrentState();
 
     if (currentState != previousState)
     {
-        // Libérer la souris en pause ; la capturer à la reprise du gameplay.
+        // Libérer la souris en pause ; la capturer à la reprise du gameplay
         if (currentState == GameState::Pause)
         {
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
@@ -206,7 +207,7 @@ void Game::ProcessInput()
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         }
 
-        // Ne pas interpréter un clic enregistré pendant la transition d'état.
+        // Ne pas interpréter un clic enregistré pendant la transition d'état
         return;
     }
 
@@ -217,12 +218,18 @@ void Game::ProcessInput()
         break;
 
     case GameState::Playing:
-        // Les entrées du joueur ont déjà été lues par CheckInput().
+        // Les entrées du joueur ont déjà été lues par CheckInput()
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        
+        std::for_each(GameManager::get().players.begin(), GameManager::get().players.end(), [](auto& player)
+        {
+            player.get()->controlManager.CheckInput();
+        });
         break;
 
     case GameState::Pause:
     {
-        // Le clic doit être un nouvel appui gauche, pas un bouton maintenu.
+        // Le clic doit être un nouvel appui gauche, pas un bouton maintenu
         if (!renderer || !inputManager.WasLeftMouseClicked())
         {
             break;
@@ -264,8 +271,30 @@ void Game::ProcessInput()
         {
             std::cout << "CLIC SUR MENU\n";
         }
-        break;
+
+        const UIAction action = m_uiManager.GetClickedAction(normalizedX, normalizedY, menuSize.halfWidth, menuSize.halfHeight);
+
+        switch (action) {
+
+        case UIAction::QUIT:
+            std::cout << "Bouton QUITTER" << std::endl;
+            break;
+
+        case UIAction::RESUME:
+            std::cout << "Bouton CONTINUER" << std::endl;
+            break;
+
+        case UIAction::RESTART:
+            std::cout << "Bouton RECOMMENCER" << std::endl;
+            break;
+
+        case UIAction::NONE:
+            break;
+        }
+       
+        break;          // break final pour sortir du switch(gameState)
     }
+
 
     case GameState::GameOver:
         // À compléter : relancer une partie ou revenir au menu.

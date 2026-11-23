@@ -71,6 +71,23 @@ void InputManager::CheckInput()
         // Mémoriser l'état RÉEL du bouton pour la prochaine frame
         lastInputs[mouseButton] = isPressed;
     }
+
+
+    // ==================================================
+    // GESTION DEPLACEMENT UTILISATEUR
+    // ==================================================
+
+    // Si la touche est active, peut importe si elle est maintenu, nous émétons l'événement corespondant
+    if (IsKeyPressed(GLFW_KEY_LEFT))
+    {
+        busPtr->get()->EmitEvent<KeyPressedEvent>(GLFW_KEY_LEFT);
+    }
+
+    // Si la touche est active, peut importe si elle est maintenu, nous émétons l'événement corespondant.
+    if (IsKeyPressed(GLFW_KEY_RIGHT))
+    {
+        busPtr->get()->EmitEvent<KeyPressedEvent>(GLFW_KEY_RIGHT);
+    }
 }
 
 
